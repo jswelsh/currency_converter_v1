@@ -18,7 +18,7 @@ class Converter extends React.Component {
   componentDidMount() {
     axios
       .get("https://api.openrates.io/latest")
-      .then(res => {
+      .then(response => {
         const currencyArr = ["EUR"];
         for (const key in response.data.rates) {
           currencyArr.push(key);
@@ -29,5 +29,27 @@ class Converter extends React.Component {
         console.log("Something went wrong", err);
       });
   }
-  
+  convertHandler = () => {
+    if (this.state.fromCurrency !== this.state.toCurrency) {
+        /* 
+          I believe the api changed and needs it to be http://api.openrates.io/latest?symbols=USD,GBP
+        */
+      axios
+        .get(
+          `https://api.openrates.io/latest?base=${
+            this.state.fromCurrency
+          }&symbols=${this.state.toCurrency}`
+        )
+        .then(response => {
+          const result =
+            this.state.amount * response.data.rates[this.state.toCurrency];
+          this.setState({ result: result.toFixed(5) });
+        })
+        .catch(error => {
+          console.log("Opps", error.message);
+        });
+    } else {
+      this.setState({ result: "You cant convert the same currency!" });
+    }
+  };
 }
