@@ -17,8 +17,8 @@ const reducer = (state, action) => {
       return {...state, fromCurrency: action.currency}
     case "SET_TO_CURRENCY":
       return {...state, toCurrency: action.currency}
-      case "SET_RESULT":
-        return {...state, result: action.result}
+    case "SET_RESULT":
+      return {...state, result: action.result}
     default:
       throw new Error();
   }
