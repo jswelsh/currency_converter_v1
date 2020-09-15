@@ -18,6 +18,7 @@ class Converter extends React.Component {
       .get("https://api.openrates.io/latest")
       .then(response => {
         const currencyArr = ["EUR"];
+        //setting up avb currencies to choose from
         for (const key in response.data.rates) {
           currencyArr.push(key);
         }
@@ -29,9 +30,6 @@ class Converter extends React.Component {
   };
   convertHandler = () => {
     if (this.state.fromCurrency !== this.state.toCurrency) {
-        /* 
-          I believe the api changed and needs it to be http://api.openrates.io/latest?symbols=USD,GBP
-        */
       axios
         .get(
           `https://api.openrates.io/latest?base=${
