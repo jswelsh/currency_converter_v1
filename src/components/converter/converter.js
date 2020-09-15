@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+
 import "./converter.css";
 
 
-function Converter() {
-  const [result, setResult] = useState(null)
+export default function Converter(props) {
+/*   const [result, setResult] = useState(null)
   const [fromCurrency, setFromCurrency] = useState("USD")
   const [toCurrency, setToCurrency] = useState("GBP")
   const [amount, setAmount] = useState(1)
   const [currencies, setCurrencies] = useState([])
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios
-      .get("https://api.openrates.io/latest")
-      .then(response => {
-        const currencyArr = ["EUR"];
+      .get("https://api.exchangeratesapi.io/latest?base=CAD")
+      .then(res => {
+        const currencyArr = [];
         //setting up avb currencies to choose from
-        for (const key in response.data.rates) {
+        for (const key in res.data.rates) {
           currencyArr.push(key);
         }
         setCurrencies(currencyArr);
@@ -33,9 +33,9 @@ function Converter() {
           `https://api.openrates.io/latest?base=${
             fromCurrency}&symbols=${toCurrency}`
         )
-        .then(response => {
+        .then(res => {
           const result = 
-            amount * response.data.rates[toCurrency];
+            amount * res.data.rates[toCurrency];
           setResult(result.toFixed(5));
         })
         .catch(error => {
@@ -53,45 +53,40 @@ function Converter() {
         setToCurrency(e.target.value)
       }
   }
-
+ */
   return (
     <div className="Converter">
         <h2>
           <span>Currency</span>Converter
-          <span role="img" aria-label="money">
-            &#x1f4b5;
-          </span>
         </h2>
         <div className="From">
           <input
             name="amount"
             type="text"
-            value={amount}
-            onChange={event => setAmount(event.target.value )}
+            value={props.amount}
+            onChange={e => props.setAmount(e.target.value )}
           />
           <select
             name="from"
-            onChange={event => selectHandler(event)}
-            value={fromCurrency}
+            onChange={e => props.selectHandler(e)}
+            value={props.fromCurrency}
           >
-            {currencies.map(cur => (
+            {props.currenciesList.map(cur => (
               <option key={cur}>{cur}</option>
             ))}
           </select>
           <select
             name="to"
-            onChange={event => selectHandler(event)}
-            value={toCurrency}
+            onChange={e => props.selectHandler(e)}
+            value={props.toCurrency}
           >
-            {currencies.map(cur => (
+            {props.currenciesList.map(cur => (
               <option key={cur}>{cur}</option>
             ))}
           </select>
-          <button onClick={convertHandler}>Convert</button>
-          {result && <h3>{result}</h3>}
+          <button onClick={props.convertHandler}>Convert</button>
+          {props.result && <h3>{props.result}</h3>}
         </div>
       </div>
   );
 }
-
-export default Converter;
