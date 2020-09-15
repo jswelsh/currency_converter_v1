@@ -28,7 +28,7 @@ class Converter extends React.Component {
       .catch(err => {
         console.log("Something went wrong", err);
       });
-  }
+  };
   convertHandler = () => {
     if (this.state.fromCurrency !== this.state.toCurrency) {
         /* 
@@ -52,6 +52,16 @@ class Converter extends React.Component {
       this.setState({ result: "You cant convert the same currency!" });
     }
   };
+  selectHandler = event => {
+    if (event.target.name === "from") {
+      this.setState({ fromCurrency: event.target.value });
+    } else {
+      if(event.target.name === "to") {
+        this.setState({ toCurrency: event.target.value});
+      }
+    }
+  };
+
   render() {
     return (
       <div className="Converter">
