@@ -2,24 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./converter.css";
 
-/* class Converter extends React.Component {} */
+
 function Converter() {
   const [result, setResult] = useState(null)
   const [fromCurrency, setFromCurrency] = useState("USD")
   const [toCurrency, setToCurrency] = useState("GBP")
   const [amount, setAmount] = useState(1)
   const [currencies, setCurrencies] = useState([])
-  /*   
-  constructor(props) {
-    super(props); //need to update this as its depreciated
-    this.state = {
-      result: null,
-      fromCurrency: "USD",
-      toCurrency: "GBP",
-      amount: 1,
-      currencies: []
-    };
-  } */
 
   React.useEffect(() => {
     console.log('Mounted');
@@ -37,22 +26,7 @@ function Converter() {
         console.log("Something went wrong", err);
       });
   }, []); // Empty array means to only run once on mount.
-  /*   
-  componentDidMount() {
-    axios
-      .get("https://api.openrates.io/latest")
-      .then(response => {
-        const currencyArr = ["EUR"];
-        //setting up avb currencies to choose from
-        for (const key in response.data.rates) {
-          currencyArr.push(key);
-        }
-        this.setState({currencies: currencyArr});
-      })
-      .catch(err => {
-        console.log("Something went wrong", err);
-      });
-  }; */
+
   const convertHandler = () => {
     if (fromCurrency !== toCurrency) {  
       axios
@@ -73,27 +47,7 @@ function Converter() {
       setResult("You cant convert the same currency!");
     }
   };
-  /*   
-  convertHandler = () => {
-    if (this.state.fromCurrency !== this.state.toCurrency) {  
-      axios
-        .get(
-          `https://api.openrates.io/latest?base=${
-            this.state.fromCurrency
-          }&symbols=${this.state.toCurrency}`
-        )
-        .then(response => {
-          const result =
-            this.state.amount * response.data.rates[this.state.toCurrency];
-          this.setState({ result: result.toFixed(5) });
-        })
-        .catch(error => {
-          console.log("Opps", error.message);
-        });
-    } else {
-      this.setState({ result: "You cant convert the same currency!" });
-    }
-  }; */
+ 
   const selectHandler = event => {
     if (event.target.name === "from") {
       setFromCurrency(event.target.value );
@@ -103,16 +57,7 @@ function Converter() {
       }
     }
   };
-  /* 
-    selectHandler = event => {
-    if (event.target.name === "from") {
-      this.setState({ fromCurrency: event.target.value });
-    } else {
-      if(event.target.name === "to") {
-        this.setState({ toCurrency: event.target.value});
-      }
-    }
-  }; */
+
   return (
     <div className="Converter">
         <h2>
