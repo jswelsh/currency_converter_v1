@@ -11,7 +11,6 @@ function Converter() {
   const [currencies, setCurrencies] = useState([])
 
   React.useEffect(() => {
-    console.log('Mounted');
     axios
       .get("https://api.openrates.io/latest")
       .then(response => {
@@ -25,18 +24,17 @@ function Converter() {
       .catch(err => {
         console.log("Something went wrong", err);
       });
-  }, []); // Empty array means to only run once on mount.
+  }, []); // Empty array to only run once on mount.
 
   const convertHandler = () => {
     if (fromCurrency !== toCurrency) {  
       axios
         .get(
           `https://api.openrates.io/latest?base=${
-            fromCurrency
-          }&symbols=${toCurrency}`
+            fromCurrency}&symbols=${toCurrency}`
         )
         .then(response => {
-          const result =
+          const result = 
             amount * response.data.rates[toCurrency];
           setResult(result.toFixed(5));
         })
@@ -48,15 +46,13 @@ function Converter() {
     }
   };
  
-  const selectHandler = event => {
-    if (event.target.name === "from") {
-      setFromCurrency(event.target.value );
-    } else {
-      if(event.target.name === "to") {
-        setToCurrency(event.target.value);
+  const selectHandler = e => {
+    if (e.target.name === "from") {  
+      setFromCurrency(e.target.value) 
+    } else if (e.target.name === "to") {
+        setToCurrency(e.target.value)
       }
-    }
-  };
+  }
 
   return (
     <div className="Converter">
