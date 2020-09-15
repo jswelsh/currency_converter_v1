@@ -41,6 +41,7 @@ export default function useAppData() {
         for (const key in res.data.rates) {
           currenciesList.push(key);
         }
+        console.log(res)
         dispatch({
           type: SET_CURRENCY_LIST,
           currenciesList: currenciesList
