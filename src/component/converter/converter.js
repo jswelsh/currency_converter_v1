@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./converter.css";
 
-class Converter extends React.Component {
+/* class Converter extends React.Component {} */
+function Converter() {
+  const [result, setResult] = useState(null)
+  const [fromCurrency, setFromCurrency] = useState("USD")
+  const [toCurrency, setToCurrency] = useState("GBP")
+  const [amount, setAmount] = useState(1)
+  const [currencies, setCurrencies] = useState([])
+  /*   
   constructor(props) {
     super(props); //need to update this as its depreciated
     this.state = {
@@ -12,7 +19,25 @@ class Converter extends React.Component {
       amount: 1,
       currencies: []
     };
-  }
+  } */
+
+  React.useEffect(() => {
+    console.log('Mounted');
+    axios
+      .get("https://api.openrates.io/latest")
+      .then(response => {
+        const currencyArr = ["EUR"];
+        //setting up avb currencies to choose from
+        for (const key in response.data.rates) {
+          currencyArr.push(key);
+        }
+        setCurrencies(currencyArr);
+      })
+      .catch(err => {
+        console.log("Something went wrong", err);
+      });
+  }, []); // Empty array means to only run once on mount.
+  /*   
   componentDidMount() {
     axios
       .get("https://api.openrates.io/latest")
@@ -27,9 +52,30 @@ class Converter extends React.Component {
       .catch(err => {
         console.log("Something went wrong", err);
       });
+  }; */
+  const convertHandler = () => {
+    if (fromCurrency !== toCurrency) {  
+      axios
+        .get(
+          `https://api.openrates.io/latest?base=${
+            fromCurrency
+          }&symbols=${toCurrency}`
+        )
+        .then(response => {
+          const result =
+            amount * response.data.rates[toCurrency];
+          setResult(result.toFixed(5));
+        })
+        .catch(error => {
+          console.log("Opps", error.message);
+        });
+    } else {
+      setResult("You cant convert the same currency!");
+    }
   };
+  /*   
   convertHandler = () => {
-    if (this.state.fromCurrency !== this.state.toCurrency) {
+    if (this.state.fromCurrency !== this.state.toCurrency) {  
       axios
         .get(
           `https://api.openrates.io/latest?base=${
@@ -47,8 +93,18 @@ class Converter extends React.Component {
     } else {
       this.setState({ result: "You cant convert the same currency!" });
     }
+  }; */
+  const selectHandler = event => {
+    if (event.target.name === "from") {
+      setFromCurrency(event.target.value );
+    } else {
+      if(event.target.name === "to") {
+        setToCurrency(event.target.value);
+      }
+    }
   };
-  selectHandler = event => {
+  /* 
+    selectHandler = event => {
     if (event.target.name === "from") {
       this.setState({ fromCurrency: event.target.value });
     } else {
@@ -56,11 +112,9 @@ class Converter extends React.Component {
         this.setState({ toCurrency: event.target.value});
       }
     }
-  };
-
-  render() {
-    return (
-      <div className="Converter">
+  }; */
+  return (
+    <div className="Converter">
         <h2>
           <span>Currency</span>Converter
           <span role="img" aria-label="money">
@@ -71,32 +125,32 @@ class Converter extends React.Component {
           <input
             name="amount"
             type="text"
-            value={this.state.amount}
-            onChange={event => this.setState({ amount: event.target.value })}
+            value={amount}
+            onChange={event => setAmount(event.target.value )}
           />
           <select
             name="from"
-            onChange={event => this.selectHandler(event)}
-            value={this.state.fromCurrency}
+            onChange={event => selectHandler(event)}
+            value={fromCurrency}
           >
-            {this.state.currencies.map(cur => (
+            {currencies.map(cur => (
               <option key={cur}>{cur}</option>
             ))}
           </select>
           <select
             name="to"
-            onChange={event => this.selectHandler(event)}
-            value={this.state.toCurrency}
+            onChange={event => selectHandler(event)}
+            value={toCurrency}
           >
-            {this.state.currencies.map(cur => (
+            {currencies.map(cur => (
               <option key={cur}>{cur}</option>
             ))}
           </select>
-          <button onClick={this.convertHandler}>Convert</button>
-          {this.state.result && <h3>{this.state.result}</h3>}
+          <button onClick={convertHandler}>Convert</button>
+          {result && <h3>{result}</h3>}
         </div>
       </div>
-    );
-  }
+  );
 }
+
 export default Converter;
