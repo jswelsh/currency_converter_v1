@@ -54,31 +54,16 @@ chart.cursor.xAxis = dateAxis;
 chart.cursor.snapToSeries = series;
 
 function generateChartData() {
-    let chartData = [];
-    let firstCurrency = "CAD";
+  let chartData = [];
 
-    for (const cur in currenciesList) {
-      if (object.hasOwnProperty(cur)) {
-        const element = object[cur];
-        chartData.push({
-
-        })
-      }
+  for (const currency in currenciesList) {
+    if (currenciesList.hasOwnProperty(currency)) {
+      const rate = currenciesList[currency];
+      chartData.push({
+        currency: currency,
+        rate: rate
+      })
     }
-
-    for (var i = 0; i < 500; i++) {
-        // we create date objects here. In your data, you can have date strings
-        // and then set format of your dates using chart.dataDateFormat property,
-        // however when possible, use date objects, as this will speed up chart rendering.
-        let newDate = new Date(firstDate);
-        newDate.setDate(newDate.getDate() + i);
-        
-        visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-
-        chartData.push({
-            date: newDate,
-            visits: visits
-        });
-    }
-    return chartData;
+  }
+  return chartData;
 }
