@@ -1,7 +1,7 @@
 import React from "react";
-
 import "./App.css";
 import Converter from "./converter/converter";
+import CurrencyConversionGraph from "./CurrencyConversionGraph";
 import useAppData from "../hooks/useAppData";
 
 
@@ -13,14 +13,18 @@ export default function App() {
   } = useAppData();
 
   return (
-    <Converter 
-      result={state.result}
-      fromCurrency={state.fromCurrency}
-      toCurrency={state.toCurrency}
-      amount={state.amount}
-      currenciesList={state.currenciesList}
-      convertHandler={convertHandler}
-      selectHandler={selectHandler}
-    />
+    <main className="layout">
+      <Converter 
+        result={state.result}
+        fromCurrency={state.fromCurrency}
+        toCurrency={state.toCurrency}
+        amount={state.amount}
+        currenciesList={state.currenciesList}
+        convertHandler={convertHandler}
+        selectHandler={selectHandler}
+      />
+      <CurrencyConversionGraph
+      />
+    </main>
   );
 }
