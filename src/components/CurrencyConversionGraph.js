@@ -70,3 +70,4 @@ export default function CurrencyConversionGraph() {
     <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
   );
 }
+

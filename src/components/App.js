@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Converter from "./converter/converter";
 import CurrencyConversionGraph from "./CurrencyConversionGraph";
+import CurrencyHistoryGraph from "./CurrencyHistoryGraph";
 import useAppData from "../hooks/useAppData";
 
 
@@ -23,8 +24,10 @@ export default function App() {
         convertHandler={convertHandler}
         selectHandler={selectHandler}
       />
-      <CurrencyConversionGraph
+      <CurrencyHistoryGraph
       />
+      {/* <CurrencyConversionGraph
+      /> */}
     </main>
   );
 }
