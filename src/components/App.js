@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Converter from "./converter/converter";
+import Converter from "./converter/Converter";
 import CurrencyConversionGraph from "./CurrencyConversionGraph";
 import CurrencyHistoryGraph from "./CurrencyHistoryGraph";
 import useAppData from "../hooks/useAppData";
@@ -26,13 +26,16 @@ export default function App() {
           convertHandler={convertHandler}
           selectHandler={selectHandler}
         />
+      </React.Fragment>
+ 
         <CurrencyConversionGraph
         />
+
         <CurrencyHistoryGraph
-          convertHistoryHandler={convertHistoryHandler}
-          history={state.history}
+        convertHistoryHandler={convertHistoryHandler}
+        history={state.history}
         />
-      </React.Fragment>
+    
     </main>
   );
 }

@@ -16,7 +16,7 @@ maybe convert to Map with sized pin bullets for the most common currency pinned 
 
 export default function CurrencyConversionGraph() {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
-  chart.data = generateChartData();
+  chart.dataSource.url = generateChartData();
 
   let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
   

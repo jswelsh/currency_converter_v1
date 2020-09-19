@@ -1,5 +1,6 @@
 import React from "react";
-import HistoryButton from "./HistoryButton";
+import HistoryConverter from "./HistoryConverter";
+
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -65,8 +66,8 @@ export default function CurrencyConversionGraph(props) {
   dateAxis.start = 0.79;
   dateAxis.keepSelection = true;
   
-  //chart.data = props.history
-  
+    chart.data = props.history.slice().sort((a, b) => b.date - a.date)
+  console.log(props.history, "hi")
   
   
   /* chart.scrollbarX = new am4charts.XYChartScrollbar();
@@ -95,13 +96,10 @@ export default function CurrencyConversionGraph(props) {
   return (
     <div className="CurrencyHistoryGraph">
       <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-      <div>
-        <HistoryButton
-          onClick={props.convertHistoryHandler}
-          children={"history"}
-        />
-      </div>
- {/*      <h3>{props.history}</h3> */}
+      <HistoryConverter
+        convertHistoryHandler={props.convertHistoryHandler}
+      />
+      
     </div> 
   );
 }
