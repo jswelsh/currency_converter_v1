@@ -6,8 +6,9 @@ const SET_CURRENCY_LIST = "SET_CURRENCY_LIST";
 const SET_FROM_CURRENCY = "SET_FROM_CURRENCY";
 const SET_TO_CURRENCY = "SET_TO_CURRENCY";
 const SET_RESULT = "SET_RESULT";
+const SET_HISTORY = "SET_HISTORY";
 
-const getCurrencies = axios.get("https://api.exchangeratesapi.io/latest?base=CAD")
+const getCurrencies = axios.get("https://api.exchangeratesapi.io/latest")
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -19,6 +20,8 @@ const reducer = (state, action) => {
       return {...state, toCurrency: action.currency}
     case "SET_RESULT":
       return {...state, result: action.result}
+    case "SET_HISTORY":
+      return {...state, history: action.history}
     default:
       throw new Error();
   }
@@ -30,7 +33,8 @@ export default function useAppData() {
     fromCurrency: "CAD",
     toCurrency: "USD",
     amount: 1,
-    currenciesList: []
+    currenciesList: [],
+    history: {}
   })
 
   useEffect(() => {
@@ -55,18 +59,62 @@ export default function useAppData() {
   const setFromCurrency = (currency) => {dispatch({type:SET_FROM_CURRENCY, currency})};
   const setToCurrency = (currency) => {dispatch({type:SET_TO_CURRENCY, currency})};
   const setResult = (result) => {dispatch({type:SET_RESULT, result})};
+  const setHistory = (result) => {dispatch({type:SET_HISTORY, result})};
 
-  const convertHandler = () => {
+  const convertHandler = (action) => {
+    const latestURL = "https://api.openrates.io/latest?"
+
     if (state.fromCurrency !== state.toCurrency) {  
       axios
         .get(
-          `https://api.openrates.io/latest?base=${
-            state.fromCurrency}&symbols=${state.toCurrency}`
+          `${latestURL}base=${state.fromCurrency}&symbols=${state.toCurrency}`
         )
         .then(res => {
-          const result = 
-          state.amount * res.data.rates[state.toCurrency];
-          setResult(result.toFixed(5));
+          switch (action) {
+            case "historical":  
+              let historyController = (currency, historyObj) => {
+                  console.log('historical')
+                  let history = {}
+                  for (const [key, value] of Object.entries(historyObj)) { history[key] = value[currency]}
+                  return history
+                }
+                setHistory(historyController(state.toCurrency, res.data.rates));
+                console.log()
+              break;
+
+            default:
+              const result = 
+                state.amount * res.data.rates[state.toCurrency];
+                setResult(result.toFixed(5));
+                console.log("basic")
+              break;
+          }
+        })
+        .catch(error => {
+          console.log("Opps", error.message);
+        });
+    } else {
+      setResult("You cant convert the same currency!");
+    }
+  };
+  
+  const convertHistoryHandler = (action) => {
+    const historicalURL = "https://api.exchangeratesapi.io/history?start_at=2020-09-01&end_at=2020-09-17&";
+
+    if (state.fromCurrency !== state.toCurrency) {  
+      axios
+        .get(
+          `${historicalURL}base=${state.fromCurrency}&symbols=${state.toCurrency}`
+        )
+        .then(res => {
+          let historyController = (currency, historyObj) => {
+            console.log('historical')
+            let history = []
+            for (const [key, value] of Object.entries(historyObj)) { history.push({"date" : key, "value" : value})}
+            console.log("history", history)
+            return history
+          }
+          setHistory(historyController(state.toCurrency, res.data.rates));
         })
         .catch(error => {
           console.log("Opps", error.message);
@@ -87,6 +135,7 @@ export default function useAppData() {
   return {
     state,
     convertHandler,
+    convertHistoryHandler,
     selectHandler
   }
 }
