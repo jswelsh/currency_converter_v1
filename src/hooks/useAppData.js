@@ -83,14 +83,15 @@ export default function useAppData() {
     }
   };
   
-  const convertHistoryHandler = () => {
+  const convertHistoryHandler = (e) => {
+    console.log(e)
     const historicalURL = "https://api.exchangeratesapi.io/history?start_at=2020-09-01&end_at=2020-09-17&";
 
     if (state.fromCurrency !== state.toCurrency) {  
 
       //maybe not return
 
-      return axios
+      axios
         .get(
           `${historicalURL}base=${state.fromCurrency}&symbols=${state.toCurrency}`
         )

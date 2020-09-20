@@ -1,6 +1,4 @@
 import React from "react";
-import HistoryConverter from "./HistoryConverter";
-
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -13,12 +11,9 @@ export default function CurrencyConversionGraph(props) {
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
 
-  let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-  let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   
-/*  valueAxis.renderer.minWidth = 50;
-  valueAxis.min = 0;
-  valueAxis.cursorTooltipEnabled = false; */
+  let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+  chart.yAxes.push(new am4charts.ValueAxis());
 
   let series = chart.series.push(new am4charts.LineSeries());
   series.dataFields.valueY = "value";
@@ -36,7 +31,6 @@ export default function CurrencyConversionGraph(props) {
   series.tooltip.label.minHeight = 40;
   series.tooltip.label.textAlign = "middle";
   series.tooltip.label.textValign = "middle";
-
 
   // Make bullets grow on hover
   let bullet = series.bullets.push(new am4charts.CircleBullet());
@@ -66,40 +60,14 @@ export default function CurrencyConversionGraph(props) {
   dateAxis.start = 0.79;
   dateAxis.keepSelection = true;
   
-    chart.data = props.history.slice().sort((a, b) => b.date - a.date)
-  console.log(props.history, "hi")
+  /* slice b4 so not to alter the props.history array, 
+  sort because it gets brought in from api as obj*/
+  chart.data = props.history.slice().sort((a, b) => b.date - a.date)
   
-  
-  /* chart.scrollbarX = new am4charts.XYChartScrollbar();
-  chart.scrollbarX.series.push(series);
-   */
-/*   chart.cursor = new am4charts.XYCursor();
-  chart.cursor.xAxis = categoryAxis;
-  chart.cursor.snapToSeries = series; */
-  /* let history = () => props.convertHandler */
-
-
-/*   function generateChartData() {
-    let chartData = [];
-
-    for (const currency in currenciesList) {
-      if (currenciesList.hasOwnProperty(currency)) {
-        const rate = currenciesList[currency];
-        chartData.push({
-          currency: currency,
-          rate: rate
-        })
-      }
-    }
-    return chartData;
-  } */
   return (
     <div className="CurrencyHistoryGraph">
       <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-      <HistoryConverter
-        convertHistoryHandler={props.convertHistoryHandler}
-      />
-      
+      <button onClick={props.convertHistoryHandler}>History</button>
     </div> 
   );
 }
