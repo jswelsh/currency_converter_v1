@@ -33,7 +33,7 @@ export default function Converter(props) {
               <option key={cur}>{cur}</option>
             ))}
           </select>
-          <button onClick={props.convertHandler}>Convert</button>
+          <button name="latest" value="latest"  onClick={e => props.selectHandler(e)}>Convert</button>
           {props.result && <h3>{props.result}</h3>}
         </div>
       </div>
