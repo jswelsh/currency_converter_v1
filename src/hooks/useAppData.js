@@ -104,7 +104,6 @@ for (i = 0; i < 52; i++) {
           state.fromCurrency}&symbols=${
           state.toCurrency}`)
         .then((res) => {
-          console.log(res.data.rates)
           const historyController = (historyObj) => {
             const history = [];
             Object.entries(historyObj).forEach(([key, value]) => {
