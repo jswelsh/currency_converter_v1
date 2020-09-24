@@ -1,8 +1,10 @@
 import React from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
+am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
 export default function CurrencyConversionGraph(props) {
@@ -55,7 +57,6 @@ export default function CurrencyConversionGraph(props) {
   chart.scrollbarX.series.push(series);
   chart.scrollbarX.parent = chart.bottomAxesContainer;
 
-  dateAxis.start = 0.79;
   dateAxis.keepSelection = true;
   
   chart.data = props.history

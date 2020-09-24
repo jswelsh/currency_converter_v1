@@ -3,6 +3,7 @@ import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
 import useAppData from '../hooks/useAppData';
+import 'fontsource-roboto';
 
 export default function App() {
   const {

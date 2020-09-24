@@ -75,27 +75,27 @@ export default function useAppData() {
   };
 
   const convertHistoryHandler = () => {
-/*     var date = new Date();
+    /*     var date = new Date();
 var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June', 'July','August','September','October','November','December'];
 
 function format(d) {
-    return d.getDate() + ' ' + days[d.getDay()] + ', ' + months[d.getMonth() ] + ' ' + d.getFullYear();    
+    return d.getDate() + ' ' + days[d.getDay()] + ', ' + months[d.getMonth() ] + ' ' + d.getFullYear();
 }
 
 document.getElementById('r').innerHTML  = 'Today is ' + format(date) + '<br>';
 
-for (i = 0; i < 52; i++) {    
+for (i = 0; i < 52; i++) {
     next = new Date(next.getFullYear(), next.getMonth(), next.getDate() - 7);
     document.getElementById('r').innerHTML += 'Next week is ' + format(next) + '<br>';
 } */
-    let today = new Date().toISOString().split("T")[0]
-    let lastFourWeeks = function(){
-      let day = new Date();
-      let FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate()-28).toISOString().split("T")[0];
+    const today = new Date().toISOString().split('T')[0];
+    const lastFourWeeks = function () {
+      const day = new Date();
+      const FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate() - 28).toISOString().split('T')[0];
       return FourWeeksAgo;
-    }
+    };
     const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${lastFourWeeks()}&end_at=${today}&`;
     if (state.fromCurrency !== state.toCurrency) {
       axios
@@ -141,6 +141,7 @@ for (i = 0; i < 52; i++) {
           type: SET_CURRENCY_LIST,
           currenciesList,
         });
+        convertHistoryHandler();
       })
       .catch((err) => {
         console.log('Something went wrong', err);
