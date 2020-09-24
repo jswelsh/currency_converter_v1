@@ -1,9 +1,7 @@
 import React from "react";
-import HistoryButton from "./HistoryButton";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
 
 am4core.useTheme(am4themes_animated);
 
@@ -11,18 +9,14 @@ export default function CurrencyConversionGraph(props) {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
-
-  let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-  let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   
-/*  valueAxis.renderer.minWidth = 50;
-  valueAxis.min = 0;
-  valueAxis.cursorTooltipEnabled = false; */
-
+  let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+            /* */chart.yAxes.push(new am4charts.ValueAxis());
   let series = chart.series.push(new am4charts.LineSeries());
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
+
   //series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 2;
   series.minBulletDistance = 15;
@@ -35,7 +29,6 @@ export default function CurrencyConversionGraph(props) {
   series.tooltip.label.minHeight = 40;
   series.tooltip.label.textAlign = "middle";
   series.tooltip.label.textValign = "middle";
-
 
   // Make bullets grow on hover
   let bullet = series.bullets.push(new am4charts.CircleBullet());
@@ -65,43 +58,12 @@ export default function CurrencyConversionGraph(props) {
   dateAxis.start = 0.79;
   dateAxis.keepSelection = true;
   
-  //chart.data = props.history
+  chart.data = props.history
   
-  
-  
-  /* chart.scrollbarX = new am4charts.XYChartScrollbar();
-  chart.scrollbarX.series.push(series);
-   */
-/*   chart.cursor = new am4charts.XYCursor();
-  chart.cursor.xAxis = categoryAxis;
-  chart.cursor.snapToSeries = series; */
-  /* let history = () => props.convertHandler */
-
-
-/*   function generateChartData() {
-    let chartData = [];
-
-    for (const currency in currenciesList) {
-      if (currenciesList.hasOwnProperty(currency)) {
-        const rate = currenciesList[currency];
-        chartData.push({
-          currency: currency,
-          rate: rate
-        })
-      }
-    }
-    return chartData;
-  } */
   return (
     <div className="CurrencyHistoryGraph">
       <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-      <div>
-        <HistoryButton
-          onClick={props.convertHistoryHandler}
-          children={"history"}
-        />
-      </div>
- {/*      <h3>{props.history}</h3> */}
+      <button name="history" value="history" onClick={() => props.convertHistoryHandler()}>History</button>
     </div> 
   );
 }

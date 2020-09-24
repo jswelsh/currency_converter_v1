@@ -8,15 +8,13 @@ am4core.useTheme(am4themes_animated);
 let testData = {"rates":{"CAD":1.0,"HKD":5.89,"PHP":.78,"DKK":4.75}};
 let currenciesList = testData["rates"];
 
-
-
 /* 
 maybe convert to Map with sized pin bullets for the most common currency pinned to where they are and how much they are worth???
 */
 
 export default function CurrencyConversionGraph() {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
-  chart.data = generateChartData();
+  chart.dataSource.url = generateChartData();
 
   let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
   
@@ -43,11 +41,6 @@ export default function CurrencyConversionGraph() {
   series.tooltip.background.fillOpacity = 0.5;
   series.tooltip.label.padding(12,12,12,12)
   
-
-
-  /* chart.scrollbarX = new am4charts.XYChartScrollbar();
-  chart.scrollbarX.series.push(series);
-   */
   chart.cursor = new am4charts.XYCursor();
   chart.cursor.xAxis = categoryAxis;
   chart.cursor.snapToSeries = series;
