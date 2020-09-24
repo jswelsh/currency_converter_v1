@@ -1,21 +1,20 @@
-import React from "react";
-import "./App.css";
-import Converter from "./converter/Converter";
-import CurrencyHistoryGraph from "./CurrencyHistoryGraph";
-import useAppData from "../hooks/useAppData";
-
+import React from 'react';
+import './App.css';
+import Converter from './converter/Converter';
+import CurrencyHistoryGraph from './CurrencyHistoryGraph';
+import useAppData from '../hooks/useAppData';
 
 export default function App() {
   const {
     state,
     convertHandler,
     convertHistoryHandler,
-    selectHandler
+    selectHandler,
   } = useAppData();
 
   return (
     <main className="layout">
-      <Converter 
+      <Converter
         result={state.result}
         fromCurrency={state.fromCurrency}
         toCurrency={state.toCurrency}
@@ -25,6 +24,7 @@ export default function App() {
         selectHandler={selectHandler}
       />
       <CurrencyHistoryGraph
+        convertHistoryHandler={convertHistoryHandler}
         convertHandler={convertHandler}
         history={state.history}
         selectHandler={selectHandler}

@@ -63,7 +63,7 @@ export default function CurrencyConversionGraph(props) {
   return (
     <div className="CurrencyHistoryGraph">
       <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-      <button name="history" value="history" onClick={e => props.selectHandler(e)}>History</button>
+      <button name="history" value="history" onClick={() => props.convertHistoryHandler()}>History</button>
     </div> 
   );
 }
