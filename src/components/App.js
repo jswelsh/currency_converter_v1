@@ -25,9 +25,7 @@ export default function App() {
       />
       <CurrencyHistoryGraph
         convertHistoryHandler={convertHistoryHandler}
-        convertHandler={convertHandler}
         history={state.history}
-        selectHandler={selectHandler}
       />
     </main>
   );

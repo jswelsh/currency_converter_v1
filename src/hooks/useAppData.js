@@ -7,7 +7,7 @@ const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
 const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
 const SET_RESULT = 'SET_RESULT';
 const SET_HISTORY = 'SET_HISTORY';
-const SET_MODE = 'SET_MODE';
+// const SET_MODE = 'SET_MODE';
 
 const getCurrencies = axios.get('https://api.exchangeratesapi.io/latest');
 
@@ -44,42 +44,18 @@ export default function useAppData() {
   const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency }); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
-  const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
+  // const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
   const selectHandler = (e) => {
-
-    
-
     if (e.target.name === 'from') {
       setFromCurrency(e.target.value);
     } else if (e.target.name === 'to') {
       setToCurrency(e.target.value);
-    } else if (e.target.name === 'latest') {
-      console.log('latest');
-      setMode(e.target.name);
-      /*         convertHandler(
-          `https://api.exchangeratesapi.io/latest?symbols=${
-          state.fromCurrency},${state.toCurrency}`) */
-    } else if (e.target.name === 'history') {
-      console.log('history');
-      setMode(e.target.name);
-/*       useEffect(() => {
-        let url = ((state.mode === 'history')
-        ? `https://api.exchangeratesapi.io/history?start_at=2020-09-01&end_at=2020-09-17&base=${
-          state.fromCurrency}&symbols=${state.toCurrency}`
-        : `https://api.exchangeratesapi.io/latest?symbols=${
-          state.fromCurrency},${state.toCurrency}`);
-          convertHandler(url)
-      }, [state.mode ]) */
-      /*         convertHandler(
-          `https://api.exchangeratesapi.io/history?start_at=2020-09-01&end_at=2020-09-17&base=${
-          state.fromCurrency}&symbols=${state.toCurrency}`
-      ) */
     }
   };
 
   const convertHandler = () => {
-    const latestURL = `https://api.exchangeratesapi.io/latest?symbols=`;
+    const latestURL = 'https://api.exchangeratesapi.io/latest?symbols=';
     if (state.fromCurrency !== state.toCurrency) {
       axios
         .get(`${
@@ -87,36 +63,8 @@ export default function useAppData() {
           state.fromCurrency}&symbols=${
           state.toCurrency}`)
         .then((res) => {
-          console.log("kkkk", res)
-          const result =
-            state.amount * res.data.rates[state.toCurrency];
-            setResult(result.toFixed(5));
-/*           if (state.mode === 'latest') { */
-            /* setResult(state.amount * res.data.rates[state.toCurrency].toFixed(5)); */
-/*           } else if (state.mode === 'history') {
-            const historyController = (historyObj) => {
-              const history = [];
-
-              Object.entries(historyObj).forEach(([key, value]) => {
-                history.push({
-                  date: new Date(key),
-                  value: value[state.toCurrency],
-                });
-              }); */
-              /*               for (const [key, value] of Object.entries(historyObj)) {
-                history.push({
-                  date: new Date(key),
-                  value: value[state.toCurrency],
-                });
-              } */
-/*               return history;
-            };
-            console.log(res.data.rates, "history2")
-            setHistory(
-              historyController(res.data.rates)
-                .sort((a, b) => b.date - a.date),
-            ); */
-/*           } */
+          const result = state.amount * res.data.rates[state.toCurrency];
+          setResult(result.toFixed(5));
         })
         .catch((error) => {
           console.log('Opps', error.message);
@@ -127,8 +75,28 @@ export default function useAppData() {
   };
 
   const convertHistoryHandler = () => {
-    const historicalURL = 'https://api.exchangeratesapi.io/history?start_at=2020-09-01&end_at=2020-09-17&';
+/*     var date = new Date();
+var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var months = ['January','February','March','April','May','June', 'July','August','September','October','November','December'];
 
+function format(d) {
+    return d.getDate() + ' ' + days[d.getDay()] + ', ' + months[d.getMonth() ] + ' ' + d.getFullYear();    
+}
+
+document.getElementById('r').innerHTML  = 'Today is ' + format(date) + '<br>';
+
+for (i = 0; i < 52; i++) {    
+    next = new Date(next.getFullYear(), next.getMonth(), next.getDate() - 7);
+    document.getElementById('r').innerHTML += 'Next week is ' + format(next) + '<br>';
+} */
+    let today = new Date().toISOString().split("T")[0]
+    let lastFourWeeks = function(){
+      let day = new Date();
+      let FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate()-28).toISOString().split("T")[0];
+      return FourWeeksAgo;
+    }
+    const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${lastFourWeeks()}&end_at=${today}&`;
     if (state.fromCurrency !== state.toCurrency) {
       axios
         .get(`${
@@ -136,27 +104,18 @@ export default function useAppData() {
           state.fromCurrency}&symbols=${
           state.toCurrency}`)
         .then((res) => {
+          console.log(res.data.rates)
           const historyController = (historyObj) => {
             const history = [];
-            /*
-            for (const [key, value] of Object.entries(historyObj)) {
-              history.push({
-                date: new Date(key),
-                value: value[state.toCurrency],
-              });
-            } */
             Object.entries(historyObj).forEach(([key, value]) => {
               history.push({
                 date: new Date(key),
                 value: value[state.toCurrency],
               });
-              console.log("hi", history)
-              
             });
             return history;
           };
           /* sort the dates from "res" = {obj} payload */
-          console.log("history", res.data.rates)
           setHistory(
             historyController(res.data.rates)
               .sort((a, b) => b.date - a.date),
@@ -174,16 +133,11 @@ export default function useAppData() {
     getCurrencies
       .then((res) => {
         const currenciesList = [];
-        // setting up avb currencies to choose from
-        /*         for (const key in res.data.rates) {
-          //put in an error check for only valid currency prefixes?
-          currenciesList.push(key);
-        } */
+
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?
           currenciesList.push(key);
         });
-        console.log(res);
         dispatch({
           type: SET_CURRENCY_LIST,
           currenciesList,
