@@ -24,10 +24,10 @@ export default function App() {
         convertHandler={convertHandler}
         selectHandler={selectHandler}
       />
-      <CurrencyHistoryGraph
+  {/*     <CurrencyHistoryGraph
         convertHistoryHandler={convertHistoryHandler}
         history={state.history}
-      />
+      /> */}
     </main>
   );
 }

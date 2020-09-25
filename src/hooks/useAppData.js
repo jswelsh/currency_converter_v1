@@ -2,10 +2,11 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 // const SET_APP_DATA = "SET_APP_DATA";
-const SET_CURRENCY_LIST = 'SET_CURRENCY_LIST';
+const SET_RESULT = 'SET_RESULT';
 const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
 const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
-const SET_RESULT = 'SET_RESULT';
+const SET_AMOUNT = "SET_AMOUNT";
+const SET_CURRENCY_LIST = 'SET_CURRENCY_LIST';
 const SET_HISTORY = 'SET_HISTORY';
 // const SET_MODE = 'SET_MODE';
 
@@ -13,18 +14,20 @@ const getCurrencies = axios.get('https://api.exchangeratesapi.io/latest');
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'SET_CURRENCY_LIST':
-      return { ...state, currenciesList: action.currenciesList };
+    case 'SET_RESULT':
+      return { ...state, result: action.result };
     case 'SET_FROM_CURRENCY':
       return { ...state, fromCurrency: action.currency };
     case 'SET_TO_CURRENCY':
       return { ...state, toCurrency: action.currency };
-    case 'SET_RESULT':
-      return { ...state, result: action.result };
+    case 'SET_AMOUNT':
+      return { ...state, amount: action.amount };
+    case 'SET_CURRENCY_LIST':
+      return { ...state, currenciesList: action.currenciesList };
     case 'SET_HISTORY':
       return { ...state, history: action.history };
-    case 'SET_MODE':
-      return { ...state, mode: action.mode };
+/*     case 'SET_MODE':
+      return { ...state, mode: action.mode }; */
     default:
       throw new Error();
   }
@@ -42,6 +45,7 @@ export default function useAppData() {
 
   const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency }); };
   const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency }); };
+  const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
   // const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
@@ -49,8 +53,13 @@ export default function useAppData() {
   const selectHandler = (e) => {
     if (e.target.name === 'from') {
       setFromCurrency(e.target.value);
+      setResult(null);
     } else if (e.target.name === 'to') {
       setToCurrency(e.target.value);
+      setResult(null);
+    } else if (e.target.name === 'amount') {
+      setAmount(e.target.value);
+      setResult(null)
     }
   };
 
