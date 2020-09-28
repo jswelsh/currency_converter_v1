@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
+/* import MiniDrawer from './cont'; */
 import useAppData from '../hooks/useAppData';
 import 'fontsource-roboto';
 
@@ -24,10 +25,22 @@ export default function App() {
         convertHandler={convertHandler}
         selectHandler={selectHandler}
       />
-  {/*     <CurrencyHistoryGraph
+      <CurrencyHistoryGraph
         convertHistoryHandler={convertHistoryHandler}
         history={state.history}
+      />
+{/*       <MiniDrawer 
       /> */}
     </main>
   );
 }
+
+
+
+/*       {index === 0 ? (
+                  <Converter />
+                ) : index === 1 ? (
+                  <Hisotry />
+                ) : (
+                  <Compare />
+                )} */

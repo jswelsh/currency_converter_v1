@@ -7,7 +7,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-export default function CurrencyConversionGraph(props) {
+export default function CurrencyHistoryGraph(props) {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
