@@ -19,7 +19,10 @@ export default function CurrencyHistoryGraph(props) {
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
 
-  dateAxis.skipEmptyPeriods = true
+  dateAxis.skipEmptyPeriods = true;
+  dateAxis.renderer.minGridDistance = 30;
+  dateAxis.renderer.grid.template.location = 0.5;
+
 
   //series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
