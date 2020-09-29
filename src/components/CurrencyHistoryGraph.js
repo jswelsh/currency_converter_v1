@@ -1,11 +1,13 @@
 import React from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
+am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-export default function CurrencyConversionGraph(props) {
+export default function CurrencyHistoryGraph(props) {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -17,8 +19,12 @@ export default function CurrencyConversionGraph(props) {
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
 
+  dateAxis.skipEmptyPeriods = true
+
   //series.tooltip.pointerOrientation = "vertical";
-  series.strokeWidth = 2;
+  series.strokeWidth = 3;
+  series.tensionX = 0.8;
+  series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
 
   // Drop-shaped tooltips
@@ -33,11 +39,11 @@ export default function CurrencyConversionGraph(props) {
   // Make bullets grow on hover
   let bullet = series.bullets.push(new am4charts.CircleBullet());
   bullet.circle.strokeWidth = 2;
-  bullet.circle.radius = 4;
+  bullet.circle.radius = 5;
   bullet.circle.fill = am4core.color("#fff");
 
   let bullethover = bullet.states.create("hover");
-  bullethover.properties.scale = 1.3;
+  bullethover.properties.scale = 2;
 
   // Make a panning cursor
   chart.cursor = new am4charts.XYCursor();
@@ -55,7 +61,6 @@ export default function CurrencyConversionGraph(props) {
   chart.scrollbarX.series.push(series);
   chart.scrollbarX.parent = chart.bottomAxesContainer;
 
-  dateAxis.start = 0.79;
   dateAxis.keepSelection = true;
   
   chart.data = props.history
