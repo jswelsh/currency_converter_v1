@@ -96,10 +96,10 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+//maybe get rid of css baseline later
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      <CssBaseline /> 
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -148,8 +148,8 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {["Converter", "History", "Compare"].map((text, index) => (
-            <ListItem button key={text}>
-              <Link to = {`/${text}`}>
+            <Link to = {`/${text}`}>
+              <ListItem button key={text}>
                 <ListItemIcon>
                   {text === "Converter" ? (
                     <Converter />
@@ -160,8 +160,8 @@ export default function MiniDrawer() {
                   )}
                 </ListItemIcon>
                 <ListItemText primary={text} />
-              </Link>
-            </ListItem>
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
