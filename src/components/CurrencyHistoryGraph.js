@@ -1,4 +1,6 @@
 import React from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+//import clsx from "clsx";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
@@ -6,6 +8,8 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
+
+const useStyles = makeStyles((theme) => ({}))
 
 export default function CurrencyHistoryGraph(props) {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
@@ -67,10 +71,16 @@ export default function CurrencyHistoryGraph(props) {
   dateAxis.keepSelection = true;
   
   chart.data = props.history
+
+  React.useEffect(() => {
+    return () => {
+      chart.dispose();
+    };
+  });
   
   return (
     <div className="CurrencyHistoryGraph">
-      <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+      <div id="chartdiv" style={{ width: "100%", height: "500px" , display: "flex" }}></div>
       <button name="history" value="history" onClick={() => props.convertHistoryHandler()}>History</button>
     </div> 
   );
