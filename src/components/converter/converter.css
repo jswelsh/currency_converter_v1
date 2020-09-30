@@ -3,10 +3,10 @@
   padding: 0 15%;
   box-sizing: border-box;
   text-align: center;
+  background-color: #222222; 
 }
 .Form {
   display: flex;
-  margin: 0 auto;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -38,4 +38,7 @@ select {
 .Converter h2 span {
   color:#8447FF;
 
+}
+h2 {
+  margin-top: 0px
 }

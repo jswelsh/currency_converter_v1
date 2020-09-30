@@ -11,7 +11,7 @@ export default function Converter(props) {
 
   return (
     <div className="Converter">
-        <h2>
+        <h2 >
           <span>Currency</span>Converter
         </h2>
 

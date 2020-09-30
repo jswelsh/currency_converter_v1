@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function CurrencyHistoryGraph(props) {
-  const classes = useStyles();
+  // const classes = useStyles();
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -76,25 +76,23 @@ export default function CurrencyHistoryGraph(props) {
   
   chart.data = props.history
 
-/*   React.useEffect(() => {
+  React.useEffect(() => {
     return () => {
       chart.dispose();
     };
-  }); */
+  });
   
   return (
-   
-  
       <div className="CurrencyHistoryGraph">
-        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
         <Grid
           container
           direction="column"
           alignItems="center"
           justify="center"
         > 
-          <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>Get History</button>
+          {/* <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>Get History</button> */}
         </Grid> 
+        <div id="chartdiv" style={{ width: "100%", height: "500px" , backgroundColor: "#222222" }}></div>
       </div>
     
   );

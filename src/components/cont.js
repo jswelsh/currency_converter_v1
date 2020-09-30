@@ -24,7 +24,8 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: "#222222"    
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -84,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -168,7 +169,7 @@ export default function MiniDrawer() {
               {text === "Converter" ? (
                 <Converter />
               ) : text === "History" ? (
-                <Hisotry />
+                <Hisotry onClick={() => props.convertHistoryHandler()} />
               ) : (
                 <Compare />
               )}

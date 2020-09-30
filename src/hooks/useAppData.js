@@ -150,7 +150,8 @@ for (i = 0; i < 52; i++) {
           type: SET_CURRENCY_LIST,
           currenciesList,
         });
-        convertHistoryHandler();
+        //removed this as is was creating dependency issues, now call it b4 routing
+        // convertHistoryHandler();
       })
       .catch((err) => {
         console.log('Something went wrong', err);

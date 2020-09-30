@@ -20,6 +20,7 @@ export default function App() {
       
       <Router>
         <MiniDrawer 
+          convertHistoryHandler={convertHistoryHandler}
           />
         <div className="App">
           <Route exact path="/converter" render={props => (
