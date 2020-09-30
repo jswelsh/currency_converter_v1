@@ -145,6 +145,7 @@ export default function MiniDrawer() {
             )}
           </IconButton>
         </div>
+        {/* maybe insert a header, for tools, or remove divider, kinda looks off?! */}
         <Divider />
         <List>
           {["Converter", "History", "Compare"].map((text, index) => (

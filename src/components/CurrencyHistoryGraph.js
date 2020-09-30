@@ -1,5 +1,6 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid'
 //import clsx from "clsx";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -9,9 +10,12 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-const useStyles = makeStyles((theme) => ({}))
+const useStyles = makeStyles((theme) => ({
+
+}))
 
 export default function CurrencyHistoryGraph(props) {
+  const classes = useStyles();
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
@@ -72,16 +76,26 @@ export default function CurrencyHistoryGraph(props) {
   
   chart.data = props.history
 
-  React.useEffect(() => {
+/*   React.useEffect(() => {
     return () => {
       chart.dispose();
     };
-  });
+  }); */
   
   return (
-    <div className="CurrencyHistoryGraph">
-      <div id="chartdiv" style={{ width: "100%", height: "500px" , display: "flex" }}></div>
-      <button name="history" value="history" onClick={() => props.convertHistoryHandler()}>History</button>
-    </div> 
+   
+  
+      <div className="CurrencyHistoryGraph">
+        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justify="center"
+        > 
+          <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>History</button>
+        </Grid> 
+      </div>
+    
   );
 }
