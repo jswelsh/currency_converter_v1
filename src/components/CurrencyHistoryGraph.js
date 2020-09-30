@@ -93,7 +93,7 @@ export default function CurrencyHistoryGraph(props) {
           alignItems="center"
           justify="center"
         > 
-          <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>History</button>
+          <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>Get History</button>
         </Grid> 
       </div>
     

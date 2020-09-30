@@ -149,7 +149,7 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {["Converter", "History", "Compare"].map((text, index) => (
-            <Link to = {`/${text}`}>
+/*             <Link to = {`/${text}`}>
               <ListItem button key={text}>
                 <ListItemIcon>
                   {text === "Converter" ? (
@@ -162,7 +162,19 @@ export default function MiniDrawer() {
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
-            </Link>
+            </Link> */
+            <ListItem button key={text} component={Link} to={`/${text}`}>
+            <ListItemIcon>
+              {text === "Converter" ? (
+                <Converter />
+              ) : text === "History" ? (
+                <Hisotry />
+              ) : (
+                <Compare />
+              )}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+        </ListItem>
           ))}
         </List>
       </Drawer>
