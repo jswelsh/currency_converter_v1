@@ -17,12 +17,13 @@ export default function App() {
 
   return (
     <main className="layout">
-      
+   
       <Router>
+        <div className="App">
         <MiniDrawer 
           convertHistoryHandler={convertHistoryHandler}
           />
-        <div className="App">
+        
           <Route exact path="/converter" render={props => (
             <Converter
               result={state.result}
@@ -42,7 +43,6 @@ export default function App() {
           />
         </div>
       </Router>
-
     </main>
   );
 }

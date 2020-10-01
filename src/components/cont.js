@@ -25,7 +25,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    backgroundColor: "#222222"    
+    backgroundColor: "#222222"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -164,7 +164,7 @@ export default function MiniDrawer(props) {
                 <ListItemText primary={text} />
               </ListItem>
             </Link> */
-            <ListItem button key={text} component={Link} to={`/${text}`}>
+            <ListItem button key={text} component={Link} to={`/${text}`} >
             <ListItemIcon>
               {text === "Converter" ? (
                 <Converter />

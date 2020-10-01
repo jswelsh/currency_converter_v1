@@ -6,13 +6,14 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import './CurrencyHistoryGraph.css';
 
 am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 
-const useStyles = makeStyles((theme) => ({
+/* const useStyles = makeStyles((theme) => ({
 
-}))
+})) */
 
 export default function CurrencyHistoryGraph(props) {
   // const classes = useStyles();
@@ -51,8 +52,8 @@ export default function CurrencyHistoryGraph(props) {
   let bullet = series.bullets.push(new am4charts.CircleBullet());
   bullet.circle.strokeWidth = 2;
   bullet.circle.radius = 5;
-  bullet.circle.fill = am4core.color("#fff");
-
+  //bullet.circle.fill = am4core.color("#fff");
+  bullet.circle.fill = am4core.color("#8CFFDA");
   let bullethover = bullet.states.create("hover");
   bullethover.properties.scale = 2;
 
@@ -83,7 +84,7 @@ export default function CurrencyHistoryGraph(props) {
   });
   
   return (
-      <div className="CurrencyHistoryGraph">
+      <div className="CurrencyHistoryGraph" >
         <Grid
           container
           direction="column"
@@ -92,7 +93,7 @@ export default function CurrencyHistoryGraph(props) {
         > 
           {/* <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>Get History</button> */}
         </Grid> 
-        <div id="chartdiv" style={{ width: "100%", height: "500px" , backgroundColor: "#222222" }}></div>
+        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
       </div>
     
   );
