@@ -20,7 +20,7 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
-import { ToggleButton } from '@material-ui/lab';
+import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
 
 const drawerWidth = 240;
 
@@ -91,6 +91,15 @@ export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+
+  const [view, setView] = React.useState('Converter');
+  const handleChange = (event, nextView) => {
+    if(nextView === "History") {
+      props.convertHistoryHandler()
+    }
+    setView(nextView);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -173,26 +182,26 @@ export default function MiniDrawer(props) {
           </ListItem> */}
         
         <Divider />
-        <List>
+        {/* <List> */}
           {["Converter", "History", "Compare"].map((text, index) => (
-            <div>
+            <ToggleButtonGroup value={view} orientation="vertical" exclusive onChange={handleChange}>
               {text === "History" ? (
-                <ListItem button key={text} exclusive component={Link} to={`/${text}` } >
-                <ListItemIcon><History /></ListItemIcon>
-                <ListItemText primary={text} />
-                </ListItem>
+                <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
+                  <History />
+                  <ListItemText primary={text} />
+                </ToggleButton>
               ) : text === "Converter" ? (
-                <ListItem button key={text} exclusive component={Link} to={`/${text}`}>
-                <ListItemIcon><Converter /></ListItemIcon>
-                <ListItemText primary={text} />
-                </ListItem>
+                <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
+                  <Converter />
+                  <ListItemText primary={text} />
+                </ToggleButton>
               ) : (
-                <ListItem button key={text} exclusive component={Link} to={`/${text}`}>
-                <ListItemIcon><Compare /></ListItemIcon>
+              <ToggleButton value={text} key={text} button component={Link} to={`/${text}`}>
+                <Compare />
                 <ListItemText primary={text} />
-                </ListItem>
+              </ToggleButton>
               )}
-              </div>
+              </ToggleButtonGroup>
           ))}
 
 
@@ -231,7 +240,7 @@ export default function MiniDrawer(props) {
             <ListItemText primary={text} />
         </ListItem>
           ))} */}
-        </List>
+        {/* </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
