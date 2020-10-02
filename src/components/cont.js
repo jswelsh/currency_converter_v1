@@ -16,7 +16,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Hisotry from "@material-ui/icons/Timeline";
+import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
@@ -149,8 +149,30 @@ export default function MiniDrawer(props) {
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?! */}
         <Divider />
         <List>
-          {["Converter", "History", "Compare"].map((text, index) => (
-/*             <Link to = {`/${text}`}>
+         <ListItem button key={Converter} component={Link} to={'Converter'}>  
+          <ListItemIcon>
+            <Converter />
+          </ListItemIcon>
+          <ListItemText primary={'Converter'} />
+
+          </ListItem>
+          <ListItem button key={History} component={Link} to={'History'} onClick={() => props.convertHistoryHandler()}>  
+            <ListItemIcon>
+              <History />
+            </ListItemIcon>
+            <ListItemText primary={'History'} />
+            </ListItem>
+          <ListItem button key={Compare} component={Link} to={'Compare'}>  
+            <ListItemIcon>
+              <Compare />
+              </ListItemIcon>
+            <ListItemText primary={'Compare'} />
+        </ListItem>
+
+
+
+         {/*  {["Converter", "History", "Compare"].map((text, index) => ( */}
+{/*             <Link to = {`/${text}`}>
               <ListItem button key={text}>
                 <ListItemIcon>
                   {text === "Converter" ? (
@@ -163,20 +185,26 @@ export default function MiniDrawer(props) {
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
-            </Link> */
-            <ListItem button key={text} component={Link} to={`/${text}`} >
+                  </Link> */}
+{/*             <div>
+            {text === "History" ? (
+              <ListItem button key={text} component={Link} to={`/${text}`} onClick={() => props.convertHistoryHandler()}>  
+              ) : ( 
+              <ListItem button key={text} component={Link} to={`/${text}`}> 
+              </div>
+            )}
             <ListItemIcon>
               {text === "Converter" ? (
                 <Converter />
-              ) : text === "History" ? (
-                <Hisotry onClick={() => props.convertHistoryHandler()} />
-              ) : (
-                <Compare />
-              )}
+                ) : text === "History" ? (
+                  <Hisotry />
+                  ) : (
+                    <Compare />
+                    )}
             </ListItemIcon>
             <ListItemText primary={text} />
         </ListItem>
-          ))}
+          ))} */}
         </List>
       </Drawer>
       <main className={classes.content}>
