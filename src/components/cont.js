@@ -20,6 +20,8 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
+import { ToggleButton } from '@material-ui/lab';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -147,27 +149,51 @@ export default function MiniDrawer(props) {
           </IconButton>
         </div>
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?! */}
-        <Divider />
+{/*         <Divider />
         <List>
-         <ListItem button key={Converter} component={Link} to={'Converter'}>  
-          <ListItemIcon>
-            <Converter />
-          </ListItemIcon>
-          <ListItemText primary={'Converter'} />
-
+          <ListItem button key={Converter} component={Link} to={'Converter'}>  
+            <ListItemIcon>
+              <Converter />
+            </ListItemIcon>
+            <ListItemText primary={'Converter'} />
           </ListItem>
+
           <ListItem button key={History} component={Link} to={'History'} onClick={() => props.convertHistoryHandler()}>  
             <ListItemIcon>
               <History />
             </ListItemIcon>
             <ListItemText primary={'History'} />
-            </ListItem>
+          </ListItem>
+
           <ListItem button key={Compare} component={Link} to={'Compare'}>  
             <ListItemIcon>
               <Compare />
-              </ListItemIcon>
+            </ListItemIcon>
             <ListItemText primary={'Compare'} />
-        </ListItem>
+          </ListItem> */}
+        
+        <Divider />
+        <List>
+          {["Converter", "History", "Compare"].map((text, index) => (
+            <div>
+              {text === "History" ? (
+                <ListItem button key={text} exclusive component={Link} to={`/${text}` } >
+                <ListItemIcon><History /></ListItemIcon>
+                <ListItemText primary={text} />
+                </ListItem>
+              ) : text === "Converter" ? (
+                <ListItem button key={text} exclusive component={Link} to={`/${text}`}>
+                <ListItemIcon><Converter /></ListItemIcon>
+                <ListItemText primary={text} />
+                </ListItem>
+              ) : (
+                <ListItem button key={text} exclusive component={Link} to={`/${text}`}>
+                <ListItemIcon><Compare /></ListItemIcon>
+                <ListItemText primary={text} />
+                </ListItem>
+              )}
+              </div>
+          ))}
 
 
 
