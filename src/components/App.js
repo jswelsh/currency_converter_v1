@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
+import CurrencyForm from './CurrencyForm'
 import MiniDrawer from './cont';
 import useAppData from '../hooks/useAppData';
+import Grid from '@material-ui/core/Grid'
 import {BrowserRouter as Router, Route} from "react-router-dom";
+
+import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
 
 export default function App() {
@@ -17,14 +21,13 @@ export default function App() {
 
   return (
     <main className="layout">
-   
-      <Router>
+      <MemoryRouter>
         <div className="App">
         <MiniDrawer 
           convertHistoryHandler={convertHistoryHandler}
           />
         
-          <Route exact path="/converter" render={props => (
+          <Route path="/Converter" render={props => (
             <Converter
               result={state.result}
               fromCurrency={state.fromCurrency}
@@ -35,24 +38,31 @@ export default function App() {
               selectHandler={selectHandler}
             />)}
           />      
-          <Route path="/history"  render={props => (
-            <CurrencyHistoryGraph
-              convertHistoryHandler={convertHistoryHandler}
-              history={state.history}
-            />)}
+          <Route path="/History"  render={props => (
+            <Fragment>
+              <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justify="center"
+            > 
+              <CurrencyForm 
+                convertHistoryHandler={convertHistoryHandler}
+                selectHandler={selectHandler}
+                fromCurrency={state.fromCurrency}
+                toCurrency={state.toCurrency}
+                currenciesList={state.currenciesList}
+              />
+            </Grid>
+             <CurrencyHistoryGraph
+    
+             history={state.history}
+           />
+           </Fragment>
+            )}
           />
         </div>
-      </Router>
+        </MemoryRouter>
     </main>
   );
 }
-
-
-
-/*       {index === 0 ? (
-                  <Converter />
-                ) : index === 1 ? (
-                  <Hisotry />
-                ) : (
-                  <Compare />
-                )} */

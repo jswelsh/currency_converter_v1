@@ -83,7 +83,7 @@ export default function useAppData() {
     }
   };
 
-  const convertHistoryHandler = () => {
+  const convertHistoryHandler = (fromCurrency, toCurrency) => {
     /*     var date = new Date();
 var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -106,19 +106,19 @@ for (i = 0; i < 52; i++) {
       return FourWeeksAgo;
     };
     const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${lastFourWeeks()}&end_at=${today}&`;
-    if (state.fromCurrency !== state.toCurrency) {
+    if (fromCurrency !== toCurrency) {
       axios
         .get(`${
           historicalURL}base=${
-          state.fromCurrency}&symbols=${
-          state.toCurrency}`)
+          fromCurrency}&symbols=${
+          toCurrency}`)
         .then((res) => {
           const historyController = (historyObj) => {
             const history = [];
             Object.entries(historyObj).forEach(([key, value]) => {
               history.push({
                 date: new Date(key),
-                value: value[state.toCurrency],
+                value: value[toCurrency],
               });
             });
             return history;
@@ -144,6 +144,7 @@ for (i = 0; i < 52; i++) {
 
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?
+          console.log(currenciesList)
           currenciesList.push(key);
         });
         dispatch({
@@ -165,3 +166,35 @@ for (i = 0; i < 52; i++) {
     selectHandler,
   };
 }
+/* "CAD"
+"HKD",
+"ISK",
+"PHP",
+"DKK",
+"HUF",
+"CZK",
+"AUD",
+"RON",
+"SEK",
+"INR",
+"BRL",
+"RUB",
+"HRK",
+"JPY",
+"THB",
+"CHF",
+"SGD",
+"PLN",
+"BGN",
+"TRY",
+"CNY",
+"NOK",
+"NZD",
+"ZAR",
+"USD",
+"MXN",
+"ILS",
+"GBP",
+"KRW",
+"MYR",
+"IDR", */

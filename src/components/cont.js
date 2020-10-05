@@ -1,5 +1,9 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+
+import {  Route, MemoryRouter } from 'react-router';
+import { Link  } from 'react-router-dom';
+import PropTypes from "prop-types";
+
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -20,7 +24,7 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+/* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
 const drawerWidth = 240;
 
@@ -81,11 +85,45 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
+/*   iconHidden : {
+    margin: theme.spacing(1,3)
+  }, */
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
   }
 }));
+
+function ListItemLink(props) {
+  const { icon, primary, to } = props;
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <Link to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
+  );
+
+  return (
+    <li>
+      <ListItem
+        button
+        component={renderLink}
+        onClick={()=> null}
+      >
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
+  );
+}
+
+ListItemLink.propTypes = {
+  icon: PropTypes.element,
+  primary: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired
+};
 
 export default function MiniDrawer(props) {
   const classes = useStyles();
@@ -93,13 +131,6 @@ export default function MiniDrawer(props) {
   const [open, setOpen] = React.useState(false);
 
 
-  const [view, setView] = React.useState('Converter');
-  const handleChange = (event, nextView) => {
-    if(nextView === "History") {
-      props.convertHistoryHandler()
-    }
-    setView(nextView);
-  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -108,6 +139,15 @@ export default function MiniDrawer(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleChange = (nextView) => {
+    
+    if(nextView === "History") {
+      console.log("ji")
+      props.convertHistoryHandler()
+    } 
+  };
+
 //maybe get rid of css baseline later
   return (
     <div className={classes.root}>
@@ -156,18 +196,48 @@ export default function MiniDrawer(props) {
               <ChevronLeftIcon />
             )}
           </IconButton>
-        </div>
-        {/* maybe insert a header, for tools, or remove divider, kinda looks off?! */}
-{/*         <Divider />
-        <List>
-          <ListItem button key={Converter} component={Link} to={'Converter'}>  
+          </div>
+          
+        {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
+        <Divider />
+          <div>
+            <Route>
+              {({ location }) => (
+                <Typography gutterBottom>
+                  Current route: {location.pathname}
+                </Typography>
+              )}
+            </Route>
+            
+            <List aria-label="currency exchange views">
+              <ListItemLink to={'Converter'} primary="Converter" icon={<Converter />} />
+              <ListItemLink to={'History'} primary="History" icon={<History />} />
+              <ListItemLink to={'Compare'} primary="Compare" icon={<Compare />} />
+            </List>
+            
+          </div>
+        
+
+
+        {/* <List>
+          <ListItem 
+          button 
+          key={Converter} 
+          component={Link} 
+          to={'Converter'}  
+         >
             <ListItemIcon>
               <Converter />
             </ListItemIcon>
             <ListItemText primary={'Converter'} />
           </ListItem>
 
-          <ListItem button key={History} component={Link} to={'History'} onClick={() => props.convertHistoryHandler()}>  
+          <ListItem button 
+          key={History} 
+          component={Link} 
+          to={'History'} 
+
+          onClick={() => handleChange("History")}>  
             <ListItemIcon>
               <History />
             </ListItemIcon>
@@ -179,33 +249,71 @@ export default function MiniDrawer(props) {
               <Compare />
             </ListItemIcon>
             <ListItemText primary={'Compare'} />
-          </ListItem> */}
+          </ListItem>
+          </List> */}
+{/*         <Divider />
+        <List>
+          <ListItem 
+          button 
+          key={Converter} 
+          component={Link} 
+          to={'Converter'} 
+          disabled={view === "Converter"} 
+         >
+             
+            <ListItemIcon>
+              <Converter />
+            </ListItemIcon>
+            <ListItemText primary={'Converter'} />
+          </ListItem>
+
+          <ListItem button 
+          key={History} 
+          component={Link} 
+          to={'History'} 
+          disabled={view === "History"} 
+          onClick={/* () => handleChange("History")}>  
+            <ListItemIcon>
+              <History />
+            </ListItemIcon>
+            <ListItemText primary={'History'} />
+          </ListItem>
+
+          <ListItem button key={Compare} component={Link} to={'Compare'}>  
+            <ListItemIcon>
+              <Compare />
+            </ListItemIcon>
+            <ListItemText primary={'Compare'} />
+          </ListItem>
+          </List> */}
         
-        <Divider />
-        {/* <List> */}
+{/*         <Divider />
+        <ToggleButtonGroup value={view} orientation="vertical" exclusive onChange={handleChange}>
+        <List>
           {["Converter", "History", "Compare"].map((text, index) => (
-            <ToggleButtonGroup value={view} orientation="vertical" exclusive onChange={handleChange}>
-              {text === "History" ? (
+            <div className={classes.icon}>
+            {text === "History" ? (
                 <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
-                  <History />
+                  <ListItemIcon><History /></ListItemIcon>
                   <ListItemText primary={text} />
                 </ToggleButton>
               ) : text === "Converter" ? (
                 <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
-                  <Converter />
+                  <ListItemIcon><Converter /></ListItemIcon>
                   <ListItemText primary={text} />
                 </ToggleButton>
               ) : (
               <ToggleButton value={text} key={text} button component={Link} to={`/${text}`}>
-                <Compare />
+                <ListItemIcon><Compare /></ListItemIcon>
                 <ListItemText primary={text} />
               </ToggleButton>
               )}
-              </ToggleButtonGroup>
-          ))}
+              </div>
+            ))}
+        </List>
+          </ToggleButtonGroup>
 
-
-
+ */}
          {/*  {["Converter", "History", "Compare"].map((text, index) => ( */}
 {/*             <Link to = {`/${text}`}>
               <ListItem button key={text}>

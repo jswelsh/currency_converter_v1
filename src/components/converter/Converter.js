@@ -14,7 +14,6 @@ export default function Converter(props) {
         <h2 >
           <span>Currency</span>Converter
         </h2>
-
         <div className="Form">
           <input
             name="amount"
@@ -27,8 +26,8 @@ export default function Converter(props) {
             onChange={e => props.selectHandler(e)}
             value={props.fromCurrency}
           >
-            {props.currenciesList.map(cur => (
-              <option key={cur}>{cur}</option>
+            {props.currenciesList.map(currency => (
+              <option key={currency}>{currency}</option>
             ))}
           </select>
           <select
@@ -36,20 +35,25 @@ export default function Converter(props) {
             onChange={e => props.selectHandler(e)}
             value={props.toCurrency}
           >
-            {props.currenciesList.map(cur => (
-              <option key={cur}>{cur}</option>
+            {props.currenciesList.map(currency => (
+              <option key={currency}>{currency}</option>
             ))}
           </select>
           <div>
-            {(props.result !== null) && <h3> {props.result}</h3>}
+            {(props.result !== null) && 
+              <h3> {props.result} </h3>}
           </div>
           <div>
-            {props.result === null && <button name="latest" value="latest"  onClick={() => props.convertHandler()}>{buttonHide(props.result)}</button>}
+            {props.result === null && 
+              <button 
+                name="latest" 
+                value="latest"  
+                onClick={() => props.convertHandler()}
+              >
+                {buttonHide(props.result)}
+              </button>}
           </div>
         </div>
-{/*         <div>
-          {props.result && <h3>{props.result}</h3>}
-        </div> */}
       </div>
   );
 }
