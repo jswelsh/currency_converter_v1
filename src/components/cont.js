@@ -24,6 +24,7 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
+import CalendarComponent from './CalendarComponent'
 import CurrencyForm from './CurrencyForm'
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
@@ -227,7 +228,7 @@ export default function MiniDrawer(props) {
 
           <Divider />
         
-
+          <CalendarComponent />
 
         {/* <List>
           <ListItem 

@@ -3,7 +3,6 @@ import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
 import MiniDrawer from './cont';
-import CalendarComponent from './CalendarComponent'
 import useAppData from '../hooks/useAppData';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
@@ -46,9 +45,9 @@ export default function App() {
               history={state.history}
             />)}
           />
-          <Route path="/Compare" render={props => (
+{/*           <Route path="/Compare" render={props => (
             <CalendarComponent />
-          )}/>
+          )}/> */}
             
         </div>
         </MemoryRouter>

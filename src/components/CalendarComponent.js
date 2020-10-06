@@ -19,20 +19,24 @@ export default function CalendarComponent(props) {
   return (
     
     <LocalizationProvider dateAdapter={DayjsAdapter}>
-      <Grid container direction="column" alignItems="center">
+{/*       <Grid container direction="column" alignItems="center"> */}
+      <Grid item xs={10} spacing={4} >
       <DateRangePicker
         calendars={1}
         value={value}
         onChange={(newValue) => setValue(newValue)}
         renderInput={(startProps, endProps) => (
-          <React.Fragment>
-            <TextField {...startProps} />
+          <React.Fragment >
+            <Grid container direction="column" alignItems="center">
+            <TextField label='From' {...startProps}/>
             <DateRangeDelimiter> to </DateRangeDelimiter>
-            <TextField {...endProps} />
+            <TextField label='To'{...endProps}/>
+            </Grid>
           </React.Fragment>
         )}
       />
       </Grid>
+{/*       </Grid> */}
     </LocalizationProvider>
   );
 };
