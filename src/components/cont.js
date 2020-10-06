@@ -1,4 +1,9 @@
-/* import React from "react";
+import React from "react";
+
+import {  Route, MemoryRouter } from 'react-router';
+import { Link  } from 'react-router-dom';
+import PropTypes from "prop-types";
+
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -15,15 +20,18 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Hisotry from "@material-ui/icons/Timeline";
+import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
+
+/* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: "#222222"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -77,16 +85,52 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
+/*   iconHidden : {
+    margin: theme.spacing(1,3)
+  }, */
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
   }
 }));
 
-export default function MiniDrawer() {
+function ListItemLink(props) {
+  const { icon, primary, to } = props;
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <Link to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
+  );
+
+  return (
+    <li>
+      <ListItem
+        button
+        component={renderLink}
+        onClick={()=> null}
+      >
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
+  );
+}
+
+ListItemLink.propTypes = {
+  icon: PropTypes.element,
+  primary: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired
+};
+
+export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -96,9 +140,18 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const handleChange = (nextView) => {
+    
+    if(nextView === "History") {
+      console.log("ji")
+      props.convertHistoryHandler()
+    } 
+  };
+
+//maybe get rid of css baseline later
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      <CssBaseline /> 
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -143,58 +196,163 @@ export default function MiniDrawer() {
               <ChevronLeftIcon />
             )}
           </IconButton>
-        </div>
+          </div>
+          
+        {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
         <Divider />
+          <div>
+            <Route>
+              {({ location }) => (
+                <Typography gutterBottom>
+                  Current route: {location.pathname}
+                </Typography>
+              )}
+            </Route>
+            
+            <List aria-label="currency exchange views">
+              <ListItemLink to={'Converter'} primary="Converter" icon={<Converter />} />
+              <ListItemLink to={'History'} primary="History" icon={<History />} />
+              <ListItemLink to={'Compare'} primary="Compare" icon={<Compare />} />
+            </List>
+            
+          </div>
+        
+
+
+        {/* <List>
+          <ListItem 
+          button 
+          key={Converter} 
+          component={Link} 
+          to={'Converter'}  
+         >
+            <ListItemIcon>
+              <Converter />
+            </ListItemIcon>
+            <ListItemText primary={'Converter'} />
+          </ListItem>
+
+          <ListItem button 
+          key={History} 
+          component={Link} 
+          to={'History'} 
+
+          onClick={() => handleChange("History")}>  
+            <ListItemIcon>
+              <History />
+            </ListItemIcon>
+            <ListItemText primary={'History'} />
+          </ListItem>
+
+          <ListItem button key={Compare} component={Link} to={'Compare'}>  
+            <ListItemIcon>
+              <Compare />
+            </ListItemIcon>
+            <ListItemText primary={'Compare'} />
+          </ListItem>
+          </List> */}
+{/*         <Divider />
+        <List>
+          <ListItem 
+          button 
+          key={Converter} 
+          component={Link} 
+          to={'Converter'} 
+          disabled={view === "Converter"} 
+         >
+             
+            <ListItemIcon>
+              <Converter />
+            </ListItemIcon>
+            <ListItemText primary={'Converter'} />
+          </ListItem>
+
+          <ListItem button 
+          key={History} 
+          component={Link} 
+          to={'History'} 
+          disabled={view === "History"} 
+          onClick={/* () => handleChange("History")}>  
+            <ListItemIcon>
+              <History />
+            </ListItemIcon>
+            <ListItemText primary={'History'} />
+          </ListItem>
+
+          <ListItem button key={Compare} component={Link} to={'Compare'}>  
+            <ListItemIcon>
+              <Compare />
+            </ListItemIcon>
+            <ListItemText primary={'Compare'} />
+          </ListItem>
+          </List> */}
+        
+{/*         <Divider />
+        <ToggleButtonGroup value={view} orientation="vertical" exclusive onChange={handleChange}>
         <List>
           {["Converter", "History", "Compare"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {text === "Converter" ? (
-                  <Converter />
+            <div className={classes.icon}>
+            {text === "History" ? (
+                <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
+                  <ListItemIcon><History /></ListItemIcon>
+                  <ListItemText primary={text} />
+                </ToggleButton>
+              ) : text === "Converter" ? (
+                <ToggleButton value={text} button key={text} component={Link} to={`/${text}` } >
+                  <ListItemIcon><Converter /></ListItemIcon>
+                  <ListItemText primary={text} />
+                </ToggleButton>
+              ) : (
+              <ToggleButton value={text} key={text} button component={Link} to={`/${text}`}>
+                <ListItemIcon><Compare /></ListItemIcon>
+                <ListItemText primary={text} />
+              </ToggleButton>
+              )}
+              </div>
+            ))}
+        </List>
+          </ToggleButtonGroup>
+
+ */}
+         {/*  {["Converter", "History", "Compare"].map((text, index) => ( */}
+{/*             <Link to = {`/${text}`}>
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {text === "Converter" ? (
+                    <Converter />
+                  ) : text === "History" ? (
+                    <Hisotry />
+                  ) : (
+                    <Compare />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+                  </Link> */}
+{/*             <div>
+            {text === "History" ? (
+              <ListItem button key={text} component={Link} to={`/${text}`} onClick={() => props.convertHistoryHandler()}>  
+              ) : ( 
+              <ListItem button key={text} component={Link} to={`/${text}`}> 
+              </div>
+            )}
+            <ListItemIcon>
+              {text === "Converter" ? (
+                <Converter />
                 ) : text === "History" ? (
                   <Hisotry />
-                ) : (
-                  <Compare />
-                )}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+                  ) : (
+                    <Compare />
+                    )}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+        </ListItem>
+          ))} */}
+        {/* </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
       </main>
     </div>
   );
 }
- */
