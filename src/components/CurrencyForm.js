@@ -1,32 +1,23 @@
 import { setStyle } from "@amcharts/amcharts4/.internal/core/utils/DOM";
 import React, { useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Grid from '@material-ui/core/Grid'
-import { Button } from '@material-ui/core';
-import FormControl from '@material-ui/core/FormControl';
+
+import { Select, MenuItem, Grid, FormControl, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-/* import { Select } from "@material-ui/core"; */
+
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Exchange from '@material-ui/icons/Shuffle';
-
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: 240,
-    padding: theme.spacing(6, 0),
+    padding: theme.spacing(2, 0),
   },
   selector: {
-    /* textAlign: 'center', */
     color: theme.palette.text.secondary,
-    
-
     justifyContent: "flex-end",
   },
   container: {
@@ -159,16 +150,17 @@ export default function CurrencyForm(props) {
     </Grid>
   </FormControl>
      */
-       
     <FormControl className={classes.root}>
-      {/* <Grid container spacing={1} className={classes.container}> */}
           
         <Grid  container spacing={1} >
-
           <Grid item xs={6} spacing={3}className={classes.container}>
-            <Grid item xs={6} className={classes.arrow}>
-              <ArrowBackIosIcon />
+
+            <Grid item xs={7} className={classes.arrow}>
+              <ListItemIcon>
+                <ArrowBackIosIcon />
+              </ListItemIcon>
             </Grid> 
+
             <Grid item xs={3}>
               <Select
                 className={classes.selector}
@@ -183,14 +175,19 @@ export default function CurrencyForm(props) {
                 ))}
               </Select>
             </Grid>
-          </Grid>
-          </Grid>
-        <Grid  container spacing={1} >
 
+          </Grid>
+        </Grid>
+
+        <Grid  container spacing={1} >
           <Grid item xs={6} spacing={3} className={classes.container}>
-            <Grid item xs={6} className={classes.arrow}>
-              <ArrowForwardIosIcon/>
+
+            <Grid item xs={7} className={classes.arrow}>
+              <ListItemIcon> 
+                <ArrowForwardIosIcon/>
+              </ListItemIcon>
             </Grid>
+
             <Grid item xs={3}>
               <Select
                 className={classes.selector}
@@ -205,19 +202,17 @@ export default function CurrencyForm(props) {
                 ))}
               </Select>
             </Grid>
-          </Grid>
-          
-        
-      {/* </Grid> */}
-      </Grid>
-      {/* <Grid  container xs={2} > */}
 
+          </Grid>
+        </Grid>
       <ListItem
         button
         onClick={handleSubmit}
       >
-      <ListItemIcon>{<Exchange />}</ListItemIcon>
-      <ListItemText primary={'Exchange'} />
+        <ListItemIcon>
+          <Exchange />
+        </ListItemIcon>
+        <ListItemText primary={'Exchange'} />
       </ListItem>
 
 
@@ -232,8 +227,7 @@ export default function CurrencyForm(props) {
           type="submit" 
           value="Submit" 
           onClick={handleSubmit}>
-               EXCHANGE
-
+        EXCHANGE
         </Button>  */}
       {/*   </Grid> */}
     </FormControl>
