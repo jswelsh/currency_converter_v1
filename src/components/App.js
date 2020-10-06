@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
 import MiniDrawer from './cont';
+import CalendarComponent from './CalendarComponent'
 import useAppData from '../hooks/useAppData';
-import Grid from '@material-ui/core/Grid'
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
@@ -42,27 +42,14 @@ export default function App() {
             />)}
           />      
           <Route path="/History"  render={props => (
-            <Fragment>
-              <Grid
-              container spacing={3}
-              alignItems="center"
-              justify="center"
-            > 
-     {/*          <CurrencyForm 
-                convertHistoryHandler={convertHistoryHandler}
-                selectHandler={selectHandler}
-                fromCurrency={state.fromCurrency}
-                toCurrency={state.toCurrency}
-                currenciesList={state.currenciesList}
-              /> */}
-            </Grid>
-             <CurrencyHistoryGraph
-    
-             history={state.history}
-           />
-           </Fragment>
-            )}
+            <CurrencyHistoryGraph
+              history={state.history}
+            />)}
           />
+          <Route path="/Compare" render={props => (
+            <CalendarComponent />
+          )}/>
+            
         </div>
         </MemoryRouter>
     </main>
