@@ -2,6 +2,7 @@ import { setStyle } from "@amcharts/amcharts4/.internal/core/utils/DOM";
 import React, { useState} from "react";
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import Grid from '@material-ui/core/Grid'
 import FormControl from '@material-ui/core/FormControl';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 /* import { Select } from "@material-ui/core"; */
@@ -33,32 +34,41 @@ export default function CurrencyForm(props) {
     )};
   
   return (
-    <FormControl>
-      <Select
-        disableUnderline
-        name="fromSelector"
-        IconComponent={iconComponent}
-        value={fromCurrency}
-        onChange={handleChange}
-      >
-        {props.currenciesList.map(currency => (
-          <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-        ))}
-      </Select>
-      <input type="submit" value="Submit" onClick={handleSubmit}/>
-
-      <Select
-        disableUnderline
-        name="toSelector"
-        IconComponent={iconComponent}
-        value={toCurrency}
-        onChange={handleChange}
-      >
-        {props.currenciesList.map(currency => (
-          <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+  <FormControl>
+    <Grid container spacing={1}>
+      <Grid container item xs={24} spacing={3}>
+        <Grid  item xs={4} >
+          <Select
+            disableUnderline
+            name="fromSelector"
+            IconComponent={iconComponent}
+            value={fromCurrency}
+            onChange={handleChange}
+          >
+            {props.currenciesList.map(currency => (
+              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid  item xs={4}>
+          <input type="submit" value="Submit" onClick={handleSubmit}/>
+        </Grid>
+        <Grid  item xs={4}>
+          <Select
+            disableUnderline
+            name="toSelector"
+            IconComponent={iconComponent}
+            value={toCurrency}
+            onChange={handleChange}
+          >
+            {props.currenciesList.map(currency => (
+              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
+            ))}
+          </Select>
+        </Grid>
+      </Grid>
+    </Grid>
+  </FormControl>
     
   )
 }

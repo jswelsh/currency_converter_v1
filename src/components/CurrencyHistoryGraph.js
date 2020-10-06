@@ -87,12 +87,12 @@ export default function CurrencyHistoryGraph(props) {
 
   return (
       <div className="CurrencyHistoryGraph" >
-        <Grid
+{/*         <Grid
           container
           direction="column"
           alignItems="center"
           justify="center"
-        > 
+        >  */}
 {/*         <CurrencyForm 
           convertHistoryHandler={props.sconvertHistoryHandler}
           selectHandler={props.selectHandler}
@@ -101,7 +101,7 @@ export default function CurrencyHistoryGraph(props) {
           currenciesList={props.currenciesList} 
         /> */}
         {/* <button name="history"value="history" onClick={() => props.convertHistoryHandler()}>Get History</button> */}
-        </Grid>
+        {/* </Grid> */}
         <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
       </div>
     

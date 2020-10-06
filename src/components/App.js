@@ -41,8 +41,7 @@ export default function App() {
           <Route path="/History"  render={props => (
             <Fragment>
               <Grid
-              container
-              direction="column"
+              container spacing={3}
               alignItems="center"
               justify="center"
             > 
