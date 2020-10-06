@@ -1,30 +1,39 @@
 import React, { useState } from "react";
-import { DatePicker } from "@material-ui/pickers";
+import DayjsAdapter from '@material-ui/pickers/adapter/dayjs';
 
+import TextField from '@material-ui/core/TextField';
+import Grid from "@material-ui/core/Grid";
+import {  DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
+import { LocalizationProvider } from '@material-ui/pickers';
 
-export default CalendarComponent = () => {
-  const [date, changeDate] = useState(new Date());
-
-  // prettier-ignore
+export default function CalendarComponent(props) {
+  const lastFourWeeks = function () {
+    const day = new Date();
+    const FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate() - 28).toISOString().split('T')[0];
+    return FourWeeksAgo;
+  };
+  /* const [date, changeDate] = useState(new Date()); */
+  const [value, setValue] = useState([new Date(), lastFourWeeks()]);
+  const today = new Date();
+//const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
   return (
-    <>
-      <DatePicker
-        autoOk
-        variant="static"
-        openTo="year"
-        value={date}
-        onChange={changeDate}
+    
+    <LocalizationProvider dateAdapter={DayjsAdapter}>
+      <Grid container direction="column" alignItems="center">
+      <DateRangePicker
+        calendars={1}
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment>
+            <TextField {...startProps} />
+            <DateRangeDelimiter> to </DateRangeDelimiter>
+            <TextField {...endProps} />
+          </React.Fragment>
+        )}
       />
-
-      <DatePicker
-        autoOk
-        orientation="landscape"
-        variant="static"
-        openTo="date"
-        value={date}
-        onChange={changeDate}
-      />
-    </>
+      </Grid>
+    </LocalizationProvider>
   );
 };
 
