@@ -1,11 +1,15 @@
-import { setStyle } from "@amcharts/amcharts4/.internal/core/utils/DOM";
 import React, { useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-
-import { Select, MenuItem, Grid, FormControl, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-
+import { 
+  Select, 
+  MenuItem, 
+  Grid, 
+  FormControl, 
+  ListItem, 
+  ListItemIcon, 
+  ListItemText 
+} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Exchange from '@material-ui/icons/Shuffle';
