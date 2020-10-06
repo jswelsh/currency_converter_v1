@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
-import CurrencyForm from './CurrencyForm'
 import MiniDrawer from './cont';
 import useAppData from '../hooks/useAppData';
 import Grid from '@material-ui/core/Grid'
@@ -25,6 +24,10 @@ export default function App() {
         <div className="App">
         <MiniDrawer 
           convertHistoryHandler={convertHistoryHandler}
+          selectHandler={selectHandler}
+          fromCurrency={state.fromCurrency}
+          toCurrency={state.toCurrency}
+          currenciesList={state.currenciesList}
           />
         
           <Route path="/Converter" render={props => (
@@ -45,13 +48,13 @@ export default function App() {
               alignItems="center"
               justify="center"
             > 
-              <CurrencyForm 
+     {/*          <CurrencyForm 
                 convertHistoryHandler={convertHistoryHandler}
                 selectHandler={selectHandler}
                 fromCurrency={state.fromCurrency}
                 toCurrency={state.toCurrency}
                 currenciesList={state.currenciesList}
-              />
+              /> */}
             </Grid>
              <CurrencyHistoryGraph
     

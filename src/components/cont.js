@@ -24,6 +24,8 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
+import CurrencyForm from './CurrencyForm'
+
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
 const drawerWidth = 240;
@@ -200,22 +202,30 @@ export default function MiniDrawer(props) {
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
         <Divider />
-          <div>
-            <Route>
+         {/*    <Route>
               {({ location }) => (
                 <Typography gutterBottom>
                   Current route: {location.pathname}
                 </Typography>
               )}
-            </Route>
+            </Route> */}
             
             <List aria-label="currency exchange views">
               <ListItemLink to={'Converter'} primary="Converter" icon={<Converter />} />
               <ListItemLink to={'History'} primary="History" icon={<History />} />
               <ListItemLink to={'Compare'} primary="Compare" icon={<Compare />} />
             </List>
-            
-          </div>
+          <Divider/>
+
+            <CurrencyForm 
+              convertHistoryHandler={props.convertHistoryHandler}
+              selectHandler={props.selectHandler}
+              fromCurrency={props.fromCurrency}
+              toCurrency={props.toCurrency}
+              currenciesList={props.currenciesList}
+            />
+
+          <Divider />
         
 
 
