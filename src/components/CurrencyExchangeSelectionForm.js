@@ -5,11 +5,15 @@ import {
   MenuItem, 
   Grid, 
   FormControl, 
+  List,
+  ListItem,
+  ListItemText,
   ListItemIcon, 
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import SwapVertIcon from '@material-ui/icons/SwapVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
 export default function CurrencyExchangeSelectionForm(props) {
   const classes = useStyles()
 
+  const handleClick = () => {
+      const [newFromCur, newToCur] = [props.toCurrency, props.fromCurrency]
+      props.setFromCurrency(newFromCur)
+      props.setToCurrency(newToCur)
+  }
 
   const handleChange = (event) => {
     const target = event.target;
@@ -58,17 +67,19 @@ export default function CurrencyExchangeSelectionForm(props) {
   return (
 
     <FormControl className={classes.root}>
-          
+      <List>
+    {/*       
         <Grid  container spacing={1} >
           <Grid item xs={6} spacing={3}className={classes.container}>
 
-            <Grid item xs={7} className={classes.arrow}>
+            <Grid item xs={7} className={classes.arrow}> */}
+            <ListItem>
               <ListItemIcon>
                 <ArrowBackIosIcon />
               </ListItemIcon>
-            </Grid> 
+           {/*  </Grid>  */}
 
-            <Grid item xs={3}>
+          {/*   <Grid item xs={3}> */}
               <Select
                 className={classes.selector}
                 disableUnderline
@@ -81,21 +92,44 @@ export default function CurrencyExchangeSelectionForm(props) {
                   <MenuItem key={currency} value={currency}>{currency}</MenuItem>
                 ))}
               </Select>
-            </Grid>
+              </ListItem>
+    {/*         </Grid>
 
           </Grid>
         </Grid>
+ */}
+{/*         <Grid  container spacing={1} >
+          <Grid item>
+          <ListItemIcon>
+            <SwapVertIcon />  
+          </ListItemIcon>
+          </Grid>
+        </Grid>
+ */}
 
-        <Grid  container spacing={1} >
+            <List>
+              <ListItem
+                button
+                onClick={handleClick}
+              >
+                <ListItemIcon> 
+                  <SwapVertIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Swap Currencies" />
+              </ListItem>
+            </List>
+
+{/*         <Grid  container spacing={1} >
           <Grid item xs={6} spacing={3} className={classes.container}>
 
-            <Grid item xs={7} className={classes.arrow}>
+            <Grid item xs={7} className={classes.arrow}> */}
+            <ListItem>
               <ListItemIcon> 
                 <ArrowForwardIosIcon/>
               </ListItemIcon>
-            </Grid>
+         {/*    </Grid>
 
-            <Grid item xs={3}>
+            <Grid item xs={3}> */}
               <Select
                 className={classes.selector}
                 disableUnderline
@@ -108,10 +142,12 @@ export default function CurrencyExchangeSelectionForm(props) {
                   <MenuItem key={currency} value={currency}>{currency}</MenuItem>
                 ))}
               </Select>
-            </Grid>
+              </ListItem>
+       {/*      </Grid>
 
           </Grid>
-        </Grid>
+        </Grid> */}
+        </List>
     </FormControl>
     
   )

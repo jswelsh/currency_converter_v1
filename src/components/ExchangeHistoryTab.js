@@ -27,14 +27,14 @@ export default function ExchangeHistoryTab(props) {
 
   const handleChange = (event) => {
     const [startDate, endDate] = event
-    const reduceDate = (date) =>{
+    const shortenDateString = (date) =>{
       return date.toISOString().split('T')[0]
     }
-    setDateRange([reduceDate(startDate), reduceDate(endDate)])
+    setDateRange([shortenDateString(startDate), shortenDateString(endDate)])
   }
 
   return (
-  <> 
+  <>
     <ExchangeHistoryPopOver 
       dateRange={dateRange}
       handleChange={handleChange}
