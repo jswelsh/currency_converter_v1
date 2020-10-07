@@ -2,15 +2,12 @@ import React from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import ExchangeHistoryGraph from './ExchangeHistoryGraph';
-import MiniDrawer from './ToolBar';
 import useAppData from '../hooks/useAppData';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
 import ToolBar from './ToolBar';
-import ExchangeHistoryButton from './ExchangeHistoryButton';
-import ExchangeHistoryTab from './ExchangeHistoryTab';
 
 export default function App() {
   const {
@@ -26,9 +23,6 @@ export default function App() {
         <div className="App">
         <ToolBar 
           convertHistoryHandler={convertHistoryHandler}
-/*           selectHandler={selectHandler}
-          fromCurrency={state.fromCurrency}
-          toCurrency={state.toCurrency} */
           currenciesList={state.currenciesList}
           />
         

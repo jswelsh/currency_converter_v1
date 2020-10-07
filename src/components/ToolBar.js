@@ -194,7 +194,7 @@ export default function ToolBar(props) {
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
         <Divider />
-         {/*    <Route>
+        {/*    <Route>
               {({ location }) => (
                 <Typography gutterBottom>
                   Current route: {location.pathname}
@@ -211,9 +211,6 @@ export default function ToolBar(props) {
           <Divider/>
             <ExchangeHistoryTab
               convertHistoryHandler={props.convertHistoryHandler}
-/*               selectHandler={props.selectHandler}
-              fromCurrency={props.fromCurrency}
-              toCurrency={props.toCurrency} */
               currenciesList={props.currenciesList}
             />
           <Divider />  

@@ -4,6 +4,15 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import {  LocalizationProvider, DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
 
+/* class OverriddenAdapter extends DayjsAdapter {
+  formats(value: TDate, formatKey: fullDate )
+
+} */
+/* const formats = {
+  normalDate: 'DD MM YYYY',
+  keyboardDate: 'DD MM YYYY',
+} */
+
 const useStyles = makeStyles((theme) => ({
   grid: {
     padding: theme.spacing(5),
@@ -12,19 +21,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DatePickerComponent(props) {
   const classes = useStyles();
-  const lastFourWeeks = function () {
+/*   const lastFourWeeks = function () {
     const day = new Date();
     const FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate() - 28).toISOString().split('T')[0];
     return FourWeeksAgo;
   };
-  const [date, changeDate] = useState([ lastFourWeeks(), new Date()]);
+  const [date, changeDate] = useState([ lastFourWeeks(), new Date()]); */
   return (
     
-    <LocalizationProvider dateAdapter={DayjsAdapter}>
+    <LocalizationProvider 
+      dateAdapter={DayjsAdapter}
+      >
       <DateRangePicker
         calendars={1}
-        value={date}
-        onChange={(newDate) => changeDate(newDate)}
+        value={props.dateRange}
+        onChange={props.handleChange/* (newDateRange) => (
+          props.setDateRange(newDateRange)
+          ) */}
         renderInput={(startProps, endProps) => (
           <React.Fragment >
             <TextField label='From' {...startProps}/>

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function CalendarPopOverComponent(props) {
+export default function ExchangeHistoryPopOver(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -71,7 +71,10 @@ export default function CalendarPopOverComponent(props) {
         }}
       >
         <Typography className={classes.typography}>To view the exchange history of "Foo" and "Bar", choose a date range.</Typography>
-        <DatePickerComponent />
+        <DatePickerComponent 
+          dateRange={props.dateRange}
+          handleChange={props.handleChange}
+        />
       </Popover>
     </>
   );

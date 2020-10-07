@@ -43,6 +43,7 @@ export default function useAppData() {
     mode: 'latest',
   });
 
+  
   const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency }); };
   const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency }); };
   const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); };
@@ -87,29 +88,10 @@ export default function useAppData() {
     }
   };
 
-  const convertHistoryHandler = (fromCurrency, toCurrency) => {
-    /*     var date = new Date();
-var next = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-var days   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-var months = ['January','February','March','April','May','June', 'July','August','September','October','November','December'];
+  const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
+    let [startDate, endDate] = dateRange
 
-function format(d) {
-    return d.getDate() + ' ' + days[d.getDay()] + ', ' + months[d.getMonth() ] + ' ' + d.getFullYear();
-}
-
-document.getElementById('r').innerHTML  = 'Today is ' + format(date) + '<br>';
-
-for (i = 0; i < 52; i++) {
-    next = new Date(next.getFullYear(), next.getMonth(), next.getDate() - 7);
-    document.getElementById('r').innerHTML += 'Next week is ' + format(next) + '<br>';
-} */
-    const today = new Date().toISOString().split('T')[0];
-    const lastFourWeeks = function () {
-      const day = new Date();
-      const FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate() - 28).toISOString().split('T')[0];
-      return FourWeeksAgo;
-    };
-    const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${lastFourWeeks()}&end_at=${today}&`;
+    const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&`;
     if (fromCurrency !== toCurrency) {
       axios
         .get(`${
@@ -154,8 +136,6 @@ for (i = 0; i < 52; i++) {
           type: SET_CURRENCY_LIST,
           currenciesList,
         });
-        //removed this as is was creating dependency issues, now call it b4 routing
-        // convertHistoryHandler();
       })
       .catch((err) => {
         console.log('Something went wrong', err);
@@ -169,35 +149,3 @@ for (i = 0; i < 52; i++) {
     selectHandler,
   };
 }
-/* "CAD"
-"HKD",
-"ISK",
-"PHP",
-"DKK",
-"HUF",
-"CZK",
-"AUD",
-"RON",
-"SEK",
-"INR",
-"BRL",
-"RUB",
-"HRK",
-"JPY",
-"THB",
-"CHF",
-"SGD",
-"PLN",
-"BGN",
-"TRY",
-"CNY",
-"NOK",
-"NZD",
-"ZAR",
-"USD",
-"MXN",
-"ILS",
-"GBP",
-"KRW",
-"MYR",
-"IDR", */
