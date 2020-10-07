@@ -50,16 +50,20 @@ export default function useAppData() {
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
   // const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
-  const selectHandler = (e) => {
-    if (e.target.name === 'from') {
-      setFromCurrency(e.target.value);
-      setResult(null);
-    } else if (e.target.name === 'to') {
-      setToCurrency(e.target.value);
-      setResult(null);
-    } else if (e.target.name === 'amount') {
-      setAmount(e.target.value);
-      setResult(null)
+  const selectHandler = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    if (name === 'fromSelector') {
+      setFromCurrency(value);
+/*       setResult(null); */
+    } else if (name === 'toSelector') {
+      setToCurrency(value);
+/*       setResult(null); */
+    } else if (name === 'amount') {
+      setAmount(value);
+/*       setResult(null) */
     }
   };
 
@@ -144,7 +148,6 @@ for (i = 0; i < 52; i++) {
 
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?
-          console.log(currenciesList)
           currenciesList.push(key);
         });
         dispatch({

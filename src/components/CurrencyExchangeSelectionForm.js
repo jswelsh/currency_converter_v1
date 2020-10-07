@@ -12,7 +12,6 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import Exchange from '@material-ui/icons/Shuffle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,10 +36,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CurrencyForm(props) {
+export default function CurrencyExchangeSelectionForm(props) {
   const classes = useStyles()
-  const [fromCurrency, setFromCurrency] = useState("CAD");
-  const [toCurrency, setToCurrency] = useState("USD");
+
 
   const handleChange = (event) => {
     const target = event.target;
@@ -48,15 +46,12 @@ export default function CurrencyForm(props) {
     const value = target.value;
 
     if(name === "fromSelector"){
-      setFromCurrency(value)
+      props.setFromCurrency(value)
     } else if(name === "toSelector"){
-      setToCurrency(value)
+      props.setToCurrency(value)
     }
   }
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.convertHistoryHandler(fromCurrency, toCurrency)
-  }
+
   const iconComponent = (props) => {
     return (
       <ExpandMoreIcon /* className={props.className + " " + minimalSelectClasses.icon} *//>
@@ -171,7 +166,7 @@ export default function CurrencyForm(props) {
                 disableUnderline
                 name="fromSelector"
                 IconComponent={iconComponent}
-                value={fromCurrency}
+                value={props.fromCurrency}
                 onChange={handleChange}
               >
                 {props.currenciesList.map(currency => (
@@ -198,7 +193,7 @@ export default function CurrencyForm(props) {
                 disableUnderline
                 name="toSelector"
                 IconComponent={iconComponent}
-                value={toCurrency}
+                value={props.toCurrency}
                 onChange={handleChange}
               >
                 {props.currenciesList.map(currency => (
@@ -209,15 +204,7 @@ export default function CurrencyForm(props) {
 
           </Grid>
         </Grid>
-      <ListItem
-        button
-        onClick={handleSubmit}
-      >
-        <ListItemIcon>
-          <Exchange />
-        </ListItemIcon>
-        <ListItemText primary={'Exchange'} />
-      </ListItem>
+
 
 
   {/*       <Button 
