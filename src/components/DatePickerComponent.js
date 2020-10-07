@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import DayjsAdapter from '@material-ui/pickers/adapter/dayjs';
-
 import TextField from '@material-ui/core/TextField';
-
 import { makeStyles } from '@material-ui/core/styles';
-import {  DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
-import { LocalizationProvider } from '@material-ui/pickers';
+import {  LocalizationProvider, DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -13,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TEST(props) {
+export default function DatePickerComponent(props) {
   const classes = useStyles();
   const lastFourWeeks = function () {
     const day = new Date();
@@ -21,7 +18,6 @@ export default function TEST(props) {
     return FourWeeksAgo;
   };
   const [date, changeDate] = useState([ lastFourWeeks(), new Date()]);
-  const today = new Date();
   return (
     
     <LocalizationProvider dateAdapter={DayjsAdapter}>
