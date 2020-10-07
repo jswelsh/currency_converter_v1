@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function NavMenuCalendarComponent(props) {
+export default function CalendarPopOverComponent(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -50,7 +50,7 @@ export default function NavMenuCalendarComponent(props) {
         <ListItemIcon>
           <CalendarIcon />
         </ListItemIcon>
-        <ListItemText primary={'Exchange'} />
+        <ListItemText primary={'Date Range'} />
       </ListItem>
     </FormControl>
       <Popover

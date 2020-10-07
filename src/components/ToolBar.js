@@ -24,8 +24,7 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
-import NavMenuCalendarComponent from './NavMenuCalendarComponent'
-import CurrencyForm from './CurrencyForm'
+import ExchangeHistoryTab from "./ExchangeHistoryTab";
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
@@ -128,7 +127,7 @@ ListItemLink.propTypes = {
   to: PropTypes.string.isRequired
 };
 
-export default function MiniDrawer(props) {
+export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -210,17 +209,13 @@ export default function MiniDrawer(props) {
             </List>
 
           <Divider/>
-
-            <CurrencyForm 
+            <ExchangeHistoryTab
               convertHistoryHandler={props.convertHistoryHandler}
               selectHandler={props.selectHandler}
               fromCurrency={props.fromCurrency}
               toCurrency={props.toCurrency}
               currenciesList={props.currenciesList}
             />
-
-           
-            <NavMenuCalendarComponent />
           <Divider />  
       </Drawer>
       <main className={classes.content}>

@@ -2,12 +2,13 @@ import React from 'react';
 import './App.css';
 import Converter from './converter/Converter';
 import CurrencyHistoryGraph from './CurrencyHistoryGraph';
-import MiniDrawer from './cont';
+import MiniDrawer from './ToolBar';
 import useAppData from '../hooks/useAppData';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
+import ToolBar from './ToolBar';
 
 export default function App() {
   const {
@@ -21,7 +22,7 @@ export default function App() {
     <main className="layout">
       <MemoryRouter>
         <div className="App">
-        <MiniDrawer 
+        <ToolBar 
           convertHistoryHandler={convertHistoryHandler}
           selectHandler={selectHandler}
           fromCurrency={state.fromCurrency}
