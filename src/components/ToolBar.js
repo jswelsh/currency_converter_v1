@@ -211,9 +211,9 @@ export default function ToolBar(props) {
           <Divider/>
             <ExchangeHistoryTab
               convertHistoryHandler={props.convertHistoryHandler}
-              selectHandler={props.selectHandler}
+/*               selectHandler={props.selectHandler}
               fromCurrency={props.fromCurrency}
-              toCurrency={props.toCurrency}
+              toCurrency={props.toCurrency} */
               currenciesList={props.currenciesList}
             />
           <Divider />  

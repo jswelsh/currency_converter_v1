@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ExchangeHistoryTab(props) {
-/*   const [fromCurrency, setFromCurrency] = useState("CAD");
+  const [fromCurrency, setFromCurrency] = useState("CAD");
   const [toCurrency, setToCurrency] = useState("USD");
- */
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.convertHistoryHandler(props.fromCurrency, props.toCurrency)
+    props.convertHistoryHandler(fromCurrency, toCurrency)
   }
 
   return (
@@ -24,13 +24,16 @@ export default function ExchangeHistoryTab(props) {
     <CalendarPopOverComponent />
     <CurrencyExchangeSelectionForm 
  /*      selectHandler={props.selectHandler} */
-      fromCurrency={props.fromCurrency}
-      toCurrency={props.toCurrency}
-      selectHandler={props.selectHandler}
+      fromCurrency={fromCurrency}
+      toCurrency={toCurrency}
+      setFromCurrency={setFromCurrency}
+      setToCurrency={setToCurrency}
+      /* selectHandler={props.selectHandler} */
       currenciesList={props.currenciesList}
     />
     <ExchangeHistoryButton 
-      convertHistoryHandler={props.convertHistoryHandler}
+      /* convertHistoryHandler={props.convertHistoryHandler} */
+      
       handleSubmit={handleSubmit}
     />
     

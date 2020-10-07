@@ -12,7 +12,7 @@ am4core.options.autoDispose = true;
 
 const ITEM_HEIGHT = 48;
 
-export default function CurrencyHistoryGraph(props) {
+export default function ExchangeHistoryGraph(props) {
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
@@ -75,7 +75,7 @@ export default function CurrencyHistoryGraph(props) {
   chart.data = props.history
 
   return (
-      <div className="CurrencyHistoryGraph" >
+      <div className="ExchangeHistoryGraph" >
         <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
       </div>
     

@@ -40,7 +40,7 @@ export default function CurrencyExchangeSelectionForm(props) {
   const classes = useStyles()
 
 
- /*  const handleChange = (event) => {
+  const handleChange = (event) => {
     const target = event.target;
     const name = target.name;
     const value = target.value;
@@ -51,7 +51,7 @@ export default function CurrencyExchangeSelectionForm(props) {
       props.setToCurrency(value)
     }
   }
- */
+
   const iconComponent = (props) => {
     return (
       <ExpandMoreIcon /* className={props.className + " " + minimalSelectClasses.icon} *//>
@@ -167,7 +167,7 @@ export default function CurrencyExchangeSelectionForm(props) {
                 name="fromSelector"
                 IconComponent={iconComponent}
                 value={props.fromCurrency}
-                onChange={props.selectHandler}
+                onChange={handleChange}
               >
                 {props.currenciesList.map(currency => (
                   <MenuItem key={currency} value={currency}>{currency}</MenuItem>
@@ -194,7 +194,7 @@ export default function CurrencyExchangeSelectionForm(props) {
                 name="toSelector"
                 IconComponent={iconComponent}
                 value={props.toCurrency}
-                onChange={props.selectHandler}
+                onChange={handleChange}
               >
                 {props.currenciesList.map(currency => (
                   <MenuItem key={currency} value={currency}>{currency}</MenuItem>

@@ -148,7 +148,6 @@ for (i = 0; i < 52; i++) {
 
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?
-          console.log(currenciesList)
           currenciesList.push(key);
         });
         dispatch({
