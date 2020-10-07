@@ -216,15 +216,15 @@ export default function MiniDrawer(props) {
               <ListItemLink to={'History'} primary="History" icon={<History />} />
               <ListItemLink to={'Compare'} primary="Compare" icon={<Compare />} />
             </List>
-          <Divider/>
+          {/* <Divider/> */}
 
-            <CurrencyForm 
+     {/*        <CurrencyForm 
               convertHistoryHandler={props.convertHistoryHandler}
               selectHandler={props.selectHandler}
               fromCurrency={props.fromCurrency}
               toCurrency={props.toCurrency}
               currenciesList={props.currenciesList}
-            />
+            /> */}
 
           <Divider />
         
