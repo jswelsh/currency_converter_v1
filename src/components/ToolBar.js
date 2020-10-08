@@ -24,7 +24,9 @@ import History from "@material-ui/icons/Timeline";
 import Converter from "@material-ui/icons/Transform";
 import Compare from "@material-ui/icons/Sort";
 
-import ExchangeHistoryTab from "./ExchangeHistoryTab";
+import UserInputTab from "./UserInputTab";
+import ConverterTab from "./ConverterTab";
+
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
@@ -87,9 +89,9 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
-/*   iconHidden : {
-    margin: theme.spacing(1,3)
-  }, */
+  history : {
+    
+  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
@@ -97,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ListItemLink(props) {
-  const { icon, primary, to } = props;
+  const { icon, primary, to, setModeHandler } = props;
 
   const renderLink = React.useMemo(
     () =>
@@ -106,13 +108,16 @@ function ListItemLink(props) {
       )),
     [to]
   );
+  const onClickHandler = () => {
+    setModeHandler(primary)
+  }
 
   return (
     <li>
       <ListItem
         button
         component={renderLink}
-        onClick={()=> null}
+        onClick={onClickHandler}
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
@@ -123,6 +128,7 @@ function ListItemLink(props) {
 
 ListItemLink.propTypes = {
   icon: PropTypes.element,
+  setModeHandler: PropTypes.string.isRequired,
   primary: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired
 };
@@ -130,16 +136,16 @@ ListItemLink.propTypes = {
 export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
+  const [openDrawer, setDrawerOpen] = React.useState(false);
+  /* const [calendarVisibility, calendarVisibility] = React.useState(false); */
 
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setDrawerOpen(false);
   };
 
 //maybe get rid of css baseline later
@@ -149,7 +155,7 @@ export default function ToolBar(props) {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
+          [classes.appBarShift]: openDrawer
         })}
       >
         <Toolbar>
@@ -159,7 +165,7 @@ export default function ToolBar(props) {
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, {
-              [classes.hide]: open
+              [classes.hide]: openDrawer
             })}
           >
             <MenuIcon />
@@ -172,13 +178,13 @@ export default function ToolBar(props) {
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
+          [classes.drawerOpen]: openDrawer,
+          [classes.drawerClose]: !openDrawer
         })}
         classes={{
           paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
+            [classes.drawerOpen]: openDrawer,
+            [classes.drawerClose]: !openDrawer
           })
         }}
       >
@@ -203,16 +209,41 @@ export default function ToolBar(props) {
             </Route> */}
             
             <List aria-label="currency exchange views">
-              <ListItemLink to={'Converter'} primary="Converter" icon={<Converter />} />
-              <ListItemLink to={'History'} primary="History" icon={<History />} />
-              <ListItemLink to={'Compare'} primary="Compare" icon={<Compare />} />
+              <ListItemLink 
+                setModeHandler={props.setModeHandler} 
+                to={'Converter'} 
+                primary="Converter" 
+                icon={<Converter />} />
+              <ListItemLink 
+                setModeHandler={props.setModeHandler} 
+                to={'History'} 
+                primary="History" 
+                icon={<History />} />
+              <ListItemLink 
+                setModeHandler={props.setModeHandler} 
+                to={'Compare'} 
+                primary="Compare" 
+                icon={<Compare />} />
             </List>
-
+          
           <Divider/>
-            <ExchangeHistoryTab
+          <div className={clsx({
+                [classes.hide]: props.mode !== 'Converter'
+              })}>
+          </div>
+{/*  <div className={clsx({
+                [classes.hide]: props.mode !== 'History'
+              })}> */}
+            <UserInputTab
               convertHistoryHandler={props.convertHistoryHandler}
               currenciesList={props.currenciesList}
+              mode={props.mode}
             />
+{/*           </div> */}
+          <div className={clsx({
+                [classes.hide]: props.mode !== 'Compare'
+              })}>
+          </div>
           <Divider />  
       </Drawer>
       <main className={classes.content}>

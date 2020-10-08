@@ -17,22 +17,13 @@ import SwapVertIcon from '@material-ui/icons/SwapVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    width: 240,
-    padding: theme.spacing(2, 0),
+
   },
   selector: {
-    color: theme.palette.text.secondary,
-    justifyContent: "flex-end",
+
   },
   container: {
-    display: "flex",
-    padding: theme.spacing(1),
-    margin: theme.spacing(1,0),
-    flexShrink: 0,
-    whiteSpace: "nowrap",
-  
-    justifyContent: "flex-end",
+
   },
   button:{
   }
@@ -68,86 +59,50 @@ export default function CurrencyExchangeSelectionForm(props) {
 
     <FormControl className={classes.root}>
       <List>
-    {/*       
-        <Grid  container spacing={1} >
-          <Grid item xs={6} spacing={3}className={classes.container}>
-
-            <Grid item xs={7} className={classes.arrow}> */}
-            <ListItem>
-              <ListItemIcon>
-                <ArrowBackIosIcon />
-              </ListItemIcon>
-           {/*  </Grid>  */}
-
-          {/*   <Grid item xs={3}> */}
-              <Select
-                className={classes.selector}
-                disableUnderline
-                name="fromSelector"
-                IconComponent={iconComponent}
-                value={props.fromCurrency}
-                onChange={handleChange}
-              >
-                {props.currenciesList.map(currency => (
-                  <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-                ))}
-              </Select>
-              </ListItem>
-    {/*         </Grid>
-
-          </Grid>
-        </Grid>
- */}
-{/*         <Grid  container spacing={1} >
-          <Grid item>
+        <ListItem>
           <ListItemIcon>
-            <SwapVertIcon />  
+            <ArrowBackIosIcon />
           </ListItemIcon>
-          </Grid>
-        </Grid>
- */}
-
-            <List>
-              <ListItem
-                button
-                onClick={handleClick}
-              >
-                <ListItemIcon> 
-                  <SwapVertIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Swap Currencies" />
-              </ListItem>
-            </List>
-
-{/*         <Grid  container spacing={1} >
-          <Grid item xs={6} spacing={3} className={classes.container}>
-
-            <Grid item xs={7} className={classes.arrow}> */}
-            <ListItem>
-              <ListItemIcon> 
-                <ArrowForwardIosIcon/>
-              </ListItemIcon>
-         {/*    </Grid>
-
-            <Grid item xs={3}> */}
-              <Select
-                className={classes.selector}
-                disableUnderline
-                name="toSelector"
-                IconComponent={iconComponent}
-                value={props.toCurrency}
-                onChange={handleChange}
-              >
-                {props.currenciesList.map(currency => (
-                  <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-                ))}
-              </Select>
-              </ListItem>
-       {/*      </Grid>
-
-          </Grid>
-        </Grid> */}
-        </List>
+          <Select
+            className={classes.selector}
+            disableUnderline
+            name="fromSelector"
+            IconComponent={iconComponent}
+            value={props.fromCurrency}
+            onChange={handleChange}
+          >
+            {props.currenciesList.map(currency => (
+              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
+            ))}
+          </Select>
+        </ListItem>
+        <ListItem
+          button
+          onClick={handleClick}
+        >
+          <ListItemIcon> 
+            <SwapVertIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Swap Currencies" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon> 
+            <ArrowForwardIosIcon/>
+          </ListItemIcon>
+          <Select
+            className={classes.selector}
+            disableUnderline
+            name="toSelector"
+            IconComponent={iconComponent}
+            value={props.toCurrency}
+            onChange={handleChange}
+          >
+            {props.currenciesList.map(currency => (
+              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
+            ))}
+          </Select>
+        </ListItem>
+      </List>
     </FormControl>
     
   )
