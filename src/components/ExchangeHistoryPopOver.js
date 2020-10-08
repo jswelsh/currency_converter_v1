@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(1),
   },  
-/*   hide: {
+  hide: {
     display: "none"
-  }, */
+  },
 
 }));
 
@@ -47,9 +47,9 @@ export default function ExchangeHistoryPopOver(props) {
   return (
     <>
     <FormControl
-/*       className={clsx({
+      className={clsx({
         [classes.hide]: props.mode !== 'History'
-      })} */
+      })}
     >
       <ListItem
         button

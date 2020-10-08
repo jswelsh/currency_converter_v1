@@ -4,26 +4,36 @@ import CurrencyExchangeSelectionForm from './CurrencyExchangeSelectionForm';
 import Button from './TESTExchangeHistoryButton';
 
 import { Divider } from "@material-ui/core";
-import { fourWeeksFromToday } from '../helpers/dataHelpers'
+import { 
+  fourWeeksFromToday, 
+  shortenDateString 
+} from '../helpers/dataHelpers'
 
 
 export default function ExchangeHistoryTab(props) {
 
-  const [dateRange, setDateRange] = useState([fourWeeksFromToday(), new Date()]);
+  const [dateRange, setDateRange] = useState([
+    fourWeeksFromToday(), 
+    new Date()
+  ]);
   const [fromCurrency, setFromCurrency] = useState("CAD");
   const [toCurrency, setToCurrency] = useState("USD");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.convertHistoryHandler(fromCurrency, toCurrency, dateRange)
+    props.convertHistoryHandler(
+      fromCurrency, 
+      toCurrency, 
+      dateRange
+      )
   }
 
   const handleChange = (event) => {
     const [startDate, endDate] = event
-    const shortenDateString = (date) =>{
-      return date.toISOString().split('T')[0]
-    }
-    setDateRange([shortenDateString(startDate), shortenDateString(endDate)])
+    setDateRange(
+      [shortenDateString(startDate), 
+      shortenDateString(endDate)
+    ])
   }
 
   return (
