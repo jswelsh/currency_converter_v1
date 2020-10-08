@@ -1,6 +1,11 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
+// const SET_APP_DATA = "SET_APP_DATA";
+/* const SET_RESULT = 'SET_RESULT';
+const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
+const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
+const SET_AMOUNT = "SET_AMOUNT"; */
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_HISTORY = 'SET_HISTORY';
 const SET_MODE = 'SET_MODE';
@@ -9,6 +14,14 @@ const getCurrencies = axios.get('https://api.exchangeratesapi.io/latest');
 
 const reducer = (state, action) => {
   switch (action.type) {
+    /* case 'SET_RESULT':
+      return { ...state, result: action.result };
+    case 'SET_FROM_CURRENCY':
+      return { ...state, fromCurrency: action.currency };
+    case 'SET_TO_CURRENCY':
+      return { ...state, toCurrency: action.currency };
+    case 'SET_AMOUNT':
+      return { ...state, amount: action.amount }; */
     case 'SET_CURRENCIES_LIST':
       return { ...state, currenciesList: action.currenciesList };
     case 'SET_HISTORY':
@@ -22,19 +35,61 @@ const reducer = (state, action) => {
 export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
     result: null,
+/*     fromCurrency: 'CAD',
+    toCurrency: 'USD',
+    amount: 1, */
     currenciesList: [],
     history: [],
-    mode: 'History',
+    mode: 'History Graph',
   });
 
+  
+  /* const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency }); };
+  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency }); };
+  const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); };
+  const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; */
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
   const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
-  const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
-    let [startDate, endDate] = dateRange;
-    const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&`;
+  /* const selectHandler = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
 
+    if (name === 'fromSelector') {
+      setFromCurrency(value);
+    } else if (name === 'toSelector') {
+      setToCurrency(value);
+    } else if (name === 'amount') {
+      setAmount(value);
+    }
+  }; */
+
+ /*  const convertHandler = () => {
+    const latestURL = 'https://api.exchangeratesapi.io/latest?symbols=';
+    if (state.fromCurrency !== state.toCurrency) {
+      axios
+        .get(`${
+          latestURL}${
+          state.fromCurrency}&symbols=${
+          state.toCurrency}`)
+        .then((res) => {
+          const result = state.amount * res.data.rates[state.toCurrency];
+          setResult(result.toFixed(5));
+        })
+        .catch((error) => {
+          console.log('Opps', error.message);
+        });
+    } else {
+      setResult('You cant convert the same currency!');
+    }
+  }; */
+
+  const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
+    let [startDate, endDate] = dateRange
+
+    const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&`;
     if (fromCurrency !== toCurrency) {
       axios
         .get(`${
@@ -66,11 +121,6 @@ export default function useAppData() {
     }
   };
 
-  const setModeHandler = (mode) => {
-    setMode(mode)
-    console.log(mode, "hi")
-  }
-
   useEffect(() => {
     getCurrencies
       .then((res) => {
@@ -80,6 +130,10 @@ export default function useAppData() {
           // put in an error check for only valid currency prefixes?
           currenciesList.push(key);
         });
+/*    dispatch({
+          type: SET_CURRENCIES_LIST,
+          currenciesList,
+        }); */
         setCurrenciesList(currenciesList)
       })
       .catch((err) => {
@@ -89,7 +143,8 @@ export default function useAppData() {
 
   return {
     state,
+/*     convertHandler, */
     convertHistoryHandler,
-    setModeHandler
+/*     selectHandler, */
   };
 }

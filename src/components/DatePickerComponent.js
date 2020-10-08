@@ -12,19 +12,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DatePickerComponent(props) {
   const classes = useStyles();
-  const lastFourWeeks = function () {
-    const day = new Date();
-    const FourWeeksAgo = new Date(day.getFullYear(), day.getMonth(), day.getDate() - 28).toISOString().split('T')[0];
-    return FourWeeksAgo;
-  };
-  const [date, changeDate] = useState([ lastFourWeeks(), new Date()]);
+
   return (
     
-    <LocalizationProvider dateAdapter={DayjsAdapter}>
+    <LocalizationProvider 
+      dateAdapter={DayjsAdapter}
+      >
       <DateRangePicker
         calendars={1}
-        value={date}
-        onChange={(newDate) => changeDate(newDate)}
+        value={props.dateRange}
+        onChange={props.handleChange}
         renderInput={(startProps, endProps) => (
           <React.Fragment >
             <TextField label='From' {...startProps}/>
