@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 import { Link  } from 'react-router-dom';
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { 
   Drawer, 
   AppBar,
@@ -16,16 +16,16 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText 
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import History from "@material-ui/icons/Timeline";
-import Converter from "@material-ui/icons/Transform";
-import Compare from "@material-ui/icons/Sort";
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import History from '@material-ui/icons/Timeline';
+import Converter from '@material-ui/icons/Transform';
+import Compare from '@material-ui/icons/Sort';
 
-import UserInputTab from "./UserInputTab";
-import ConverterTab from "./ConverterTab";
+import UserInputTab from './UserInputTab';
+import ConverterTab from './ConverterTab';
 
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
@@ -34,7 +34,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    display: 'flex',
     backgroundColor: "#222222"
   },
   appBar: {

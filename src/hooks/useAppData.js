@@ -24,7 +24,7 @@ export default function useAppData() {
     result: null,
     currenciesList: [],
     history: [],
-    mode: 'History',
+    mode: 'Compare',
   });
 
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };

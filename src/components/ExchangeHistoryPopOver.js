@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(1),
   },  
-  hide: {
+/*   hide: {
     display: "none"
   },
-
+ */
 }));
 
 
@@ -46,45 +46,45 @@ export default function ExchangeHistoryPopOver(props) {
 
   return (
     <>
-    <FormControl
-      className={clsx({
-        [classes.hide]: props.mode !== 'History'
-      })}
-    >
-      <ListItem
-        button
-        onClick={handleClick}
+      <FormControl
+/*    className={clsx({
+          [classes.hide]: props.mode !== 'History'
+        })} */
       >
-        <ListItemIcon>
-          <CalendarIcon />
-        </ListItemIcon>
-        <ListItemText primary={'Date Range'} />
-      </ListItem>
-    </FormControl>
-      <Popover
-        classes={{
-          paper: classes.paper,
-        }} 
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'right',
-        }}
-        transformOrigin={{
-          vertical: 'center',
-          horizontal: 'left',
-        }}
-      >
-        <Typography className={classes.typography}>To view the exchange history of Foo and Bar, choose a date range.</Typography>
-        <DatePickerComponent 
-          dateRange={props.dateRange}
-          handleChange={props.handleChange}
-        />
-      </Popover>
-    </>
+        <ListItem
+          button
+          onClick={handleClick}
+        >
+          <ListItemIcon>
+            <CalendarIcon />
+          </ListItemIcon>
+          <ListItemText primary={'Date Range'} />
+        </ListItem>
+      </FormControl>
+        <Popover
+          classes={{
+            paper: classes.paper,
+          }} 
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'center',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'center',
+            horizontal: 'left',
+          }}
+        >
+          <Typography className={classes.typography}>To view the exchange history of Foo and Bar, choose a date range.</Typography>
+          <DatePickerComponent 
+            dateRange={props.dateRange}
+            handleChange={props.handleChange}
+          />
+        </Popover> 
+      </>
   );
 }
 

@@ -3,19 +3,15 @@ import ExchangeHistoryPopOver from './ExchangeHistoryPopOver';
 import SelectionForm from './SelectionForm';
 import Button from './Button';
 
-import { Divider } from "@material-ui/core";
+import { Divider } from '@material-ui/core';
 import { 
-  fourWeeksFromToday, 
+  initializeDateRange, 
   shortenDateString 
 } from '../helpers/dataHelpers'
 
 
 export default function ExchangeHistoryTab(props) {
-
-  const [dateRange, setDateRange] = useState([
-    fourWeeksFromToday(), 
-    new Date()
-  ]);
+  const [dateRange, setDateRange] = useState(initializeDateRange());
   const [baseCurrency, setBaseCurrency] = useState('CAD')
   const [fromCurrency, setFromCurrency] = useState('CAD');
   const [toCurrency, setToCurrency] = useState('USD');
@@ -28,7 +24,6 @@ export default function ExchangeHistoryTab(props) {
       dateRange
       )
   }
-
   const handleChange = (event) => {
     const [startDate, endDate] = event
     setDateRange(
@@ -39,12 +34,6 @@ export default function ExchangeHistoryTab(props) {
 
   return (
   <>
-{/*     <CompareSelectionForm 
-      baseCurrency={baseCurrency}
-      setBaseCurrency={setBaseCurrency}
-      currenciesList={props.currenciesList}
-      mode={props.mode}
-    /> */}
     <SelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
@@ -56,11 +45,13 @@ export default function ExchangeHistoryTab(props) {
       mode={props.mode}
     />
     <Divider />
-    <ExchangeHistoryPopOver
-      dateRange={dateRange}
-      handleChange={handleChange}
-      mode={props.mode}
-    />
+    {props.mode === 'History' && (
+      <ExchangeHistoryPopOver
+        dateRange={dateRange}
+        handleChange={handleChange}
+        mode={props.mode}
+      /> 
+    )}
     {/* </div> */}
 
     <Button       
