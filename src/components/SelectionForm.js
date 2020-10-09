@@ -1,84 +1,21 @@
-import React, { useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import { 
-  Select, 
-  MenuItem, 
-  Grid, 
   FormControl, 
   List,
   ListItem,
   ListItemText,
   ListItemIcon, 
 } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
+import { handleClick } from '../helpers/selectionHelper'
 import SelectionComponent from './SelectionComponent'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    
-  },
-  selector: {
-
-  },
-  container: {
-
-  },
-  button:{
-  }
-}));
-
 export default function HistorySelectionForm(props) {
-  const classes = useStyles()
-
-  const handleClick = () => {
-      const [newFromCur, newToCur] = [props.toCurrency, props.fromCurrency]
-      props.setFromCurrency(newFromCur)
-      props.setToCurrency(newToCur)
-  }
-
-  const handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-
-    if(name === "fromSelector"){
-      props.setFromCurrency(value)
-    } else if(name === "toSelector"){
-      props.setToCurrency(value)
-    } else if(name === "baseSelector"){
-      props.setBaseCurrency(value)
-    }
-  }
-
-  const iconComponent = (props) => {
-    return (
-      <ExpandMoreIcon /* className={props.className + " " + minimalSelectClasses.icon} *//>
-    )};
-  
   return (
-
-    <FormControl className={classes.root}>
+    <FormControl>
       <List>
-   {/*      <ListItem>
-          <ListItemIcon>
-            <ArrowBackIosIcon />
-          </ListItemIcon>
-          <Select
-            disableUnderline
-            name="fromSelector"
-            IconComponent={iconComponent}
-            value={props.fromCurrency}
-            onChange={handleChange}
-          >
-            {props.currenciesList.map(currency => (
-              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-            ))}
-          </Select>
-        </ListItem>
-         */}
         {props.mode === 'History' && (
           <>
             <SelectionComponent 
@@ -86,26 +23,26 @@ export default function HistorySelectionForm(props) {
               icon={<ArrowBackIosIcon />}
               name={'fromSelector'}
               value={props.fromCurrency}
-              handleChange={handleChange}
+              setter={props.setFromCurrency}
               currenciesList={props.currenciesList
               }
             />
             <ListItem
               button
-              onClick={handleClick}
+              onClick={(event) => handleClick(props)}
             >
               <ListItemIcon> 
                 <SwapVertIcon/>
               </ListItemIcon>
               <ListItemText primary="Swap Currencies" />
             </ListItem>
-          
+
             <SelectionComponent 
               props={props.mode}
               icon={<ArrowForwardIosIcon />}
               name={'toSelector'}
               value={props.toCurrency}
-              handleChange={handleChange}
+              setter={props.setToCurrency}
               currenciesList={props.currenciesList}
             />
           </>
@@ -116,28 +53,10 @@ export default function HistorySelectionForm(props) {
             icon={<ArrowBackIosIcon />}
             name={'baseSelector'}
             value={props.baseCurrency}
-            handleChange={handleChange}
+            setter={props.setBaseCurrency}
             currenciesList={props.currenciesList}
           />
         )}
-
-
-{/*         <ListItem>
-          <ListItemIcon> 
-            <ArrowForwardIosIcon/>
-          </ListItemIcon>
-          <Select
-            disableUnderline
-            name="toSelector"
-            IconComponent={iconComponent}
-            value={props.toCurrency}
-            onChange={handleChange}
-          >
-            {props.currenciesList.map(currency => (
-              <MenuItem key={currency} value={currency}>{currency}</MenuItem>
-            ))}
-          </Select>
-        </ListItem> */}
       </List>
     </FormControl>
     

@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemIcon, 
 } from '@material-ui/core';
+import { handleChange } from '../helpers/selectionHelper'
 
 const iconComponent = () => {
   return (
@@ -13,7 +14,7 @@ const iconComponent = () => {
   )};
 
 export default function SelectionComponent (props) {
-  const {icon, name, value, handleChange, currenciesList} = props;
+  const {icon, name, value, setter, currenciesList} = props;
   return (
       <ListItem>
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
@@ -22,7 +23,7 @@ export default function SelectionComponent (props) {
           name={name}
           IconComponent={iconComponent}
           value={value}
-          onChange={handleChange}
+          onChange={(event) => handleChange(event, setter)}
         >
           {currenciesList.map(currency => (
             <MenuItem 

@@ -33,6 +33,7 @@ export default function useAppData() {
 
   const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
     let [startDate, endDate] = dateRange;
+    console.log(startDate, endDate)
     const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&`;
 
     if (fromCurrency !== toCurrency) {
