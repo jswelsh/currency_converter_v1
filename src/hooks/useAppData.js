@@ -2,15 +2,19 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
+const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
 const SET_HISTORY = 'SET_HISTORY';
 const SET_MODE = 'SET_MODE';
 
-const getCurrencies = axios.get('https://api.exchangeratesapi.io/latest');
+const latestURl = 'https://api.exchangeratesapi.io/latest'
+const getCurrencies = axios.get(latestURl);
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_CURRENCIES_LIST':
       return { ...state, currenciesList: action.currenciesList };
+    case 'SET_COMPARE_LIST':
+      return { ...state, compareList: action.compareList };
     case 'SET_HISTORY':
       return { ...state, history: action.history };
     case 'SET_MODE':
@@ -23,14 +27,27 @@ export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
     result: null,
     currenciesList: [],
+    compareList:{},
     history: [],
     mode: 'Compare',
   });
 
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
+  const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
   const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
+  const compareListHandler = (base) => {
+    console.log(base)
+    const compareURL = `${latestURl}?base=${/* state.baseCurrency */base}`
+    axios
+        .get(compareURL)
+        .then((res) => {
+          //{data{rates, base, date} }
+          setCompareList(res.data.rates)
+        })
+
+  }
   const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
     let [startDate, endDate] = dateRange;
     console.log(startDate, endDate)
@@ -67,9 +84,8 @@ export default function useAppData() {
     }
   };
 
-  const setModeHandler = (mode) => {
+  const modeHandler = (mode) => {
     setMode(mode)
-    console.log(mode, "hi")
   }
 
   useEffect(() => {
@@ -91,6 +107,7 @@ export default function useAppData() {
   return {
     state,
     convertHistoryHandler,
-    setModeHandler
+    modeHandler,
+    compareListHandler
   };
 }

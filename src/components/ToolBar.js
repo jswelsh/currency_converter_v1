@@ -25,8 +25,8 @@ import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
 
 import UserInputTab from './UserInputTab';
-import ConverterTab from './ConverterTab';
-
+/* import ConverterTab from './ConverterTab';
+ */
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ListItemLink(props) {
-  const { icon, primary, to, setModeHandler } = props;
+  const { icon, primary, to, modeHandler } = props;
 
   const renderLink = React.useMemo(
     () =>
@@ -109,7 +109,7 @@ function ListItemLink(props) {
     [to]
   );
   const onClickHandler = () => {
-    setModeHandler(primary)
+    modeHandler(primary)
   }
 
   return (
@@ -128,7 +128,7 @@ function ListItemLink(props) {
 
 ListItemLink.propTypes = {
   icon: PropTypes.element,
-  setModeHandler: PropTypes.string.isRequired,
+  modeHandler: PropTypes.string.isRequired,
   primary: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired
 };
@@ -188,7 +188,7 @@ export default function ToolBar(props) {
           })
         }}
       >
-        <div className={classes.toolbar}>
+          <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -199,47 +199,35 @@ export default function ToolBar(props) {
           </div>
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
-        <Divider />
-        {/*    <Route>
-              {({ location }) => (
-                <Typography gutterBottom>
-                  Current route: {location.pathname}
-                </Typography>
-              )}
-            </Route> */}
-            
-            <List aria-label="currency exchange views">
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'Converter'} 
-                primary="Converter" 
-                icon={<Converter />} />
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'History'} 
-                primary="History" 
-                icon={<History />} />
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'Compare'} 
-                primary="Compare" 
-                icon={<Compare />} />
-            </List>
-          
+          <Divider />    
+          <List aria-label="currency exchange views">
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'Converter'} 
+              primary="Converter" 
+              icon={<Converter />} />
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'History'} 
+              primary="History" 
+              icon={<History />} />
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'Compare'} 
+              primary="Compare" 
+              icon={<Compare />} />
+          </List>  
           <Divider/>
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'
               })}>
           </div>
-{/*  <div className={clsx({
-                [classes.hide]: props.mode !== 'History'
-              })}> */}
             <UserInputTab
               convertHistoryHandler={props.convertHistoryHandler}
+              compareListHandler={props.compareListHandler}
               currenciesList={props.currenciesList}
               mode={props.mode}
             />
-{/*           </div> */}
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Compare'
               })}>

@@ -16,13 +16,15 @@ export default function ExchangeHistoryTab(props) {
   const [fromCurrency, setFromCurrency] = useState('CAD');
   const [toCurrency, setToCurrency] = useState('USD');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleHistorySubmit = (event) => {
     props.convertHistoryHandler(
       fromCurrency, 
       toCurrency, 
       dateRange
       )
+  }
+  const handleCompareSubmit = () => {
+    props.compareListHandler(baseCurrency)
   }
   const handleChange = (event) => {
     const [startDate, endDate] = event
@@ -31,7 +33,7 @@ export default function ExchangeHistoryTab(props) {
       shortenDateString(endDate)
     ])
   }
-
+  
   return (
   <>
     <SelectionForm 
@@ -53,10 +55,18 @@ export default function ExchangeHistoryTab(props) {
       /> 
     )}
     {/* </div> */}
-
+    {props.mode === 'History' && (
     <Button       
-      handleSubmit={handleSubmit}
+      handleSubmit={handleHistorySubmit}
+      primary='Generate Graph'
     />
+    )}
+    {props.mode === 'Compare' && (
+    <Button       
+      handleSubmit={handleCompareSubmit}
+      primary='Compare Currency'
+    />
+    )}
   </>
   )
 }

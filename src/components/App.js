@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-/* import Converter from './converter/Converter'; */
 import ExchangeHistoryGraph from './ExchangeHistoryGraph';
 import useAppData from '../hooks/useAppData';
 import { BrowserRouter as Router, Route} from "react-router-dom";
@@ -12,10 +11,9 @@ import ToolBar from './ToolBar';
 export default function App() {
   const {
     state,
-  /*   convertHandler, */
     convertHistoryHandler,
-    setModeHandler
-    /* selectHandler, */
+    modeHandler,
+    compareListHandler
   } = useAppData();
 
   return (
@@ -24,7 +22,8 @@ export default function App() {
         <div className="App">
         <ToolBar 
           convertHistoryHandler={convertHistoryHandler}
-          setModeHandler={setModeHandler}
+          modeHandler={modeHandler}
+          compareListHandler={compareListHandler}
           currenciesList={state.currenciesList}
           mode={state.mode}
           />

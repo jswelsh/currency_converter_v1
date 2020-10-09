@@ -10,28 +10,8 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import CalendarIcon from '@material-ui/icons/CalendarToday';
 import DatePickerComponent from "./DatePickerComponent"
-import clsx from "clsx";
-
-
-const useStyles = makeStyles((theme) => ({
-  popover: {
-    pointerEvents: 'none',
-  },
-  paper: {
-    padding: theme.spacing(3),
-  },
-  typography: {
-    padding: theme.spacing(1),
-  },  
-/*   hide: {
-    display: "none"
-  },
- */
-}));
-
 
 export default function ExchangeHistoryPopOver(props) {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -46,11 +26,7 @@ export default function ExchangeHistoryPopOver(props) {
 
   return (
     <>
-      <FormControl
-/*    className={clsx({
-          [classes.hide]: props.mode !== 'History'
-        })} */
-      >
+      <FormControl>
         <ListItem
           button
           onClick={handleClick}
@@ -62,9 +38,6 @@ export default function ExchangeHistoryPopOver(props) {
         </ListItem>
       </FormControl>
         <Popover
-          classes={{
-            paper: classes.paper,
-          }} 
           id={id}
           open={open}
           anchorEl={anchorEl}
@@ -78,7 +51,7 @@ export default function ExchangeHistoryPopOver(props) {
             horizontal: 'left',
           }}
         >
-          <Typography className={classes.typography}>To view the exchange history of Foo and Bar, choose a date range.</Typography>
+          <Typography >To view the exchange history of Foo and Bar, choose a date range.</Typography>
           <DatePickerComponent 
             dateRange={props.dateRange}
             handleChange={props.handleChange}
