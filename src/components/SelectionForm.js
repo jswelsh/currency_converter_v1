@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Select, 
@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
+import SelectionComponent from './SelectionComponent'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CurrencyExchangeSelectionForm(props) {
+export default function HistorySelectionForm(props) {
   const classes = useStyles()
 
   const handleClick = () => {
@@ -47,6 +48,8 @@ export default function CurrencyExchangeSelectionForm(props) {
       props.setFromCurrency(value)
     } else if(name === "toSelector"){
       props.setToCurrency(value)
+    } else if(name === "baseSelector"){
+      props.setBaseCurrency(value)
     }
   }
 
@@ -59,12 +62,11 @@ export default function CurrencyExchangeSelectionForm(props) {
 
     <FormControl className={classes.root}>
       <List>
-        <ListItem>
+   {/*      <ListItem>
           <ListItemIcon>
             <ArrowBackIosIcon />
           </ListItemIcon>
           <Select
-            className={classes.selector}
             disableUnderline
             name="fromSelector"
             IconComponent={iconComponent}
@@ -76,21 +78,55 @@ export default function CurrencyExchangeSelectionForm(props) {
             ))}
           </Select>
         </ListItem>
-        <ListItem
-          button
-          onClick={handleClick}
-        >
-          <ListItemIcon> 
-            <SwapVertIcon/>
-          </ListItemIcon>
-          <ListItemText primary="Swap Currencies" />
-        </ListItem>
-        <ListItem>
+         */}
+        {props.mode === 'History' && (
+          <>
+            <SelectionComponent 
+              props={props.mode}
+              icon={<ArrowBackIosIcon />}
+              name={'fromSelector'}
+              value={props.fromCurrency}
+              handleChange={handleChange}
+              currenciesList={props.currenciesList
+              }
+            />
+            <ListItem
+              button
+              onClick={handleClick}
+            >
+              <ListItemIcon> 
+                <SwapVertIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Swap Currencies" />
+            </ListItem>
+          
+            <SelectionComponent 
+              props={props.mode}
+              icon={<ArrowForwardIosIcon />}
+              name={'toSelector'}
+              value={props.toCurrency}
+              handleChange={handleChange}
+              currenciesList={props.currenciesList}
+            />
+          </>
+        )}
+        {props.mode === 'Compare' && (
+          <SelectionComponent
+            props={props.mode} 
+            icon={<ArrowBackIosIcon />}
+            name={'baseSelector'}
+            value={props.baseCurrency}
+            handleChange={handleChange}
+            currenciesList={props.currenciesList}
+          />
+        )}
+
+
+{/*         <ListItem>
           <ListItemIcon> 
             <ArrowForwardIosIcon/>
           </ListItemIcon>
           <Select
-            className={classes.selector}
             disableUnderline
             name="toSelector"
             IconComponent={iconComponent}
@@ -101,7 +137,7 @@ export default function CurrencyExchangeSelectionForm(props) {
               <MenuItem key={currency} value={currency}>{currency}</MenuItem>
             ))}
           </Select>
-        </ListItem>
+        </ListItem> */}
       </List>
     </FormControl>
     

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import ExchangeHistoryPopOver from './ExchangeHistoryPopOver';
-import CurrencyExchangeSelectionForm from './CurrencyExchangeSelectionForm';
-import Button from './TESTExchangeHistoryButton';
+import SelectionForm from './SelectionForm';
+import Button from './Button';
 
 import { Divider } from "@material-ui/core";
 import { 
@@ -16,8 +16,9 @@ export default function ExchangeHistoryTab(props) {
     fourWeeksFromToday(), 
     new Date()
   ]);
-  const [fromCurrency, setFromCurrency] = useState("CAD");
-  const [toCurrency, setToCurrency] = useState("USD");
+  const [baseCurrency, setBaseCurrency] = useState('CAD')
+  const [fromCurrency, setFromCurrency] = useState('CAD');
+  const [toCurrency, setToCurrency] = useState('USD');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,12 +39,21 @@ export default function ExchangeHistoryTab(props) {
 
   return (
   <>
-    <CurrencyExchangeSelectionForm 
+{/*     <CompareSelectionForm 
+      baseCurrency={baseCurrency}
+      setBaseCurrency={setBaseCurrency}
+      currenciesList={props.currenciesList}
+      mode={props.mode}
+    /> */}
+    <SelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
+      baseCurrency={baseCurrency}
       setFromCurrency={setFromCurrency}
       setToCurrency={setToCurrency}
+      setBaseCurrency={setBaseCurrency}
       currenciesList={props.currenciesList}
+      mode={props.mode}
     />
     <Divider />
     <ExchangeHistoryPopOver
