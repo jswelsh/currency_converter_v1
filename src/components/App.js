@@ -13,19 +13,32 @@ export default function App() {
     state,
     convertHistoryHandler,
     modeHandler,
-    compareListHandler
+    compareListHandler,
+    currencySelectHandler,
+    /* dateRangeHandler */
   } = useAppData();
 
   return (
     <main className="layout">
       <MemoryRouter>
         <div className="App">
+        <Route path="/History"  render={ () => (
+            <ExchangeHistoryGraph
+              history={state.history}
+            />)}
+          />
         <ToolBar 
+          fromCurrency={state.fromCurrency}
+          toCurrency={state.toCurrency}
+          /* dateRange={state.dateRange} */
           convertHistoryHandler={convertHistoryHandler}
           modeHandler={modeHandler}
           compareListHandler={compareListHandler}
+          /* currencySelectHandler={currencySelectHandler} */
+          /* dateRangeHandler={dateRangeHandler} */
           currenciesList={state.currenciesList}
           mode={state.mode}
+          /* setDateRange={state.setDateRange} */
           />
         
 {/*           <Route path="/Converter" render={props => (

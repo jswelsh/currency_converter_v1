@@ -11,38 +11,47 @@ import {
 
 
 export default function ExchangeHistoryTab(props) {
-  const [dateRange, setDateRange] = useState(initializeDateRange());
+/*   const [dateRange, setDateRange] = useState(initializeDateRange());
   const [baseCurrency, setBaseCurrency] = useState('CAD')
-  const [fromCurrency, setFromCurrency] = useState('CAD');
-  const [toCurrency, setToCurrency] = useState('USD');
 
-  const handleHistorySubmit = (event) => {
-    props.convertHistoryHandler(
-      fromCurrency, 
-      toCurrency, 
-      dateRange
-      )
+ */
+const [fromCurrency, setFromCurrency] = useState('CAD');
+const [toCurrency, setToCurrency] = useState('USD');
+const [dateRange, setDateRange] = useState(initializeDateRange());
+
+
+const currencySelectHandler = (mode, currency) => {
+  console.log('currency select', currency)
+  return mode === 'fromCurrency' ? setFromCurrency(currency):
+  mode === 'toCurrency' ? setToCurrency(currency) :
+  null
+}
+
+ //(fromCurrency, toCurrency, dateRange
+  const handleHistorySubmit = () => {
+    props.convertHistoryHandler(fromCurrency, toCurrency, dateRange)
   }
   const handleCompareSubmit = () => {
-    props.compareListHandler(baseCurrency)
+    props.compareListHandler()
   }
+
+  
   const handleChange = (event) => {
     const [startDate, endDate] = event
+    console.log(startDate, endDate, setDateRange)
     setDateRange(
       [shortenDateString(startDate), 
       shortenDateString(endDate)
     ])
   }
-  
   return (
   <>
     <SelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
-      baseCurrency={baseCurrency}
       setFromCurrency={setFromCurrency}
       setToCurrency={setToCurrency}
-      setBaseCurrency={setBaseCurrency}
+      currencySelectHandler={currencySelectHandler}
       currenciesList={props.currenciesList}
       mode={props.mode}
     />
@@ -51,7 +60,6 @@ export default function ExchangeHistoryTab(props) {
       <ExchangeHistoryPopOver
         dateRange={dateRange}
         handleChange={handleChange}
-        mode={props.mode}
       /> 
     )}
     {/* </div> */}

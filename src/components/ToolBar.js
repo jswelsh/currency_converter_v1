@@ -223,10 +223,16 @@ export default function ToolBar(props) {
               })}>
           </div>
             <UserInputTab
+/*               fromCurrency={props.fromCurrency}
+              toCurrency={props.toCurrency}
+              dateRange={props.dateRange}
+              dateRangeHandler={props.dateRangeHandler} */
               convertHistoryHandler={props.convertHistoryHandler}
               compareListHandler={props.compareListHandler}
+              currencySelectHandler={props.currencySelectHandler}
               currenciesList={props.currenciesList}
               mode={props.mode}
+              /* setDateRange={props.setDateRange} */
             />
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Compare'

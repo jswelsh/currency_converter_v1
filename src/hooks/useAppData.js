@@ -1,6 +1,11 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
+
+const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
+const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
+/* const SET_DATE_RANGE = 'SET_DATE_RANGE'; */
+
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
 const SET_HISTORY = 'SET_HISTORY';
@@ -9,8 +14,17 @@ const SET_MODE = 'SET_MODE';
 const latestURl = 'https://api.exchangeratesapi.io/latest'
 const getCurrencies = axios.get(latestURl);
 
+//for future refactor
+//use the reducer design pattern
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'SET_FROM_CURRENCY':
+      return { ...state, fromCurrency: action.currency };
+    case 'SET_TO_CURRENCY':
+      return { ...state, toCurrency: action.currency };
+/*     case 'SET_DATE_RANGE':
+      return { ...state, dateRange: action.dateRange }; */
+
     case 'SET_CURRENCIES_LIST':
       return { ...state, currenciesList: action.currenciesList };
     case 'SET_COMPARE_LIST':
@@ -25,21 +39,28 @@ const reducer = (state, action) => {
 };
 export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
-    result: null,
+    /* result: null, */
+/* 
+    fromCurrency: 'CAD',
+    toCurrency: 'USD', */
+   /*  dateRange: ['2020-09-01', '2020-10-01'], */
     currenciesList: [],
     compareList:{},
     history: [],
     mode: 'Compare',
   });
 
+  /* const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency }); };
+  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency }); }; */
+ /*  const setDateRange = (dateRange) => { dispatch({ type: SET_DATE_RANGE, dateRange }); }; */
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
   const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
-  const compareListHandler = (base) => {
-    console.log(base)
-    const compareURL = `${latestURl}?base=${/* state.baseCurrency */base}`
+  const compareListHandler = (fromCurrency) => {
+    console.log(fromCurrency)
+    const compareURL = `${latestURl}?base=${/* state.baseCurrency */fromCurrency}`
     axios
         .get(compareURL)
         .then((res) => {
@@ -83,10 +104,19 @@ export default function useAppData() {
       console.log("You can't convert the same currency!");
     }
   };
-
+/*   const dateRangeHandler = (range) => {
+    setDateRange(range)
+  } */
   const modeHandler = (mode) => {
     setMode(mode)
   }
+
+/*   const currencySelectHandler = (mode, currency) => {
+    console.log('currency select', currency)
+    return mode === 'fromCurrency' ? dispatch({type:SET_FROM_CURRENCY, currency}):
+    mode === 'toCurrency' ? dispatch({type:SET_TO_CURRENCY, currency}) :
+    null
+  } */
 
   useEffect(() => {
     getCurrencies
@@ -108,6 +138,8 @@ export default function useAppData() {
     state,
     convertHistoryHandler,
     modeHandler,
-    compareListHandler
+    compareListHandler,
+    /* currencySelectHandler, */
+    /* dateRangeHandler */
   };
 }

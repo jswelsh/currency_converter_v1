@@ -1,17 +1,19 @@
 //used in SelectionForm
 const handleClick = (props) => {
-  const [newFromCur, newToCur] = [props.toCurrency, props.fromCurrency]
-
-  console.log(props)
-  props.setFromCurrency(newFromCur)
-  props.setToCurrency(newToCur)
+  console.log("hi",props)
+  const {toCurrency, fromCurrency, setter} = props
+  console.log("hhhh", setter)
+  setter('fromCurrency', toCurrency)
+  setter('toCurrency', fromCurrency)
 }
 
 //used in SelectionComponent
 const handleChange = (event, setter) => {
+  console.log('handle selection component', event)
 const target = event.target;
 const value = target.value;
-setter(value)
+const name = target.name
+setter(name, value)
 }
 
 
