@@ -45,7 +45,7 @@ export default function useAppData() {
     toCurrency: 'USD', */
    /*  dateRange: ['2020-09-01', '2020-10-01'], */
     currenciesList: [],
-    compareList:{},
+    compareList:[],
     history: [],
     mode: 'Compare',
   });
@@ -62,16 +62,22 @@ export default function useAppData() {
     console.log(fromCurrency)
     const compareURL = `${latestURl}?base=${/* state.baseCurrency */fromCurrency}`
     axios
-        .get(compareURL)
-        .then((res) => {
-          //{data{rates, base, date} }
-          setCompareList(res.data.rates)
+      .get(compareURL)
+      .then((res) => {
+        const compareList = []
+        Object.entries(res.data.rates).forEach(([key,value]) => {
+          compareList.push({
+            currency: key,
+            value: value
+          })
         })
-
+        setCompareList(compareList)
+      })
   }
-  const convertHistoryHandler = (fromCurrency, toCurrency, dateRange) => {
-    let [startDate, endDate] = dateRange;
-    console.log(startDate, endDate)
+  const convertHistoryHandler = (payload) => {
+    const {fromCurrency, toCurrency, dateRange} = payload
+    const [startDate, endDate] = dateRange;
+
     const historicalURL = `https://api.exchangeratesapi.io/history?start_at=${startDate}&end_at=${endDate}&`;
 
     if (fromCurrency !== toCurrency) {
@@ -91,7 +97,7 @@ export default function useAppData() {
             });
             return history;
           };
-          /* sort the dates from "res" = {obj} payload */
+          // sort the dates from "res" = {obj} payload 
           setHistory(
             historyController(res.data.rates)
               .sort((a, b) => b.date - a.date),
@@ -104,9 +110,7 @@ export default function useAppData() {
       console.log("You can't convert the same currency!");
     }
   };
-/*   const dateRangeHandler = (range) => {
-    setDateRange(range)
-  } */
+
   const modeHandler = (mode) => {
     setMode(mode)
   }
@@ -122,7 +126,6 @@ export default function useAppData() {
     getCurrencies
       .then((res) => {
         const currenciesList = [res.data.base];
-
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?
           currenciesList.push(key);
@@ -139,7 +142,5 @@ export default function useAppData() {
     convertHistoryHandler,
     modeHandler,
     compareListHandler,
-    /* currencySelectHandler, */
-    /* dateRangeHandler */
   };
 }

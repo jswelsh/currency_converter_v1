@@ -117,7 +117,12 @@ function ListItemLink(props) {
       <ListItem
         button
         component={renderLink}
-        onClick={onClickHandler}
+        onClick={() =>{
+          onClickHandler()
+          if(primary === 'Compare'){
+            console.log(props.compare)
+          }  
+        }}
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
@@ -137,7 +142,6 @@ export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
-  /* const [calendarVisibility, calendarVisibility] = React.useState(false); */
 
 
   const handleDrawerOpen = () => {
@@ -203,19 +207,25 @@ export default function ToolBar(props) {
           <List aria-label="currency exchange views">
             <ListItemLink 
               modeHandler={props.modeHandler} 
-              to={'Converter'} 
-              primary="Converter" 
+              to={'Converter'}
+              primary={'Converter'} 
               icon={<Converter />} />
             <ListItemLink 
               modeHandler={props.modeHandler} 
               to={'History'} 
-              primary="History" 
+              primary={'History'} 
               icon={<History />} />
             <ListItemLink 
               modeHandler={props.modeHandler} 
               to={'Compare'} 
-              primary="Compare" 
-              icon={<Compare />} />
+              primary={'Compare'}
+              icon={<Compare />} 
+              compare={{
+                compareListHandler:props.compareListHandler,
+                compareList:props.compareList
+              }}
+              />
+              
           </List>  
           <Divider/>
           <div className={clsx({
@@ -231,6 +241,7 @@ export default function ToolBar(props) {
               compareListHandler={props.compareListHandler}
               currencySelectHandler={props.currencySelectHandler}
               currenciesList={props.currenciesList}
+              compareList={props.compareList}
               mode={props.mode}
               /* setDateRange={props.setDateRange} */
             />

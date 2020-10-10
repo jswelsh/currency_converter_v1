@@ -13,7 +13,6 @@ import { handleClick } from '../helpers/selectionHelper'
 import SelectionComponent from './SelectionComponent'
 
 export default function HistorySelectionForm(props) {
-  console.log("history form", props.fromCurrency)
   return (
     <FormControl>
       <List>

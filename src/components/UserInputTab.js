@@ -21,24 +21,15 @@ const [dateRange, setDateRange] = useState(initializeDateRange());
 
 
 const currencySelectHandler = (mode, currency) => {
-  console.log('currency select', currency)
+
   return mode === 'fromCurrency' ? setFromCurrency(currency):
   mode === 'toCurrency' ? setToCurrency(currency) :
   null
 }
 
- //(fromCurrency, toCurrency, dateRange
-  const handleHistorySubmit = () => {
-    props.convertHistoryHandler(fromCurrency, toCurrency, dateRange)
-  }
-  const handleCompareSubmit = () => {
-    props.compareListHandler()
-  }
-
-  
   const handleChange = (event) => {
     const [startDate, endDate] = event
-    console.log(startDate, endDate, setDateRange)
+
     setDateRange(
       [shortenDateString(startDate), 
       shortenDateString(endDate)
@@ -65,13 +56,22 @@ const currencySelectHandler = (mode, currency) => {
     {/* </div> */}
     {props.mode === 'History' && (
     <Button       
-      handleSubmit={handleHistorySubmit}
+      handleSubmit={()=>props
+        .convertHistoryHandler({
+          fromCurrency, 
+          toCurrency, 
+          dateRange
+        })
+        /*  handleHistorySubmit({fromCurrency, toCurrency, dateRange}) */
+      }
       primary='Generate Graph'
     />
     )}
     {props.mode === 'Compare' && (
     <Button       
-      handleSubmit={handleCompareSubmit}
+      handleSubmit={()=>
+        props.compareListHandler(fromCurrency)
+      }
       primary='Compare Currency'
     />
     )}
