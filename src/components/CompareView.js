@@ -21,6 +21,81 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
+const iconHandler(currency){
+  switch (key) {
+    case value: CAD
+    
+      break;
+    case value: HKD
+      break;
+    case value: ISK
+      break;
+    case value: PHP
+      break;
+    case value: DKK
+      break;
+    case value: HUF
+      break;
+    case value: CZK
+      break;
+    case value: GBP
+      break;
+    case value: RON
+      break;
+    case value: SEK
+      break;
+    case value: IDR
+      break;
+    case value: INR
+      break;
+    case value: BRL
+      break;
+    case value: RUB
+      break;
+    case value: HRK
+      break;
+    case value: JPY
+      break;
+    case value: THB
+      break;
+    case value: CHF
+      break;
+    case value: EUR
+      break;
+    case value: MYR
+      break;
+    case value: BGN
+      break;
+    case value: TRY
+      break;
+    case value: CNY
+      break;
+    case value: NOK
+      break;
+    case value: NZD
+      break;
+    case value: ZAR
+      break;
+    case value: USD
+      break;
+    case value: MXN
+      break;
+    case value: SGD
+      break;
+    case value: AUD
+      break;
+    case value: ILS
+      break;
+    case value: KRW
+      break;
+    case value: PLN
+      break;
+  
+    default:
+      break;
+  }
+
+}
 
 export default function CompareView(props){
   const classes = useStyles();
@@ -34,6 +109,7 @@ export default function CompareView(props){
         {(props.compareList).map((payload) => (
           <Grid item xs={12} alignItems="center" >
             <CompareListItem
+            icon={iconHandler(payload.currency)}
             currency={payload.currency}
             primary={payload.value}
             />
@@ -49,40 +125,75 @@ currency: key,
 value: value
 
 rates: {
-CAD: 1,
-HKD: 5.8816111183,
-ISK: 104.7484236263,
-PHP: 36.7282203063,
-DKK: 4.7884442157,
-HUF: 229.236906447,
-CZK: 17.4430575216,
-GBP: 0.5865847381,
-RON: 3.1344099858,
-SEK: 6.7044138464,
-IDR: 11156.8717024836,
-INR: 55.461652297,
-BRL: 4.2334319907,
-RUB: 58.5132544074,
-HRK: 4.874855231,
-JPY: 80.395058551,
-THB: 23.5677518981,
-CHF: 0.6931540342,
-EUR: 0.6434178355,
-MYR: 3.1403937717,
-BGN: 1.2583966028,
-TRY: 6.0017372282,
-CNY: 5.0860249646,
-NOK: 6.988997555,
-NZD: 1.1466349247,
-ZAR: 12.5025736713,
-USD: 0.758911337,
-MXN: 16.1390425943,
-SGD: 1.0285677519,
-AUD: 1.0555269592,
-ILS: 2.5645991507,
-KRW: 868.9486552567,
-PLN: 2.8762064084
-},
+case value: CAD
+break;
+case value: HKD
+break;
+case value: ISK
+break;
+case value: PHP
+break;
+case value: DKK
+break;
+case value: HUF
+break;
+case value: CZK
+break;
+case value: GBP
+break;
+case value: RON
+break;
+case value: SEK
+break;
+case value: IDR
+break;
+case value: INR
+break;
+case value: BRL
+break;
+case value: RUB
+break;
+case value: HRK
+break;
+case value: JPY
+break;
+case value: THB
+break;
+case value: CHF
+break;
+case value: EUR
+break;
+case value: MYR
+break;
+case value: BGN
+break;
+case value: TRY
+break;
+case value: CNY
+break;
+case value: NOK
+break;
+case value: NZD
+break;
+case value: ZAR
+break;
+case value: USD
+break;
+case value: MXN
+break;
+case value: SGD
+break;
+case value: AUD
+break;
+case value: ILS
+break;
+case value: KRW
+break;
+case value: PLN
+break;
+
+
+
 base: "CAD",
 date: "2020-10-09"
 }
