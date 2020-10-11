@@ -1,3 +1,52 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
@@ -124,7 +173,7 @@ export default function useAppData() {
   useEffect(() => {
     getCurrencies
       .then((res) => {
-        const currenciesList = [];
+        const currenciesList = [res.data.base];
 
         Object.keys(res.data.rates).forEach((key) => {
           // put in an error check for only valid currency prefixes?

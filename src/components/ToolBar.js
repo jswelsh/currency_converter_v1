@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 import { Link  } from 'react-router-dom';
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { 
   Drawer, 
   AppBar,
@@ -16,17 +16,17 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText 
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import History from "@material-ui/icons/Timeline";
-import Converter from "@material-ui/icons/Transform";
-import Compare from "@material-ui/icons/Sort";
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import History from '@material-ui/icons/Timeline';
+import Converter from '@material-ui/icons/Transform';
+import Compare from '@material-ui/icons/Sort';
 
-import UserInputTab from "./UserInputTab";
-import ConverterTab from "./ConverterTab";
-
+import UserInputTab from './UserInputTab';
+/* import ConverterTab from './ConverterTab';
+ */
 
 /* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
@@ -34,7 +34,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
+    display: 'flex',
     backgroundColor: "#222222"
   },
   appBar: {
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ListItemLink(props) {
-  const { icon, primary, to, setModeHandler } = props;
+  const { icon, primary, to, modeHandler } = props;
 
   const renderLink = React.useMemo(
     () =>
@@ -109,7 +109,7 @@ function ListItemLink(props) {
     [to]
   );
   const onClickHandler = () => {
-    setModeHandler(primary)
+    modeHandler(primary)
   }
 
   return (
@@ -117,7 +117,12 @@ function ListItemLink(props) {
       <ListItem
         button
         component={renderLink}
-        onClick={onClickHandler}
+        onClick={() =>{
+          onClickHandler()
+          if(primary === 'Compare'){
+            console.log(props.compare)
+          }  
+        }}
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
@@ -128,7 +133,7 @@ function ListItemLink(props) {
 
 ListItemLink.propTypes = {
   icon: PropTypes.element,
-  setModeHandler: PropTypes.string.isRequired,
+  modeHandler: PropTypes.string.isRequired,
   primary: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired
 };
@@ -137,7 +142,6 @@ export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
-  /* const [calendarVisibility, calendarVisibility] = React.useState(false); */
 
 
   const handleDrawerOpen = () => {
@@ -188,7 +192,7 @@ export default function ToolBar(props) {
           })
         }}
       >
-        <div className={classes.toolbar}>
+          <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -199,47 +203,48 @@ export default function ToolBar(props) {
           </div>
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
-        <Divider />
-        {/*    <Route>
-              {({ location }) => (
-                <Typography gutterBottom>
-                  Current route: {location.pathname}
-                </Typography>
-              )}
-            </Route> */}
-            
-            <List aria-label="currency exchange views">
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'Converter'} 
-                primary="Converter" 
-                icon={<Converter />} />
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'History'} 
-                primary="History" 
-                icon={<History />} />
-              <ListItemLink 
-                setModeHandler={props.setModeHandler} 
-                to={'Compare'} 
-                primary="Compare" 
-                icon={<Compare />} />
-            </List>
-          
+          <Divider />    
+          <List aria-label="currency exchange views">
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'Converter'}
+              primary={'Converter'} 
+              icon={<Converter />} />
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'History'} 
+              primary={'History'} 
+              icon={<History />} />
+            <ListItemLink 
+              modeHandler={props.modeHandler} 
+              to={'Compare'} 
+              primary={'Compare'}
+              icon={<Compare />} 
+              compare={{
+                compareListHandler:props.compareListHandler,
+                compareList:props.compareList
+              }}
+              />
+              
+          </List>  
           <Divider/>
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'
               })}>
           </div>
-{/*  <div className={clsx({
-                [classes.hide]: props.mode !== 'History'
-              })}> */}
             <UserInputTab
+/*               fromCurrency={props.fromCurrency}
+              toCurrency={props.toCurrency}
+              dateRange={props.dateRange}
+              dateRangeHandler={props.dateRangeHandler} */
               convertHistoryHandler={props.convertHistoryHandler}
+              compareListHandler={props.compareListHandler}
+              currencySelectHandler={props.currencySelectHandler}
               currenciesList={props.currenciesList}
+              compareList={props.compareList}
               mode={props.mode}
+              /* setDateRange={props.setDateRange} */
             />
-{/*           </div> */}
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Compare'
               })}>

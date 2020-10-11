@@ -5,12 +5,20 @@ function shortenDateString(string) {
 }
 
 function fourWeeksFromToday() {
-    const day = new Date();
+    const today = new Date();
     const FourWeeksAgo = new Date(
-      day.getFullYear(), 
-      day.getMonth(), 
-      day.getDate() - 28)
+      today.getFullYear(), 
+      today.getMonth(), 
+      today.getDate() - 28)
     return shortenDateString(FourWeeksAgo);
   }
 
-  export { fourWeeksFromToday, shortenDateString }
+  function initializeDateRange() {
+    const today = shortenDateString(new Date())
+    return [
+      fourWeeksFromToday(),
+      today
+    ]
+  }
+
+  export { fourWeeksFromToday, shortenDateString, initializeDateRange }
