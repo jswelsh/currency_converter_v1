@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
 export default function CompareListItem (props) {
   const classes = useStyles();
 
-  const {/* icon, */ primary, currency} = props;
+  const {icon, primary, currency} = props;
 
   return (
     <ListItem className={classes.ListItem} >
-{/*       <ListItemIcon>
-        {icon}
-      </ListItemIcon> */}
       <ListItemText primary={currency} />
+      <ListItemIcon>
+        {icon}
+      </ListItemIcon>
       <ListItemText primary={primary}/>
     </ListItem>
   )

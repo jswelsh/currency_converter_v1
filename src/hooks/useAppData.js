@@ -68,7 +68,7 @@ export default function useAppData() {
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({
             currency: key,
-            value: value.toFixed(2)
+            value: value.toFixed(2) 
           })
         })
         setCompareList(compareList)
