@@ -12,29 +12,27 @@ const iconComponent = () => {
   return (
     <ExpandMoreIcon />
   )};
-
+  
 export default function SelectionComponent (props) {
   const {icon, name, value, setter, currenciesList} = props;
   return (
-      <ListItem>
-        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-        <Select
-          disableUnderline
-          name={name}
-          IconComponent={iconComponent}
-          value={value}
-          onChange={(event) => handleChange(event, setter)}
-        >
-          {currenciesList.map(currency => (
-            <MenuItem 
-              key={currency} 
-              value={currency}
-            >{currency}
-            </MenuItem>
-          ))}
-        </Select>
-      </ListItem>
-  
+    <ListItem>
+      {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+      <Select
+        disableUnderline
+        name={name}
+        IconComponent={iconComponent}
+        value={value}
+        onChange={(event) => handleChange(event, setter)}
+      >
+        {currenciesList.map(currency => (
+          <MenuItem 
+            key={currency} 
+            value={currency}
+          >{currency}
+          </MenuItem>
+        ))}
+      </Select>
+    </ListItem>
   )
-
 }

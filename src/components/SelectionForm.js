@@ -1,16 +1,16 @@
 import React from 'react';
 import { 
-  FormControl, 
+  FormControl,
   List,
   ListItem,
   ListItemText,
-  ListItemIcon, 
+  ListItemIcon,
 } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
-import { handleClick } from '../helpers/selectionHelper'
-import SelectionComponent from './SelectionComponent'
+import { handleClick } from '../helpers/selectionHelper';
+import SelectionComponent from './SelectionComponent';
 
 export default function HistorySelectionForm(props) {
   return (
