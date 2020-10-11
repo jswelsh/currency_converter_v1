@@ -21,8 +21,45 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-const iconHandler(currency){
-  switch (key) {
+const iconHandler ={
+    CAD : 'CA',
+    HKD : 'HK',
+    ISK : 'IS',
+    PHP : 'PH',
+    DKK : 'DK',
+    HUF : 'HU',
+    CZK : 'CZ',
+    GBP : 'GB',
+    RON : 'RO',
+    SEK : 'SE',
+    IDR : 'ID',
+    INR : 'IN',
+    BRL : 'BR',
+    RUB : 'RU',
+    HRK : 'HR',
+    JPY : 'JP',
+    THB : 'TH',
+    CHF : 'CH',
+    EUR : 'EUROPEAN_UNION',
+    MYR : 'MY',
+    BGN : 'BG',
+    TRY : 'TR',
+    CNY : 'CN',
+    NOK : 'NO',
+    NZD : 'NZ',
+    ZAR : 'ZA',
+    USD : 'US',
+    MXN : 'MX',
+    SGD : 'SG',
+    AUD : 'AU',
+    ILS : 'IL',
+    KRW : 'KR',
+    PLN : 'PL'
+  }
+}
+
+
+  /*switch (key) { 
     case value: CAD
     
       break;
@@ -90,7 +127,7 @@ const iconHandler(currency){
       break;
     case value: PLN
       break;
-  
+   */
     default:
       break;
   }
