@@ -10,7 +10,8 @@ import {
 } from '@material-ui/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
-
+//based off of 
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   ListItem: {
@@ -19,8 +20,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary
   },
   Paper:{
-    marginLeft: theme.spacing(40),
-    marginRight: theme.spacing(40)
+    /* `calc(100% - ${drawerWidth}px)` */
+    marginLeft: `${drawerWidth+30}px`,
+    marginRight: theme.spacing(20)
   }
 }));
 

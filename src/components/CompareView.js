@@ -11,9 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   CompareListItem: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
+    backgroundColor: '#222222',
   },
 }));
 
@@ -21,7 +19,7 @@ export default function CompareView(props){
   const classes = useStyles();
 
   return(
-    <List>
+    <List className={classes.CompareListItem} >
       <Grid container spacing={2} alignItems="center" >
         {/* <Paper className={classes.paper}>xs=12</Paper> */}
       {(props.compareList).map((payload) => (

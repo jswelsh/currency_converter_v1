@@ -72,7 +72,7 @@ const currencySelectHandler = (mode, currency) => {
       handleSubmit={()=>
         props.compareListHandler(fromCurrency)
       }
-      primary='Compare Currency'
+      primary='Compare Currencies'
     />
     )}
   </>
