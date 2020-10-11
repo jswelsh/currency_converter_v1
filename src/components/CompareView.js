@@ -2,25 +2,46 @@ import { func } from 'prop-types';
 import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 import {
+  Grid,
   List,
-
+  Paper
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
 import FlagIcon from '@material-ui/icons/Flag';
 import CompareListItem from './CompareListItem'
 
-export default function compareView(props){
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  CompareListItem: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
+
+export default function CompareView(props){
+  const classes = useStyles();
   return(
     
-    <List>
-     {/*  {props.compareList} */}
-      {(props.compareList).map((payload) => (
-        <CompareListItem
-        currency={payload.currency}
-        primary={payload.value}
-        />
-      ))}
+      <List>
+        <Grid container spacing={2} alignItems="center" >
+          {/* <Paper className={classes.paper}>xs=12</Paper> */}
+       {/*  {props.compareList} */}
 
-    </List>
+        {(props.compareList).map((payload) => (
+          <Grid item xs={12} alignItems="center" >
+            <CompareListItem
+            currency={payload.currency}
+            primary={payload.value}
+            />
+          </Grid>
+        ))}
+        </Grid>
+      </List>
+    
   )
 }
 /* 

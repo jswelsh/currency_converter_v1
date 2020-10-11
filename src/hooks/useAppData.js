@@ -68,7 +68,7 @@ export default function useAppData() {
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({
             currency: key,
-            value: value
+            value: value.toFixed(2)
           })
         })
         setCompareList(compareList)
@@ -121,6 +121,7 @@ export default function useAppData() {
     mode === 'toCurrency' ? dispatch({type:SET_TO_CURRENCY, currency}) :
     null
   } */
+  
 
   useEffect(() => {
     getCurrencies
@@ -135,6 +136,7 @@ export default function useAppData() {
       .catch((err) => {
         console.log('Something went wrong', err);
       });
+    compareListHandler('CAD')
   }, []); // Empty array to only run once on mount.
 
   return {
