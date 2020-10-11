@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ExchangeHistoryPopOver from './ExchangeHistoryPopOver';
 import SelectionForm from './SelectionForm';
 import Button from './Button';
+import InputAmountField from './InputAmountField';
 
 import { Divider } from '@material-ui/core';
 import { 
@@ -68,12 +69,15 @@ const currencySelectHandler = (mode, currency) => {
     />
     )}
     {props.mode === 'Compare' && (
-    <Button       
-      handleSubmit={()=>
-        props.compareListHandler(fromCurrency)
-      }
-      primary='Compare Currencies'
-    />
+      <>
+        <InputAmountField/>
+        <Button       
+          handleSubmit={()=>
+            props.compareListHandler(fromCurrency)
+          }
+          primary='Compare Currencies'
+        />
+      </>
     )}
   </>
   )
