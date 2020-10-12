@@ -7,6 +7,8 @@ import {
   ListItemIcon, 
 } from '@material-ui/core';
 import { handleChange } from '../helpers/selectionHelper'
+import { iconHandler } from '../helpers/compareHelper'
+
 
 const iconComponent = () => {
   return (
@@ -29,7 +31,11 @@ export default function SelectionComponent (props) {
           <MenuItem 
             key={currency} 
             value={currency}
-          >{currency}
+          >
+            <ListItemIcon>
+              {iconHandler(currency)}
+            </ListItemIcon>
+            {currency}
           </MenuItem>
         ))}
       </Select>

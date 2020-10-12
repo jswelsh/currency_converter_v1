@@ -8,6 +8,8 @@ import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
 import ToolBar from './ToolBar';
 import CompareView from './CompareView'
+import ConvertView from './ConvertView'
+
 
 export default function App() {
   const {
