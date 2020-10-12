@@ -12,20 +12,17 @@ import {
 
 
 export default function ExchangeHistoryTab(props) {
-/*   const [dateRange, setDateRange] = useState(initializeDateRange());
-  const [baseCurrency, setBaseCurrency] = useState('CAD')
-
- */
 const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD');
 const [dateRange, setDateRange] = useState(initializeDateRange());
 
 
-const currencySelectHandler = (mode, currency) => {
-
-  return mode === 'fromCurrency' ? setFromCurrency(currency):
-  mode === 'toCurrency' ? setToCurrency(currency) :
-  null
+const currencySelectHandler = (mode, currency) => { 
+  return (
+    mode === 'fromCurrency' ? setFromCurrency(currency):
+    mode === 'toCurrency' ? setToCurrency(currency) :
+    null
+  )
 }
 
   const handleChange = (event) => {

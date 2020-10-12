@@ -17,8 +17,7 @@ export default function App() {
     convertHistoryHandler,
     modeHandler,
     compareListHandler,
-    currencySelectHandler,
-    /* dateRangeHandler */
+
   } = useAppData();
 
   return (
@@ -33,30 +32,15 @@ export default function App() {
         <ToolBar 
           fromCurrency={state.fromCurrency}
           toCurrency={state.toCurrency}
-          /* dateRange={state.dateRange} */
           convertHistoryHandler={convertHistoryHandler}
           modeHandler={modeHandler}
           compareListHandler={compareListHandler}
           compareList={state.compareList}
-          /* currencySelectHandler={currencySelectHandler} */
-          /* dateRangeHandler={dateRangeHandler} */
           currenciesList={state.currenciesList}
           mode={state.mode}
           /* setDateRange={state.setDateRange} */
           />
-{/*           <Route path="/Converter" render={props => (
-            <Converter
-              result={state.result}
-              fromCurrency={state.fromCurrency}
-              toCurrency={state.toCurrency}
-              amount={state.amount}
-              currenciesList={state.currenciesList}
-              convertHandler={convertHandler}
-              selectHandler={selectHandler}
-            />)} 
-          />      
-          */}
-           <Route path="/Convert"  render={ () => (
+          <Route path="/Convert"  render={ () => (
             <ConvertView
               result={state.result}
             />)}

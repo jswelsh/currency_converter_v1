@@ -1,9 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
-import { Drawer } from '@material-ui/core';
-const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
+import NumberFormat from 'react-number-format';
+import { handleChange, label } from '../helpers/inputAmountHelper'
 
 const useStyles = makeStyles((theme) => ({
   TextField: {
@@ -14,11 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
-  console.log(other)
-
-
-
-
   return (
     <NumberFormat
       {...other}
@@ -36,32 +30,17 @@ function NumberFormatCustom(props) {
     />
   );
 }
-/* NumberFormatCustom.propTypes = {
-  inputRef: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-}; */
 
 export default function InputAmountField(props) {
   const classes = useStyles();
   const [amount, setamount] = React.useState(1);
-  const label = () => {
-    console.log(props)
-    return props.drawer === true ? `Amount in ${data[props.fromCurrency]['name']}s` : props.fromCurrency
-  }
-
-  const handleChange = (event) => {
-    setamount( 
-      event.target.value
-    );
-  };
 
 return (
   <div className={classes.TextField}  >
     <TextField
-      label= {label()}
+      label= {label({drawer: props.drawer,fromCurrency: props.fromCurrency })}
       value={amount}
-      onChange={handleChange}
+      onChange={(event) => handleChange({event, setamount})}
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{
@@ -69,6 +48,5 @@ return (
       }}
     />
   </div>
-
 );
 }
