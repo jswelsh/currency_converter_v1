@@ -1,10 +1,21 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
+
+const useStyles = makeStyles((theme) => ({
+  TextField: {
+    textAlign: 'center',
+  }
+}));
 
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
   console.log(other)
+
+
+
 
   return (
     <NumberFormat
@@ -13,7 +24,6 @@ function NumberFormatCustom(props) {
       onValueChange={(amount) => {
         onChange({
           target: {
-            name: props.name,
             value: amount.value,
           },
         });
@@ -24,26 +34,27 @@ function NumberFormatCustom(props) {
     />
   );
 }
+/* NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+}; */
 
-export default function InputAmountField() {
+export default function InputAmountField(props) {
   const classes = useStyles();
-  const [amount, setamount] = React.useState({
-    textmask: '(1  )    -    ',
-    numberformat: '1320',
-  });
+  const [amount, setamount] = React.useState(1);
 
   const handleChange = (event) => {
-    setamount({
-      ...amount,
-      [event.target.name]: event.target.value,
-    });
+    setamount( 
+      event.target.value
+    );
   };
 
 return (
-  <div className={classes.root}>
+  <div className={classes.TextField}  >
     <TextField
-      label="Input amount you want converted"
-      value={amount.numberformat}
+      label={`Amount in ${data[props.fromCurrency]['name']}s`}
+      value={amount}
       onChange={handleChange}
       name="amountField"
       id="formatted-numberformat-input"
@@ -52,5 +63,6 @@ return (
       }}
     />
   </div>
+
 );
 }
