@@ -1,30 +1,19 @@
 import React, { useState } from "react";
 import { 
+  Chip,
+  Avatar,
   Popover,  
-  Paper,
   Typography,
   FormControl, 
   ListItem, 
   ListItemIcon, 
   ListItemText  
 } from "@material-ui/core";
+
 import CalendarIcon from '@material-ui/icons/CalendarToday';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-
-/* import DatePickerComponent from "./DatePickerComponent" */
-import DayjsAdapter from '@material-ui/pickers/adapter/dayjs';
-import {  LocalizationProvider, DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
-
-const useStyles = makeStyles((theme) => ({
-  Paper:{
-    padding:theme.spacing(1),
-  }
-}));
+import DatePickerComponent from "./DatePickerComponent"
 
 export default function ExchangeHistoryPopOver(props) {
-  const classes = useStyles();
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -39,7 +28,6 @@ export default function ExchangeHistoryPopOver(props) {
 
   return (
     <>
-      {/* <Paper className={classes.Paper}> */}
       <FormControl>
         <ListItem
           button
@@ -57,38 +45,29 @@ export default function ExchangeHistoryPopOver(props) {
           anchorEl={anchorEl}
           onClose={handleClose}
           anchorOrigin={{
-            vertical: 'top',
+            vertical: 'center',
             horizontal: 'right',
           }}
           transformOrigin={{
-            vertical: 'top',
+            vertical: 'center',
             horizontal: 'left',
           }}
         >
           <Typography >To view the exchange history of {props.fromCurrency} to {props.toCurrency}, choose a date range.</Typography>
-     {/*      <DatePickerComponent 
+          <DatePickerComponent 
             dateRange={props.dateRange}
             handleChange={props.handleChange}
-          /> */}
-          <LocalizationProvider 
-                dateAdapter={DayjsAdapter}
-                >
-                <DateRangePicker
-                  calendars={1}
-                  value={props.dateRange}
-                  onChange={props.handleChange}
-                  renderInput={(startProps, endProps) => (
-                    <React.Fragment >
-                      <TextField label='From' {...startProps}/>
-                      <DateRangeDelimiter> to </DateRangeDelimiter>
-                      <TextField label='To'{...endProps}/>
-                    </React.Fragment>
-                  )}
-                />
-              </LocalizationProvider>
+          />
+          <Chip avatar={<Avatar>1W</Avatar>} label='1 Week' onClick={handleClick} />
+          <Chip avatar={<Avatar>2W</Avatar>} label='2 Weeks' onClick={handleClick} />
+          <Chip avatar={<Avatar>1M</Avatar>} label='1 Month' onClick={handleClick} />
+          <Chip avatar={<Avatar>2M</Avatar>} label='2 Months' onClick={handleClick} />
+          <Chip avatar={<Avatar>6M</Avatar>} label='6 Months' onClick={handleClick} />
+
+
+
 
         </Popover> 
-        {/* </Paper> */}
       </>
   );
 }

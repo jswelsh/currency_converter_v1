@@ -26,13 +26,13 @@ export default function ExchangeHistoryGraph(props) {
   series.tooltipText = "{value}";
 
   dateAxis.skipEmptyPeriods = true;
-  dateAxis.renderer.minGridDistance = 30;
+  dateAxis.renderer.minGridDistance = 60;
   dateAxis.renderer.grid.template.location = 0.5;
 
 
   //series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
-  series.tensionX = 0.8;
+  /* series.tensionX = 0.8; */
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
 
@@ -55,10 +55,11 @@ export default function ExchangeHistoryGraph(props) {
   bullethover.properties.scale = 2;
 
   // Make a panning cursor
-  chart.cursor = new am4charts.XYCursor();
-  chart.cursor.behavior = "panXY";
-  chart.cursor.xAxis = dateAxis;
-  chart.cursor.snapToSeries = series;
+  //chart.cursor = new am4charts.XYCursor();
+  /* chart.cursor.behavior = "panXY"; */
+ /*  chart.cursor.snapToSeries = series;
+  chart.cursor.xAxis = dateAxis; */
+  
 
   // Create vertical scrollbar and place it before the value axis
   chart.scrollbarY = new am4core.Scrollbar();

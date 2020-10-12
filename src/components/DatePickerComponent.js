@@ -13,7 +13,7 @@ export default function DatePickerComponent(props) {
 
   return (
     
-/*     <LocalizationProvider 
+    <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >
       <DateRangePicker
@@ -28,7 +28,7 @@ export default function DatePickerComponent(props) {
           </React.Fragment>
         )}
       />
-    </LocalizationProvider> */
+    </LocalizationProvider>
   );
 };
 
