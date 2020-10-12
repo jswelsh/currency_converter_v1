@@ -40,10 +40,11 @@ const iconMap ={
   PLN : 'pl'
 }
 
-const iconHandler = (payload) => {
+const iconHandler = (mode, payload) => {
+  const height = mode === 'selection' ? 25 : 35
   return (
     <ListItemIcon>
-      <CircleFlag countryCode={iconMap[payload]}  height="35"/> 
+      <CircleFlag countryCode={iconMap[payload]}  height={height}/> 
     </ListItemIcon>
   )
 }

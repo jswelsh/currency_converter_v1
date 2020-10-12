@@ -55,6 +55,8 @@ const currencySelectHandler = (mode, currency) => {
       <ExchangeHistoryPopOver
         dateRange={dateRange}
         handleChange={handleChange}
+        fromCurrency={fromCurrency}
+        toCurrency={toCurrency}
       /> 
     )}
     {/* </div> */}

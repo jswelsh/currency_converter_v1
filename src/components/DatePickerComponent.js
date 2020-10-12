@@ -5,9 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {  LocalizationProvider, DateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
 
 const useStyles = makeStyles((theme) => ({
-  grid: {
-    padding: theme.spacing(5),
-  },
+
 }));
 
 export default function DatePickerComponent(props) {
@@ -15,7 +13,7 @@ export default function DatePickerComponent(props) {
 
   return (
     
-    <LocalizationProvider 
+/*     <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >
       <DateRangePicker
@@ -30,7 +28,7 @@ export default function DatePickerComponent(props) {
           </React.Fragment>
         )}
       />
-    </LocalizationProvider>
+    </LocalizationProvider> */
   );
 };
 
