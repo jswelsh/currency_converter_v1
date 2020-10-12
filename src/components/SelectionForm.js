@@ -16,58 +16,44 @@ export default function HistorySelectionForm(props) {
   return (
     <FormControl>
       <List>
-        {/* {props.mode === 'History' && ( */}
+        <>
+          <SelectionComponent 
+            props={props.mode}
+            icon={<ArrowBackIosIcon />}
+            name={'fromCurrency'}
+            value={props.fromCurrency}
+            setter={props.currencySelectHandler}
+            currenciesList={props.currenciesList
+            }
+          />
+          {props.mode === 'History' && (
           <>
+            <ListItem
+              button
+              onClick={(event) => handleClick({
+                toCurrency:props.toCurrency, 
+                fromCurrency:props.fromCurrency, 
+                setter:props.currencySelectHandler
+              })}
+            >
+              <ListItemIcon> 
+                <SwapVertIcon/>
+              </ListItemIcon>
+              <ListItemText primary="Swap Currencies" />
+            </ListItem>
+            
             <SelectionComponent 
               props={props.mode}
-              icon={<ArrowBackIosIcon />}
-              name={'fromCurrency'}
-              value={props.fromCurrency}
+              icon={<ArrowForwardIosIcon />}
+              name={'toCurrency'}
+              value={props.toCurrency}
               setter={props.currencySelectHandler}
-              currenciesList={props.currenciesList
-              }
+              currenciesList={props.currenciesList}
             />
-            {props.mode === 'History' && (
-            <>
-              <ListItem
-                button
-                onClick={(event) => handleClick({
-                  toCurrency:props.toCurrency, 
-                  fromCurrency:props.fromCurrency, 
-                  setter:props.currencySelectHandler
-                })}
-              >
-                <ListItemIcon> 
-                  <SwapVertIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Swap Currencies" />
-              </ListItem>
-              
-              <SelectionComponent 
-                props={props.mode}
-                icon={<ArrowForwardIosIcon />}
-                name={'toCurrency'}
-                value={props.toCurrency}
-                setter={props.currencySelectHandler}
-                currenciesList={props.currenciesList}
-              />
-            </>
-            )}
-            
           </>
-        
-{/*         {props.mode === 'Compare' && (
-          <SelectionComponent
-            props={props.mode} 
-            icon={<ArrowBackIosIcon />}
-            name={'fromSelector'}
-            value={props.toCurrency}
-            setter={props.currencySelectHandler}
-            currenciesList={props.currenciesList}
-          /> */}
-      {/*   )} */}
+          )}
+        </>
       </List>
     </FormControl>
-    
   )
 }

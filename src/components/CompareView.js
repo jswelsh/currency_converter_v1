@@ -25,8 +25,8 @@ export default function CompareView(props){
       {(props.compareList).map((payload) => (
         <Grid item xs={12} alignItems="center" >
           <CompareListItem
-          currency={payload.currency}
-          primary={payload.value}
+            currency={payload.currency}
+            primary={payload.value}
           />
         </Grid>
       ))}

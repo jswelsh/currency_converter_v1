@@ -24,22 +24,21 @@ export default function App() {
     <main className="layout">
       <MemoryRouter>
         <div className="App">
-        <Route path="/History"  render={ () => (
-            <ExchangeHistoryGraph
-              history={state.history}
-            />)}
-          />
-        <ToolBar 
-          fromCurrency={state.fromCurrency}
-          toCurrency={state.toCurrency}
-          convertHistoryHandler={convertHistoryHandler}
-          modeHandler={modeHandler}
-          compareListHandler={compareListHandler}
-          compareList={state.compareList}
-          currenciesList={state.currenciesList}
-          mode={state.mode}
-          /* setDateRange={state.setDateRange} */
-          />
+          <Route path="/History"  render={ () => (
+              <ExchangeHistoryGraph
+                history={state.history}
+              />)}
+            />
+          <ToolBar 
+            fromCurrency={state.fromCurrency}
+            toCurrency={state.toCurrency}
+            convertHistoryHandler={convertHistoryHandler}
+            modeHandler={modeHandler}
+            compareListHandler={compareListHandler}
+            compareList={state.compareList}
+            currenciesList={state.currenciesList}
+            mode={state.mode}
+            />
           <Route path="/Convert"  render={ () => (
             <ConvertView
               result={state.result}
@@ -54,9 +53,8 @@ export default function App() {
             <CompareView 
               compareList={state.compareList}
             />
-          )}/>
-            
-        </div>
+          )}/>    
+          </div>
         </MemoryRouter>
     </main>
   );

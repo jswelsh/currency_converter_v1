@@ -26,9 +26,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const gridBuilder = (payload) => {
+  return <Grid item xs={3}> {payload} </Grid>
+}
+
 export default function CompareListItem (props) {
   const classes = useStyles();
-
   const {primary, currency} = props;
 
   return (
@@ -36,18 +39,16 @@ export default function CompareListItem (props) {
       <Paper className={classes.Paper}>
         <ListItem className={classes.ListItem} >
           <Grid container spacing={1} direction="row" justify="space-around" >
-            <Grid item xs={3}  >
-              <ListItemIcon>
-                {iconHandler(props.currency)}
-              </ListItemIcon>
-              </Grid>
-              <Grid item xs={3}  >
+            {gridBuilder(
+              iconHandler(props.currency)
+            )}
+            {gridBuilder(
               <ListItemText primary={currency} />
-              </Grid> 
-              <Grid item xs={3}  >
+            )}
+            {gridBuilder(
               <ListItemText primary={primary} secondary={data[props.currency]['name']}/>
-              </Grid> 
-            </Grid>
+            )}
+          </Grid>
         </ListItem>
       </Paper>
     </Grid>
