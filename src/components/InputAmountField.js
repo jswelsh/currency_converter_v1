@@ -2,11 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import { Drawer } from '@material-ui/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
   TextField: {
     textAlign: 'center',
+    padding: theme.spacing(2)
   }
 }));
 
@@ -43,6 +45,10 @@ function NumberFormatCustom(props) {
 export default function InputAmountField(props) {
   const classes = useStyles();
   const [amount, setamount] = React.useState(1);
+  const label = () => {
+    console.log(props)
+    return props.drawer === true ? `Amount in ${data[props.fromCurrency]['name']}s` : props.fromCurrency
+  }
 
   const handleChange = (event) => {
     setamount( 
@@ -53,7 +59,7 @@ export default function InputAmountField(props) {
 return (
   <div className={classes.TextField}  >
     <TextField
-      label={`Amount in ${data[props.fromCurrency]['name']}s`}
+      label= {label()}
       value={amount}
       onChange={handleChange}
       name="amountField"

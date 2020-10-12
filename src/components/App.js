@@ -54,6 +54,11 @@ export default function App() {
             />)} 
           />      
           */}
+           <Route path="/Convert"  render={ () => (
+            <ConvertView
+              result={state.result}
+            />)}
+          />
           <Route path="/History"  render={ () => (
             <ExchangeHistoryGraph
               history={state.history}

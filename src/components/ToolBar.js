@@ -243,6 +243,7 @@ export default function ToolBar(props) {
               currenciesList={props.currenciesList}
               compareList={props.compareList}
               mode={props.mode}
+              drawer={openDrawer}
               /* setDateRange={props.setDateRange} */
             />
           <div className={clsx({

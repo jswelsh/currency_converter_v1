@@ -41,6 +41,7 @@ const currencySelectHandler = (mode, currency) => {
   {props.mode !== 'History' && (
     <InputAmountField
       fromCurrency={fromCurrency}
+      drawer={props.drawer}
     />
   )}
     <SelectionForm 
@@ -60,6 +61,16 @@ const currencySelectHandler = (mode, currency) => {
       /> 
     )}
     {/* </div> */}
+    {props.mode === 'Convert' && (
+      <>
+        <Button       
+          handleSubmit={()=>
+            props.compareListHandler(fromCurrency)
+          }
+          primary='Compare Currencies'
+        />
+      </>
+    )}
     {props.mode === 'History' && (
     <Button       
       handleSubmit={()=>props
