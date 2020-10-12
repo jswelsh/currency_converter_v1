@@ -12,7 +12,6 @@ export default function DatePickerComponent(props) {
   const classes = useStyles();
 
   return (
-    
     <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >

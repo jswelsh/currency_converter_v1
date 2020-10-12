@@ -55,10 +55,9 @@ export default function ExchangeHistoryGraph(props) {
   bullethover.properties.scale = 2;
 
   // Make a panning cursor
-  //chart.cursor = new am4charts.XYCursor();
-  /* chart.cursor.behavior = "panXY"; */
- /*  chart.cursor.snapToSeries = series;
-  chart.cursor.xAxis = dateAxis; */
+  chart.cursor = new am4charts.XYCursor();
+  chart.cursor.behavior = "panXY";
+  chart.cursor.xAxis = dateAxis; 
   
 
   // Create vertical scrollbar and place it before the value axis
