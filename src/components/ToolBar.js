@@ -8,6 +8,8 @@ import {
   Drawer, 
   AppBar,
   Toolbar,
+  Tab,
+  Tabs,
   List,
   CssBaseline,
   Typography,
@@ -118,10 +120,7 @@ function ListItemLink(props) {
         button
         component={renderLink}
         onClick={() =>{
-          onClickHandler()
-          if(primary === 'Compare'){
-            console.log(props.compare)
-          }  
+          onClickHandler() 
         }}
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
@@ -142,7 +141,11 @@ export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
+  const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -204,29 +207,45 @@ export default function ToolBar(props) {
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
           <Divider />    
+            <Tabs
+              orientation="vertical"
+              value={value}
+              onChange={handleChange}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
           <List aria-label="currency exchange views">
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'Converter'}
-              primary={'Converter'} 
-              icon={<Converter />} />
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'History'} 
-              primary={'History'} 
-              icon={<History />} />
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'Compare'} 
-              primary={'Compare'}
-              icon={<Compare />} 
-              compare={{
-                compareListHandler:props.compareListHandler,
-                compareList:props.compareList
-              }}
+            <Tab >
+              <ListItemLink 
+                modeHandler={props.modeHandler} 
+                to={'Converter'}
+                primary={'Converter'} 
+                icon={<Converter />}
               />
-              
+            </Tab>
+            <Tab >
+              <ListItemLink 
+                modeHandler={props.modeHandler} 
+                to={'History'} 
+                primary={'History'} 
+                icon={<History />} 
+              />
+            </Tab>
+            <Tab >
+              <ListItemLink 
+                modeHandler={props.modeHandler} 
+                to={'Compare'} 
+                primary={'Compare'}
+                icon={<Compare />} 
+                compare={{
+                  compareListHandler:props.compareListHandler,
+                  compareList:props.compareList
+                }}
+              />
+            </Tab>
           </List>  
+          </Tabs>
           <Divider/>
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'

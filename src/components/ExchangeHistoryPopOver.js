@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 
 import CalendarIcon from '@material-ui/icons/CalendarToday';
-import DatePickerComponent from "./DatePickerComponent"
+import DatePickerComponent from "./DatePickerComponent";
 
 export default function ExchangeHistoryPopOver(props) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,7 +39,7 @@ export default function ExchangeHistoryPopOver(props) {
           <ListItemText primary={'Date Range'} />
         </ListItem>
       </FormControl>
-        <Popover
+        <Popover 
           id={id}
           open={open}
           anchorEl={anchorEl}
@@ -58,15 +58,13 @@ export default function ExchangeHistoryPopOver(props) {
             dateRange={props.dateRange}
             handleChange={props.handleChange}
           />
+{/*          
           <Chip avatar={<Avatar>1W</Avatar>} label='1 Week' onClick={handleClick} />
           <Chip avatar={<Avatar>2W</Avatar>} label='2 Weeks' onClick={handleClick} />
           <Chip avatar={<Avatar>1M</Avatar>} label='1 Month' onClick={handleClick} />
           <Chip avatar={<Avatar>2M</Avatar>} label='2 Months' onClick={handleClick} />
           <Chip avatar={<Avatar>6M</Avatar>} label='6 Months' onClick={handleClick} />
-
-
-
-
+ */}
         </Popover> 
       </>
   );
