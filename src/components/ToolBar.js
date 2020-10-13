@@ -8,14 +8,10 @@ import {
   Drawer, 
   AppBar,
   Toolbar,
-  List,
   CssBaseline,
   Typography,
   Divider,
   IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText 
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -95,72 +91,13 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3)
   },
-  listItemLink: {
-    
-/*     backgroundColor: "blue",
-      "&.Mui-selected": {
-      backgroundColor: "red"
-  } */
-  }
 }));
-
-
-/* function ListItemLink(props) {
-  const classes = useStyles();
-  const { icon, primary, to, modeHandler, mode } = props;
-
-  const renderLink = React.useMemo(
-    () =>
-      React.forwardRef((itemProps, ref) => (
-        <Link to={to} ref={ref} {...itemProps} />
-      )),
-    [to]
-  );
-  const onClickHandler = () => {
-    modeHandler(primary)
-  }
-
-  return (
-    <li>
-      <ListItem
-        button
-        className={classes.listItemLink} 
-        component={renderLink}
-        selected={mode === primary}
-        onClick={() =>{
-          onClickHandler() 
-        }}
-      >
-        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-        <ListItemText primary={primary} />
-      </ListItem>
-    </li>
-  );
-}
- */
-/* ListItemLink.propTypes = {
-  icon: PropTypes.element,
-  modeHandler: PropTypes.string.isRequired,
-  primary: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired
-}; */
 
 export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
 
-
-
-/*   const commonProps = (payload) => ({
-    mode:props.mode,
-    modeHandler: () => props.modeHandler(payload),
-    to: payload,
-    primary: payload 
-
-  }) */
-/*     selected: index === i,
-    onClick: () => setIndex(i), */
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -226,31 +163,17 @@ export default function ToolBar(props) {
             color={'#00ff00'}
             */}
 
-          <Divider />   
+          <Divider />
+
           <TabSelector
             compareListHandler={props.compareListHandler}
             compareList={props.compareList}
             mode={props.mode}
             modeHandler={props.modeHandler}
           /> 
-{/*           <List aria-label="currency exchange views">
-            <ListItemLink
-              {...commonProps('Converter')}
-              icon={<Converter />} />
-            <ListItemLink 
-              {...commonProps('History')}
-              icon={<History />} />
-            <ListItemLink 
-              {...commonProps('Compare')}
-              icon={<Compare />} 
-              compare={{
-                compareListHandler:props.compareListHandler,
-                compareList:props.compareList
-              }}
-              />
-              
-          </List>  */} 
+
           <Divider/>
+          
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'
               })}>

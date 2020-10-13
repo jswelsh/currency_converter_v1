@@ -54,8 +54,6 @@ export default function TabSelector(props) {
     modeHandler: props.modeHandler,
     to: payload,
     primary: payload 
-/*     selected: index === i,
-    onClick: () => setIndex(i), */
   })
 
   return (

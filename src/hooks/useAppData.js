@@ -134,14 +134,6 @@ export default function useAppData() {
     setMode(mode)
   }
 
-/*   const currencySelectHandler = (mode, currency) => {
-    console.log('currency select', currency)
-    return mode === 'fromCurrency' ? dispatch({type:SET_FROM_CURRENCY, currency}):
-    mode === 'toCurrency' ? dispatch({type:SET_TO_CURRENCY, currency}) :
-    null
-  } */
-  
-
   useEffect(() => {
     getCurrencies
       .then((res) => {
