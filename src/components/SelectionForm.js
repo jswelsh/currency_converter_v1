@@ -19,6 +19,7 @@ export default function HistorySelectionForm(props) {
       <List>
         <>
           {props.mode !== 'History' && (
+            
             <SelectionComponent 
               props={props.mode}
               icon={<CompareArrowsIcon />}

@@ -26,7 +26,14 @@ const iconComponent = () => {
   
   
 export default function SelectionComponent (props) {
-  const {icon, name, value, setter, currenciesList} = props;
+  const { 
+    icon, 
+    name, 
+    value, 
+    setter, 
+    currenciesList
+  } = props;
+  
   const classes = useStyles();
 
   return (

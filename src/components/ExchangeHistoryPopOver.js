@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { 
-  Chip,
-  Avatar,
   Popover,  
   Typography,
   FormControl, 
@@ -53,18 +51,15 @@ export default function ExchangeHistoryPopOver(props) {
             horizontal: 'left',
           }}
         >
-          <Typography >To view the exchange history of {props.fromCurrency} to {props.toCurrency}, choose a date range.</Typography>
+          <Typography >
+            To view the exchange history of {
+            props.fromCurrency} to {
+            props.toCurrency}, choose a date range.
+            </Typography>
           <DatePickerComponent 
             dateRange={props.dateRange}
             handleChange={props.handleChange}
           />
-{/*          
-          <Chip avatar={<Avatar>1W</Avatar>} label='1 Week' onClick={handleClick} />
-          <Chip avatar={<Avatar>2W</Avatar>} label='2 Weeks' onClick={handleClick} />
-          <Chip avatar={<Avatar>1M</Avatar>} label='1 Month' onClick={handleClick} />
-          <Chip avatar={<Avatar>2M</Avatar>} label='2 Months' onClick={handleClick} />
-          <Chip avatar={<Avatar>6M</Avatar>} label='6 Months' onClick={handleClick} />
- */}
         </Popover> 
       </>
   );

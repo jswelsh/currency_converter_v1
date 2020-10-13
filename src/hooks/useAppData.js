@@ -1,10 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-
-const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
-const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
-/* const SET_DATE_RANGE = 'SET_DATE_RANGE'; */
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';

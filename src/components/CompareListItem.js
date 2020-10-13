@@ -6,7 +6,6 @@ import {
   Paper,
   ListItem,
   ListItemText,
-  ListItemIcon, 
 } from '@material-ui/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
@@ -20,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary
   },
   Paper:{
-    /* `calc(100% - ${drawerWidth}px)` */
     marginLeft: `${drawerWidth+30}px`,
     marginRight: theme.spacing(20)
   }
@@ -32,7 +30,10 @@ const gridBuilder = (payload) => {
 
 export default function CompareListItem (props) {
   const classes = useStyles();
-  const {primary, currency} = props;
+  const {
+    primary, 
+    currency
+  } = props;
 
   return (
     <Grid>
@@ -43,10 +44,10 @@ export default function CompareListItem (props) {
               iconHandler('compare', props.currency)
             )}
             {gridBuilder(
-              <ListItemText primary={currency} />
+              <ListItemText primary={currency} secondary={data[props.currency]['name']}/>
             )}
             {gridBuilder(
-              <ListItemText primary={primary} secondary={data[props.currency]['name']}/>
+              <ListItemText primary={primary} />
             )}
           </Grid>
         </ListItem>

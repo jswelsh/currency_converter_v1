@@ -21,15 +21,14 @@ export default function ConvertView(props){
   return(
     <List className={classes.CompareListItem} >
       <Grid container spacing={2} alignItems="center" >
-        {/* <Paper className={classes.paper}>xs=12</Paper> */}
-      {(props.compareList).map((payload) => (
-        <Grid item xs={12} alignItems="center" >
-          <CompareListItem
-          currency={payload.currency}
-          primary={payload.value}
-          />
-        </Grid>
-      ))}
+        {(props.compareList).map((payload) => (
+          <Grid item xs={12} alignItems="center" >
+            <CompareListItem
+              currency={payload.currency}
+              primary={payload.value}
+            />
+          </Grid>
+        ))}
       </Grid>
     </List> 
   )

@@ -12,7 +12,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NumberFormatCustom(props) {
-  const { inputRef, onChange, ...other } = props;
+  const { 
+    inputRef, 
+    onChange, 
+    ...other 
+  } = props;
   return (
     <NumberFormat
       {...other}
@@ -33,14 +37,13 @@ function NumberFormatCustom(props) {
 
 export default function InputAmountField(props) {
   const classes = useStyles();
-  const [amount, setamount] = React.useState(1);
-
+  
 return (
   <div className={classes.TextField}  >
     <TextField
       label= {label({drawer: props.drawer,fromCurrency: props.fromCurrency })}
-      value={amount}
-      onChange={(event) => handleChange({event, setamount})}
+      value={props.amount}
+      onChange={(event) => handleChange({event:event, setamount:props.setamount})}
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{

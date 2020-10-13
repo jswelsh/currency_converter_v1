@@ -78,7 +78,6 @@ const currencySelectHandler = (mode, currency) => {
           toCurrency, 
           dateRange
         })
-        /*  handleHistorySubmit({fromCurrency, toCurrency, dateRange}) */
       }
       primary='Generate Graph'
     />

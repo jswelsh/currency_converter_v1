@@ -15,8 +15,6 @@ am4core.useTheme(am4themes_dark);
 am4core.useTheme(am4themes_animated);
 am4core.options.autoDispose = true;
 
-const ITEM_HEIGHT = 48;
-
 const useStyles = makeStyles((theme) => ({
   root:{
     backgroundColor: '#222222', 
