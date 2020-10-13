@@ -20,10 +20,9 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import History from '@material-ui/icons/Timeline';
-import Converter from '@material-ui/icons/Transform';
-import Compare from '@material-ui/icons/Sort';
 
+
+import TabSelector from './TabSelector';
 import UserInputTab from './UserInputTab';
 /* import ConverterTab from './ConverterTab';
  */
@@ -106,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ListItemLink(props) {
+/* function ListItemLink(props) {
   const classes = useStyles();
   const { icon, primary, to, modeHandler, mode } = props;
 
@@ -138,7 +137,7 @@ function ListItemLink(props) {
     </li>
   );
 }
-
+ */
 /* ListItemLink.propTypes = {
   icon: PropTypes.element,
   modeHandler: PropTypes.string.isRequired,
@@ -153,15 +152,15 @@ export default function ToolBar(props) {
 
 
 
-  const commonProps = (payload) => ({
+/*   const commonProps = (payload) => ({
     mode:props.mode,
     modeHandler: () => props.modeHandler(payload),
     to: payload,
     primary: payload 
+
+  }) */
 /*     selected: index === i,
     onClick: () => setIndex(i), */
-  })
-
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -227,8 +226,14 @@ export default function ToolBar(props) {
             color={'#00ff00'}
             */}
 
-          <Divider />    
-          <List aria-label="currency exchange views">
+          <Divider />   
+          <TabSelector
+            compareListHandler={props.compareListHandler}
+            compareList={props.compareList}
+            mode={props.mode}
+            modeHandler={props.modeHandler}
+          /> 
+{/*           <List aria-label="currency exchange views">
             <ListItemLink
               {...commonProps('Converter')}
               icon={<Converter />} />
@@ -244,7 +249,7 @@ export default function ToolBar(props) {
               }}
               />
               
-          </List>  
+          </List>  */} 
           <Divider/>
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'

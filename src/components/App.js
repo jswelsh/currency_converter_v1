@@ -2,9 +2,7 @@ import React from 'react';
 import './App.css';
 import ExchangeHistoryGraph from './ExchangeHistoryGraph';
 import useAppData from '../hooks/useAppData';
-import { BrowserRouter as Router, Route} from "react-router-dom";
 
-import { MemoryRouter } from 'react-router';
 import 'fontsource-roboto';
 import ToolBar from './ToolBar';
 import CompareView from './CompareView'
@@ -22,13 +20,7 @@ export default function App() {
 
   return (
     <main className="layout">
-      <MemoryRouter>
         <div className="App">
-          <Route path="/History"  render={ () => (
-              <ExchangeHistoryGraph
-                history={state.history}
-              />)}
-            />
           <ToolBar 
             fromCurrency={state.fromCurrency}
             toCurrency={state.toCurrency}
@@ -39,23 +31,19 @@ export default function App() {
             currenciesList={state.currenciesList}
             mode={state.mode}
             />
-          <Route path="/Convert"  render={ () => (
+          {state.mode === 'Convert' && (
             <ConvertView
               result={state.result}
-            />)}
-          />
-          <Route path="/History"  render={ () => (
+          />)}
+          {state.mode === 'History' && (
             <ExchangeHistoryGraph
               history={state.history}
-            />)}
-          />
-          <Route path="/Compare" render={props => (
+          />)}
+          {state.mode === 'Compare' && (
             <CompareView 
               compareList={state.compareList}
-            />
-          )}/>    
+            />)}
           </div>
-        </MemoryRouter>
     </main>
   );
 }

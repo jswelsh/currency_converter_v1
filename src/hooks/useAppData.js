@@ -91,6 +91,7 @@ export default function useAppData() {
   const convertHistoryHandler = (payload) => {
     const {fromCurrency, toCurrency, dateRange} = payload
     const [startDate, endDate] = dateRange;
+    console.log('booo')
 
     const historicalURL = `
       https://api.exchangeratesapi.io/history?start_at=${
@@ -115,6 +116,7 @@ export default function useAppData() {
             return history;
           };
           // sort the dates from "res" = {obj} payload 
+          console.log(res.data.rate)
           setHistory(
             historyController(res.data.rates)
               .sort((a, b) => b.date - a.date),
