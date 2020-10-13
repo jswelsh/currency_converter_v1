@@ -115,7 +115,7 @@ export default function useAppData() {
           console.log(res.data.rate)
           setHistory(
             historyController(res.data.rates)
-              .sort((a, b) => b.date - a.date),
+              .sort((a, b) =>  a.date - b.date ),
           );
         })
         .catch((error) => {
