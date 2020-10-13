@@ -8,8 +8,6 @@ import {
   Drawer, 
   AppBar,
   Toolbar,
-  Tab,
-  Tabs,
   List,
   CssBaseline,
   Typography,
@@ -97,11 +95,20 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
+  },
+  listItemLink: {
+    
+/*     backgroundColor: "blue",
+      "&.Mui-selected": {
+      backgroundColor: "red"
+  } */
   }
 }));
 
+
 function ListItemLink(props) {
-  const { icon, primary, to, modeHandler } = props;
+  const classes = useStyles();
+  const { icon, primary, to, modeHandler, mode } = props;
 
   const renderLink = React.useMemo(
     () =>
@@ -118,7 +125,9 @@ function ListItemLink(props) {
     <li>
       <ListItem
         button
+        className={classes.listItemLink} 
         component={renderLink}
+        selected={mode === primary}
         onClick={() =>{
           onClickHandler() 
         }}
@@ -130,22 +139,28 @@ function ListItemLink(props) {
   );
 }
 
-ListItemLink.propTypes = {
+/* ListItemLink.propTypes = {
   icon: PropTypes.element,
   modeHandler: PropTypes.string.isRequired,
   primary: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired
-};
+}; */
 
 export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
-  const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+
+
+  const commonProps = (payload) => ({
+    mode:props.mode,
+    modeHandler: () => props.modeHandler(payload),
+    to: payload,
+    primary: payload 
+/*     selected: index === i,
+    onClick: () => setIndex(i), */
+  })
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -206,46 +221,30 @@ export default function ToolBar(props) {
           </div>
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
+            {/*
+            color={'#da3125'}
+            color={'#1a73e8'}
+            color={'#00ff00'}
+            */}
+
           <Divider />    
-            <Tabs
-              orientation="vertical"
-              value={value}
-              onChange={handleChange}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
           <List aria-label="currency exchange views">
-            <Tab >
-              <ListItemLink 
-                modeHandler={props.modeHandler} 
-                to={'Converter'}
-                primary={'Converter'} 
-                icon={<Converter />}
+            <ListItemLink
+              {...commonProps('Converter')}
+              icon={<Converter />} />
+            <ListItemLink 
+              {...commonProps('History')}
+              icon={<History />} />
+            <ListItemLink 
+              {...commonProps('Compare')}
+              icon={<Compare />} 
+              compare={{
+                compareListHandler:props.compareListHandler,
+                compareList:props.compareList
+              }}
               />
-            </Tab>
-            <Tab >
-              <ListItemLink 
-                modeHandler={props.modeHandler} 
-                to={'History'} 
-                primary={'History'} 
-                icon={<History />} 
-              />
-            </Tab>
-            <Tab >
-              <ListItemLink 
-                modeHandler={props.modeHandler} 
-                to={'Compare'} 
-                primary={'Compare'}
-                icon={<Compare />} 
-                compare={{
-                  compareListHandler:props.compareListHandler,
-                  compareList:props.compareList
-                }}
-              />
-            </Tab>
+              
           </List>  
-          </Tabs>
           <Divider/>
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'
