@@ -7,6 +7,7 @@ import 'fontsource-roboto';
 import ToolBar from './ToolBar';
 import CompareView from './CompareView'
 import ConvertView from './ConvertView'
+import { Grid } from '@material-ui/core';
 
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
 
   return (
     <main className="layout">
-        <div className="App">
+
           <ToolBar 
             fromCurrency={state.fromCurrency}
             toCurrency={state.toCurrency}
@@ -31,19 +32,26 @@ export default function App() {
             currenciesList={state.currenciesList}
             mode={state.mode}
             />
-          {state.mode === 'Convert' && (
-            <ConvertView
-              result={state.result}
-          />)}
-          {state.mode === 'History' && (
-            <ExchangeHistoryGraph
-              history={state.history}
-          />)}
-          {state.mode === 'Compare' && (
-            <CompareView 
-              compareList={state.compareList}
-            />)}
-          </div>
+          <Grid    container
+            direction="column"
+            justify="flex-start"
+            alignItems="center" >
+            
+              {state.mode === 'Convert' && (
+                <ConvertView
+                  result={state.result}
+              />)}
+              {state.mode === 'History' && (
+                <ExchangeHistoryGraph
+/*                 className="App"
+ */
+                  history={state.history}
+              />)}
+              {state.mode === 'Compare' && (
+                <CompareView 
+                  compareList={state.compareList}
+                />)}
+      </Grid>
     </main>
   );
 }

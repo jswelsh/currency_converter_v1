@@ -11,23 +11,25 @@ import {
 import './CurrencyHistoryGraph.css';
 import theme from "@amcharts/amcharts4/themes/dark";
 
-am4core.useTheme(am4themes_dark);
-am4core.useTheme(am4themes_animated);
-am4core.options.autoDispose = true;
+
 
 const useStyles = makeStyles((theme) => ({
   root:{
-    backgroundColor: '#222222', 
-    justify: 'center'
-    /* flexGrow: 1, */
+    justify: 'center',
+/*     margin: 40 */
+    flexGrow: 1,
   },
   ExchangeHistoryGraph: {
-    
+
+    marginLeft:230, marginRight:200, width: "80%", height: "800px" 
   }
 }));
 
 export default function ExchangeHistoryGraph(props) {
   const classes = useStyles();
+  am4core.useTheme(am4themes_dark);
+am4core.useTheme(am4themes_animated);
+am4core.options.autoDispose = true;
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
@@ -84,13 +86,13 @@ export default function ExchangeHistoryGraph(props) {
   chart.data = props.history
 
   return (
-    <Grid container spacing={theme(3)} className={classes.root} >
-      <Grid item xs={12}>
-      <div className={classes.ExchangeHistoryGraph} >
-        <div id="chartdiv" style={{ width: "80%", height: "600px" }}></div>
-      </div>
-      </Grid>
-    </Grid>
+/*     <Grid container spacing={theme(3)} className={classes.root} >
+      <Grid item xs={12}> */
+
+        <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
+
+      
+
     
   );
 }
