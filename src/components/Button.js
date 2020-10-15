@@ -16,12 +16,12 @@ export default function Button(props) {
     <FormControl>
       <ListItem
         button
-        onClick={handleSubmit}
-      >
+        onClick={handleSubmit}>
         <ListItemIcon>
           <Exchange />
         </ListItemIcon>
-        <ListItemText primary={primary} />
+        <ListItemText 
+          primary={primary}/>
       </ListItem>
     </FormControl>
   )

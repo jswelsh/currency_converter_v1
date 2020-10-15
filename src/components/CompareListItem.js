@@ -41,13 +41,18 @@ export default function CompareListItem (props) {
         <ListItem className={classes.ListItem} >
           <Grid container spacing={1} direction="row" justify="space-around" >
             {gridBuilder(
-              iconHandler('compare', props.currency)
+              iconHandler('compare', currency)
             )}
             {gridBuilder(
-              <ListItemText primary={currency} secondary={data[props.currency]['name']}/>
+              <ListItemText 
+                primary={currency} 
+                secondary={data[currency]['name']}/>
             )}
             {gridBuilder(
-              <ListItemText primary={primary} />
+              <ListItemText 
+                primary={
+                  data[currency]['symbol_native']
+                  +primary} />
             )}
           </Grid>
         </ListItem>

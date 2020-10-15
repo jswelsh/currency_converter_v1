@@ -34,7 +34,8 @@ export default function ExchangeHistoryPopOver(props) {
           <ListItemIcon>
             <CalendarIcon />
           </ListItemIcon>
-          <ListItemText primary={'Date Range'} />
+          <ListItemText 
+            primary={'Date Range'} />
         </ListItem>
       </FormControl>
         <Popover 

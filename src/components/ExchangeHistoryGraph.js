@@ -86,13 +86,6 @@ am4core.options.autoDispose = true;
   chart.data = props.history
 
   return (
-/*     <Grid container spacing={theme(3)} className={classes.root} >
-      <Grid item xs={12}> */
-
-        <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
-
-      
-
-    
+    <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
   );
 }
