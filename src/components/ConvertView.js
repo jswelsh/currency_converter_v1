@@ -80,10 +80,7 @@ export default function ConvertView(props){
 
     <Card className={clsx(classes.card)} display={'flex'}   >
       <Box display={'flex'}  flexDirection={'row'} justifyContent={'space-between'}>
-  {/*     <CardContent>
-        <h3 className={classes.heading}>Alan Podemski</h3>
-        <span className={classes.subheader}>Poland</span>
-      </CardContent> */}
+
       <Box className={clsx(classes.fromBox)} display={'flex'}  flexDirection={'column'} /*  alignItems={'center'} */>
         <Box p={2} flex={'auto'} >
           <p className={classes.statValue}>{fromCurrency && data[fromCurrency]['name']}</p>
@@ -95,28 +92,23 @@ export default function ConvertView(props){
           <p className={classes.statLabel}> {fromCurrency && fromCurrency}</p>
         </Box>
       </Box>
-{/*         <Divider orientation="vertical" />
-      
 
-      <Divider light />
- */}
       <Box display={'flex'}  alignItems={'center'} >
       <SwapHorizIcon fontSize="large"/>
       </Box>
+
       <Box className={clsx(classes.toBox)} display={'flex'} flexDirection={'column'}>
         <Box p={2} flex={'auto'} >
           <p className={classes.statValue}>{toCurrency && data[toCurrency]['name']}</p>
           {toCurrency && iconHandler('converter', toCurrency)}
-
-          {/* <p className={classes.statValue}>12</p> */}
         </Box>
-{/*         <Divider orientation="vertical" /> */}
+
         <Box p={2} flex={'auto'} >
           <p className={classes.statValue}>{converted && converted}</p>
           <p className={classes.statLabel}> {toCurrency && toCurrency}</p>
-
         </Box>
       </Box>
+      
     </Box>
   </Card>
   )
