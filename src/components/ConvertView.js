@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import CompareListItem from './CompareListItem'
 import {
   Grid,
-  List
+  List,
+  Typography
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,19 +18,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ConvertView(props){
   const classes = useStyles();
+  const { 
+    toStart,
+    converted,
+    fromCurrency,
+    toCurrency 
+  } = props.result
 
   return(
-    <List className={classes.CompareListItem} >
-      <Grid container spacing={2} alignItems="center" >
-        {(props.compareList).map((payload) => (
-          <Grid item xs={12} alignItems="center" >
-            <CompareListItem
-              currency={payload.currency}
-              primary={payload.value}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </List> 
+    <Grid item xs={12} alignItems="center" >
+      <Typography>
+        {toStart} {fromCurrency} converts to {converted} {toCurrency}
+      </Typography>
+    </Grid>
   )
 }
+
+/*  
+             toStart: amount,
+            converted: result.toFixed(5),
+            fromCurrency: fromCurrency,
+            toCurrency: toCurrency */

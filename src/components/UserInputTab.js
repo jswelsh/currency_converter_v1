@@ -14,6 +14,7 @@ import {
 export default function ExchangeHistoryTab(props) {
 const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD');
+const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange());
 
 
@@ -37,6 +38,8 @@ const currencySelectHandler = (mode, currency) => {
   <> 
   {props.mode !== 'History' && (
     <InputAmountField
+      amount={amount}
+      setAmount={setAmount}
       fromCurrency={fromCurrency}
       drawer={props.drawer}
     />
@@ -60,13 +63,17 @@ const currencySelectHandler = (mode, currency) => {
       /> 
     )}
     {/* </div> */}
-    {props.mode === 'Convert' && (
+    {props.mode === 'Converter' && (
       <>
         <Button       
           handleSubmit={()=>
-            props.compareListHandler(fromCurrency)
+            props.convertHandler({
+              fromCurrency: fromCurrency, 
+              toCurrency: toCurrency,
+              amount: amount
+            })
           }
-          primary='Compare Currencies'
+          primary='Connvert Currencies'
         />
       </>
     )}
@@ -87,7 +94,7 @@ const currencySelectHandler = (mode, currency) => {
         
         <Button       
           handleSubmit={()=>
-            props.compareListHandler(fromCurrency)
+            props.compareListHandler(fromCurrency, amount)
           }
           primary='Compare Currencies'
         />

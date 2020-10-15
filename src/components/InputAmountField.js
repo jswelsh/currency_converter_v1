@@ -43,7 +43,7 @@ return (
     <TextField
       label= {label({drawer: props.drawer,fromCurrency: props.fromCurrency })}
       value={props.amount}
-      onChange={(event) => handleChange({event:event, setamount:props.setamount})}
+      onChange={(event) => handleChange({event:event, setAmount:props.setAmount})}
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{

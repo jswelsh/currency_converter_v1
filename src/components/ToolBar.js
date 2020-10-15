@@ -179,6 +179,7 @@ export default function ToolBar(props) {
             <UserInputTab
               convertHistoryHandler={props.convertHistoryHandler}
               compareListHandler={props.compareListHandler}
+              convertHandler={props.convertHandler}
               currencySelectHandler={props.currencySelectHandler}
               currenciesList={props.currenciesList}
               compareList={props.compareList}

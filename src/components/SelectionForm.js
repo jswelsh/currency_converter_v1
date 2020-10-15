@@ -18,7 +18,7 @@ export default function HistorySelectionForm(props) {
     <FormControl>
       <List>
         <>
-          {props.mode !== 'History' && (
+          {props.mode === 'Compare' && (
             
             <SelectionComponent 
               props={props.mode}
@@ -30,7 +30,7 @@ export default function HistorySelectionForm(props) {
               }
             />
           )}
-          {props.mode === 'History' && (
+          {props.mode !== 'Compare' && (
           <>   
             <SelectionComponent 
               props={props.mode}

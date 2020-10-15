@@ -15,6 +15,7 @@ export default function App() {
     state,
     convertHistoryHandler,
     modeHandler,
+    convertHandler,
     compareListHandler,
 
   } = useAppData();
@@ -25,6 +26,7 @@ export default function App() {
           <ToolBar 
             fromCurrency={state.fromCurrency}
             toCurrency={state.toCurrency}
+            convertHandler={convertHandler}
             convertHistoryHandler={convertHistoryHandler}
             modeHandler={modeHandler}
             compareListHandler={compareListHandler}
@@ -37,7 +39,7 @@ export default function App() {
             justify="flex-start"
             alignItems="center" >
             
-              {state.mode === 'Convert' && (
+              {state.mode === 'Converter' && (
                 <ConvertView
                   result={state.result}
               />)}

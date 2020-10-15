@@ -8,8 +8,8 @@ const label = (payload) => {
     fromCurrency)
 }
 const handleChange = (payload) => {
-  const {event, setamount} = payload
-  setamount( 
+  const {event, setAmount} = payload
+  setAmount( 
     event.target.value
   );
 };
