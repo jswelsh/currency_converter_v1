@@ -33,9 +33,3 @@ export default function ConvertView(props){
     </Grid>
   )
 }
-
-/*  
-             toStart: amount,
-            converted: result.toFixed(5),
-            fromCurrency: fromCurrency,
-            toCurrency: toCurrency */
