@@ -1,29 +1,22 @@
 import React from 'react';
 
-import { Link  } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { 
   Drawer, 
   AppBar,
   Toolbar,
-  List,
   CssBaseline,
   Typography,
   Divider,
   IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText 
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import History from '@material-ui/icons/Timeline';
-import Converter from '@material-ui/icons/Transform';
-import Compare from '@material-ui/icons/Sort';
 
+
+import TabSelector from './TabSelector';
 import UserInputTab from './UserInputTab';
 /* import ConverterTab from './ConverterTab';
  */
@@ -95,54 +88,13 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
-  }
+  },
 }));
-
-function ListItemLink(props) {
-  const { icon, primary, to, modeHandler } = props;
-
-  const renderLink = React.useMemo(
-    () =>
-      React.forwardRef((itemProps, ref) => (
-        <Link to={to} ref={ref} {...itemProps} />
-      )),
-    [to]
-  );
-  const onClickHandler = () => {
-    modeHandler(primary)
-  }
-
-  return (
-    <li>
-      <ListItem
-        button
-        component={renderLink}
-        onClick={() =>{
-          onClickHandler()
-          if(primary === 'Compare'){
-            console.log(props.compare)
-          }  
-        }}
-      >
-        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-        <ListItemText primary={primary} />
-      </ListItem>
-    </li>
-  );
-}
-
-ListItemLink.propTypes = {
-  icon: PropTypes.element,
-  modeHandler: PropTypes.string.isRequired,
-  primary: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired
-};
 
 export default function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);
-
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -203,47 +155,36 @@ export default function ToolBar(props) {
           </div>
           
         {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
-          <Divider />    
-          <List aria-label="currency exchange views">
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'Converter'}
-              primary={'Converter'} 
-              icon={<Converter />} />
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'History'} 
-              primary={'History'} 
-              icon={<History />} />
-            <ListItemLink 
-              modeHandler={props.modeHandler} 
-              to={'Compare'} 
-              primary={'Compare'}
-              icon={<Compare />} 
-              compare={{
-                compareListHandler:props.compareListHandler,
-                compareList:props.compareList
-              }}
-              />
-              
-          </List>  
+            {/*
+            color={'#da3125'}
+            color={'#1a73e8'}
+            color={'#00ff00'}
+            */}
+
+          <Divider />
+
+          <TabSelector
+            compareListHandler={props.compareListHandler}
+            compareList={props.compareList}
+            mode={props.mode}
+            modeHandler={props.modeHandler}
+          /> 
+
           <Divider/>
+          
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Converter'
               })}>
           </div>
             <UserInputTab
-/*               fromCurrency={props.fromCurrency}
-              toCurrency={props.toCurrency}
-              dateRange={props.dateRange}
-              dateRangeHandler={props.dateRangeHandler} */
               convertHistoryHandler={props.convertHistoryHandler}
               compareListHandler={props.compareListHandler}
+              convertHandler={props.convertHandler}
               currencySelectHandler={props.currencySelectHandler}
               currenciesList={props.currenciesList}
               compareList={props.compareList}
               mode={props.mode}
-              /* setDateRange={props.setDateRange} */
+              drawer={openDrawer}
             />
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Compare'

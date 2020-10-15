@@ -3,16 +3,33 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+  Grid
+} from '@material-ui/core';
 
 import './CurrencyHistoryGraph.css';
+import theme from "@amcharts/amcharts4/themes/dark";
 
-am4core.useTheme(am4themes_dark);
-am4core.useTheme(am4themes_animated);
-am4core.options.autoDispose = true;
 
-const ITEM_HEIGHT = 48;
+
+const useStyles = makeStyles((theme) => ({
+  root:{
+    justify: 'center',
+/*     margin: 40 */
+    flexGrow: 1,
+  },
+  ExchangeHistoryGraph: {
+
+    marginLeft:230, marginRight:200, width: "80%", height: "800px" 
+  }
+}));
 
 export default function ExchangeHistoryGraph(props) {
+  const classes = useStyles();
+  am4core.useTheme(am4themes_dark);
+am4core.useTheme(am4themes_animated);
+am4core.options.autoDispose = true;
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
@@ -26,13 +43,13 @@ export default function ExchangeHistoryGraph(props) {
   series.tooltipText = "{value}";
 
   dateAxis.skipEmptyPeriods = true;
-  dateAxis.renderer.minGridDistance = 30;
+  dateAxis.renderer.minGridDistance = 60;
   dateAxis.renderer.grid.template.location = 0.5;
 
 
   //series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
-  series.tensionX = 0.8;
+  /* series.tensionX = 0.8; */
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
 
@@ -54,12 +71,6 @@ export default function ExchangeHistoryGraph(props) {
   let bullethover = bullet.states.create("hover");
   bullethover.properties.scale = 2;
 
-  // Make a panning cursor
-  chart.cursor = new am4charts.XYCursor();
-  chart.cursor.behavior = "panXY";
-  chart.cursor.xAxis = dateAxis;
-  chart.cursor.snapToSeries = series;
-
   // Create vertical scrollbar and place it before the value axis
   chart.scrollbarY = new am4core.Scrollbar();
   chart.scrollbarY.parent = chart.leftAxesContainer;
@@ -75,9 +86,13 @@ export default function ExchangeHistoryGraph(props) {
   chart.data = props.history
 
   return (
-      <div className="ExchangeHistoryGraph" >
-        <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
-      </div>
+/*     <Grid container spacing={theme(3)} className={classes.root} >
+      <Grid item xs={12}> */
+
+        <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
+
+      
+
     
   );
 }

@@ -1,5 +1,8 @@
 import React from 'react';
 import { CircleFlag } from 'react-circle-flags'
+import {
+  ListItemIcon, 
+} from '@material-ui/core';
 
 const iconMap ={
   CAD : 'ca',
@@ -37,8 +40,13 @@ const iconMap ={
   PLN : 'pl'
 }
 
-const iconHandler = (payload) => {
-  return <CircleFlag countryCode={iconMap[payload]}  height="35"/>
+const iconHandler = (mode, payload) => {
+  const height = mode === 'selection' ? 25 : 35
+  return (
+    <ListItemIcon>
+      <CircleFlag countryCode={iconMap[payload]}  height={height}/> 
+    </ListItemIcon>
+  )
 }
 
 export { iconHandler }
