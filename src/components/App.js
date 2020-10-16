@@ -34,7 +34,8 @@ export default function App() {
             currenciesList={state.currenciesList}
             mode={state.mode}
             />
-          <Grid    container
+          <Grid    
+            container
             direction="column"
             justify="flex-start"
             alignItems="center" >

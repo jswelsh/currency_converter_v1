@@ -14,37 +14,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ListItemLink(props) {
-  const classes = useStyles();
+
   const { 
     icon, 
     primary, 
-    to, 
     modeHandler, 
     mode 
   } = props;
 
-  const renderLink = React.useMemo(
-    () =>
-      React.forwardRef((itemProps, ref) => (
-        <Link 
-          to={to} 
-          ref={ref} 
-          {...itemProps} 
-        />
-      )), [to]
-  );
-  const onClickHandler = () => {
-    modeHandler(primary)
-  }
-
   return (
     <ListItem
       button
-      className={classes.listItemLink} 
-      component={renderLink}
       selected={mode === primary}
       onClick={() =>{
-        onClickHandler() 
+        modeHandler(primary) 
       }}
     >
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
@@ -58,7 +41,6 @@ export default function TabSelector(props) {
   const commonProps = (payload) => ({
     mode:props.mode,
     modeHandler: props.modeHandler,
-    to: payload,
     primary: payload 
   })
 

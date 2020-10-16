@@ -164,6 +164,7 @@ export default function ToolBar(props) {
           <Divider />
 
           <TabSelector
+            convertHistoryHandler={props.convertHistoryHandler}
             compareListHandler={props.compareListHandler}
             compareList={props.compareList}
             mode={props.mode}

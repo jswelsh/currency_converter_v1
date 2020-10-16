@@ -79,8 +79,8 @@ const currencySelectHandler = (mode, currency) => {
     )}
     {props.mode === 'History' && (
     <Button       
-      handleSubmit={()=>props
-        .convertHistoryHandler({
+      handleSubmit={()=>
+        props.convertHistoryHandler({
           fromCurrency, 
           toCurrency, 
           dateRange

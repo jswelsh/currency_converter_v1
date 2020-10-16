@@ -5,7 +5,9 @@ import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-  Grid
+  Card,
+  CardContent,
+  Typography
 } from '@material-ui/core';
 
 import './CurrencyHistoryGraph.css';
@@ -20,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   ExchangeHistoryGraph: {
-
+    backgroundBolor: '#222222', 
     marginLeft:230, marginRight:200, width: "80%", height: "800px" 
   }
 }));
@@ -36,7 +38,7 @@ am4core.options.autoDispose = true;
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-            /* */chart.yAxes.push(new am4charts.ValueAxis());
+  let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   let series = chart.series.push(new am4charts.LineSeries());
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
@@ -47,15 +49,16 @@ am4core.options.autoDispose = true;
   dateAxis.renderer.grid.template.location = 0.5;
 
 
-  //series.tooltip.pointerOrientation = "vertical";
+  series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
-  /* series.tensionX = 0.8; */
+  series.tensionX = 0.8;
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
 
   // Drop-shaped tooltips
   series.tooltip.background.cornerRadius = 20;
-  series.tooltip.background.strokeOpacity = 0;
+  series.tooltip.background.strokeOpacity = 0.5;
+  series.tooltip.label.padding(12,12,12,12)
   series.tooltip.pointerOrientation = "vertical";
   series.tooltip.label.minWidth = 40;
   series.tooltip.label.minHeight = 40;
@@ -63,13 +66,13 @@ am4core.options.autoDispose = true;
   series.tooltip.label.textValign = "middle";
 
   // Make bullets grow on hover
-  let bullet = series.bullets.push(new am4charts.CircleBullet());
+/*   let bullet = series.bullets.push(new am4charts.CircleBullet());
   bullet.circle.strokeWidth = 2;
   bullet.circle.radius = 5;
   //bullet.circle.fill = am4core.color("#fff");
   bullet.circle.fill = am4core.color("#8CFFDA");
   let bullethover = bullet.states.create("hover");
-  bullethover.properties.scale = 2;
+  bullethover.properties.scale = 2; */
 
   // Create vertical scrollbar and place it before the value axis
   chart.scrollbarY = new am4core.Scrollbar();
@@ -81,11 +84,22 @@ am4core.options.autoDispose = true;
   chart.scrollbarX.series.push(series);
   chart.scrollbarX.parent = chart.bottomAxesContainer;
 
+  let dateAxisTooltip = dateAxis.tooltip;
+  valueAxis.cursorTooltipEnabled = false;
+  chart.cursor = new am4charts.XYCursor();
+/*     chart.cursor = new am4charts.XYCursor();
+  chart.cursor.xAxis = valueAxis;
+  chart.cursor.snapToSeries = series;
+ */
   dateAxis.keepSelection = true;
+  dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
   
   chart.data = props.history
 
   return (
-    <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
+    <>
+      <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
+    </>
+    
   );
 }
