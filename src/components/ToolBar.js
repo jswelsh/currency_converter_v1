@@ -26,10 +26,7 @@ import UserInputTab from './UserInputTab';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    backgroundColor: "#222222"
-  },
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -55,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: "nowrap"
+  },
+  drawerPaper: {
+    color: "blue",
+    backgroundColor: 'primary'
   },
   drawerOpen: {
     width: drawerWidth,
@@ -109,14 +110,17 @@ export default function ToolBar(props) {
     <div className={classes.root}>
       <CssBaseline /> 
       <AppBar
+        color='primary'/* 'secondary' */
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: openDrawer
         })}
       >
-        <Toolbar>
+        <Toolbar
+          
+        >
           <IconButton
-            color="inherit"
+            color=/* "inherit" */'p-dark'
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -133,6 +137,7 @@ export default function ToolBar(props) {
       </AppBar>
       <Drawer
         variant="permanent"
+        backgroundColor='red'
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: openDrawer,
           [classes.drawerClose]: !openDrawer
@@ -141,8 +146,10 @@ export default function ToolBar(props) {
           paper: clsx({
             [classes.drawerOpen]: openDrawer,
             [classes.drawerClose]: !openDrawer
-          })
+          }),
+          paper: classes.drawerPaper
         }}
+        
       >
           <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>

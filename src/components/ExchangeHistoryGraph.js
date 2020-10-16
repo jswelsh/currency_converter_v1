@@ -65,15 +65,6 @@ am4core.options.autoDispose = true;
   series.tooltip.label.textAlign = "middle";
   series.tooltip.label.textValign = "middle";
 
-  // Make bullets grow on hover
-/*   let bullet = series.bullets.push(new am4charts.CircleBullet());
-  bullet.circle.strokeWidth = 2;
-  bullet.circle.radius = 5;
-  //bullet.circle.fill = am4core.color("#fff");
-  bullet.circle.fill = am4core.color("#8CFFDA");
-  let bullethover = bullet.states.create("hover");
-  bullethover.properties.scale = 2; */
-
   // Create vertical scrollbar and place it before the value axis
   chart.scrollbarY = new am4core.Scrollbar();
   chart.scrollbarY.parent = chart.leftAxesContainer;
