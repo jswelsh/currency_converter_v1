@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
 export default function ExchangeHistoryGraph(props) {
   const classes = useStyles();
   am4core.useTheme(am4themes_dark);
-am4core.useTheme(am4themes_animated);
-am4core.options.autoDispose = true;
+  am4core.useTheme(am4themes_animated);
+  am4core.options.autoDispose = true;
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
@@ -43,6 +43,7 @@ am4core.options.autoDispose = true;
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
+  series.stroke = '#8CFFDA';
 
   dateAxis.skipEmptyPeriods = true;
   dateAxis.renderer.minGridDistance = 60;
@@ -82,6 +83,7 @@ am4core.options.autoDispose = true;
   chart.cursor.xAxis = valueAxis;
   chart.cursor.snapToSeries = series;
  */
+
   dateAxis.keepSelection = true;
   dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
   

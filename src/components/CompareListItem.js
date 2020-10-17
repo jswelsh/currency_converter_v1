@@ -56,10 +56,10 @@ export default function CompareListItem (props) {
             {gridBuilder(
               <ListItemText>
                 <Typography variant='h5'>
-                {currency} 
+                  {currency} 
                 </Typography>
                 <Typography >
-                {data[currency]['name']}
+                  {data[currency]['name']}
                 </Typography>
               </ListItemText>
             )}
