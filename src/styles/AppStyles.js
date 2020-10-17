@@ -19,6 +19,11 @@ const theme = createMuiTheme({
         background:'#222222'
       },
     },
+    MuiFormControl: {
+      root: {
+        color:'#fff'
+      },
+    }
   },
 })
 
