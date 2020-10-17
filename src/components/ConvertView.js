@@ -19,6 +19,8 @@ const useStyles = makeStyles((theme) => ({
   results: {
   },
   card: {
+    backgroundColor:'#212121',
+    color:'#fff',
     borderRadius: 12,
     minWidth: 500,
     textAlign: 'center',

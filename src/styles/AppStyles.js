@@ -1,14 +1,17 @@
 import { createMuiTheme } from '@material-ui/core'
-import { cyan, teal } from '@material-ui/core/colors'
+import {  grey,  } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[900]
+      main: grey[900]
     },
     secondary: {
-      main: cyan[600]
-    }
+      main: '#8CFFDA'
+    },
+    action: {
+      
+      },
   }
 })
 

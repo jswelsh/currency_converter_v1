@@ -6,6 +6,8 @@ import {
   Paper,
   ListItem,
   ListItemText,
+  ListItemIcon,
+  Typography,
 } from '@material-ui/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
@@ -16,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
   ListItem: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary
+    color:'#fff',
+    backgroundColor: '#212121'
   },
   Paper:{
     marginLeft: `${drawerWidth+30}px`,
@@ -34,6 +37,11 @@ export default function CompareListItem (props) {
     primary, 
     currency
   } = props;
+  const CurrencySymbol = (currency) => {
+    return (
+      <Typography color={'secondary'}>{data[currency]['symbol_native']} </Typography>
+    )
+  }
 
   return (
     <Grid>
@@ -46,13 +54,21 @@ export default function CompareListItem (props) {
             {gridBuilder(
               <ListItemText 
                 primary={currency} 
-                secondary={data[currency]['name']}/>
+               /*  primaryTypographyProps={{color:'secondary'}} */
+                secondary={data[currency]['name']}
+                secondaryTypographyProps={{color:'#fff'}}/>
             )}
-            {gridBuilder(
+            {/* {gridBuilder(
               <ListItemText 
                 primary={
                   data[currency]['symbol_native']
                   +primary} />
+            )} */}
+            {gridBuilder(
+              <ListItem >
+                {CurrencySymbol(currency)}
+                <ListItemText primary={primary} />
+              </ListItem>
             )}
           </Grid>
         </ListItem>

@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap"
   },
   drawerPaper: {
-    color: "blue",
-    backgroundColor: 'primary'
+    color: '#fff',
+    backgroundColor: '#212121'
   },
   drawerOpen: {
     width: drawerWidth,
@@ -120,7 +120,7 @@ export default function ToolBar(props) {
           
         >
           <IconButton
-            color=/* "inherit" */'p-dark'
+            color='secondary'
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -136,6 +136,7 @@ export default function ToolBar(props) {
         </Toolbar>
       </AppBar>
       <Drawer
+        theme={props.theme}
         variant="permanent"
         backgroundColor='red'
         className={clsx(classes.drawer, {
@@ -154,9 +155,9 @@ export default function ToolBar(props) {
           <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon color='secondary'/>
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon color='secondary'/>
             )}
           </IconButton>
           </div>
@@ -168,7 +169,7 @@ export default function ToolBar(props) {
             color={'#00ff00'}
             */}
 
-          <Divider />
+          {/* <Divider /> */}
 
           <TabSelector
             convertHistoryHandler={props.convertHistoryHandler}

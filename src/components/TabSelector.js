@@ -47,14 +47,15 @@ export default function TabSelector(props) {
   return (
     <List aria-label="currency exchange views">
       <ListItemLink
+
         {...commonProps('Converter')}
-        icon={<Converter />} />
+        icon={<Converter color='secondary'/>} />
       <ListItemLink 
         {...commonProps('History')}
-        icon={<History />} />
+        icon={<History color='secondary'/>} />
       <ListItemLink 
         {...commonProps('Compare')}
-        icon={<Compare />} 
+        icon={<Compare color='secondary'/>} 
         compare={{
           compareListHandler:props.compareListHandler,
           compareList:props.compareList

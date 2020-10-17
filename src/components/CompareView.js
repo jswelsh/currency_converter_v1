@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   CompareListItem: {
-    backgroundColor: '#222222',
+    backgroundColor: '#000000',
   },
 }));
 
