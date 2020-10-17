@@ -12,7 +12,14 @@ const theme = createMuiTheme({
     action: {
       
       },
-  }
+  },
+  overrides: {
+    MuiList: {
+      root: {
+        background:'#222222'
+      },
+    },
+  },
 })
 
 export default theme;

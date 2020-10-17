@@ -1,14 +1,25 @@
 import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { 
   Select, 
   MenuItem, 
   ListItem,
   ListItemIcon, 
+  ThemeProvider
 } from '@material-ui/core';
 import { handleChange } from '../helpers/selectionHelper'
 import { iconHandler } from '../helpers/compareHelper'
+
+/* const theme = createMuiTheme({
+  overrides: {
+    MuiList: {
+      root: {
+        background:'#222222'
+      },
+    },
+  },
+}); */
 
 const useStyles = makeStyles((theme) => ({
   MenuItem: {
@@ -19,12 +30,20 @@ const useStyles = makeStyles((theme) => ({
     /* color: 'red' */
   },
   selector:{
-    color: '#8CFFDA',
+    color: '#fff',
+ /*    background:'red', */
   
-    "&:before":{ 
+    "&$selected":{ 
       backgroundColor:'red'
-    }
+    },
+
+},
+Paper:{
+  
 }
+/* 
+.MenuItem.Mui-selected 
+*/
 }));
 
 const iconComponent = () => {
@@ -45,13 +64,12 @@ export default function SelectionComponent (props) {
   const classes = useStyles();
 
   return (
+    
     <ListItem
     backgroundColor='red'
     >
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
       <Select className={classes.selector}
-           
-
         disableUnderline
         name={name}
         IconComponent={iconComponent}
@@ -71,5 +89,6 @@ export default function SelectionComponent (props) {
         ))}
       </Select>
     </ListItem>
+    /* <ThemeProvider> </ThemeProvider> */
   )
 }
