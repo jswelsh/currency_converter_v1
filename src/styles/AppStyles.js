@@ -23,6 +23,11 @@ const theme = createMuiTheme({
       root: {
         color:'#fff'
       },
+    },
+    MuiSvgIcon: {
+      root:{
+        color:'#8CFFDA'
+      }
     }
   },
 })

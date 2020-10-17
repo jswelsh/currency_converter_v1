@@ -49,13 +49,13 @@ export default function TabSelector(props) {
       <ListItemLink
 
         {...commonProps('Converter')}
-        icon={<Converter color='secondary'/>} />
+        icon={<Converter />} />
       <ListItemLink 
         {...commonProps('History')}
-        icon={<History color='secondary'/>} />
+        icon={<History />} />
       <ListItemLink 
         {...commonProps('Compare')}
-        icon={<Compare color='secondary'/>} 
+        icon={<Compare />} 
         compare={{
           compareListHandler:props.compareListHandler,
           compareList:props.compareList
