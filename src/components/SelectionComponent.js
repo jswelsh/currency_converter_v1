@@ -31,19 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
   selector:{
     color: '#fff',
- /*    background:'red', */
-  
-    "&$selected":{ 
-      backgroundColor:'red'
-    },
-
-},
-Paper:{
-  
-}
-/* 
-.MenuItem.Mui-selected 
-*/
+  },
 }));
 
 const iconComponent = () => {
@@ -77,7 +65,7 @@ export default function SelectionComponent (props) {
         onChange={(event) => handleChange(event, setter)}
       >
         {currenciesList.map(currency => (
-          <MenuItem className={classes.MenuItem, classes.selector}
+          <MenuItem className={classes.MenuItem}
             key={currency} 
             value={currency}
           >
@@ -89,6 +77,5 @@ export default function SelectionComponent (props) {
         ))}
       </Select>
     </ListItem>
-    /* <ThemeProvider> </ThemeProvider> */
   )
 }
