@@ -15,13 +15,21 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     alignItems:'flex-start',
     textAlign: 'center',
-    color: theme.palette.text.secondary
+    backgroundColor:'#8CFFDA'
+    /* color: 'red' */
   },
+  selector:{
+    color: '#8CFFDA',
+  
+    "&:before":{ 
+      backgroundColor:'red'
+    }
+}
 }));
 
 const iconComponent = () => {
   return (
-    <ExpandMoreIcon />
+    <ExpandMoreIcon color='secondary' />
   )};
   
   
@@ -37,9 +45,13 @@ export default function SelectionComponent (props) {
   const classes = useStyles();
 
   return (
-    <ListItem>
+    <ListItem
+    backgroundColor='red'
+    >
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-      <Select
+      <Select className={classes.selector}
+           
+
         disableUnderline
         name={name}
         IconComponent={iconComponent}
@@ -47,7 +59,7 @@ export default function SelectionComponent (props) {
         onChange={(event) => handleChange(event, setter)}
       >
         {currenciesList.map(currency => (
-          <MenuItem className={classes.MenuItem}
+          <MenuItem className={classes.MenuItem, classes.selector}
             key={currency} 
             value={currency}
           >

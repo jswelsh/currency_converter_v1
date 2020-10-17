@@ -21,8 +21,9 @@ export default function HistorySelectionForm(props) {
           {props.mode === 'Compare' && (
             
             <SelectionComponent 
+            
               props={props.mode}
-              icon={<CompareArrowsIcon />}
+              icon={<CompareArrowsIcon color='secondary'/>}
               name={'fromCurrency'}
               value={props.fromCurrency}
               setter={props.currencySelectHandler}
@@ -34,7 +35,7 @@ export default function HistorySelectionForm(props) {
           <>   
             <SelectionComponent 
               props={props.mode}
-              icon={<FromIcon />}
+              icon={<FromIcon color='secondary'/>}
               name={'fromCurrency'}
               value={props.fromCurrency}
               setter={props.currencySelectHandler}
@@ -43,7 +44,7 @@ export default function HistorySelectionForm(props) {
             />
             <SelectionComponent 
               props={props.mode}
-              icon={<ToIcon />}
+              icon={<ToIcon color='secondary'/>}
               name={'toCurrency'}
               value={props.toCurrency}
               setter={props.currencySelectHandler}

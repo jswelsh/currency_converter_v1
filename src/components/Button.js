@@ -18,10 +18,11 @@ export default function Button(props) {
         
         button
         onClick={handleSubmit}>
-        <ListItemIcon>
-          <Exchange />
+        <ListItemIcon >
+          <Exchange color={'secondary'}/>
         </ListItemIcon>
         <ListItemText 
+        color='#000'
           primary={primary}/>
       </ListItem>
     </FormControl>
