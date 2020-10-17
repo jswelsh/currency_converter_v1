@@ -11,32 +11,15 @@ import {
 import { handleChange } from '../helpers/selectionHelper'
 import { iconHandler } from '../helpers/compareHelper'
 
-/* const theme = createMuiTheme({
-  overrides: {
-    MuiList: {
-      root: {
-        background:'#222222'
-      },
-    },
-  },
-}); */
-
 const useStyles = makeStyles((theme) => ({
-  MenuItem: {
-    padding: theme.spacing(1),
-    alignItems:'flex-start',
-    textAlign: 'center',
-    backgroundColor:'#8CFFDA'
-    /* color: 'red' */
-  },
-  selector:{
+/*   selector:{
     color: '#fff',
-  },
+  }, */
 }));
 
 const iconComponent = () => {
   return (
-    <ExpandMoreIcon color='secondary' />
+    <ExpandMoreIcon />
   )};
   
   

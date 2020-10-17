@@ -18,12 +18,14 @@ const useStyles = makeStyles((theme) => ({
   ListItem: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    color:'#fff',
     backgroundColor: '#212121'
   },
   Paper:{
     marginLeft: `${drawerWidth+30}px`,
     marginRight: theme.spacing(20)
+  },
+  symbol: {
+    marginRight: 16
   }
 }));
 
@@ -39,7 +41,7 @@ export default function CompareListItem (props) {
   } = props;
   const CurrencySymbol = (currency) => {
     return (
-      <Typography color={'secondary'}>{data[currency]['symbol_native']} </Typography>
+      <Typography variant='h5' className={classes.symbol} color={'secondary'}>{data[currency]['symbol_native']} </Typography>
     )
   }
 
@@ -52,23 +54,22 @@ export default function CompareListItem (props) {
               iconHandler('compare', currency)
             )}
             {gridBuilder(
-              <ListItemText 
-                primary={currency} 
-               /*  primaryTypographyProps={{color:'secondary'}} */
-                secondary={data[currency]['name']}
-                secondaryTypographyProps={{color:'#fff'}}/>
+              <ListItemText>
+                <Typography variant='h5'>
+                {currency} 
+                </Typography>
+                <Typography >
+                {data[currency]['name']}
+                </Typography>
+              </ListItemText>
             )}
-            {/* {gridBuilder(
-              <ListItemText 
-                primary={
-                  data[currency]['symbol_native']
-                  +primary} />
-            )} */}
             {gridBuilder(
+              <div className={classes.amount}>
               <ListItem >
                 {CurrencySymbol(currency)}
                 <ListItemText primary={primary} />
               </ListItem>
+              </div>
             )}
           </Grid>
         </ListItem>

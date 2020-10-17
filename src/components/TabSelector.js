@@ -10,8 +10,6 @@ import History from '@material-ui/icons/Timeline';
 import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
 import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => ({
-}));
 
 function ListItemLink(props) {
 

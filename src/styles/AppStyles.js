@@ -19,14 +19,33 @@ const theme = createMuiTheme({
         background:'#222222'
       },
     },
-    MuiFormControl: {
+    MuiSelect: {
       root: {
         color:'#fff'
       },
     },
+    MuiMenuItem: {
+      root: {
+        color:'#fff'
+      },
+    },
+    MuiInputBase:{
+      root:{
+        color:'#fff'
+      }
+    },MuiInputLabel:{
+      root:{
+        color:'#8CFFDA'
+      }
+    },
     MuiSvgIcon: {
       root:{
         color:'#8CFFDA'
+      }
+    },
+    MuiTypography: {
+      root: {
+        color:'#fff'
       }
     }
   },
