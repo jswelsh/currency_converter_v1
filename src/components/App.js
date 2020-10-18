@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import ExchangeHistoryGraph from './ExchangeHistoryGraph';
 import useAppData from '../hooks/useAppData';
+import theme from '../styles/AppStyles'
+import { ThemeProvider } from '@material-ui/core'
 
 import 'fontsource-roboto';
 import ToolBar from './ToolBar';
@@ -11,6 +13,7 @@ import { Grid } from '@material-ui/core';
 
 
 export default function App() {
+
   const {
     state,
     convertHistoryHandler,
@@ -21,6 +24,7 @@ export default function App() {
   } = useAppData();
 
   return (
+    <ThemeProvider theme={theme}>
     <main className="layout">
 
           <ToolBar 
@@ -33,8 +37,10 @@ export default function App() {
             compareList={state.compareList}
             currenciesList={state.currenciesList}
             mode={state.mode}
+            
             />
-          <Grid    container
+          <Grid    
+            container
             direction="column"
             justify="flex-start"
             alignItems="center" >
@@ -55,5 +61,6 @@ export default function App() {
                 />)}
       </Grid>
     </main>
+    </ThemeProvider>
   );
 }

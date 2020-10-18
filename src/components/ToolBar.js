@@ -26,10 +26,11 @@ import UserInputTab from './UserInputTab';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+/*   root: {
     display: 'flex',
     backgroundColor: "#222222"
-  },
+  }, */
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -56,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
     whiteSpace: "nowrap"
   },
+/*   drawerPaper: {
+    color: '#fff',
+    backgroundColor: '#212121'
+  }, */
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -82,9 +87,9 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
-  history : {
+/*   history : {
     
-  },
+  }, */
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
@@ -114,9 +119,8 @@ export default function ToolBar(props) {
           [classes.appBarShift]: openDrawer
         })}
       >
-        <Toolbar>
+        <Toolbar >
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -141,8 +145,9 @@ export default function ToolBar(props) {
           paper: clsx({
             [classes.drawerOpen]: openDrawer,
             [classes.drawerClose]: !openDrawer
-          })
+          }),
         }}
+        
       >
           <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
@@ -153,17 +158,9 @@ export default function ToolBar(props) {
             )}
           </IconButton>
           </div>
-          
-        {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
-            {/*
-            color={'#da3125'}
-            color={'#1a73e8'}
-            color={'#00ff00'}
-            */}
-
-          <Divider />
 
           <TabSelector
+            convertHistoryHandler={props.convertHistoryHandler}
             compareListHandler={props.compareListHandler}
             compareList={props.compareList}
             mode={props.mode}

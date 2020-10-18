@@ -4,6 +4,7 @@ import {
   ListItemIcon, 
 } from '@material-ui/core';
 
+
 const iconMap ={
   CAD : 'ca',
   HKD : 'hk',
@@ -41,9 +42,14 @@ const iconMap ={
 }
 
 const iconHandler = (mode, payload) => {
-  const height = mode === 'selection' ? 25 : 35
+  const height = mode === 
+  'selection' ? 25 :
+  'converter' ? 50 :
+  35
+  console.log(height,'height')
+
   return (
-    <ListItemIcon>
+    <ListItemIcon spacing={0}>
       <CircleFlag countryCode={iconMap[payload]}  height={height}/> 
     </ListItemIcon>
   )

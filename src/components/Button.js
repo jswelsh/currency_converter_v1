@@ -15,13 +15,15 @@ export default function Button(props) {
   return (
     <FormControl>
       <ListItem
+        
         button
-        onClick={handleSubmit}
-      >
-        <ListItemIcon>
-          <Exchange />
+        onClick={handleSubmit}>
+        <ListItemIcon >
+          <Exchange color={'secondary'}/>
         </ListItemIcon>
-        <ListItemText primary={primary} />
+        <ListItemText 
+        color='#000'
+          primary={primary}/>
       </ListItem>
     </FormControl>
   )

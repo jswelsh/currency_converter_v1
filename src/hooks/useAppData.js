@@ -38,7 +38,7 @@ export default function useAppData() {
     currenciesList: [],
     compareList: [],
     history: [],
-    mode: 'Compare',
+    mode: 'Converter',
   });
 
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 

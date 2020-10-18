@@ -1,6 +1,6 @@
 import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { makeStyles } from '@material-ui/core/styles';
+import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { 
   Select, 
   MenuItem, 
@@ -9,15 +9,6 @@ import {
 } from '@material-ui/core';
 import { handleChange } from '../helpers/selectionHelper'
 import { iconHandler } from '../helpers/compareHelper'
-
-const useStyles = makeStyles((theme) => ({
-  MenuItem: {
-    padding: theme.spacing(1),
-    alignItems:'flex-start',
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  },
-}));
 
 const iconComponent = () => {
   return (
@@ -34,10 +25,11 @@ export default function SelectionComponent (props) {
     currenciesList
   } = props;
   
-  const classes = useStyles();
-
   return (
-    <ListItem>
+    
+    <ListItem
+    backgroundColor='red'
+    >
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
       <Select
         disableUnderline
@@ -47,7 +39,7 @@ export default function SelectionComponent (props) {
         onChange={(event) => handleChange(event, setter)}
       >
         {currenciesList.map(currency => (
-          <MenuItem className={classes.MenuItem}
+          <MenuItem
             key={currency} 
             value={currency}
           >
