@@ -12,9 +12,9 @@ CurrExC is a web application that  provides users with straight forward Currency
  - Material UI
 
 ## App Screenshots
--[History Graph, with Date picker popover](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-52-03.png?raw=true)
--[Compare view, showing the conversions for currencies against base currency](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-51-17.png?raw=true)
--[Showing the drawer toolbar in its closed state](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-50-44.png?raw=true)
+- [History Graph, with Date picker popover](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-52-03.png?raw=true)
+- [Compare view, showing the conversions for currencies against base currency](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-51-17.png?raw=true)
+- [Showing the drawer toolbar in its closed state](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-50-44.png?raw=true)
 
 ## Functionality and Limitations
 
