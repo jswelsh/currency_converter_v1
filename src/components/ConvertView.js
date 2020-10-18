@@ -5,21 +5,12 @@ import { iconHandler } from '../helpers/compareHelper'
 import {
   Box,
   Card,
-  Divider,
-  CardContent,
 } from '@material-ui/core';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: '#222222',
-    flexGrow: 1,
-  },
-  results: {
-  },
   card: {
-    backgroundColor:'#212121',
     color:'#fff',
     borderRadius: 12,
     minWidth: 500,
@@ -39,12 +30,10 @@ const useStyles = makeStyles((theme) => ({
   },
   subheader: {
     fontSize: 14,
-    /* color: theme.grey[500], */
     marginBottom: '0.875em',
   },
   secondary: {
     fontSize: 12,
-    /* color: theme.grey[500], */
     fontWeight: 500,
     margin: 0,
   },
@@ -55,12 +44,10 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '1px',
   },
   fromBox: {
-   /*  marginRight:50, */
     marginLeft:10
   },
   toBox: {
     marginRight:10,
-   /*  marginLeft:50 */
     
   }
 }));

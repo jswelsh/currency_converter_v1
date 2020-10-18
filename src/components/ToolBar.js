@@ -26,6 +26,10 @@ import UserInputTab from './UserInputTab';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+/*   root: {
+    display: 'flex',
+    backgroundColor: "#222222"
+  }, */
 
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -53,10 +57,10 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
     whiteSpace: "nowrap"
   },
-  drawerPaper: {
+/*   drawerPaper: {
     color: '#fff',
     backgroundColor: '#212121'
-  },
+  }, */
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -83,9 +87,9 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
-  history : {
+/*   history : {
     
-  },
+  }, */
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
@@ -110,17 +114,13 @@ export default function ToolBar(props) {
     <div className={classes.root}>
       <CssBaseline /> 
       <AppBar
-        color='primary'/* 'secondary' */
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: openDrawer
         })}
       >
-        <Toolbar
-          
-        >
+        <Toolbar >
           <IconButton
-            color='secondary'
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -136,9 +136,7 @@ export default function ToolBar(props) {
         </Toolbar>
       </AppBar>
       <Drawer
-        theme={props.theme}
         variant="permanent"
-        backgroundColor='red'
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: openDrawer,
           [classes.drawerClose]: !openDrawer
@@ -148,28 +146,18 @@ export default function ToolBar(props) {
             [classes.drawerOpen]: openDrawer,
             [classes.drawerClose]: !openDrawer
           }),
-          paper: classes.drawerPaper
         }}
         
       >
           <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon color='secondary'/>
+              <ChevronRightIcon />
             ) : (
-              <ChevronLeftIcon color='secondary'/>
+              <ChevronLeftIcon />
             )}
           </IconButton>
           </div>
-          
-        {/* maybe insert a header, for tools, or remove divider, kinda looks off?!  */}
-            {/*
-            color={'#da3125'}
-            color={'#1a73e8'}
-            color={'#00ff00'}
-            */}
-
-          {/* <Divider /> */}
 
           <TabSelector
             convertHistoryHandler={props.convertHistoryHandler}

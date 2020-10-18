@@ -4,25 +4,13 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Card,
-  CardContent,
-  Typography
-} from '@material-ui/core';
-
-import './CurrencyHistoryGraph.css';
-import theme from "@amcharts/amcharts4/themes/dark";
-
-
 
 const useStyles = makeStyles((theme) => ({
   root:{
     justify: 'center',
-/*     margin: 40 */
     flexGrow: 1,
   },
   ExchangeHistoryGraph: {
-    backgroundBolor: '#222222', 
     marginLeft:230, marginRight:200, width: "80%", height: "800px" 
   }
 }));

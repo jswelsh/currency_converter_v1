@@ -17,13 +17,18 @@ const theme = createMuiTheme({
 
     MuiList: {
       root: {
-        background:'#222222'
+        
       },
     },
     MuiSelect: {
       root: {
         color:'#fff'
       },
+    },
+    MuiPaper:{
+      root:{
+        backgroundColor:'#222222'
+      }
     },
     MuiMenuItem: {
       root: {
@@ -56,12 +61,11 @@ const theme = createMuiTheme({
     },
     MuiPopover:{
       paper:{
-        background:'#222222'
       }
     },
     MuiPickersPopper:{
       paper:{
-        background:/* '#222222' */'#707070'
+        background:'#707070'
       }
     },
     MuiPickersDateRangeDay:{

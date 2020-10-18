@@ -6,16 +6,9 @@ import {
   MenuItem, 
   ListItem,
   ListItemIcon, 
-  ThemeProvider
 } from '@material-ui/core';
 import { handleChange } from '../helpers/selectionHelper'
 import { iconHandler } from '../helpers/compareHelper'
-
-const useStyles = makeStyles((theme) => ({
-/*   selector:{
-    color: '#fff',
-  }, */
-}));
 
 const iconComponent = () => {
   return (
@@ -32,15 +25,13 @@ export default function SelectionComponent (props) {
     currenciesList
   } = props;
   
-  const classes = useStyles();
-
   return (
     
     <ListItem
     backgroundColor='red'
     >
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-      <Select className={classes.selector}
+      <Select
         disableUnderline
         name={name}
         IconComponent={iconComponent}
@@ -48,7 +39,7 @@ export default function SelectionComponent (props) {
         onChange={(event) => handleChange(event, setter)}
       >
         {currenciesList.map(currency => (
-          <MenuItem className={classes.MenuItem}
+          <MenuItem
             key={currency} 
             value={currency}
           >
