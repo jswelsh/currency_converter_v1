@@ -62,8 +62,8 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   // Drop-shaped tooltips
   series.tooltip.background.cornerRadius = 20;
   series.tooltip.background.strokeOpacity = 0.5;
-  series.tooltip.label.padding(12,12,12,12)
   series.tooltip.pointerOrientation = "vertical";
+  series.tooltip.label.padding(12,12,12,12)
   series.tooltip.label.minWidth = 40;
   series.tooltip.label.minHeight = 40;
   series.tooltip.label.textAlign = "middle";
@@ -82,10 +82,11 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
   chart.cursor = new am4charts.XYCursor();
-/*     chart.cursor = new am4charts.XYCursor();
+/*     
+  chart.cursor = new am4charts.XYCursor();
   chart.cursor.xAxis = valueAxis;
   chart.cursor.snapToSeries = series;
- */
+*/
 
   dateAxis.keepSelection = true;
   dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
