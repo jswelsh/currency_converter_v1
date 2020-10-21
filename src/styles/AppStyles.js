@@ -49,12 +49,7 @@ const theme = createMuiTheme({
         color:'#8CFFDA'
       }
     },
-    MuiPickersCalendar:{
-      weekDayLabel:{
-        color:'#8CFFDA',
-        fontSize:'large'
-      },
-    },
+  
     MuiPickersArrowSwitcher:{
       iconButton:{
         backgroundColor:'transparent'
@@ -62,9 +57,17 @@ const theme = createMuiTheme({
     },
     MuiSvgIcon: {
       root:{
-        color:'#8CFFDA'
+        color:'#8CFFDA',
+  /*       height:'35px',
+        width:'35px' */
       }
     },
+    MuiPickersCalendar:{
+      weekDayLabel:{
+        color:'#8CFFDA',
+        fontSize:'large'
+      },
+    }, 
     MuiTypography: {
       root: {
         color:'#fff'

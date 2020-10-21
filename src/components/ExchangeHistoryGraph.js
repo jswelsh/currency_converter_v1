@@ -38,14 +38,14 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   series.tooltipText = "{value}";
   series.stroke = '#8CFFDA';
 
-  dateAxis.skipEmptyPeriods = true;
+/*   dateAxis.skipEmptyPeriods = true; */
   dateAxis.renderer.minGridDistance = 60;
   dateAxis.renderer.grid.template.location = 0.5;
 
 
   series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
-  series.tensionX = 0.8;
+  /* series.tensionX = 0.8; */
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
 
