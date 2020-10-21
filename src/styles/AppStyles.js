@@ -4,7 +4,7 @@ import {  grey,  } from '@material-ui/core/colors'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: grey[900]
+      main: /* grey[900] */'#fff'
     },
     secondary: {
       main: '#8CFFDA'
@@ -14,6 +14,17 @@ const theme = createMuiTheme({
       },
   },
   overrides: {
+    /* MuiButtonBase-root MuiPickersDay-root MuiPickersDateRangeDay-day Mui-selected */
+    MuiButtonBase:{
+      root:{
+        color:'#1dd7a6'
+      }
+    },
+    MuiToolbar:{
+      root:{
+        backgroundColor:'#212121'
+      }
+    },
 
     MuiList: {
       root: {
@@ -49,8 +60,15 @@ const theme = createMuiTheme({
         color:'red'
       }
     },
+    MuiPickersArrowSwitcher:{
+      iconButton:{
+        backgroundColor:'transparent'
+      }
+    }
+      ,
     MuiSvgIcon: {
       root:{
+
         color:'#8CFFDA'
       }
     },
@@ -59,32 +77,27 @@ const theme = createMuiTheme({
         color:'#fff'
       }
     },
-    MuiPopover:{
-      paper:{
+    MuiPickersDay:{
+      root:{
+        /* color:'#69e8ea' */
+        color:'#8CFFDA'
       }
     },
-    MuiPickersPopper:{
-      paper:{
-        background:'#707070'
+    MuiPickersStaticWrapper:{
+      root:{
+        backgroundColor:'#222222'
+        /* backgroundColor:'#707070', */
       }
     },
     MuiPickersDateRangeDay:{
       rangeIntervalDayHighlight: {
-        backgroundColor:'#8CFFDA',
-        color:'#000',
-      
-      },
-      dayInsideRangeInterval:{
-        color:'#000'
-      }
-    },
-    MuiFormHelperText:{
-      root: {
-        color:'#fff',
+        backgroundColor:'#488a74',
+        color:'black'
+      }  
     },
   },
 }
-})
+)
 
 export default theme;
 

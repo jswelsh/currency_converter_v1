@@ -67,11 +67,12 @@ export default function ExchangeHistoryPopOver(props) {
             horizontal: 'left',
           }}
         >
-          <Typography variant={'h6'} className={classes.header}>
+          {/* <Typography variant={'h6'} className={classes.header}>
             To view the exchange history of {
             props.fromCurrency} to {
             props.toCurrency}, choose a date range.
-            </Typography>
+            </Typography> */}
+            
           <DatePickerComponent 
             dateRange={props.dateRange}
             handleChange={props.handleChange}
