@@ -37,7 +37,6 @@ export default function App() {
             compareList={state.compareList}
             currenciesList={state.currenciesList}
             mode={state.mode}
-            
             />
           <Grid    
             container

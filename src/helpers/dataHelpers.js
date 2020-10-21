@@ -4,21 +4,21 @@ function shortenDateString(string) {
   return string.toISOString().split('T')[0]
 }
 
-function fourWeeksFromToday() {
+function oneYearAgo() {
     const today = new Date();
-    const twoYearsAgo = new Date(
+    const oneYearAgo = new Date(
       today.getFullYear(), 
       today.getMonth(), 
-      today.getDate() - 365*2)
-    return shortenDateString(twoYearsAgo);
+      today.getDate() - 365)
+    return shortenDateString(oneYearAgo);
   }
 
   function initializeDateRange() {
     const today = shortenDateString(new Date())
     return [
-      fourWeeksFromToday(),
+      oneYearAgo(),
       today
     ]
   }
 
-  export { fourWeeksFromToday, shortenDateString, initializeDateRange }
+  export { shortenDateString, initializeDateRange }

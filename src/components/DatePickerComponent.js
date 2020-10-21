@@ -1,7 +1,10 @@
 import React from "react";
 import DayjsAdapter from '@material-ui/pickers/adapter/dayjs';
 import TextField from '@material-ui/core/TextField';
-import {  LocalizationProvider, DateRangePicker, DateRangeDelimiter } from "@material-ui/pickers";
+import { LocalizationProvider, StaticDateRangePicker, DateRangeDelimiter, DateRange } from "@material-ui/pickers";
+import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
+
 
 export default function DatePickerComponent(props) {
 
@@ -9,19 +12,20 @@ export default function DatePickerComponent(props) {
     <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >
-      <DateRangePicker
-        calendars={1}
+      <StaticDateRangePicker
+        leftArrowIcon={<ArrowBackIos fontSize='large'/>}
+        rightArrowIcon={<ArrowForwardIos fontSize='large'/>}
+        displayStaticWrapperAs="desktop"
         value={props.dateRange}
         onChange={props.handleChange}
         renderInput={(startProps, endProps) => (
-          <React.Fragment >
-            <TextField label='From' {...startProps}/>
+          <React.Fragment>
+            <TextField {...startProps} />
             <DateRangeDelimiter> to </DateRangeDelimiter>
-            <TextField label='To'{...endProps}/>
+            <TextField {...endProps} />
           </React.Fragment>
         )}
       />
     </LocalizationProvider>
   );
 };
-
