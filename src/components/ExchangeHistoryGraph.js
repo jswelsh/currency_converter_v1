@@ -23,6 +23,11 @@ export default function ExchangeHistoryGraph(props) {
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
 
+  /* 
+  dateAxis.dateFormats.setKey("day", "MMMM dt");
+dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt"); 
+  */
+
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());

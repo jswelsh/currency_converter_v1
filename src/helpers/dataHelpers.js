@@ -6,11 +6,11 @@ function shortenDateString(string) {
 
 function fourWeeksFromToday() {
     const today = new Date();
-    const FourWeeksAgo = new Date(
+    const twoYearsAgo = new Date(
       today.getFullYear(), 
       today.getMonth(), 
-      today.getDate() - 365)
-    return shortenDateString(FourWeeksAgo);
+      today.getDate() - 365*2)
+    return shortenDateString(twoYearsAgo);
   }
 
   function initializeDateRange() {
