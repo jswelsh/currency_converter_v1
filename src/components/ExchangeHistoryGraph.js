@@ -6,10 +6,10 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-/*   root:{
+  root:{
     justify: 'center',
     flexGrow: 1,
-  }, */
+  },
   ExchangeHistoryGraph: {
     /* marginLeft:230, marginRight:200, */ width: "80%", height: "800px" 
   }
@@ -30,7 +30,8 @@ export default function ExchangeHistoryGraph(props) {
     chart.marginLeft = 230
     chart.marginRight = 200
     chart.data = props.history
-  /* 
+    
+    /* 
   dateAxis.dateFormats.setKey("day", "MMMM dt");
 dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt"); 
   */
@@ -53,8 +54,10 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
   /* series.tensionX = 0.8; */
-  series.fillOpacitgity = 0.2;
+  series.fill = series.stroke;
+  series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
+  
 
   // Drop-shaped tooltips
   series.tooltip.background.cornerRadius = 20;
