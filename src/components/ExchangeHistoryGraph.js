@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
@@ -6,23 +6,30 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  root:{
+/*   root:{
     justify: 'center',
     flexGrow: 1,
-  },
+  }, */
   ExchangeHistoryGraph: {
-    marginLeft:230, marginRight:200, width: "80%", height: "800px" 
+    /* marginLeft:230, marginRight:200, */ width: "80%", height: "800px" 
   }
 }));
 
 export default function ExchangeHistoryGraph(props) {
   const classes = useStyles();
+  const charty = useRef(null);
+  console.log(props.history, "yoooooo")
+
+  useLayoutEffect(() => {
+
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
   am4core.options.autoDispose = true;
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
-
+    chart.marginLeft = 230
+    chart.marginRight = 200
+    chart.data = props.history
   /* 
   dateAxis.dateFormats.setKey("day", "MMMM dt");
 dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt"); 
@@ -40,13 +47,13 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
 
 /*   dateAxis.skipEmptyPeriods = true; */
   dateAxis.renderer.minGridDistance = 60;
-  dateAxis.renderer.grid.template.location = 0.5;
+  dateAxis.renderer.grid.template.location = 0;
 
 
   series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
   /* series.tensionX = 0.8; */
-  series.fillOpacity = 0.2;
+  series.fillOpacitgity = 0.2;
   series.minBulletDistance = 15;
 
   // Drop-shaped tooltips
@@ -80,7 +87,17 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   dateAxis.keepSelection = true;
   dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
   
-  chart.data = props.history
+  charty.current = chart;
+
+    return () => {
+      chart.dispose();
+    };
+  }, [props.history]);
+  
+ /*  useLayoutEffect(() => {
+        charty.current
+    }, [props.history]);
+ */
 
   return (
     <>

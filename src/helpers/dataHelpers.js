@@ -14,10 +14,11 @@ function oneYearAgo() {
   }
 
   function initializeDateRange() {
-    const today = shortenDateString(new Date())
+    const toDate = shortenDateString(new Date())
+    const fromDate = oneYearAgo()
     return [
-      oneYearAgo(),
-      today
+      fromDate,
+      toDate
     ]
   }
 
