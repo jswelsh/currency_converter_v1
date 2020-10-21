@@ -14,7 +14,6 @@ const theme = createMuiTheme({
       },
   },
   overrides: {
-    /* MuiButtonBase-root MuiPickersDay-root MuiPickersDateRangeDay-day Mui-selected */
     MuiButtonBase:{
       root:{
         color:'#1dd7a6'
@@ -24,12 +23,6 @@ const theme = createMuiTheme({
       root:{
         backgroundColor:'#212121'
       }
-    },
-
-    MuiList: {
-      root: {
-        
-      },
     },
     MuiSelect: {
       root: {
@@ -55,20 +48,13 @@ const theme = createMuiTheme({
         color:'#8CFFDA'
       }
     },
-    MuiFormLabel:{
-      root:{
-        color:'red'
-      }
-    },
     MuiPickersArrowSwitcher:{
       iconButton:{
         backgroundColor:'transparent'
       }
-    }
-      ,
+    },
     MuiSvgIcon: {
       root:{
-
         color:'#8CFFDA'
       }
     },
@@ -86,7 +72,6 @@ const theme = createMuiTheme({
     MuiPickersStaticWrapper:{
       root:{
         backgroundColor:'#222222'
-        /* backgroundColor:'#707070', */
       }
     },
     MuiPickersDateRangeDay:{
