@@ -7,18 +7,17 @@ import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 
 
 export default function DatePickerComponent(props) {
-  const [value, setValue] = React.useState([null, null]);
 
   return (
     <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >
       <StaticDateRangePicker
-      leftArrowIcon={<ArrowBackIos fontSize='large'/>}
-      rightArrowIcon={<ArrowForwardIos fontSize='large'/>}
+        leftArrowIcon={<ArrowBackIos fontSize='large'/>}
+        rightArrowIcon={<ArrowForwardIos fontSize='large'/>}
         displayStaticWrapperAs="desktop"
-        value={value}
-        onChange={(newValue) => setValue(newValue)}
+        value={props.dateRange}
+        onChange={props.handleChange}
         renderInput={(startProps, endProps) => (
           <React.Fragment>
             <TextField {...startProps} />
