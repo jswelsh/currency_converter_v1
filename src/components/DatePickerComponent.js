@@ -9,7 +9,7 @@ export default function DatePickerComponent(props) {
     <LocalizationProvider 
       dateAdapter={DayjsAdapter}
       >
-      <DateRangePicker
+{/*       <DateRangePicker
         calendars={1}
         value={props.dateRange}
         onChange={props.handleChange}
@@ -18,6 +18,19 @@ export default function DatePickerComponent(props) {
             <TextField label='From' {...startProps}/>
             <DateRangeDelimiter> to </DateRangeDelimiter>
             <TextField label='To'{...endProps}/>
+          </React.Fragment>
+        )}
+      /> */}
+      <DateRangePicker
+        startText='Start Date'
+        endText='End Date'
+        value={props.dateRange}
+        onChange={props.handleChange}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment >
+            <TextField {...startProps}/>
+            <DateRangeDelimiter> to </DateRangeDelimiter>
+            <TextField {...endProps}/>
           </React.Fragment>
         )}
       />
