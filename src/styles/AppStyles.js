@@ -14,7 +14,8 @@ const theme = createMuiTheme({
       },
   },
   overrides: {
-    MuiButtonBase:{
+
+    MuiTouchRipple:{
       root:{
         color:'#1dd7a6'
       }
