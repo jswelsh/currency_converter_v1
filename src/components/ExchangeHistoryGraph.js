@@ -74,10 +74,24 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   chart.scrollbarY.parent = chart.leftAxesContainer;
   chart.scrollbarY.toBack();
 
-  // Create a horizontal scrollbar with previe and place it underneath the date axis
-  chart.scrollbarX = new am4charts.XYChartScrollbar();
-  chart.scrollbarX.series.push(series);
-  chart.scrollbarX.parent = chart.bottomAxesContainer;
+   // Create a horizontal scrollbar with preview and place it underneath the date axis
+   chart.scrollbarX = new am4charts.XYChartScrollbar();
+   chart.scrollbarX.series.push(series);
+   chart.scrollbarX.parent = chart.bottomAxesContainer;
+
+  function customizeGrip(grip) {
+    grip.background.fill = am4core.color('#8CFFDA');
+    grip.background.fillOpacity = 0.5;
+  }
+  //stlying for the scroll bar
+  customizeGrip(chart.scrollbarY.startGrip);
+  customizeGrip(chart.scrollbarY.endGrip);
+  chart.scrollbarY.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
+  chart.scrollbarY.background.fillOpacity = 0.2;
+  customizeGrip(chart.scrollbarX.startGrip);
+  customizeGrip(chart.scrollbarX.endGrip);
+  chart.scrollbarX.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
+  chart.scrollbarX.background.fillOpacity = 0.2;
 
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
