@@ -1,5 +1,8 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
+import { 
+  initializeDateRange 
+} from '../helpers/dataHelpers'
 
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
@@ -150,6 +153,8 @@ export default function useAppData() {
       });
     compareListHandler('CAD', 1)
     convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:1})
+    //if you change this, make sure to change inside userinput aswell
+    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange()})
   }, []); // Empty array to only run once on mount.
 
   return {
