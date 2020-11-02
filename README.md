@@ -1,5 +1,5 @@
 # CurrExC
-CurrExC is a web application that  provides users with straight forward Currency exchange rates provided in real time by an open-sourced API. It is built on **React, Axios and Node**; using a more functional programming paradigm with pure components and **hooks** to manage application state.
+CurrExC is a web application that  provides users with straight forward Currency exchange rates provided in real time by an open-sourced API. It is built on **React, Material UI, Axios and Node**; using a more functional programming paradigm with pure components and **hooks** to manage application state.
 
 
 # Technologies
