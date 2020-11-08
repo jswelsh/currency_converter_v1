@@ -1,23 +1,42 @@
 import React, { useRef, useLayoutEffect } from "react";
+import clsx from 'clsx';
+
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
+const drawerWidth = 240;
+
 const useStyles = makeStyles((theme) => ({
   root:{
     justify: 'center',
     flexGrow: 1,
   },
+  drawerClose: {
+    
+    width: "93%", height: "800px" ,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  drawerOpen: {
+    marginLeft: drawerWidth,
+    width: `calc(93% - ${drawerWidth}px)`, height: "800px" ,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen})
+  },
   ExchangeHistoryGraph: {
-    /* marginLeft:230, marginRight:200, */ width: "80%", height: "800px" 
+    /* marginLeft:230, marginRight:200, */ width: "90%", height: "800px" 
   }
 }));
 
 export function ExchangeHistoryGraph(props) {
   const classes = useStyles();
-  const charty = useRef(null);
+  //const charty = useRef(null);
 
   useLayoutEffect(() => {
 
@@ -74,9 +93,9 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   chart.scrollbarY.toBack();
 
    // Create a horizontal scrollbar with preview and place it underneath the date axis
-   chart.scrollbarX = new am4charts.XYChartScrollbar();
-   chart.scrollbarX.series.push(series);
-   chart.scrollbarX.parent = chart.bottomAxesContainer;
+  chart.scrollbarX = new am4charts.XYChartScrollbar();
+  chart.scrollbarX.series.push(series);
+  chart.scrollbarX.parent = chart.bottomAxesContainer;
 
   function customizeGrip(grip) {
     grip.background.fill = am4core.color('#8CFFDA');
@@ -104,7 +123,7 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   dateAxis.keepSelection = true;
   dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
   
-  charty.current = chart;
+  //charty.current = chart;
 
     return () => {
       chart.dispose();
@@ -118,7 +137,13 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
 
   return (
     <>
-      <div id="chartdiv" className={classes.ExchangeHistoryGraph}  ></div>
+      <div 
+        id="chartdiv" 
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: props.opendrawer,
+          [classes.drawerClose]: !props.opendrawer
+        })} /* className={classes.ExchangeHistoryGraph} */  
+        ></div>
     </>
     
   );

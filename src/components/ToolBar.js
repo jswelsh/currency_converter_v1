@@ -99,14 +99,13 @@ const useStyles = makeStyles((theme) => ({
 export function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [openDrawer, setDrawerOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
-    setDrawerOpen(true);
+    props.setDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setDrawerOpen(false);
+    props.setDrawerOpen(false);
   };
 
 //maybe get rid of css baseline later
@@ -116,7 +115,7 @@ export function ToolBar(props) {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: openDrawer
+          [classes.appBarShift]: props.opendrawer
         })}
       >
         <Toolbar >
@@ -125,7 +124,7 @@ export function ToolBar(props) {
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, {
-              [classes.hide]: openDrawer
+              [classes.hide]: props.opendrawer
             })}
           >
             <MenuIcon />
@@ -138,13 +137,13 @@ export function ToolBar(props) {
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
-          [classes.drawerOpen]: openDrawer,
-          [classes.drawerClose]: !openDrawer
+          [classes.drawerOpen]: props.opendrawer,
+          [classes.drawerClose]: !props.opendrawer
         })}
         classes={{
           paper: clsx({
-            [classes.drawerOpen]: openDrawer,
-            [classes.drawerClose]: !openDrawer
+            [classes.drawerOpen]: props.opendrawer,
+            [classes.drawerClose]: !props.opendrawer
           }),
         }}
         
@@ -181,7 +180,7 @@ export function ToolBar(props) {
               currenciesList={props.currenciesList}
               compareList={props.compareList}
               mode={props.mode}
-              drawer={openDrawer}
+              drawer={props.opendrawer}
             />
           <div className={clsx({
                 [classes.hide]: props.mode !== 'Compare'

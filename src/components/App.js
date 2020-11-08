@@ -12,7 +12,7 @@ import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 
 
 export default function App() {
-
+  const [opendrawer, setDrawerOpen] = React.useState(false);
   const {
     state,
     convertHistoryHandler,
@@ -34,6 +34,8 @@ export default function App() {
           compareList={state.compareList}
           currenciesList={state.currenciesList}
           mode={state.mode}
+          opendrawer={opendrawer}
+          setDrawerOpen={setDrawerOpen}
           />
         <Grid    
           container
@@ -47,6 +49,7 @@ export default function App() {
           {state.mode === 'History' && (
           <ExchangeHistoryGraph
             history={state.history}
+            opendrawer={opendrawer}
           />)}
           {state.mode === 'Compare' && (
           <CompareView 
