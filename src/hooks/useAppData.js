@@ -51,8 +51,7 @@ export default function useAppData() {
   const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
   const compareListHandler = (fromCurrency, amount) => {
-    console.log(fromCurrency, amount)
-    const compareURL = `${latestURl}?base=${/* state.baseCurrency */fromCurrency}`
+    const compareURL = `${latestURl}?base=${fromCurrency}`
     axios
       .get(compareURL)
       .then((res) => {
@@ -69,15 +68,14 @@ export default function useAppData() {
 
   const convertHandler = (payload) => {
     const { fromCurrency, toCurrency, amount} = payload
-    const latestURL = 'https://api.exchangeratesapi.io/latest?symbols=';
+    const latestURL = 'https://api.exchangeratesapi.io/latest?base=';
     if (fromCurrency !== toCurrency) {
       axios
         .get(`${
           latestURL}${
-            fromCurrency}&symbols=${
-              toCurrency}`)
+          fromCurrency}`)
         .then((res) => {
-          const result = amount * res.data.rates[toCurrency];
+          const result = res.data.rates[toCurrency];
           setResult({
             toStart: amount,
             converted: result.toFixed(5),

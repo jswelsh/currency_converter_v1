@@ -16,8 +16,8 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 
-import TabSelector from './TabSelector';
-import UserInputTab from './UserInputTab';
+import { TabSelector } from './TabSelector';
+import { UserInputTab } from './UserInputTab';
 /* import ConverterTab from './ConverterTab';
  */
 
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ToolBar(props) {
+export function ToolBar(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [openDrawer, setDrawerOpen] = React.useState(false);

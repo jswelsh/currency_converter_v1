@@ -46,8 +46,7 @@ const iconHandler = (mode, payload) => {
   'selection' ? 25 :
   'converter' ? 50 :
   35
-  console.log(height,'height')
-
+  
   return (
     <ListItemIcon spacing={0}>
       <CircleFlag countryCode={iconMap[payload]}  height={height}/> 
@@ -56,5 +55,3 @@ const iconHandler = (mode, payload) => {
 }
 
 export { iconHandler }
-
-

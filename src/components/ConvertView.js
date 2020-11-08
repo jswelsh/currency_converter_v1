@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
   Box,
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ConvertView(props){
+export function ConvertView(props){
   const classes = useStyles();
 
   const { 
@@ -71,7 +71,6 @@ export default function ConvertView(props){
         display={'flex'}
         flexDirection={'row'}
         justifyContent={'space-between'}>
-
       <Box 
         className={clsx(classes.fromBox)} 
         display={'flex'}  
@@ -93,14 +92,12 @@ export default function ConvertView(props){
           <p className={classes.secondary}> { fromCurrency}</p>
         </Box>
       </Box>
-
       <Box 
         display={'flex'}  
         alignItems={'center'} >
       <SwapHorizIcon 
         fontSize="large"/>
       </Box>
-
       <Box 
         className={clsx(classes.toBox)} 
         display={'flex'} 

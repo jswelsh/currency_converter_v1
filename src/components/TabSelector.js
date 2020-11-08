@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   List,
-  Link,
   ListItem,
   ListItemIcon,
   ListItemText
@@ -9,7 +8,7 @@ import {
 import History from '@material-ui/icons/Timeline';
 import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
-import { makeStyles } from '@material-ui/core/styles';
+
 
 function ListItemLink(props) {
 
@@ -34,7 +33,7 @@ function ListItemLink(props) {
   );
 }
 
-export default function TabSelector(props) {
+export function TabSelector(props) {
 
   const commonProps = (payload) => ({
     mode:props.mode,

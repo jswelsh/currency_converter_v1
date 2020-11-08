@@ -35,7 +35,7 @@ function NumberFormatCustom(props) {
   );
 }
 
-export default function InputAmountField(props) {
+export function InputAmountField(props) {
   const classes = useStyles();
   
 return (
