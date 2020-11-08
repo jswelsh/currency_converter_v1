@@ -71,7 +71,6 @@ export function ConvertView(props){
         display={'flex'}
         flexDirection={'row'}
         justifyContent={'space-between'}>
-
       <Box 
         className={clsx(classes.fromBox)} 
         display={'flex'}  
@@ -93,14 +92,12 @@ export function ConvertView(props){
           <p className={classes.secondary}> { fromCurrency}</p>
         </Box>
       </Box>
-
       <Box 
         display={'flex'}  
         alignItems={'center'} >
       <SwapHorizIcon 
         fontSize="large"/>
       </Box>
-
       <Box 
         className={clsx(classes.toBox)} 
         display={'flex'} 
