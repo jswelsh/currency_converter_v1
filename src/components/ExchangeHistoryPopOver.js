@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-
 import { 
   Popover,  
-  Typography,
   FormControl, 
   ListItem, 
   ListItemIcon, 
@@ -11,7 +9,7 @@ import {
 } from "@material-ui/core";
 
 import CalendarIcon from '@material-ui/icons/CalendarToday';
-import DatePickerComponent from "./DatePickerComponent";
+import { DatePickerComponent } from "./DatePickerComponent";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -23,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ExchangeHistoryPopOver(props) {
+export function ExchangeHistoryPopOver(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
 
@@ -75,4 +73,3 @@ export default function ExchangeHistoryPopOver(props) {
       </>
   );
 }
-

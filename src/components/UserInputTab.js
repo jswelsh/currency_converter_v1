@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import ExchangeHistoryPopOver from './ExchangeHistoryPopOver';
-import SelectionForm from './SelectionForm';
-import Button from './Button';
-import InputAmountField from './InputAmountField';
+import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
+import { HistorySelectionForm } from './HistorySelectionForm';
+import { Button } from './Button';
+import { InputAmountField } from './InputAmountField';
 
 import { Divider } from '@material-ui/core';
 import { 
@@ -11,7 +11,7 @@ import {
 } from '../helpers/dataHelpers'
 
 
-export default function ExchangeHistoryTab(props) {
+export function UserInputTab(props) {
 const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD');
 const [amount, setAmount] = useState(1);
@@ -27,12 +27,14 @@ const currencySelectHandler = (mode, currency) => {
 }
 
   const handleChange = (event) => {
-    const [startDate, endDate] = event
-
-    setDateRange(
-      [shortenDateString(startDate), 
-      shortenDateString(endDate)
-    ])
+    //error check that both start and end date have been selected
+    if(event[1] !== null){
+      const [startDate, endDate] = event
+      setDateRange(
+        [shortenDateString(startDate), 
+        shortenDateString(endDate)
+      ])
+    }
   }
   return (
   <> 
@@ -44,7 +46,7 @@ const currencySelectHandler = (mode, currency) => {
       drawer={props.drawer}
     />
   )}
-    <SelectionForm 
+    <HistorySelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
       setFromCurrency={setFromCurrency}

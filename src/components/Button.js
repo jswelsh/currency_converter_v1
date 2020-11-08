@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import Exchange from '@material-ui/icons/Shuffle';
 
-export default function Button(props) {
+export function Button(props) {
   const { 
     primary, 
     handleSubmit 

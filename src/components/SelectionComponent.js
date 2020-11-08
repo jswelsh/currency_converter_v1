@@ -1,6 +1,5 @@
 import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import { 
   Select, 
   MenuItem, 
@@ -16,7 +15,7 @@ const iconComponent = () => {
   )};
   
   
-export default function SelectionComponent (props) {
+export function SelectionComponent (props) {
   const { 
     icon, 
     name, 
@@ -27,9 +26,7 @@ export default function SelectionComponent (props) {
   
   return (
     
-    <ListItem
-    backgroundColor='red'
-    >
+    <ListItem>
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
       <Select
         disableUnderline

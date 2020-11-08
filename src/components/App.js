@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import ExchangeHistoryGraph from './ExchangeHistoryGraph';
+import 'fontsource-roboto';
 import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
-
-import 'fontsource-roboto';
-import ToolBar from './ToolBar';
-import CompareView from './CompareView'
-import ConvertView from './ConvertView'
 import { Grid } from '@material-ui/core';
+import { ToolBar } from './ToolBar';
+import { CompareView } from './CompareView'
+import { ConvertView } from './ConvertView'
+import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 
 
 export default function App() {

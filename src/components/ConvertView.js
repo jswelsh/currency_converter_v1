@@ -1,6 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
   Box,
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ConvertView(props){
+export function ConvertView(props){
   const classes = useStyles();
 
   const { 

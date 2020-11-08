@@ -51,7 +51,6 @@ export default function useAppData() {
   const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
 
   const compareListHandler = (fromCurrency, amount) => {
-    console.log(fromCurrency, amount)
     const compareURL = `${latestURl}?base=${/* state.baseCurrency */fromCurrency}`
     axios
       .get(compareURL)

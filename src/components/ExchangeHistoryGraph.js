@@ -15,10 +15,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ExchangeHistoryGraph(props) {
+export function ExchangeHistoryGraph(props) {
   const classes = useStyles();
   const charty = useRef(null);
-  console.log(props.history, "yoooooo")
 
   useLayoutEffect(() => {
 
