@@ -54,6 +54,7 @@ export default function App() {
           {state.mode === 'Compare' && (
           <CompareView 
             compareList={state.compareList}
+            opendrawer={opendrawer}
           />)}
         </Grid>
       </main>

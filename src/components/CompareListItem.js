@@ -1,4 +1,6 @@
 import React from 'react';
+import clsx from 'clsx';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
@@ -11,21 +13,18 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 //based off of 
-const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+
   ListItem: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    backgroundColor: '#212121'
-  },
-  Paper:{
-    marginLeft: `${drawerWidth+30}px`,
-    marginRight: theme.spacing(20)
+    backgroundColor: '#212121',
+    minHeight: 100
   },
   symbol: {
     marginRight: 16
-  }
+  },
 }));
 
 const gridBuilder = (payload) => {
@@ -45,8 +44,8 @@ export function CompareListItem (props) {
   }
 
   return (
-    <Grid>
-      <Paper className={classes.Paper}>
+
+      < Paper>
         <ListItem className={classes.ListItem} >
           <Grid container spacing={1} direction="row" justify="space-around" >
             {gridBuilder(
@@ -71,7 +70,7 @@ export function CompareListItem (props) {
           </Grid>
         </ListItem>
       </Paper>
-    </Grid>
+
 
   )
 }
