@@ -19,46 +19,41 @@ export default function App() {
     modeHandler,
     convertHandler,
     compareListHandler,
-
   } = useAppData();
 
   return (
     <ThemeProvider theme={theme}>
-    <main className="layout">
-
-          <ToolBar 
-            fromCurrency={state.fromCurrency}
-            toCurrency={state.toCurrency}
-            convertHandler={convertHandler}
-            convertHistoryHandler={convertHistoryHandler}
-            modeHandler={modeHandler}
-            compareListHandler={compareListHandler}
+      <main className="layout">
+        <ToolBar 
+          fromCurrency={state.fromCurrency}
+          toCurrency={state.toCurrency}
+          convertHandler={convertHandler}
+          convertHistoryHandler={convertHistoryHandler}
+          modeHandler={modeHandler}
+          compareListHandler={compareListHandler}
+          compareList={state.compareList}
+          currenciesList={state.currenciesList}
+          mode={state.mode}
+          />
+        <Grid    
+          container
+          direction="column"
+          justify="flex-start"
+          alignItems="center" >
+          {state.mode === 'Converter' && (
+          <ConvertView
+            result={state.result}
+          />)}
+          {state.mode === 'History' && (
+          <ExchangeHistoryGraph
+            history={state.history}
+          />)}
+          {state.mode === 'Compare' && (
+          <CompareView 
             compareList={state.compareList}
-            currenciesList={state.currenciesList}
-            mode={state.mode}
-            />
-          <Grid    
-            container
-            direction="column"
-            justify="flex-start"
-            alignItems="center" >
-            
-              {state.mode === 'Converter' && (
-                <ConvertView
-                  result={state.result}
-              />)}
-              {state.mode === 'History' && (
-                <ExchangeHistoryGraph
-/*                 className="App"
- */
-                  history={state.history}
-              />)}
-              {state.mode === 'Compare' && (
-                <CompareView 
-                  compareList={state.compareList}
-                />)}
-      </Grid>
-    </main>
+          />)}
+        </Grid>
+      </main>
     </ThemeProvider>
   );
 }
