@@ -10,19 +10,22 @@ import {
   CardHeader,
   CardContent,
 } from '@material-ui/core';
-import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
+/* import SwapHorizIcon from '@material-ui/icons/SwapHoriz'; */
 
 const drawerWidth = 240;
 const drawerClosed = 100;
 
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 const useStyles = makeStyles((theme) => ({
+
   card: {
     color:'#fff',
     borderRadius: 12,
-    minWidth: 400,
     margin:'auto',
-    textAlign: 'center',
+    minWidth:400,
+  },
+  container:{
+    alignContent:'center'
   },
   cardHeader: {
     backgroundColor:'secondary'},
@@ -38,37 +41,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 8,
     marginBottom: 0,
   },
-/*   subheader: {
-    fontSize: 20,
-    marginBottom: '0.875em',
-  }, */
-  secondary: {
-    fontSize: 12,
-    fontWeight: 500,
-    margin: 0,
-  },
-  primary: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 4,
-    letterSpacing: '1px',
-  },
-  fromBox: {
-
-  },
-  toBox: {
-    
-  },
-  img: {
-    margin: 'auto',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
   drawerClose: {
     marginLeft: drawerClosed,
-    marginLeft: drawerClosed,
-    width: `calc(93% - ${drawerClosed}px)`,
- /*    maxWidth:"1280px", */
+    width: `calc(95% - ${drawerClosed}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -76,8 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerOpen: {
     marginLeft: drawerWidth,
-    width: `calc(93% - ${drawerWidth}px)`,
-/*     maxWidth:"960px", */
+    width: `calc(95% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen})
@@ -86,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function ConvertView(props){
   const classes = useStyles();
-  const drawerClosed = 100;
 
   const { 
     toStart,
@@ -96,6 +69,7 @@ export function ConvertView(props){
   } = props.result
   return(
 
+    <Container className={classes.Container}>
   
     <Container  
       component="main"
@@ -104,14 +78,16 @@ export function ConvertView(props){
         [classes.drawerClose]: !props.opendrawer
       })}
     >
-    <Grid container spacing={5} alignItems="flex-end">
+      
+
+    <Grid container spacing={5} >
       {[[
         fromCurrency, 
         toStart], [
         toCurrency,
         converted]].map(([currency,amount]) => (
-        <Grid item key={currency} sm={12} md={12} lg={6}>
-          <Card className={classes.card}>
+        <Grid item spacing={3} key={currency} sm={12} md={12} lg={6}>
+          <Card className={classes.card} >
             <CardHeader
               title={currency && data[currency]['name']}
               titleTypographyProps={{ align: 'left',variant: "h4" }}
@@ -138,6 +114,7 @@ export function ConvertView(props){
         </Grid>
       ))}
     </Grid>
+    </Container>
   </Container>
   )
 }

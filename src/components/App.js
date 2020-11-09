@@ -46,7 +46,6 @@ export default function App() {
           <ConvertView
             result={state.result}
             opendrawer={opendrawer}
-
           />)}
           {state.mode === 'History' && (
           <ExchangeHistoryGraph
