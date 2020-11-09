@@ -43,9 +43,21 @@ const theme = createMuiTheme({
       root:{
         color:'#fff'
       }
-    },MuiInputLabel:{
+    },
+    MuiInputLabel:{
       root:{
         color:'#8CFFDA'
+      }
+    },
+    MuiCardHeader:{
+      root:{
+        background:'#009868',
+        align: 'left'
+      },
+      subheader:{
+        color:'#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
       }
     },
   

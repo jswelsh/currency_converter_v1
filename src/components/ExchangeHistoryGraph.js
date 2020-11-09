@@ -8,6 +8,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
+const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -15,8 +16,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   drawerClose: {
-    
-    width: "93%", height: "800px" ,
+    marginLeft: drawerClosed,
+    marginRight: drawerClosed-20,
+    width: `calc(93% - ${drawerClosed}px)`, /* `calc(95% - 100px)`,  */
+    height: "800px" ,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -30,13 +33,12 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})
   },
   ExchangeHistoryGraph: {
-    /* marginLeft:230, marginRight:200, */ width: "90%", height: "800px" 
+    width: "90%", height: "800px" 
   }
 }));
 
 export function ExchangeHistoryGraph(props) {
   const classes = useStyles();
-  //const charty = useRef(null);
 
   useLayoutEffect(() => {
 
@@ -48,11 +50,6 @@ export function ExchangeHistoryGraph(props) {
     chart.marginLeft = 230
     chart.marginRight = 200
     chart.data = props.history
-    
-    /* 
-  dateAxis.dateFormats.setKey("day", "MMMM dt");
-dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt"); 
-  */
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   
@@ -64,14 +61,14 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   series.tooltipText = "{value}";
   series.stroke = '#8CFFDA';
 
-/*   dateAxis.skipEmptyPeriods = true; */
+  dateAxis.skipEmptyPeriods = true;
   dateAxis.renderer.minGridDistance = 60;
   dateAxis.renderer.grid.template.location = 0;
 
 
   series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
-  /* series.tensionX = 0.8; */
+  series.tensionX = 0.8;
   series.fill = series.stroke;
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
@@ -114,26 +111,14 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
   chart.cursor = new am4charts.XYCursor();
-/*     
-  chart.cursor = new am4charts.XYCursor();
-  chart.cursor.xAxis = valueAxis;
-  chart.cursor.snapToSeries = series;
-*/
 
   dateAxis.keepSelection = true;
   dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
-  
-  //charty.current = chart;
 
     return () => {
       chart.dispose();
     };
   }, [props.history]);
-  
- /*  useLayoutEffect(() => {
-        charty.current
-    }, [props.history]);
- */
 
   return (
     <>
@@ -142,7 +127,7 @@ dateAxis.periodChangeDateFormats.setKey("day", "MMMM dt");
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: props.opendrawer,
           [classes.drawerClose]: !props.opendrawer
-        })} /* className={classes.ExchangeHistoryGraph} */  
+        })}
         ></div>
     </>
     

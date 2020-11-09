@@ -1,30 +1,29 @@
 import React from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
   Grid, 
-  Paper,
+  Card,
   ListItem,
   ListItemText,
   Typography,
 } from '@material-ui/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
-//based off of 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
+
   ListItem: {
     padding: theme.spacing(1),
     textAlign: 'center',
-    backgroundColor: '#212121'
-  },
-  Paper:{
-    marginLeft: `${drawerWidth+30}px`,
-    marginRight: theme.spacing(20)
+    backgroundColor: '#212121',
+    minHeight: 100
   },
   symbol: {
     marginRight: 16
+  },
+  Card:{
+    borderRadius: 12,
   }
 }));
 
@@ -45,8 +44,8 @@ export function CompareListItem (props) {
   }
 
   return (
-    <Grid>
-      <Paper className={classes.Paper}>
+
+      <Card className={classes.Cardgit}>
         <ListItem className={classes.ListItem} >
           <Grid container spacing={1} direction="row" justify="space-around" >
             {gridBuilder(
@@ -70,8 +69,8 @@ export function CompareListItem (props) {
             )}
           </Grid>
         </ListItem>
-      </Paper>
-    </Grid>
+      </Card>
+
 
   )
 }
