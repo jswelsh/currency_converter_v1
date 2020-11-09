@@ -3,8 +3,21 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
-  Box,
   Card,
+  Grid,
+  Typography,
+
+
+
+
+
+  Container,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Button
+
+
 } from '@material-ui/core';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
@@ -13,9 +26,12 @@ const useStyles = makeStyles((theme) => ({
   card: {
     color:'#fff',
     borderRadius: 12,
-    minWidth: 500,
+    minWidth: 400,
+    margin:'auto',
     textAlign: 'center',
   },
+  cardHeader: {
+    backgroundColor:'secondary'},
   avatar: {
     width: 60,
     height: 60,
@@ -44,16 +60,21 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: '1px',
   },
   fromBox: {
-    marginLeft:10
+
   },
   toBox: {
-    marginRight:10,
     
-  }
+  },
+  img: {
+    margin: 'auto',
+    maxWidth: '100%',
+    maxHeight: '100%',
+  },
 }));
 
 export function ConvertView(props){
   const classes = useStyles();
+/*   console.log('helio', props.result.fromCurrency) */
 
   const { 
     toStart,
@@ -62,11 +83,109 @@ export function ConvertView(props){
     toCurrency 
   } = props.result
 
+/*   const from = {
+    toStart, 
+    fromCurrency,
+    name: data[fromCurrency]['name'],
+    nativeSymbol: data[fromCurrency]['symbol_native'],
+    symbol: data[fromCurrency]['symbol']
+  }
+ */
   return(
 
-    <Card 
+
+    <Container maxWidth="md" component="main">
+    <Grid container spacing={5} alignItems="flex-end">
+      {[[
+        fromCurrency, 
+        toStart], [
+        toCurrency,
+        converted]].map(([currency,amount]) => (
+        <Grid item key={currency} sm={12} md={6}>
+          <Card className={classes.card}>
+            <CardHeader
+              title={currency && data[currency]['name']}
+              titleTypographyProps={{ align: 'center',variant: "h4" }}
+/*               subheader= {currency}
+              subheaderTypographyProps={{ align: 'center' }} */
+              className={classes.cardHeader}
+            />
+            <CardContent>
+              <Grid container justify="center">
+                <Grid item >
+                <Typography component="h3" variant="h3" color="secondary">
+                {currency && data[currency]['symbol_native'] }
+                </Typography>
+                </Grid>
+                <Grid item >
+                <Typography variant="h3" color="primary">
+                  {amount}
+                </Typography>
+                </Grid>
+              </Grid>
+              <Grid container justify="center">
+              <Grid item>
+                <Typography variant="h5" color="primary">
+                  {currency}
+                </Typography>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
+  </Container>
+ /*    <Card className={clsx(classes.card)} >
+        
+
+
+    <Grid container spacing={2} >
+
+        <Grid container item xs  spacing={2}>
+          <Grid item xs>
+            <Typography  variant="subtitle1">
+              {fromCurrency && data[fromCurrency]['name']}
+            </Typography>
+              { iconHandler('converter', fromCurrency)}
+            <Typography variant="body2" color="textSecondary">
+              ID: 1030114
+            </Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Card> */
+  )
+}
+
+
+
+/*       <Grid 
+      container
+        display={'flex'}
+        flexDirection={'row'}
+        justifyContent={'space-between'}>
+
+      <Grid container
+        className={clsx(classes.fromBox)}>
+        <Grid>
+          <p className={classes.primary}>{
+          fromCurrency && 
+            data[fromCurrency]['name']}</p>
+          { iconHandler('converter', fromCurrency)}
+        </Grid>
+        <Grid >
+          <p className={classes.primary}>{
+          fromCurrency && 
+            data[fromCurrency]['symbol_native'] + toStart}</p>
+          <p className={classes.secondary}> { fromCurrency}</p>
+        </Grid>
+      </Grid>
+ */
+/*     <Card 
       className={clsx(classes.card)} 
       display={'flex'}>
+        
       <Box 
         display={'flex'}
         flexDirection={'row'}
@@ -75,17 +194,13 @@ export function ConvertView(props){
         className={clsx(classes.fromBox)} 
         display={'flex'}  
         flexDirection={'column'}>
-        <Box 
-          p={2}
-          flex={'auto'}>
+        <Box p={2}>
           <p className={classes.primary}>{
           fromCurrency && 
             data[fromCurrency]['name']}</p>
           { iconHandler('converter', fromCurrency)}
         </Box>
-        <Box 
-          p={2} 
-          flex={'auto'} >
+        <Box p={2}>
           <p className={classes.primary}>{
           fromCurrency && 
             data[fromCurrency]['symbol_native'] + toStart}</p>
@@ -102,18 +217,14 @@ export function ConvertView(props){
         className={clsx(classes.toBox)} 
         display={'flex'} 
         flexDirection={'column'}>
-        <Box 
-          p={2} 
-          flex={'auto'} >
+        <Box p={2}>
           <p className={classes.primary}>{
           toCurrency && 
             data[toCurrency]['name']}</p>
           {iconHandler('converter', toCurrency)}
         </Box>
 
-        <Box 
-          p={2} 
-          flex={'auto'} >
+        <Box p={2}>
           <p className={classes.primary}>{
           toCurrency && 
             data[toCurrency]['symbol_native'] + converted}</p>
@@ -122,6 +233,4 @@ export function ConvertView(props){
       </Box>
 
     </Box>
-  </Card>
-  )
-}
+  </Card> */

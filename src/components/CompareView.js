@@ -57,7 +57,6 @@ export function CompareView(props){
               currency={payload.currency}
               primary={payload.value}
             />
-              
           </Grid>
       ))}
       </Grid>
