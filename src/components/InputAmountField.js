@@ -35,21 +35,23 @@ function NumberFormatCustom(props) {
   );
 }
 
-export function InputAmountField(props) {
+export function InputAmountField({
+  amount,
+  setAmount,
+  fromCurrency,
+  drawer}) {
   const classes = useStyles();
   
 return (
   <div className={classes.TextField}  >
     <TextField
-      label= {label({drawer: props.drawer,fromCurrency: props.fromCurrency })}
-      value={props.amount}
-      onChange={(event) => handleChange({event:event, setAmount:props.setAmount})}
+      label= {label({drawer: drawer,fromCurrency: fromCurrency })}
+      value={amount}
+      onChange={(event) => handleChange({event: event, setAmount: setAmount})}
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{
-        inputComponent: NumberFormatCustom,
-      }}
-    />
+        inputComponent: NumberFormatCustom,}}/>
   </div>
 );
 }

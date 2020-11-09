@@ -6,13 +6,15 @@ import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 
 
-export function DatePickerComponent(props) {
-  const handleChange = (event) => {
-    console.log("11111", event)
+export function DatePickerComponent({
+  dateRange, 
+  handleChange}) {
+  const Change = (event) => {
+
     //error check that both start and end date have been selected
     if(event[1] !== null){
       const dateRange = event
-      props.handleChange(dateRange) }
+      handleChange(dateRange) }
   }
   return (
     <LocalizationProvider 
@@ -22,8 +24,8 @@ export function DatePickerComponent(props) {
         leftArrowIcon={<ArrowBackIos fontSize='large'/>}
         rightArrowIcon={<ArrowForwardIos fontSize='large'/>}
         displayStaticWrapperAs="desktop"
-        value={props.dateRange}
-        onChange={handleChange}
+        value={dateRange}
+        onChange={Change}
         renderInput={(startProps, endProps) => (
           <React.Fragment>
             <TextField {...startProps} />

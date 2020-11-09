@@ -14,62 +14,54 @@ import { DatePickerComponent } from "./DatePickerComponent";
 const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: 'center',
-    padding: theme.spacing(4)
-  },
+    padding: theme.spacing(4)},
   pop:{
-    padding:theme.spacing(4)
-  }
-}));
+    padding:theme.spacing(4)}}));
 
-export function ExchangeHistoryPopOver(props) {
+export function ExchangeHistoryPopOver({
+  dateRange,
+  handleChange}) {
+    
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
 
-
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget);};
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null);};
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <>
-      <FormControl>
-        <ListItem
-          button
-          onClick={handleClick}
-        >
-          <ListItemIcon>
-            <CalendarIcon />
-          </ListItemIcon>
-          <ListItemText 
-            primary={'Date Range'} />
-        </ListItem>
-      </FormControl>
-        <Popover 
-          className={classes.pop}
-          id={id}
-          open={open}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'center',
-            horizontal: 'right',
-          }}
-          transformOrigin={{
-            vertical: 'center',
-            horizontal: 'left',
-          }}
-        >
-          <DatePickerComponent 
-            dateRange={props.dateRange}
-            handleChange={props.handleChange}
-          />
-        </Popover> 
-      </>
+  <>
+    <FormControl>
+      <ListItem
+        button
+        onClick={handleClick}>
+        <ListItemIcon>
+          <CalendarIcon />
+        </ListItemIcon>
+      <ListItemText 
+        primary={'Date Range'} />
+      </ListItem>
+    </FormControl>
+    <Popover 
+      className={classes.pop}
+      id={id}
+      open={open}
+      anchorEl={anchorEl}
+      onClose={handleClose}
+      anchorOrigin={{
+        vertical: 'center',
+        horizontal: 'right',}}
+      transformOrigin={{
+        vertical: 'center',
+        horizontal: 'left',}}>
+      <DatePickerComponent 
+        dateRange={dateRange}
+        handleChange={handleChange}/>
+    </Popover> 
+  </>
   );
 }

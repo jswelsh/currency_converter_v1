@@ -33,31 +33,32 @@ function ListItemLink(props) {
   );
 }
 
-export function TabSelector(props) {
+export function TabSelector({
+  compareListHandler,
+  modeHandler,
+  compareList,
+  mode}) {
 
   const commonProps = (payload) => ({
-    mode:props.mode,
-    modeHandler: props.modeHandler,
+    mode:mode,
+    modeHandler: modeHandler,
     primary: payload 
   })
 
   return (
-    <List aria-label="currency exchange views">
-      <ListItemLink
-
-        {...commonProps('Converter')}
-        icon={<Converter />} />
-      <ListItemLink 
-        {...commonProps('History')}
-        icon={<History />} />
-      <ListItemLink 
-        {...commonProps('Compare')}
-        icon={<Compare />} 
-        compare={{
-          compareListHandler:props.compareListHandler,
-          compareList:props.compareList
-        }}
-      />
-    </List>  
+  <List aria-label="currency exchange views">
+    <ListItemLink
+      {...commonProps('Converter')}
+      icon={<Converter />} />
+    <ListItemLink 
+      {...commonProps('History')}
+      icon={<History />} />
+    <ListItemLink 
+      {...commonProps('Compare')}
+      icon={<Compare />} 
+      compare={{
+        compareListHandler:compareListHandler,
+        compareList:compareList}}/>
+  </List>  
   )
 }

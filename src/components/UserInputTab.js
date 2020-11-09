@@ -11,7 +11,14 @@ import {
 } from '../helpers/dataHelpers'
 
 
-export function UserInputTab(props) {
+export function UserInputTab({
+  convertHistoryHandler,
+  compareListHandler,
+  currenciesList,
+  convertHandler,
+  drawer,
+  mode,
+}) {
 const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD');
 const [amount, setAmount] = useState(1);
@@ -38,12 +45,12 @@ const currencySelectHandler = (mode, currency) => {
   }
   return (
   <> 
-  {props.mode !== 'History' && (
+  {mode !== 'History' && (
     <InputAmountField
       amount={amount}
       setAmount={setAmount}
       fromCurrency={fromCurrency}
-      drawer={props.drawer}
+      drawer={drawer}
     />
   )}
     <HistorySelectionForm 
@@ -52,11 +59,11 @@ const currencySelectHandler = (mode, currency) => {
       setFromCurrency={setFromCurrency}
       setToCurrency={setToCurrency}
       currencySelectHandler={currencySelectHandler}
-      currenciesList={props.currenciesList}
-      mode={props.mode}
+      currenciesList={currenciesList}
+      mode={mode}
     />
     <Divider />
-    {props.mode === 'History' && (
+    {mode === 'History' && (
       <ExchangeHistoryPopOver
         dateRange={dateRange}
         handleChange={handleChange}
@@ -65,11 +72,11 @@ const currencySelectHandler = (mode, currency) => {
       /> 
     )}
     {/* </div> */}
-    {props.mode === 'Converter' && (
+    {mode === 'Converter' && (
       <>
         <Button       
           handleSubmit={()=>
-            props.convertHandler({
+            convertHandler({
               fromCurrency: fromCurrency, 
               toCurrency: toCurrency,
               amount: amount
@@ -79,10 +86,10 @@ const currencySelectHandler = (mode, currency) => {
         />
       </>
     )}
-    {props.mode === 'History' && (
+    {mode === 'History' && (
     <Button       
       handleSubmit={()=>
-        props.convertHistoryHandler({
+        convertHistoryHandler({
           fromCurrency, 
           toCurrency, 
           dateRange
@@ -91,12 +98,12 @@ const currencySelectHandler = (mode, currency) => {
       primary='Generate Graph'
     />
     )}
-    {props.mode === 'Compare' && (
+    {mode === 'Compare' && (
       <>
         
         <Button       
           handleSubmit={()=>
-            props.compareListHandler(fromCurrency, amount)
+            compareListHandler(fromCurrency, amount)
           }
           primary='Compare Currencies'
         />

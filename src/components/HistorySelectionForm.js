@@ -13,51 +13,51 @@ import SwapVertIcon from '@material-ui/icons/Cached';
 import { handleClick } from '../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
-export function HistorySelectionForm(props) {
+export function HistorySelectionForm({
+  fromCurrency,
+  toCurrency,
+  currencySelectHandler,
+  currenciesList,
+  mode}) {
   return (
-    <List>
-      <FormControl>
-        {props.mode === 'Compare' && (
-          <SelectionComponent 
-            props={props.mode}
-            icon={<CompareArrowsIcon color='secondary'/>}
-            name={'fromCurrency'}
-            value={props.fromCurrency}
-            setter={props.currencySelectHandler}
-            currenciesList={props.currenciesList}
-          />
-        )}
-        {props.mode !== 'Compare' && (
-        <>   
-          <SelectionComponent 
-            props={props.mode}
-            icon={<FromIcon color='secondary'/>}
-            name={'fromCurrency'}
-            value={props.fromCurrency}
-            setter={props.currencySelectHandler}
-            currenciesList={props.currenciesList}
-          />
-          <SelectionComponent 
-            props={props.mode}
-            icon={<ToIcon color='secondary'/>}
-            name={'toCurrency'}
-            value={props.toCurrency}
-            setter={props.currencySelectHandler}
-            currenciesList={props.currenciesList}
-          />
-          <ListItem
-            button
-            onClick={(event) => handleClick({
-              toCurrency:props.toCurrency, 
-              fromCurrency:props.fromCurrency, 
-              setter:props.currencySelectHandler
-            })}>
-            <ListItemIcon><SwapVertIcon/></ListItemIcon>
-            <ListItemText primary="Swap Currencies" />
-          </ListItem>
-        </>
-        )}
-        </FormControl>
-    </List>
+  <List>
+    <FormControl>
+      {mode === 'Compare' && (
+        <SelectionComponent 
+          props={mode}
+          icon={<CompareArrowsIcon color='secondary'/>}
+          name={'fromCurrency'}
+          value={fromCurrency}
+          setter={currencySelectHandler}
+          currenciesList={currenciesList}/>)}
+      {mode !== 'Compare' && (
+      <>   
+        <SelectionComponent 
+          props={mode}
+          icon={<FromIcon color='secondary'/>}
+          name={'fromCurrency'}
+          value={fromCurrency}
+          setter={currencySelectHandler}
+          currenciesList={currenciesList}/>
+        <SelectionComponent 
+          props={mode}
+          icon={<ToIcon color='secondary'/>}
+          name={'toCurrency'}
+          value={toCurrency}
+          setter={currencySelectHandler}
+          currenciesList={currenciesList}/>
+        <ListItem
+          button
+          onClick={(event) => handleClick({
+            toCurrency:toCurrency, 
+            fromCurrency:fromCurrency, 
+            setter:currencySelectHandler})}>
+          <ListItemIcon><SwapVertIcon/></ListItemIcon>
+          <ListItemText primary="Swap Currencies" />
+        </ListItem>
+      </>
+      )}
+    </FormControl>
+  </List>
   )
 }

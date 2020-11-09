@@ -44,8 +44,11 @@ export default function App() {
           alignItems="center" >
           {state.mode === 'Converter' && (
           <ConvertView
-            result={state.result}
             opendrawer={opendrawer}
+            toStart={state.result.toStart}
+            converted={state.result.converted}
+            fromCurrency={state.result.fromCurrency}
+            toCurrency={state.result.toCurrency}
           />)}
           {state.mode === 'History' && (
           <ExchangeHistoryGraph

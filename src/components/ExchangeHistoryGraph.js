@@ -13,8 +13,7 @@ const drawerClosed = 100;
 const useStyles = makeStyles((theme) => ({
   root:{
     justify: 'center',
-    flexGrow: 1,
-  },
+    flexGrow: 1,},
   drawerClose: {
     marginLeft: drawerClosed,
     marginRight: drawerClosed-20,
@@ -22,22 +21,20 @@ const useStyles = makeStyles((theme) => ({
     height: "800px" ,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
+      duration: theme.transitions.duration.leavingScreen})},
   drawerOpen: {
     marginLeft: drawerWidth,
     width: `calc(93% - ${drawerWidth}px)`, height: "800px" ,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen})
-  },
+      duration: theme.transitions.duration.enteringScreen})},
   ExchangeHistoryGraph: {
-    width: "90%", height: "800px" 
-  }
+    width: "90%", height: "800px"}
 }));
 
-export function ExchangeHistoryGraph(props) {
+export function ExchangeHistoryGraph({
+  history,
+  opendrawer}) {
   const classes = useStyles();
 
   useLayoutEffect(() => {
@@ -49,7 +46,7 @@ export function ExchangeHistoryGraph(props) {
   let chart = am4core.create("chartdiv", am4charts.XYChart);
     chart.marginLeft = 230
     chart.marginRight = 200
-    chart.data = props.history
+    chart.data = history
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   
@@ -118,15 +115,15 @@ export function ExchangeHistoryGraph(props) {
     return () => {
       chart.dispose();
     };
-  }, [props.history]);
+  }, [history]);
 
   return (
     <>
       <div 
         id="chartdiv" 
         className={clsx(classes.drawer, {
-          [classes.drawerOpen]: props.opendrawer,
-          [classes.drawerClose]: !props.opendrawer
+          [classes.drawerOpen]: opendrawer,
+          [classes.drawerClose]: !opendrawer
         })}
         ></div>
     </>

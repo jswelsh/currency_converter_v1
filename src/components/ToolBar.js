@@ -93,16 +93,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function ToolBar(props) {
+export function ToolBar({
+  convertHistoryHandler,
+  currencySelectHandler,
+  compareListHandler,
+  convertHandler,
+  currenciesList,
+  compareList,
+  setDrawerOpen,
+  opendrawer,
+  modeHandler,
+  mode
+}) {
   const classes = useStyles();
   const theme = useTheme();
 
   const handleDrawerOpen = () => {
-    props.setDrawerOpen(true);
+    setDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    props.setDrawerOpen(false);
+    setDrawerOpen(false);
   };
 
 //maybe get rid of css baseline later
@@ -112,7 +123,7 @@ export function ToolBar(props) {
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: props.opendrawer
+          [classes.appBarShift]: opendrawer
         })}
       >
         <Toolbar >
@@ -121,7 +132,7 @@ export function ToolBar(props) {
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, {
-              [classes.hide]: props.opendrawer
+              [classes.hide]: opendrawer
             })}
           >
             <MenuIcon />
@@ -134,13 +145,13 @@ export function ToolBar(props) {
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
-          [classes.drawerOpen]: props.opendrawer,
-          [classes.drawerClose]: !props.opendrawer
+          [classes.drawerOpen]: opendrawer,
+          [classes.drawerClose]: !opendrawer
         })}
         classes={{
           paper: clsx({
-            [classes.drawerOpen]: props.opendrawer,
-            [classes.drawerClose]: !props.opendrawer
+            [classes.drawerOpen]: opendrawer,
+            [classes.drawerClose]: !opendrawer
           }),
         }}
         
@@ -156,31 +167,31 @@ export function ToolBar(props) {
           </div>
 
           <TabSelector
-            convertHistoryHandler={props.convertHistoryHandler}
-            compareListHandler={props.compareListHandler}
-            compareList={props.compareList}
-            mode={props.mode}
-            modeHandler={props.modeHandler}
+            convertHistoryHandler={convertHistoryHandler}
+            compareListHandler={compareListHandler}
+            compareList={compareList}
+            mode={mode}
+            modeHandler={modeHandler}
           /> 
 
           <Divider/>
           
           <div className={clsx({
-                [classes.hide]: props.mode !== 'Converter'
+                [classes.hide]: mode !== 'Converter'
               })}>
           </div>
             <UserInputTab
-              convertHistoryHandler={props.convertHistoryHandler}
-              compareListHandler={props.compareListHandler}
-              convertHandler={props.convertHandler}
-              currencySelectHandler={props.currencySelectHandler}
-              currenciesList={props.currenciesList}
-              compareList={props.compareList}
-              mode={props.mode}
-              drawer={props.opendrawer}
+              convertHistoryHandler={convertHistoryHandler}
+              compareListHandler={compareListHandler}
+              convertHandler={convertHandler}
+              currencySelectHandler={currencySelectHandler}
+              currenciesList={currenciesList}
+              compareList={compareList}
+              mode={mode}
+              drawer={opendrawer}
             />
           <div className={clsx({
-                [classes.hide]: props.mode !== 'Compare'
+                [classes.hide]: mode !== 'Compare'
               })}>
           </div>
           <Divider />  

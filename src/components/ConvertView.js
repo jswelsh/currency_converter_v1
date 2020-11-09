@@ -58,61 +58,52 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function ConvertView(props){
+export function ConvertView({
+  opendrawer,
+  toStart,
+  converted,
+  fromCurrency,
+  toCurrency}){
   const classes = useStyles();
 
-  const { 
-    toStart,
-    converted,
-    fromCurrency,
-    toCurrency 
-  } = props.result
   return(
-
-    <Container className={classes.Container}>
-  
+  <Container className={classes.Container}>
     <Container  
       component="main"
       className={clsx(classes.drawer, {
-        [classes.drawerOpen]: props.opendrawer,
-        [classes.drawerClose]: !props.opendrawer
-      })}
-    >
-      
-
-    <Grid container spacing={5} >
-      {[[
-        fromCurrency, 
-        toStart], [
-        toCurrency,
-        converted]].map(([currency,amount]) => (
-        <Grid item spacing={3} key={currency} sm={12} md={12} lg={6}>
-          <Card className={classes.card} >
-            <CardHeader
-              title={currency && data[currency]['name']}
-              titleTypographyProps={{ align: 'left',variant: "h4" }}
-              subheader= {currency}
-              subheaderTypographyProps={{ align: 'left'}}
-              className={classes.cardHeader}
-              avatar={ iconHandler('converter', currency)}
-              />
-            <CardContent>
-              <Grid container justify="center">
-                <Grid item >
-                <Typography component="h2" variant="h2" color="secondary">
-                {currency && data[currency]['symbol_native'] }
-                </Typography>
-                </Grid>
-                <Grid item >
-                <Typography variant="h2" color="primary">
-                  {amount}
-                </Typography>
-                </Grid>
+        [classes.drawerOpen]: opendrawer,
+        [classes.drawerClose]: !opendrawer})}>
+    <Grid container spacing={5}>
+    {[[
+    fromCurrency, 
+    toStart], [
+    toCurrency,
+    converted]].map(([currency,amount]) => (
+      <Grid item spacing={3} key={currency} sm={12} md={12} lg={6}>
+        <Card className={classes.card} >
+          <CardHeader
+            title={currency && data[currency]['name']}
+            titleTypographyProps={{ align: 'left',variant: "h4" }}
+            subheader= {currency}
+            subheaderTypographyProps={{ align: 'left'}}
+            className={classes.cardHeader}
+            avatar={ iconHandler('converter', currency)}/>
+          <CardContent>
+            <Grid container justify="center">
+              <Grid item >
+              <Typography component="h2" variant="h2" color="secondary">
+              {currency && data[currency]['symbol_native'] }
+              </Typography>
               </Grid>
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
+              <Grid item >
+              <Typography variant="h2" color="primary">
+                {amount}
+              </Typography>
+              </Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Grid>))}
     </Grid>
     </Container>
   </Container>

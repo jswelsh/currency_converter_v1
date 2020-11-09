@@ -15,8 +15,6 @@ const useStyles = makeStyles((theme) => ({
   drawerClose: {  
     marginRight: 'min(100px, 15%)',
     marginLeft: 'min(100px, 15%)',
-
-
     width: "90%",
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -40,26 +38,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function CompareView(props){
+export function CompareView({
+  opendrawer, 
+  compareList}){
   const classes = useStyles();
-
-
   return(
-    <List         
-      className = {clsx(classes.drawer, {
-        [classes.drawerOpen]: props.opendrawer,
-        [classes.drawerClose]: !props.opendrawer
-      })} >
-      <Grid container spacing={2} alignItems="center" >
-        {(props.compareList).map((payload) => (
-          <Grid item xs={4} key={payload.currency} >
-            <CompareListItem
-              currency={payload.currency}
-              primary={payload.value}
-            />
-          </Grid>
-      ))}
-      </Grid>
-    </List> 
+  <List         
+    className = {clsx(classes.drawer, {
+      [classes.drawerOpen]: opendrawer,
+      [classes.drawerClose]: !opendrawer})} >
+    <Grid container spacing={2} alignItems="center" >
+      {(compareList).map((payload) => (
+      <Grid item xs={4} key={payload.currency} >
+        <CompareListItem
+          currency={payload.currency}
+          primary={payload.value}/>
+      </Grid>))}
+    </Grid>
+  </List> 
   )
 }

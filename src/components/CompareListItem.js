@@ -31,46 +31,41 @@ const gridBuilder = (payload) => {
   return <Grid item xs={3}> {payload} </Grid>
 }
 
-export function CompareListItem (props) {
+export function CompareListItem ({
+  primary, 
+  currency
+  }) {
   const classes = useStyles();
-  const {
-    primary, 
-    currency
-  } = props;
   const CurrencySymbol = (currency) => {
     return (
       <Typography variant='h5' className={classes.symbol} color={'secondary'}>{data[currency]['symbol_native']} </Typography>
     )
   }
-
   return (
-
-      <Card className={classes.Cardgit}>
-        <ListItem className={classes.ListItem} >
-          <Grid container spacing={1} direction="row" justify="space-around" >
-            {gridBuilder(
-              iconHandler('compare', currency)
-            )}
-            {gridBuilder(
-              <ListItemText>
-                <Typography variant='h5'>
-                  {currency} 
-                </Typography>
-                <Typography >
-                  {data[currency]['name']}
-                </Typography>
-              </ListItemText>
-            )}
-            {gridBuilder(
-              <div className={classes.amount}>
-                {CurrencySymbol(currency)}
-                <ListItemText primary={primary} />
-              </div>
-            )}
-          </Grid>
-        </ListItem>
-      </Card>
-
-
+  <Card className={classes.Cardgit}>
+    <ListItem className={classes.ListItem} >
+      <Grid container spacing={1} direction="row" justify="space-around" >
+        {gridBuilder(
+          iconHandler('compare', currency)
+        )}
+        {gridBuilder(
+          <ListItemText>
+            <Typography variant='h5'>
+              {currency} 
+            </Typography>
+            <Typography >
+              {data[currency]['name']}
+            </Typography>
+          </ListItemText>
+        )}
+        {gridBuilder(
+          <div className={classes.amount}>
+            {CurrencySymbol(currency)}
+            <ListItemText primary={primary} />
+          </div>
+        )}
+      </Grid>
+    </ListItem>
+  </Card>
   )
 }
