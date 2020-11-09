@@ -12,6 +12,9 @@ import {
 } from '@material-ui/core';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
+const drawerWidth = 240;
+const drawerClosed = 100;
+
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -35,10 +38,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 8,
     marginBottom: 0,
   },
-  subheader: {
-    fontSize: 14,
+/*   subheader: {
+    fontSize: 20,
     marginBottom: '0.875em',
-  },
+  }, */
   secondary: {
     fontSize: 12,
     fontWeight: 500,
@@ -61,10 +64,29 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
+  drawerClose: {
+    marginLeft: drawerClosed,
+    marginLeft: drawerClosed,
+    width: `calc(93% - ${drawerClosed}px)`,
+ /*    maxWidth:"1280px", */
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen
+    })
+  },
+  drawerOpen: {
+    marginLeft: drawerWidth,
+    width: `calc(93% - ${drawerWidth}px)`,
+/*     maxWidth:"960px", */
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen})
+  },
 }));
 
 export function ConvertView(props){
   const classes = useStyles();
+  const drawerClosed = 100;
 
   const { 
     toStart,
@@ -74,41 +96,40 @@ export function ConvertView(props){
   } = props.result
   return(
 
-
-    <Container maxWidth="md" component="main">
+  
+    <Container  
+      component="main"
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: props.opendrawer,
+        [classes.drawerClose]: !props.opendrawer
+      })}
+    >
     <Grid container spacing={5} alignItems="flex-end">
       {[[
         fromCurrency, 
         toStart], [
         toCurrency,
         converted]].map(([currency,amount]) => (
-        <Grid item key={currency} sm={12} md={6}>
+        <Grid item key={currency} sm={12} md={12} lg={6}>
           <Card className={classes.card}>
             <CardHeader
               title={currency && data[currency]['name']}
-              titleTypographyProps={{ align: 'right',variant: "h4" }}
-/*               subheader= {currency}
-              subheaderTypographyProps={{ align: 'center' }} */
+              titleTypographyProps={{ align: 'left',variant: "h4" }}
+              subheader= {currency}
+              subheaderTypographyProps={{ align: 'left'}}
               className={classes.cardHeader}
               avatar={ iconHandler('converter', currency)}
               />
             <CardContent>
               <Grid container justify="center">
                 <Grid item >
-                <Typography component="h3" variant="h3" color="secondary">
+                <Typography component="h2" variant="h2" color="secondary">
                 {currency && data[currency]['symbol_native'] }
                 </Typography>
                 </Grid>
                 <Grid item >
-                <Typography variant="h3" color="primary">
+                <Typography variant="h2" color="primary">
                   {amount}
-                </Typography>
-                </Grid>
-              </Grid>
-              <Grid container justify="center">
-              <Grid item>
-                <Typography variant="h5" color="primary">
-                  {currency}
                 </Typography>
                 </Grid>
               </Grid>
@@ -118,101 +139,5 @@ export function ConvertView(props){
       ))}
     </Grid>
   </Container>
- /*    <Card className={clsx(classes.card)} >
-        
-
-
-    <Grid container spacing={2} >
-
-        <Grid container item xs  spacing={2}>
-          <Grid item xs>
-            <Typography  variant="subtitle1">
-              {fromCurrency && data[fromCurrency]['name']}
-            </Typography>
-              { iconHandler('converter', fromCurrency)}
-            <Typography variant="body2" color="textSecondary">
-              ID: 1030114
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Card> */
   )
 }
-
-
-
-/*       <Grid 
-      container
-        display={'flex'}
-        flexDirection={'row'}
-        justifyContent={'space-between'}>
-
-      <Grid container
-        className={clsx(classes.fromBox)}>
-        <Grid>
-          <p className={classes.primary}>{
-          fromCurrency && 
-            data[fromCurrency]['name']}</p>
-          { iconHandler('converter', fromCurrency)}
-        </Grid>
-        <Grid >
-          <p className={classes.primary}>{
-          fromCurrency && 
-            data[fromCurrency]['symbol_native'] + toStart}</p>
-          <p className={classes.secondary}> { fromCurrency}</p>
-        </Grid>
-      </Grid>
- */
-/*     <Card 
-      className={clsx(classes.card)} 
-      display={'flex'}>
-        
-      <Box 
-        display={'flex'}
-        flexDirection={'row'}
-        justifyContent={'space-between'}>
-      <Box 
-        className={clsx(classes.fromBox)} 
-        display={'flex'}  
-        flexDirection={'column'}>
-        <Box p={2}>
-          <p className={classes.primary}>{
-          fromCurrency && 
-            data[fromCurrency]['name']}</p>
-          { iconHandler('converter', fromCurrency)}
-        </Box>
-        <Box p={2}>
-          <p className={classes.primary}>{
-          fromCurrency && 
-            data[fromCurrency]['symbol_native'] + toStart}</p>
-          <p className={classes.secondary}> { fromCurrency}</p>
-        </Box>
-      </Box>
-      <Box 
-        display={'flex'}  
-        alignItems={'center'} >
-      <SwapHorizIcon 
-        fontSize="large"/>
-      </Box>
-      <Box 
-        className={clsx(classes.toBox)} 
-        display={'flex'} 
-        flexDirection={'column'}>
-        <Box p={2}>
-          <p className={classes.primary}>{
-          toCurrency && 
-            data[toCurrency]['name']}</p>
-          {iconHandler('converter', toCurrency)}
-        </Box>
-
-        <Box p={2}>
-          <p className={classes.primary}>{
-          toCurrency && 
-            data[toCurrency]['symbol_native'] + converted}</p>
-          <p className={classes.secondary}> {toCurrency}</p>
-        </Box>
-      </Box>
-
-    </Box>
-  </Card> */

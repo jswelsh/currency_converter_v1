@@ -44,7 +44,7 @@ const iconMap ={
 const iconHandler = (mode, payload) => {
   const height = mode === 
   'selection' ? 25 :
-  'converter' ? 50 :
+  'converter' ? 75 :
   35
   
   return (

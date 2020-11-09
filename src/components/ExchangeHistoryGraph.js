@@ -8,6 +8,7 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;
+const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -15,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   drawerClose: {
-    marginLeft: '100px',
-    marginRight: '80px',
-    width: `calc(93% - 100px)`, /* `calc(95% - 100px)`,  */
+    marginLeft: drawerClosed,
+    marginRight: drawerClosed-20,
+    width: `calc(93% - ${drawerClosed}px)`, /* `calc(95% - 100px)`,  */
     height: "800px" ,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
