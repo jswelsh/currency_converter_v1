@@ -6,18 +6,9 @@ import {
   Card,
   Grid,
   Typography,
-
-
-
-
-
   Container,
   CardHeader,
   CardContent,
-  CardActions,
-  Button
-
-
 } from '@material-ui/core';
 import SwapHorizIcon from '@material-ui/icons/SwapHoriz';
 
@@ -74,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
 
 export function ConvertView(props){
   const classes = useStyles();
-/*   console.log('helio', props.result.fromCurrency) */
 
   const { 
     toStart,
@@ -82,15 +72,6 @@ export function ConvertView(props){
     fromCurrency,
     toCurrency 
   } = props.result
-
-/*   const from = {
-    toStart, 
-    fromCurrency,
-    name: data[fromCurrency]['name'],
-    nativeSymbol: data[fromCurrency]['symbol_native'],
-    symbol: data[fromCurrency]['symbol']
-  }
- */
   return(
 
 
@@ -105,11 +86,12 @@ export function ConvertView(props){
           <Card className={classes.card}>
             <CardHeader
               title={currency && data[currency]['name']}
-              titleTypographyProps={{ align: 'center',variant: "h4" }}
+              titleTypographyProps={{ align: 'right',variant: "h4" }}
 /*               subheader= {currency}
               subheaderTypographyProps={{ align: 'center' }} */
               className={classes.cardHeader}
-            />
+              avatar={ iconHandler('converter', currency)}
+              />
             <CardContent>
               <Grid container justify="center">
                 <Grid item >
