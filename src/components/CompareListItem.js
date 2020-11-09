@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     backgroundColor: '#212121',
-    minHeight: 100
+    minHeight: 136
   },
   symbol: {
     marginRight: 16
