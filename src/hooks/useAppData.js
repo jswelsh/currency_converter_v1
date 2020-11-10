@@ -3,6 +3,8 @@ import axios from 'axios';
 import { 
   initializeDateRange 
 } from '../helpers/dataHelpers'
+const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
+
 
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
@@ -66,7 +68,7 @@ export default function useAppData() {
       })
   }
 
-  const convertHandler = (payload) => {
+/*   const convertHandler = (payload) => {
     const { fromCurrency, toCurrency, amount} = payload
     const latestURL = 'https://api.exchangeratesapi.io/latest?base=';
     if (fromCurrency !== toCurrency) {
@@ -89,7 +91,77 @@ export default function useAppData() {
     } else {
       setResult({error:'You cant convert the same currency!'});
     }
+  }; */
+  const convertHandler = (payload) => {
+    const { fromCurrency, toCurrency, amount} = payload
+    console.log('Athena', data[fromCurrency]['name'])
+    const latestFromRates = `
+    https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
+    const fromCurrencyWikipediaIntro = `
+    https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${data[fromCurrency]['name']}`;
+    const toCurrencyWikipediaIntro = `
+    https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${data[toCurrency]['name']}`;
+    const fetchFromRates = axios.get(latestFromRates);
+    const fetchFromIntro = axios.get(fromCurrencyWikipediaIntro);
+    const fetchToIntro = axios.get(toCurrencyWikipediaIntro);
+
+
+    
+    if (fromCurrency !== toCurrency) {
+      Promise.all([
+        fetchFromRates,
+        fetchFromIntro,
+        fetchToIntro])
+        .then(([
+          fromRates, 
+          fromIntro, 
+          toIntro
+          ]) => {
+            const fromDrillDown = fromIntro['data']['query']['pages']
+            const toDrillDown = toIntro['data']['query']['pages']
+            const result = fromRates.data.rates[toCurrency];
+            setResult({
+              toStart: amount,
+              converted: result.toFixed(5),
+              fromIntro: fromDrillDown[Object.keys(fromDrillDown)]['extract'],
+              toIntro: toDrillDown[Object.keys(toDrillDown)]['extract']
+            });
+        })
+        .catch((error) => {
+          console.log('Opps', error.message);
+        });
+    } else {
+      setResult({error:'You cant convert the same currency!'});
+    }
   };
+
+/*     // Make first two requests
+    const [firstResponse, secondResponse] = await Promise.all([
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?&address=${this.props.p1}`),
+      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?&address=${this.props.p2}`)
+    ]);
+  
+    // Make third request using responses from the first two
+    const thirdResponse = await axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=place_id:' + firstResponse.data.results.place_id + '&destination=place_id:' + secondResponse.data.results.place_id + '&key=' + 'API-KEY-HIDDEN');
+  
+    // Update state once with all 3 responses
+    this.setState({
+      p1Location: firstResponse.data,
+      p2Location: secondResponse.data,
+      route: thirdResponse.data,
+    });
+  
+  }
+
+ */
+
+
+
+
+
+
+
+
 
   const convertHistoryHandler = (payload) => {
     const {fromCurrency, toCurrency, dateRange} = payload
@@ -118,7 +190,6 @@ export default function useAppData() {
             return history;
           };
           // sort the dates from "res" = {obj} payload 
-          console.log(res.data.rate)
           setHistory(
             historyController(res.data.rates)
               .sort((a, b) =>  a.date - b.date ),

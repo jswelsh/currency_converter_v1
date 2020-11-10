@@ -24,7 +24,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <main className="layout">
-        <ToolBar 
+        <ToolBar
           fromCurrency={state.fromCurrency}
           toCurrency={state.toCurrency}
           convertHandler={convertHandler}
@@ -37,7 +37,7 @@ export default function App() {
           opendrawer={opendrawer}
           setDrawerOpen={setDrawerOpen}
           />
-        <Grid    
+        <Grid
           container
           direction="column"
           justify="flex-start"
@@ -47,8 +47,10 @@ export default function App() {
             opendrawer={opendrawer}
             toStart={state.result.toStart}
             converted={state.result.converted}
-            fromCurrency={state.result.fromCurrency}
-            toCurrency={state.result.toCurrency}
+            fromIntro={state.result.fromIntro}
+            toIntro={state.result.toIntro}
+            fromCurrency={state.fromCurrency}
+            toCurrency={state.toCurrency}
           />)}
           {state.mode === 'History' && (
           <ExchangeHistoryGraph

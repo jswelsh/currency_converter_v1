@@ -62,10 +62,12 @@ export function ConvertView({
   opendrawer,
   toStart,
   converted,
+  fromIntro,
+  toIntro,
   fromCurrency,
   toCurrency}){
   const classes = useStyles();
-
+  console.log(fromIntro, toIntro)
   return(
   <Container className={classes.Container}>
     <Container  
