@@ -60,14 +60,15 @@ const useStyles = makeStyles((theme) => ({
 
 export function ConvertView({
   opendrawer,
+  fromCurrency,
+  toCurrency,
   toStart,
   converted,
   fromIntro,
   toIntro,
-  fromCurrency,
-  toCurrency}){
+  ratesHistory}){
   const classes = useStyles();
-  console.log(fromCurrency, toCurrency)
+  console.log(ratesHistory)
   return(
   <Container className={classes.Container}>
     <Container  
@@ -102,7 +103,7 @@ export function ConvertView({
               </Typography>
     
               </Grid>
-              <Typography variant="h7" color="primary">
+              <Typography variant="h6" color="primary">
                 {intro}
               </Typography>
             </Grid>

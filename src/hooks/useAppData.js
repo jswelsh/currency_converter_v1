@@ -1,7 +1,8 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import { 
-  initializeDateRange 
+  initializeDateRange,
+  historyFormatter
 } from '../helpers/dataHelpers'
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
@@ -69,7 +70,14 @@ export default function useAppData() {
   }
   const convertHandler = (payload) => {
     const { fromCurrency, toCurrency, amount} = payload
-    
+    const [ fromDate, toDate] = initializeDateRange(335)
+    const exchangeRates = `
+      https://api.exchangeratesapi.io/history?start_at=${
+      fromDate}&end_at=${
+      toDate}&base=${
+      fromCurrency}&symbols=${
+      toCurrency}`
+
     const latestFromRates = `
     https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
     const fromCurrencyWikipediaIntro = `
@@ -77,15 +85,18 @@ export default function useAppData() {
     const toCurrencyWikipediaIntro = `
     https://en.wikipedia.org/w/api.php?origin=*&format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${data[toCurrency]['name']}`;
     const fetchFromRates = axios.get(latestFromRates);
+    const fetchRatesHistory = axios.get(exchangeRates)
     const fetchFromIntro = axios.get(fromCurrencyWikipediaIntro);
     const fetchToIntro = axios.get(toCurrencyWikipediaIntro);
 
     if (fromCurrency !== toCurrency) {
       Promise.all([
+        fetchRatesHistory,
         fetchFromRates,
         fetchFromIntro,
         fetchToIntro])
         .then(([
+          ratesHistory,
           fromRates, 
           fromIntro, 
           toIntro
@@ -94,6 +105,7 @@ export default function useAppData() {
             const toDrillDown = toIntro['data']['query']['pages']
             const result = fromRates.data.rates[toCurrency];
             setResult({
+              ratesHistory: ratesHistory,
               fromCurrency: fromCurrency,
               toCurrency: toCurrency,
               toStart: amount,
@@ -110,13 +122,13 @@ export default function useAppData() {
     }
   };
   const convertHistoryHandler = (payload) => {
-    const {fromCurrency, toCurrency, dateRange} = payload
-    const [startDate, endDate] = dateRange;
+    const { fromCurrency, toCurrency, dateRange } = payload
+    const [ fromDate, toDate ] = dateRange;
 
     const historicalURL = `
       https://api.exchangeratesapi.io/history?start_at=${
-      startDate}&end_at=${
-      endDate}&`;
+      fromDate}&end_at=${
+      toDate}&`;
 
     if (fromCurrency !== toCurrency) {
       axios
@@ -125,7 +137,7 @@ export default function useAppData() {
           fromCurrency}&symbols=${
           toCurrency}`)
         .then((res) => {
-          const historyController = (historyObj) => {
+/*           const historyController = (historyObj) => {
             const history = [];
             Object.entries(historyObj).forEach(([key, value]) => {
               history.push({
@@ -134,12 +146,15 @@ export default function useAppData() {
               });
             });
             return history;
-          };
-          // sort the dates from "res" = {obj} payload 
+          }; */
           setHistory(
+            historyFormatter(res.data.rates, toCurrency)
+          )
+          // sort the dates from "res" = {obj} payload 
+  /*         setHistory(
             historyController(res.data.rates)
               .sort((a, b) =>  a.date - b.date ),
-          );
+          ); */
         })
         .catch((error) => {
           console.log('Opps', error.message);
@@ -169,7 +184,7 @@ export default function useAppData() {
     compareListHandler('CAD', 1)
     convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:1})
     //if you change this, make sure to change inside userinput aswell
-    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange()})
+    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(365)})
   }, []); // Empty array to only run once on mount.
 
   return {

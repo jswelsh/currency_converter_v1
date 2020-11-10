@@ -22,7 +22,7 @@ export function UserInputTab({
 const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD');
 const [amount, setAmount] = useState(1);
-const [dateRange, setDateRange] = useState(initializeDateRange());
+const [dateRange, setDateRange] = useState(initializeDateRange(365));
 
 
 const currencySelectHandler = (mode, currency) => { 
