@@ -20,13 +20,11 @@ export default function App() {
     convertHandler,
     compareListHandler,
   } = useAppData();
-
+  console.log('ares', state.fromCurrency)
   return (
     <ThemeProvider theme={theme}>
       <main className="layout">
         <ToolBar
-          fromCurrency={state.fromCurrency}
-          toCurrency={state.toCurrency}
           convertHandler={convertHandler}
           convertHistoryHandler={convertHistoryHandler}
           modeHandler={modeHandler}
@@ -49,8 +47,8 @@ export default function App() {
             converted={state.result.converted}
             fromIntro={state.result.fromIntro}
             toIntro={state.result.toIntro}
-            fromCurrency={state.fromCurrency}
-            toCurrency={state.toCurrency}
+            fromCurrency={state.result.fromCurrency}
+            toCurrency={state.result.toCurrency}
           />)}
           {state.mode === 'History' && (
           <ExchangeHistoryGraph

@@ -67,34 +67,9 @@ export default function useAppData() {
         setCompareList(compareList)
       })
   }
-
-/*   const convertHandler = (payload) => {
-    const { fromCurrency, toCurrency, amount} = payload
-    const latestURL = 'https://api.exchangeratesapi.io/latest?base=';
-    if (fromCurrency !== toCurrency) {
-      axios
-        .get(`${
-          latestURL}${
-          fromCurrency}`)
-        .then((res) => {
-          const result = res.data.rates[toCurrency];
-          setResult({
-            toStart: amount,
-            converted: result.toFixed(5),
-            fromCurrency: fromCurrency,
-            toCurrency: toCurrency
-          });
-        })
-        .catch((error) => {
-          console.log('Opps', error.message);
-        });
-    } else {
-      setResult({error:'You cant convert the same currency!'});
-    }
-  }; */
   const convertHandler = (payload) => {
     const { fromCurrency, toCurrency, amount} = payload
-    console.log('Athena', data[fromCurrency]['name'])
+    
     const latestFromRates = `
     https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
     const fromCurrencyWikipediaIntro = `
@@ -105,8 +80,6 @@ export default function useAppData() {
     const fetchFromIntro = axios.get(fromCurrencyWikipediaIntro);
     const fetchToIntro = axios.get(toCurrencyWikipediaIntro);
 
-
-    
     if (fromCurrency !== toCurrency) {
       Promise.all([
         fetchFromRates,
@@ -121,6 +94,8 @@ export default function useAppData() {
             const toDrillDown = toIntro['data']['query']['pages']
             const result = fromRates.data.rates[toCurrency];
             setResult({
+              fromCurrency: fromCurrency,
+              toCurrency: toCurrency,
               toStart: amount,
               converted: result.toFixed(5),
               fromIntro: fromDrillDown[Object.keys(fromDrillDown)]['extract'],
@@ -134,35 +109,6 @@ export default function useAppData() {
       setResult({error:'You cant convert the same currency!'});
     }
   };
-
-/*     // Make first two requests
-    const [firstResponse, secondResponse] = await Promise.all([
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?&address=${this.props.p1}`),
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?&address=${this.props.p2}`)
-    ]);
-  
-    // Make third request using responses from the first two
-    const thirdResponse = await axios.get('https://maps.googleapis.com/maps/api/directions/json?origin=place_id:' + firstResponse.data.results.place_id + '&destination=place_id:' + secondResponse.data.results.place_id + '&key=' + 'API-KEY-HIDDEN');
-  
-    // Update state once with all 3 responses
-    this.setState({
-      p1Location: firstResponse.data,
-      p2Location: secondResponse.data,
-      route: thirdResponse.data,
-    });
-  
-  }
-
- */
-
-
-
-
-
-
-
-
-
   const convertHistoryHandler = (payload) => {
     const {fromCurrency, toCurrency, dateRange} = payload
     const [startDate, endDate] = dateRange;

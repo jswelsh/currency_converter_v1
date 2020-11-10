@@ -67,7 +67,7 @@ export function ConvertView({
   fromCurrency,
   toCurrency}){
   const classes = useStyles();
-  console.log(fromIntro, toIntro)
+  console.log(fromCurrency, toCurrency)
   return(
   <Container className={classes.Container}>
     <Container  
@@ -76,11 +76,10 @@ export function ConvertView({
         [classes.drawerOpen]: opendrawer,
         [classes.drawerClose]: !opendrawer})}>
     <Grid container spacing={5}>
-    {[[
-    fromCurrency, 
-    toStart], [
-    toCurrency,
-    converted]].map(([currency,amount]) => (
+    {[
+    [fromCurrency, toStart, fromIntro], 
+    [toCurrency, converted, toIntro]].map((
+    [currency, amount, intro]) => (
       <Grid item spacing={3} key={currency} sm={12} md={12} lg={6}>
         <Card className={classes.card} >
           <CardHeader
@@ -101,7 +100,11 @@ export function ConvertView({
               <Typography variant="h2" color="primary">
                 {amount}
               </Typography>
+    
               </Grid>
+              <Typography variant="h7" color="primary">
+                {intro}
+              </Typography>
             </Grid>
           </CardContent>
         </Card>

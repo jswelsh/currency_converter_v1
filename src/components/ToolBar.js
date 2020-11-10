@@ -18,18 +18,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import { TabSelector } from './TabSelector';
 import { UserInputTab } from './UserInputTab';
-/* import ConverterTab from './ConverterTab';
- */
-
-/* import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab'; */
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-/*   root: {
-    display: 'flex',
-    backgroundColor: "#222222"
-  }, */
 
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -84,9 +76,6 @@ const useStyles = makeStyles((theme) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
   },
-/*   history : {
-    
-  }, */
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
@@ -171,8 +160,7 @@ export function ToolBar({
             compareListHandler={compareListHandler}
             compareList={compareList}
             mode={mode}
-            modeHandler={modeHandler}
-          /> 
+            modeHandler={modeHandler}/> 
 
           <Divider/>
           
@@ -188,8 +176,7 @@ export function ToolBar({
               currenciesList={currenciesList}
               compareList={compareList}
               mode={mode}
-              drawer={opendrawer}
-            />
+              drawer={opendrawer}/>
           <div className={clsx({
                 [classes.hide]: mode !== 'Compare'
               })}>
