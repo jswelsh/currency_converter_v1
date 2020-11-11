@@ -48,7 +48,7 @@ export default function App() {
             converted={state.result.converted}
             fromIntro={state.result.fromIntro}
             toIntro={state.result.toIntro}
-            ratesHistory={state.result.ratesHistory}
+            recentRateHistory={state.result.recentRateHistory}
           />)}
           {state.mode === 'History' && (
           <ExchangeHistoryGraph

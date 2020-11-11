@@ -104,8 +104,18 @@ export default function useAppData() {
             const fromDrillDown = fromIntro['data']['query']['pages']
             const toDrillDown = toIntro['data']['query']['pages']
             const result = fromRates.data.rates[toCurrency];
+            const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-1,-5,-10,-15])
+          
+            function slicer (array, slicePoints) {
+              const splicedArray = []
+              slicePoints.forEach(point => {
+                splicedArray.push(array.slice(point, point + 1))
+              });
+              return splicedArray
+            }
+
             setResult({
-              ratesHistory: ratesHistory,
+              recentRateHistory: recentRateHistory,
               fromCurrency: fromCurrency,
               toCurrency: toCurrency,
               toStart: amount,

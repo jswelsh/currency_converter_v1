@@ -18,8 +18,7 @@ export function DatePickerComponent({
   }
   return (
     <LocalizationProvider 
-      dateAdapter={DayjsAdapter}  
-      >
+      dateAdapter={DayjsAdapter}>
       <StaticDateRangePicker
         leftArrowIcon={<ArrowBackIos fontSize='large'/>}
         rightArrowIcon={<ArrowForwardIos fontSize='large'/>}

@@ -66,9 +66,9 @@ export function ConvertView({
   converted,
   fromIntro,
   toIntro,
-  ratesHistory}){
+  recentRateHistory}){
   const classes = useStyles();
-  console.log(ratesHistory)
+  console.log(recentRateHistory)
   return(
   <Container className={classes.Container}>
     <Container  
@@ -101,11 +101,12 @@ export function ConvertView({
               <Typography variant="h2" color="primary">
                 {amount}
               </Typography>
-    
               </Grid>
+
+{/*               
               <Typography variant="h6" color="primary">
                 {intro}
-              </Typography>
+              </Typography> */}
             </Grid>
           </CardContent>
         </Card>
