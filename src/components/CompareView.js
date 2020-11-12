@@ -9,13 +9,15 @@ import clsx from 'clsx';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
+const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
   drawerClose: {  
+		marginLeft: drawerClosed,
     marginRight: 'min(100px, 15%)',
     marginLeft: 'min(100px, 15%)',
-    width: "90%",
+    width: `calc(95% - ${drawerClosed}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen})
