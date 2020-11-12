@@ -29,6 +29,11 @@ const theme = createMuiTheme({
         color:'#fff'
       },
     },
+    MuiCardContent:{
+      root:{
+        alignItems:'center'
+      }
+    },
     MuiPaper:{
       root:{
         backgroundColor:'#222222'

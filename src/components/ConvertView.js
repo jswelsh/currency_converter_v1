@@ -117,6 +117,7 @@ return(
 				currency={fromCurrency}
 				intro={fromIntro}
 				data={data}
+				converted={converted}
 				avatar={iconHandler('converter', fromCurrency)}
 			/>
 		</FrontSide>	
@@ -125,6 +126,7 @@ return(
 				currency={toCurrency}
 				intro={toIntro}
 				data={data}
+				converted={converted}
 				avatar={iconHandler('converter', toCurrency)}
 			/>
 		</BackSide>

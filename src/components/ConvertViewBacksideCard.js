@@ -13,6 +13,13 @@ import {
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
 const useStyles = makeStyles((theme) => ({
+	card: {
+    color:'#fff',
+    borderRadius: 12,
+    margin:'auto',
+		minWidth:600,
+		minHeight:296,
+	},
 	icon:{
 		marginTop: 15,
 		marginBottom:15,
@@ -24,13 +31,14 @@ export function ConvertViewBacksideCard({
 	data,
 	currency,
 	recentRateHistory,
-	avatar
+	avatar,
+	converted
 }){
 const classes = useStyles();
 
 
 return(
-<Card >
+<Card className={classes.card}>
 	<CardHeader
 		title={currency && data[currency]['name']}
 		titleTypographyProps={{ align: 'left',variant: "h4" }}
@@ -46,10 +54,11 @@ return(
 			</IconButton>
 		}/>
 	<CardContent>
-		<Grid container justify="center">
+		<Grid container justify="center" >
 			<Grid item >
 			<ConvertViewCardTable
 				recentRateHistory={recentRateHistory}
+				converted={converted}
 			/>
 			</Grid>
 		</Grid>

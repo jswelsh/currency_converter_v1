@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
     margin:'auto',
 		minWidth:600,
-		minHeight:250,
+		minHeight:296,
 	},
 	icon:{
 		marginTop: 15,
@@ -52,14 +52,14 @@ return(
 				</IconButton>
 			}/>
 		<CardContent>
-			<Grid container justify="center">
+			<Grid container justify="center"  style={{marginTop:40}}>
 				<Grid item >
 					<Typography component="h2" variant="h2" color="secondary">
 						{currency && data[currency]['symbol_native'] }
 					</Typography>
 				</Grid>
 				<Grid item >
-					<Typography variant="h2" color="primary">
+					<Typography variant="h2" color="primary" >
 						{amount}
 					</Typography>
 				</Grid>

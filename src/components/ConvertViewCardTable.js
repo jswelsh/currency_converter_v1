@@ -10,7 +10,8 @@ import {
 } from '@material-ui/core';
 
 export function ConvertViewCardTable({
-	recentRateHistory
+	recentRateHistory,
+	converted
 }){
 
 return(
@@ -28,6 +29,13 @@ return(
 				<TableRow key={'value'}>
 					<TableCell component="th" scope="row">{'value'}</TableCell>
 						{recentRateHistory && recentRateHistory.map((row) => {
+							return <TableCell align="right">{row.value}</TableCell>
+						})}
+				</TableRow>
+				<TableRow key={'value'}>
+					<TableCell component="th" scope="row">{'value'}</TableCell>
+						{recentRateHistory && recentRateHistory.map((row) => {
+							console.log('aphrodite',converted-row.value )
 							return <TableCell align="right">{row.value}</TableCell>
 						})}
 				</TableRow>
