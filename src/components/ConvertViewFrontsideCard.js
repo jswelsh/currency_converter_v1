@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper';
 import {
@@ -22,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export function ConvertViewFrontsideCard({
 	data,
 	amount,
-	currency
+	currency,
+	avatar
 }){
 const classes = useStyles();
 
@@ -35,7 +35,7 @@ return(
 			subheader= {currency}
 			subheaderTypographyProps={{ align: 'left'}}
 			className={classes.cardHeader}
-			avatar={ iconHandler('converter', currency)}/>
+			avatar={avatar}/>
 		<CardContent>
 			<Grid container justify="center">
 				<Grid item >

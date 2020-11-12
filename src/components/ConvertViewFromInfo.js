@@ -19,23 +19,24 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export function ConvertViewHistoryCard({
-	recentRateHistory
+export function ConvertViewFromInfo({ 
+	fromCurrency,	
+	fromIntro 
 }){
 const classes = useStyles();
-
+console.log(fromCurrency)
 return(
 <Card className={classes.card} >
 	<Grid container >
 		<Grid item spacing={1}  >
 			<CardContent>
-				{recentRateHistory && recentRateHistory.map(dayRate => {
+{/* 				{recentRateHistory && recentRateHistory.map(dayRate => {
 					return ( 
 						<Typography variant="h7" color="primary">
 							{ dayRate.value }, days ago{ dayRate.daysAgo }
 						</Typography>)
 					})
-				}
+				} */}
 			</CardContent>
 		</Grid>
 	</Grid>

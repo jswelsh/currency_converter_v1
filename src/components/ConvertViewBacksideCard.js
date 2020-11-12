@@ -18,7 +18,8 @@ import {
 export function ConvertViewBacksideCard({
 	data,
 	currency,
-	recentRateHistory
+	recentRateHistory,
+	avatar
 }){
 
 	console.log(recentRateHistory)
@@ -29,7 +30,7 @@ return(
 		titleTypographyProps={{ align: 'left',variant: "h4" }}
 		subheader= {currency}
 		subheaderTypographyProps={{ align: 'left'}}
-		avatar={ iconHandler('converter', currency)}/>
+		avatar={avatar}/>
 	<CardContent>
 		<Grid container justify="center">
 			<Grid item >

@@ -3,14 +3,9 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper';
 import {
-  Card,
   Grid,
-  Typography,
-  Container,
-  CardHeader,
-  CardContent,
 } from '@material-ui/core';
-import { ConvertViewHistoryCard } from './ConvertViewHistoryCard'
+import { ConvertViewFromInfo } from './ConvertViewFromInfo'
 import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
 import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
 
@@ -81,8 +76,13 @@ const useStyles = makeStyles((theme) => ({
 	}
 	return(
 <>
-	<ConvertViewHistoryCard
-		recentRateHistory={recentRateHistory}/>
+	<ConvertViewFromInfo
+		fromCurrency={fromCurrency}
+		fromIntro={fromIntro}
+/* 		currency={currency}
+		data={data}
+		amount={amount} */
+	/>
 	<Grid 
 	container 
 	justify={'center'}
@@ -101,13 +101,15 @@ const useStyles = makeStyles((theme) => ({
 				<ConvertViewFrontsideCard
 				currency={currency}
 				data={data}
-				amount={amount}/>
+				amount={amount}
+				avatar={iconHandler('converter', currency)}/>
 			</FrontSide>	
 			<BackSide>
 				<ConvertViewBacksideCard
 					currency={currency}
 					data={data}
-					recentRateHistory={recentRateHistory}/>
+					recentRateHistory={recentRateHistory}
+					avatar={iconHandler('converter', currency)}/>
 			</BackSide>
 		</Flippy>
 		))}
