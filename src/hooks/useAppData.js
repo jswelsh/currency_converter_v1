@@ -2,7 +2,8 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import { 
   initializeDateRange,
-  historyFormatter
+  historyFormatter,
+  shortenDateString
 } from '../helpers/dataHelpers'
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
@@ -114,7 +115,8 @@ export default function useAppData() {
               });
               const formattedArray = splicedArray.map(({date,value}, i) => {
                 /* adding the number of days from today to obj */
-                return { date, value:value.toFixed(5), daysAgo: Math.abs(slicePoints[i-1] || 1) }
+                console.log(date)
+                return { date: shortenDateString(date, 5)/* shorten the date string removing yyyy- */, value:value.toFixed(5), daysAgo: Math.abs(slicePoints[i-1] || 1) }
               })
               return formattedArray
             }

@@ -34,6 +34,17 @@ const theme = createMuiTheme({
         backgroundColor:'#222222'
       }
     },
+    
+    MuiTableCell:{
+      head:{
+        color:'#1dd7a6',
+        fontSize:20
+      },
+      body:{
+        color:'#fff',
+        fontSize:20
+      }
+    },
     MuiMenuItem: {
       root: {
         color:'#fff'

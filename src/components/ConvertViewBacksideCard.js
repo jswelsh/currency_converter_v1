@@ -5,21 +5,16 @@ import { iconHandler } from '../helpers/compareHelper';
 import {
 	Card,
 	Grid,
-	Typography,
 	CardHeader,
 	CardContent,
+	Table,
+	TableBody,
+	TableCell,
+	TableContainer,
+	TableHead,
+	TableRow,
+	Paper
 } from '@material-ui/core';
-
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-
-import { DataGrid } from '@material-ui/data-grid';
-
 
 const useStyles = makeStyles((theme) => ({
 	card: {
@@ -41,11 +36,14 @@ const useStyles = makeStyles((theme) => ({
 		marginTop: 8,
 		marginBottom: 0,
 	},
+	paper: {
+		color: '#fff'
+	}
 }
 }));
 
 
-const columnHeaders =['yesterday', 'weekAgo', 'twoWeeksAgo', 'threeWeeksAgo']
+const columnHeaders =['yesterday', 'week Ago', 'two Weeks Ago', 'three Weeks Ago']
 
 export function ConvertViewBacksideCard({
 	data,
@@ -67,33 +65,30 @@ return(
 	<CardContent>
 		<Grid container justify="center">
 			<Grid item >
-				{/* {table(recentRateHistory)} */}
 				<TableContainer component={Paper}>
-			<Table className={classes.table} size="small" aria-label="a dense table">
-				<TableHead>
-					<TableRow key={'daysAgo'}>
-				
-						<TableCell component="th" scope="column">{'Days Ago'}</TableCell>
-								{columnHeaders.map((column) => {
-									return <TableCell align="right">{column}</TableCell>
-								})}
-					</TableRow>
-				</TableHead>
-				<TableBody>
-						<TableRow key={'value'}>
-							<TableCell component="th" scope="row">{'value'}</TableCell>
-								{recentRateHistory && recentRateHistory.map((row) => {
-									return <TableCell align="right">{row.value}</TableCell>
-								})}
+					<Table className={classes.table} size="small" aria-label="a dense table">
+						<TableHead>
+							<TableRow key={'daysAgo'}>
+								<TableCell component="th" scope="column">{'Days Ago'}</TableCell>
+									{/* {columnHeaders.map((column) => { */}
+									{recentRateHistory && recentRateHistory.map((column) => {
+										return <TableCell align="right">{column.date}</TableCell>
+									})}
 						</TableRow>
-				</TableBody>
-			</Table>
-		</TableContainer>
+					</TableHead>
+					<TableBody>
+							<TableRow key={'value'}>
+								<TableCell component="th" scope="row">{'value'}</TableCell>
+									{recentRateHistory && recentRateHistory.map((row) => {
+										return <TableCell align="right">{row.value}</TableCell>
+									})}
+							</TableRow>
+					</TableBody>
+				</Table>
+			</TableContainer>
 			</Grid>
 		</Grid>
 	</CardContent>
 </Card>
 )
 }
-
-						{/* <DataGrid rows={rows} columns={columns} pageSize={5}/> */}

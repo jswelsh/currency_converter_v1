@@ -1,7 +1,10 @@
 
 //used in UserInputTab
-function shortenDateString(string) {
-  return string.toISOString().split('T')[0]
+function shortenDateString(string, cutPoint) {
+	console.log(string, cutPoint)
+	//trim exra values from date string, cutpoint is usually used to cut the year off
+	return (cutPoint === undefined) ? string.toISOString().split('T')[0] : 
+	string.toISOString().split('T')[0].substring(cutPoint)
 }
 
 function getDaysAgo(numberOfDays) {
