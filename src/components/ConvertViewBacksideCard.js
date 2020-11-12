@@ -1,7 +1,5 @@
 import React from 'react';
 import { ConvertViewCardTable } from './ConvertViewCardTable'
-import { makeStyles } from '@material-ui/core/styles';
-import { iconHandler } from '../helpers/compareHelper';
 import {
 	Card,
 	Grid,

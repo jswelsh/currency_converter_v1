@@ -5,7 +5,7 @@ import { iconHandler } from '../helpers/compareHelper';
 import {
   Grid,
 } from '@material-ui/core';
-import { ConvertViewFromInfo } from './ConvertViewFromInfo'
+import { ConvertViewIntroCard } from './ConvertViewIntroCard'
 import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
 import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
 
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
+		
 	},
 	container:{
 		margin: 'auto',
@@ -76,20 +77,13 @@ const useStyles = makeStyles((theme) => ({
 	}
 	return(
 <>
-	<ConvertViewFromInfo
-		fromCurrency={fromCurrency}
-		fromIntro={fromIntro}
-/* 		currency={currency}
-		data={data}
-		amount={amount} */
-	/>
 	<Grid 
 	container 
 	justify={'center'}
 	className={clsx(classes.drawer, {
 		[classes.drawerOpen]: opendrawer,
-		[classes.drawerClose]: !opendrawer})}
-	>{[
+		[classes.drawerClose]: !opendrawer})}>
+		{[
 		[fromCurrency, toStart, fromIntro], 
 		[toCurrency, converted, toIntro]].map((
 			[currency, amount, intro]) => (
@@ -114,6 +108,27 @@ const useStyles = makeStyles((theme) => ({
 		</Flippy>
 		))}
 	</Grid>
+	<Flippy
+		flipOnHover={false} // default false
+		flipOnClick={true} // default false
+		flipDirection="vertical">  {/* horizontal or vertical */}
+		<FrontSide>
+			<ConvertViewIntroCard
+				currency={fromCurrency}
+				intro={fromIntro}
+				data={data}
+				avatar={iconHandler('converter', fromCurrency)}
+			/>
+		</FrontSide>	
+		<BackSide>
+			<ConvertViewIntroCard
+				currency={toCurrency}
+				intro={toIntro}
+				data={data}
+				avatar={iconHandler('converter', toCurrency)}
+			/>
+		</BackSide>
+	</Flippy>
 </>
 )
 }
