@@ -63,8 +63,8 @@ const theme = createMuiTheme({
     MuiCardHeader:{
       root:{
         background:'#009868',
-        align: 'left'
       },
+
       subheader:{
         color:'#fff',
         fontSize: 18,

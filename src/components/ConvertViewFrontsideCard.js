@@ -16,23 +16,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
     margin:'auto',
 		minWidth:600,
-		//minHeight:300,
-		
-		cardHeader: {
-			backgroundColor:'secondary'
-		},
-		avatar: {
-			width: 60,
-			height: 60,
-			margin: 'auto',
-		},
-		heading: {
-			fontSize: 18,
-			fontWeight: 'bold',
-			letterSpacing: '0.5px',
-			marginTop: 8,
-			marginBottom: 0,
-		}
 	},
 }));
 

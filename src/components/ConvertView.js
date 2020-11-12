@@ -83,37 +83,35 @@ const useStyles = makeStyles((theme) => ({
 <>
 	<ConvertViewHistoryCard
 		recentRateHistory={recentRateHistory}/>
-		<Grid 
-		container 
-		justify={'center'}
-		className={clsx(classes.drawer, {
-			[classes.drawerOpen]: opendrawer,
-			[classes.drawerClose]: !opendrawer})}
-		>{[
-			[fromCurrency, toStart, fromIntro], 
-			[toCurrency, converted, toIntro]].map((
-				[currency, amount, intro]) => (
-			<Flippy
-				flipOnHover={false} // default false
-				flipOnClick={true} // default false
-				flipDirection="horizontal">  {/* horizontal or vertical */}
-				<FrontSide>
-					<ConvertViewFrontsideCard
+	<Grid 
+	container 
+	justify={'center'}
+	className={clsx(classes.drawer, {
+		[classes.drawerOpen]: opendrawer,
+		[classes.drawerClose]: !opendrawer})}
+	>{[
+		[fromCurrency, toStart, fromIntro], 
+		[toCurrency, converted, toIntro]].map((
+			[currency, amount, intro]) => (
+		<Flippy
+			flipOnHover={false} // default false
+			flipOnClick={true} // default false
+			flipDirection="horizontal">  {/* horizontal or vertical */}
+			<FrontSide>
+				<ConvertViewFrontsideCard
+				currency={currency}
+				data={data}
+				amount={amount}/>
+			</FrontSide>	
+			<BackSide>
+				<ConvertViewBacksideCard
 					currency={currency}
 					data={data}
-					amount={amount}/>
-				</FrontSide>	
-				<BackSide>
-					<ConvertViewBacksideCard
-						currency={currency}
-						data={data}
-						recentRateHistory={recentRateHistory}/>
-						
-				</BackSide>
-			</Flippy>
-			))}
-		</Grid>
-{/* 	</Container> */}
+					recentRateHistory={recentRateHistory}/>
+			</BackSide>
+		</Flippy>
+		))}
+	</Grid>
 </>
 )
 }
