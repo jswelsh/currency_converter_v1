@@ -9,6 +9,15 @@ import {
 	CardHeader,
 	CardContent,
 } from '@material-ui/core';
+
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
 import { DataGrid } from '@material-ui/data-grid';
 
 
@@ -36,18 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const columns = [
-	{ field: 'yesterday', headerName: 'Yesterday', width: 130 },
-	{ field: 'weekAgo', headerName: 'Week Ago', width: 130 },
-	{ field: 'twoWeeksAgo', headerName: 'Two Weeks Ago', width: 130 },
-	{ field: 'threeWeeksAgo', headerName: 'Three Weeks Ago', width: 130 },
-]
-const rowConstructor = (row) => {
-	const {row1,row2,row3,row4} = row
-	console.log('row',row1,row2,row3,row4)
-	const columnHeader =['yesterday', 'weekAgo', 'twoWeeksAgo', 'threeWeeksAgo']
-	
-}
+const columnHeaders =['yesterday', 'weekAgo', 'twoWeeksAgo', 'threeWeeksAgo']
 
 export function ConvertViewBacksideCard({
 	data,
@@ -56,6 +54,7 @@ export function ConvertViewBacksideCard({
 }){
 const classes = useStyles();
 
+	console.log(recentRateHistory)
 return(
 <Card className={classes.card} >
 	<CardHeader
@@ -68,8 +67,28 @@ return(
 	<CardContent>
 		<Grid container justify="center">
 			<Grid item >
-				{rowConstructor(recentRateHistory)}
-				{/* <DataGrid rows={rowConstructor(recentRateHistory)} columns={columns} pageSize={5}/>	 */}
+				{/* {table(recentRateHistory)} */}
+				<TableContainer component={Paper}>
+			<Table className={classes.table} size="small" aria-label="a dense table">
+				<TableHead>
+					<TableRow key={'daysAgo'}>
+				
+						<TableCell component="th" scope="column">{'Days Ago'}</TableCell>
+								{columnHeaders.map((column) => {
+									return <TableCell align="right">{column}</TableCell>
+								})}
+					</TableRow>
+				</TableHead>
+				<TableBody>
+						<TableRow key={'value'}>
+							<TableCell component="th" scope="row">{'value'}</TableCell>
+								{recentRateHistory && recentRateHistory.map((row) => {
+									return <TableCell align="right">{row.value}</TableCell>
+								})}
+						</TableRow>
+				</TableBody>
+			</Table>
+		</TableContainer>
 			</Grid>
 		</Grid>
 	</CardContent>
