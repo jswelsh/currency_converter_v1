@@ -34,33 +34,34 @@ export default function App() {
           opendrawer={opendrawer}
           setDrawerOpen={setDrawerOpen}
           />
-        <Grid
+  {/*    <Grid
           container
-          direction="column"
-          justify="flex-start"
-          alignItems="center" >
-          {state.mode === 'Converter' && (
-          <ConvertView
-            opendrawer={opendrawer}
-            fromCurrency={state.result.fromCurrency}
-            toCurrency={state.result.toCurrency}
-            toStart={state.result.toStart}
-            converted={state.result.converted}
-            fromIntro={state.result.fromIntro}
-            toIntro={state.result.toIntro}
-            recentRateHistory={state.result.recentRateHistory}
-          />)}
-          {state.mode === 'History' && (
-          <ExchangeHistoryGraph
-            history={state.history}
-            opendrawer={opendrawer}
-          />)}
-          {state.mode === 'Compare' && (
-          <CompareView 
-            compareList={state.compareList}
-            opendrawer={opendrawer}
-          />)}
-        </Grid>
+          //direction="column"
+          //justify="flex-start"
+          //alignItems="center"
+          > */}
+        {state.mode === 'Converter' && (
+        <ConvertView
+          opendrawer={opendrawer}
+          fromCurrency={state.result.fromCurrency}
+          toCurrency={state.result.toCurrency}
+          toStart={state.result.toStart}
+          converted={state.result.converted}
+          fromIntro={state.result.fromIntro}
+          toIntro={state.result.toIntro}
+          recentRateHistory={state.result.recentRateHistory}
+        />)}
+        {state.mode === 'History' && (
+        <ExchangeHistoryGraph
+          history={state.history}
+          opendrawer={opendrawer}
+        />)}
+        {state.mode === 'Compare' && (
+        <CompareView 
+          compareList={state.compareList}
+          opendrawer={opendrawer}
+        />)}
+     {/*    </Grid> */}
       </main>
     </ThemeProvider>
   );
