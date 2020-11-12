@@ -74,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
 	fromIntro,
 	toIntro,
 	recentRateHistory}){
-		console.log(recentRateHistory)
 
 	const classes = useStyles();
 	function shortenDateString(string) {

@@ -9,6 +9,8 @@ import {
 	CardHeader,
 	CardContent,
 } from '@material-ui/core';
+import { DataGrid } from '@material-ui/data-grid';
+
 
 const useStyles = makeStyles((theme) => ({
 	card: {
@@ -33,6 +35,20 @@ const useStyles = makeStyles((theme) => ({
 }
 }));
 
+
+const columns = [
+	{ field: 'yesterday', headerName: 'Yesterday', width: 130 },
+	{ field: 'weekAgo', headerName: 'Week Ago', width: 130 },
+	{ field: 'twoWeeksAgo', headerName: 'Two Weeks Ago', width: 130 },
+	{ field: 'threeWeeksAgo', headerName: 'Three Weeks Ago', width: 130 },
+]
+const rowConstructor = (row) => {
+	const {row1,row2,row3,row4} = row
+	console.log('row',row1,row2,row3,row4)
+	const columnHeader =['yesterday', 'weekAgo', 'twoWeeksAgo', 'threeWeeksAgo']
+	
+}
+
 export function ConvertViewBacksideCard({
 	data,
 	currency,
@@ -51,17 +67,14 @@ return(
 		avatar={ iconHandler('converter', currency)}/>
 	<CardContent>
 		<Grid container justify="center">
-			<Grid item >      
-			{recentRateHistory && recentRateHistory.map(dayRate => {
-					return ( 
-						<Typography variant="h7" color="primary">
-							{ dayRate.value }, days ago{ dayRate.daysAgo }
-						</Typography>)
-					})
-				}
+			<Grid item >
+				{rowConstructor(recentRateHistory)}
+				{/* <DataGrid rows={rowConstructor(recentRateHistory)} columns={columns} pageSize={5}/>	 */}
 			</Grid>
 		</Grid>
 	</CardContent>
 </Card>
 )
 }
+
+						{/* <DataGrid rows={rows} columns={columns} pageSize={5}/> */}
