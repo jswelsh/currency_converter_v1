@@ -8,7 +8,7 @@ import {
 import { ConvertViewIntroCard } from './ConvertViewIntroCard'
 import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
 import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
-
+import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 /* import SwapHorizIcon from '@material-ui/icons/SwapHoriz'; */
 
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 },
 }));
 
-	export function ConvertView({
+export function ConvertView({
 	opendrawer,
 	fromCurrency,
 	toCurrency,
@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 	function shortenDateString(string) {
 		return string.toISOString().split('T')[0]
 	}
-	return(
+return(
 <>
 	<Grid 
 	container 

@@ -1,14 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { iconHandler } from '../helpers/compareHelper';
 import {
 	Card,
 	Grid,
 	Typography,
 	CardHeader,
 	CardContent,
+	IconButton
 } from '@material-ui/core';
 
+import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 const useStyles = makeStyles((theme) => ({
   card: {
     color:'#fff',
@@ -16,8 +17,12 @@ const useStyles = makeStyles((theme) => ({
     margin:'auto',
 		minWidth:600,
 		minHeight:250,
-
 	},
+	icon:{
+		marginTop: 15,
+		marginBottom:15,
+		marginLeft: 10
+	}
 }));
 
 export function ConvertViewFrontsideCard({
@@ -37,7 +42,15 @@ return(
 			subheader= {currency}
 			subheaderTypographyProps={{ align: 'left'}}
 			className={classes.cardHeader}
-			avatar={avatar}/>
+			avatar={avatar}		
+			action={
+				<IconButton aria-label="settings" >
+					<Typography variant="h4" color="secondary"className={classes.icon}>
+						Flip 
+					</Typography>
+					<ThreeDRotationIcon fontSize='large'className={classes.icon}/>
+				</IconButton>
+			}/>
 		<CardContent>
 			<Grid container justify="center">
 				<Grid item >

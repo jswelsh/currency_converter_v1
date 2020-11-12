@@ -2,11 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Card,
-	Grid,
 	CardContent,
 	Typography,
 	CardHeader,
+	IconButton,
 } from '@material-ui/core';
+import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
+
+import Compare from '@material-ui/icons/Sort';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -17,13 +20,19 @@ const useStyles = makeStyles((theme) => ({
 		minWidth:400,
 		maxWidth:900
 	},
+	icon:{
+		marginTop: 15,
+		marginBottom:15,
+		marginLeft: 10
+	}
 }));
 
 export function ConvertViewIntroCard({ 
 	currency,	
 	intro,
 	data,
-	avatar
+	avatar,
+	flipIcon
 }){
 const classes = useStyles();
 
@@ -35,16 +44,21 @@ return(
 		subheader={currency}
 		subheaderTypographyProps={{ align: 'left'}}
 		className={classes.cardHeader}
-		avatar={avatar}/>
-{/* 	<Grid container >
-		<Grid item spacing={1}  > */}
-			<CardContent>
-				<Typography variant="h7" color="primary">
-					{intro}
+		avatar={avatar}
+		action={
+			
+			<IconButton aria-label="settings" >
+				<Typography variant="h4" color="secondary"className={classes.icon}>
+					Flip 
 				</Typography>
-			</CardContent>
-{/* 		</Grid>
-	</Grid> */}
+				<ThreeDRotationIcon fontSize='large'className={classes.icon}/>
+			</IconButton>
+		}/>
+	<CardContent>
+		<Typography variant="h6" color="primary">
+			{intro}
+		</Typography>
+	</CardContent>
 </Card>
 )
 }
