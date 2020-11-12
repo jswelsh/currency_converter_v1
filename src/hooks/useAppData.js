@@ -2,7 +2,8 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import { 
   initializeDateRange,
-  historyFormatter
+  historyFormatter,
+  shortenDateString
 } from '../helpers/dataHelpers'
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
@@ -70,7 +71,7 @@ export default function useAppData() {
   }
   const convertHandler = (payload) => {
     const { fromCurrency, toCurrency, amount} = payload
-    const [ fromDate, toDate] = initializeDateRange(335)
+    const [ fromDate, toDate] = initializeDateRange(325)
     const exchangeRates = `
       https://api.exchangeratesapi.io/history?start_at=${
       fromDate}&end_at=${
@@ -104,14 +105,20 @@ export default function useAppData() {
             const fromDrillDown = fromIntro['data']['query']['pages']
             const toDrillDown = toIntro['data']['query']['pages']
             const result = fromRates.data.rates[toCurrency];
-            const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-1,-5,-10,-15])
+            const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-5,-10,-15])
           
             function slicer (array, slicePoints) {
-              const splicedArray = []
+              const splicedArray = [array.pop()]//grab yesterdays rates
               slicePoints.forEach(point => {
-                splicedArray.push(array.slice(point, point + 1))
+                /* add each recent history rate to array */
+                splicedArray.push(array.slice(point, point + 1).pop())
               });
-              return splicedArray
+              const formattedArray = splicedArray.map(({date,value}, i) => {
+                /* adding the number of days from today to obj */
+                console.log(date)
+                return { date: shortenDateString(date, 5)/* shorten the date string removing yyyy- */, value:value.toFixed(5), daysAgo: Math.abs(slicePoints[i-1] || 1) }
+              })
+              return formattedArray
             }
 
             setResult({
