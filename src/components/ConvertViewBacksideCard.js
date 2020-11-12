@@ -1,5 +1,4 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper';
 import {
@@ -70,7 +69,6 @@ return(
 						<TableHead>
 							<TableRow key={'daysAgo'}>
 								<TableCell component="th" scope="column">{'Days Ago'}</TableCell>
-									{/* {columnHeaders.map((column) => { */}
 									{recentRateHistory && recentRateHistory.map((column) => {
 										return <TableCell align="right">{column.date}</TableCell>
 									})}
