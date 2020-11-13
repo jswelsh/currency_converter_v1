@@ -84,9 +84,9 @@ return(
 		[classes.drawerOpen]: opendrawer,
 		[classes.drawerClose]: !opendrawer})}>
 		{[
-		[fromCurrency, toStart, fromIntro], 
-		[toCurrency, converted, toIntro]].map((
-			[currency, amount, intro]) => (
+		[fromCurrency, toStart], 
+		[toCurrency, converted]].map((
+			[currency, amount]) => (
 		<Flippy
 			flipOnHover={false} // default false
 			flipOnClick={true} // default false
@@ -103,6 +103,7 @@ return(
 					currency={currency}
 					data={data}
 					recentRateHistory={recentRateHistory}
+					converted={converted}
 					avatar={iconHandler('converter', currency)}/>
 			</BackSide>
 		</Flippy>
@@ -117,7 +118,6 @@ return(
 				currency={fromCurrency}
 				intro={fromIntro}
 				data={data}
-				converted={converted}
 				avatar={iconHandler('converter', fromCurrency)}
 			/>
 		</FrontSide>	
@@ -126,7 +126,6 @@ return(
 				currency={toCurrency}
 				intro={toIntro}
 				data={data}
-				converted={converted}
 				avatar={iconHandler('converter', toCurrency)}
 			/>
 		</BackSide>

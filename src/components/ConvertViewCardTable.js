@@ -6,7 +6,8 @@ import {
 	TableContainer,
 	TableHead,
 	TableRow,
-	Paper
+	Paper,
+	Typography
 } from '@material-ui/core';
 
 export function ConvertViewCardTable({
@@ -14,6 +15,14 @@ export function ConvertViewCardTable({
 	converted
 }){
 
+	const cellConstructor = (value) => {
+	//styling the delta of previous days to being green +, white =, red -
+		const delta = (value > 0) ? 
+		<Typography color={'secondary'}>{value}</Typography> :  (value < 0) ?
+		<Typography color={'error'}>{value}</Typography> :
+		<Typography color={'primary'}>{value}</Typography>  
+		return delta
+	}
 return(
 	<TableContainer component={Paper}>
 		<Table size="small" aria-label="a dense table">
@@ -32,11 +41,13 @@ return(
 							return <TableCell align="right">{row.value}</TableCell>
 						})}
 				</TableRow>
-				<TableRow key={'value'}>
-					<TableCell component="th" scope="row">{'value'}</TableCell>
+				<TableRow key={'delta'}>
+					<TableCell component="th" scope="row">{'The ∆'}</TableCell>
 						{recentRateHistory && recentRateHistory.map((row) => {
-							console.log('aphrodite',converted-row.value )
-							return <TableCell align="right">{row.value}</TableCell>
+							return <TableCell align="right">
+								{cellConstructor(((parseFloat(row.value) - parseFloat(converted))*100).toFixed(3))}
+								{/* {((parseFloat(row.value) - parseFloat(converted))*100).toFixed(3)} */}
+								</TableCell>
 						})}
 				</TableRow>
 			</TableBody>
