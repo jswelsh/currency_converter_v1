@@ -3,19 +3,12 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper';
 import {
-  Card,
   Grid,
-  Typography,
-  Container,
-  CardHeader,
-  CardContent,
 } from '@material-ui/core';
-import { ConvertViewHistoryCard } from './ConvertViewHistoryCard'
+import { ConvertViewIntroCard } from './ConvertViewIntroCard'
 import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
 import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
-
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-/* import SwapHorizIcon from '@material-ui/icons/SwapHoriz'; */
 
 const drawerWidth = 240;
 const drawerClosed = 100;
@@ -24,15 +17,9 @@ const data = require('../helpers/currency.json'); // forward slashes will depend
 const useStyles = makeStyles((theme) => ({
 
 	card: {
-		color:'#fff',
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
-	},
-	container:{
-		margin: 'auto',
-
-		alignContent:'center'
 	},
 	cardHeader: {
 		backgroundColor:'secondary'},
@@ -62,10 +49,10 @@ const useStyles = makeStyles((theme) => ({
 		transition: theme.transitions.create(["width", "margin"], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen})
-},
+		}
 }));
 
-	export function ConvertView({
+export function ConvertView({
 	opendrawer,
 	fromCurrency,
 	toCurrency,
@@ -79,41 +66,73 @@ const useStyles = makeStyles((theme) => ({
 	function shortenDateString(string) {
 		return string.toISOString().split('T')[0]
 	}
-	return(
+return(
 <>
-	<ConvertViewHistoryCard
-		recentRateHistory={recentRateHistory}/>
-		<Grid 
-		container 
-		justify={'center'}
-		className={clsx(classes.drawer, {
-			[classes.drawerOpen]: opendrawer,
-			[classes.drawerClose]: !opendrawer})}
-		>{[
-			[fromCurrency, toStart, fromIntro], 
-			[toCurrency, converted, toIntro]].map((
-				[currency, amount, intro]) => (
-			<Flippy
-				flipOnHover={false} // default false
-				flipOnClick={true} // default false
-				flipDirection="horizontal">  {/* horizontal or vertical */}
-				<FrontSide>
-					<ConvertViewFrontsideCard
+	<Grid 
+	container 
+	justify={'center'}
+	className={clsx({
+		[classes.drawerOpen]: opendrawer,
+		[classes.drawerClose]: !opendrawer})}>
+		{[
+		[fromCurrency, toStart], 
+		[toCurrency, converted]].map((
+			[currency, amount]) => (
+		<Flippy
+			flipOnHover={false} // default false
+			flipOnClick={true} // default false
+			flipDirection="horizontal">  {/* horizontal or vertical */}
+			<FrontSide>
+				<ConvertViewFrontsideCard
+				currency={currency}
+				data={data}
+				amount={amount}
+				avatar={iconHandler('converter', currency)}/>
+			</FrontSide>	
+			<BackSide>
+				<ConvertViewBacksideCard
 					currency={currency}
 					data={data}
-					amount={amount}/>
-				</FrontSide>	
-				<BackSide>
-					<ConvertViewBacksideCard
-						currency={currency}
-						data={data}
-						recentRateHistory={recentRateHistory}/>
-						
-				</BackSide>
-			</Flippy>
-			))}
-		</Grid>
-{/* 	</Container> */}
+					recentRateHistory={recentRateHistory}
+					converted={converted}
+					avatar={iconHandler('converter', currency)}/>
+			</BackSide>
+		</Flippy>
+		))}
+	</Grid>
+	<Grid 
+	container 
+	justify={'center'}
+	className={clsx({
+		[classes.drawerOpen]: opendrawer,
+		[classes.drawerClose]: !opendrawer})}>
+		<Flippy
+			flipOnHover={false} // default false
+			flipOnClick={true} // default false
+			flipDirection="vertical">  {/* horizontal or vertical */}
+			<FrontSide>
+				<ConvertViewIntroCard
+					currency={fromCurrency}
+					intro={fromIntro}
+					data={data}
+					avatar={iconHandler('converter', fromCurrency)}
+				/>
+			</FrontSide>	
+			<BackSide>
+			<Grid 
+			container 
+			justify={'center'}>
+				<ConvertViewIntroCard
+					opendrawer={opendrawer}
+					currency={toCurrency}
+					intro={toIntro}
+					data={data}
+					avatar={iconHandler('converter', toCurrency)}
+				/>
+				</Grid>
+			</BackSide>
+		</Flippy>
+	</Grid>
 </>
 )
 }

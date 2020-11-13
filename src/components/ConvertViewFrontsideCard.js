@@ -1,45 +1,35 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { iconHandler } from '../helpers/compareHelper';
 import {
 	Card,
 	Grid,
 	Typography,
 	CardHeader,
 	CardContent,
+	IconButton
 } from '@material-ui/core';
 
+import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 const useStyles = makeStyles((theme) => ({
   card: {
     color:'#fff',
     borderRadius: 12,
     margin:'auto',
 		minWidth:600,
-		//minHeight:300,
-		
-		cardHeader: {
-			backgroundColor:'secondary'
-		},
-		avatar: {
-			width: 60,
-			height: 60,
-			margin: 'auto',
-		},
-		heading: {
-			fontSize: 18,
-			fontWeight: 'bold',
-			letterSpacing: '0.5px',
-			marginTop: 8,
-			marginBottom: 0,
-		}
+		minHeight:296,
 	},
+	icon:{
+		marginTop: 15,
+		marginBottom:15,
+		marginLeft: 10
+	}
 }));
 
 export function ConvertViewFrontsideCard({
 	data,
 	amount,
-	currency
+	currency,
+	avatar
 }){
 const classes = useStyles();
 
@@ -52,16 +42,24 @@ return(
 			subheader= {currency}
 			subheaderTypographyProps={{ align: 'left'}}
 			className={classes.cardHeader}
-			avatar={ iconHandler('converter', currency)}/>
+			avatar={avatar}		
+			action={
+				<IconButton aria-label="settings" >
+					<Typography variant="h4" color="secondary"className={classes.icon}>
+						Flip 
+					</Typography>
+					<ThreeDRotationIcon fontSize='large'className={classes.icon}/>
+				</IconButton>
+			}/>
 		<CardContent>
-			<Grid container justify="center">
+			<Grid container justify="center"  style={{marginTop:40}}>
 				<Grid item >
 					<Typography component="h2" variant="h2" color="secondary">
 						{currency && data[currency]['symbol_native'] }
 					</Typography>
 				</Grid>
 				<Grid item >
-					<Typography variant="h2" color="primary">
+					<Typography variant="h2" color="primary" >
 						{amount}
 					</Typography>
 				</Grid>

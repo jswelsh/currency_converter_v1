@@ -1,24 +1,21 @@
 import React from 'react';
-import { ConvertViewCardTable } from './ConvertViewCardTable'
 import { makeStyles } from '@material-ui/core/styles';
-
 import {
 	Card,
-	Grid,
-	CardHeader,
 	CardContent,
+	Typography,
+	CardHeader,
 	IconButton,
-	Typography
 } from '@material-ui/core';
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
 const useStyles = makeStyles((theme) => ({
+
 	card: {
-    color:'#fff',
-    borderRadius: 12,
-    margin:'auto',
-		minWidth:600,
-		minHeight:296,
+		borderRadius: 12,
+		margin:'auto',
+		minWidth:400,
+		maxWidth:900
 	},
 	icon:{
 		marginTop: 15,
@@ -27,22 +24,22 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function ConvertViewBacksideCard({
+export function ConvertViewIntroCard({ 
+	currency,	
+	intro,
 	data,
-	currency,
-	recentRateHistory,
 	avatar,
-	converted
 }){
 const classes = useStyles();
 
 return(
-<Card className={classes.card}>
+<Card className={classes.card} >
 	<CardHeader
 		title={currency && data[currency]['name']}
 		titleTypographyProps={{ align: 'left',variant: "h4" }}
-		subheader= {currency}
+		subheader={currency}
 		subheaderTypographyProps={{ align: 'left'}}
+		className={classes.cardHeader}
 		avatar={avatar}
 		action={
 			<IconButton aria-label="settings" >
@@ -53,13 +50,9 @@ return(
 			</IconButton>
 		}/>
 	<CardContent>
-		<Grid container justify="center" >
-			<Grid item >
-			<ConvertViewCardTable
-				recentRateHistory={recentRateHistory}
-				converted={converted}/>
-			</Grid>
-		</Grid>
+		<Typography variant="h6" color="primary">
+			{intro}
+		</Typography>
 	</CardContent>
 </Card>
 )

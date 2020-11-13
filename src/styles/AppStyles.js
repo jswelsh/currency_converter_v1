@@ -8,6 +8,9 @@ const theme = createMuiTheme({
     secondary: {
       main: '#8CFFDA'
     },
+    error: {
+      main: '#fd5c91'
+    },
     action: {
       
       },
@@ -29,6 +32,11 @@ const theme = createMuiTheme({
         color:'#fff'
       },
     },
+    MuiCardContent:{
+      root:{
+        alignItems:'center'
+      }
+    },
     MuiPaper:{
       root:{
         backgroundColor:'#222222'
@@ -37,7 +45,7 @@ const theme = createMuiTheme({
     
     MuiTableCell:{
       head:{
-        color:'#1dd7a6',
+        color:'#fff',
         fontSize:20
       },
       body:{
@@ -63,8 +71,8 @@ const theme = createMuiTheme({
     MuiCardHeader:{
       root:{
         background:'#009868',
-        align: 'left'
       },
+
       subheader:{
         color:'#fff',
         fontSize: 18,
