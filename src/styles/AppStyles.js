@@ -45,7 +45,7 @@ const theme = createMuiTheme({
     
     MuiTableCell:{
       head:{
-        color:'#1dd7a6',
+        color:'#fff',
         fontSize:20
       },
       body:{

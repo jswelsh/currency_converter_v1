@@ -9,8 +9,6 @@ import {
 } from '@material-ui/core';
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
-import Compare from '@material-ui/icons/Sort';
-
 const useStyles = makeStyles((theme) => ({
 
 	card: {
@@ -18,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
-		maxWidth:900
+		maxWidth:900,
+/* 		marginLeft:100,
+		marginRight:100, */
+
 	},
 	icon:{
 		marginTop: 15,
@@ -27,17 +28,19 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function ConvertViewIntroCard({ 
-	currency,	
+export function ConvertViewIntroCard({
+	opendrawer,
+	currency,
 	intro,
 	data,
 	avatar,
-	flipIcon
 }){
 const classes = useStyles();
 
 return(
-<Card className={classes.card} >
+<Card className={classes.card,{
+	[classes.drawerOpenIntro]: opendrawer,
+	[classes.drawerCloseIntro]: !opendrawer}} >
 	<CardHeader
 		title={currency && data[currency]['name']}
 		titleTypographyProps={{ align: 'left',variant: "h4" }}

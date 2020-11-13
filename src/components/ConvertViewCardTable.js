@@ -18,17 +18,17 @@ export function ConvertViewCardTable({
 	const cellConstructor = (value) => {
 	//styling the delta of previous days to being green +, white =, red -
 		const delta = (value > 0) ? 
-		<Typography color={'secondary'}>{value}</Typography> :  (value < 0) ?
-		<Typography color={'error'}>{value}</Typography> :
-		<Typography color={'primary'}>{value}</Typography>  
+		<Typography color={'secondary'}>{'+'+value+'%'}</Typography> :  (value < 0) ?
+		<Typography color={'error'}>{value+'%'}</Typography> :
+		<Typography color={'primary'}>{value+'%'}</Typography>  
 		return delta
 	}
 return(
 	<TableContainer component={Paper}>
 		<Table size="small" aria-label="a dense table">
 			<TableHead>
-				<TableRow key={'daysAgo'}>
-					<TableCell component="th" scope="column">{'Days Ago'}</TableCell>
+				<TableRow key={'date'}>
+					<TableCell component="th" scope="column">{'date'}</TableCell>
 						{recentRateHistory && recentRateHistory.map((column) => {
 							return <TableCell align="right">{column.date}</TableCell>
 						})}
@@ -42,12 +42,12 @@ return(
 						})}
 				</TableRow>
 				<TableRow key={'delta'}>
-					<TableCell component="th" scope="row">{'The ∆'}</TableCell>
+					<TableCell component="th" scope="row">{'the ∆'}</TableCell>
 						{recentRateHistory && recentRateHistory.map((row) => {
-							return <TableCell align="right">
-								{cellConstructor(((parseFloat(row.value) - parseFloat(converted))*100).toFixed(3))}
-								{/* {((parseFloat(row.value) - parseFloat(converted))*100).toFixed(3)} */}
-								</TableCell>
+							return (
+							<TableCell align="right">
+								{cellConstructor(((parseFloat(row.value) - parseFloat(converted))/converted*100).toFixed(3))}
+							</TableCell>)
 						})}
 				</TableRow>
 			</TableBody>

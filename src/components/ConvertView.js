@@ -58,6 +58,20 @@ const useStyles = makeStyles((theme) => ({
 		transition: theme.transitions.create(["width", "margin"], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen})
+	},	
+	drawerClose: {
+		marginLeft: drawerClosed,
+		width: `calc(95% - ${drawerClosed}px)`,
+		transition: theme.transitions.create(["width", "margin"], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen})
+	},
+	drawerOpen: {
+		marginLeft: drawerWidth,
+		width: `calc(95% - ${drawerWidth}px)`,
+		transition: theme.transitions.create(["width", "margin"], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.enteringScreen})
 },
 }));
 
@@ -122,12 +136,20 @@ return(
 			/>
 		</FrontSide>	
 		<BackSide>
+		<Grid 
+		container 
+		justify={'center'}
+		/* className={clsx(classes.drawer,{
+			[classes.drawerOpenIntro]: opendrawer,
+			[classes.drawerCloseIntro]: !opendrawer})} */>
 			<ConvertViewIntroCard
+				opendrawer={opendrawer}
 				currency={toCurrency}
 				intro={toIntro}
 				data={data}
 				avatar={iconHandler('converter', toCurrency)}
 			/>
+			</Grid>
 		</BackSide>
 	</Flippy>
 </>
