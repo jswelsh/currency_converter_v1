@@ -16,10 +16,7 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
-		maxWidth:900,
-/* 		marginLeft:100,
-		marginRight:100, */
-
+		maxWidth:900
 	},
 	icon:{
 		marginTop: 15,
@@ -28,9 +25,8 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function ConvertViewIntroCard({
-	opendrawer,
-	currency,
+export function ConvertViewIntroCard({ 
+	currency,	
 	intro,
 	data,
 	avatar,
@@ -38,9 +34,7 @@ export function ConvertViewIntroCard({
 const classes = useStyles();
 
 return(
-<Card className={classes.card,{
-	[classes.drawerOpenIntro]: opendrawer,
-	[classes.drawerCloseIntro]: !opendrawer}} >
+<Card className={classes.card} >
 	<CardHeader
 		title={currency && data[currency]['name']}
 		titleTypographyProps={{ align: 'left',variant: "h4" }}

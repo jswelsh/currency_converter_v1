@@ -57,8 +57,7 @@ return(
 			<Grid item >
 			<ConvertViewCardTable
 				recentRateHistory={recentRateHistory}
-				converted={converted}
-			/>
+				converted={converted}/>
 			</Grid>
 		</Grid>
 	</CardContent>

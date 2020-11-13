@@ -23,11 +23,9 @@ const useStyles = makeStyles((theme) => ({
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
-		
 	},
 	container:{
 		margin: 'auto',
-
 		alignContent:'center'
 	},
 	cardHeader: {
@@ -58,21 +56,7 @@ const useStyles = makeStyles((theme) => ({
 		transition: theme.transitions.create(["width", "margin"], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen})
-	},	
-	drawerClose: {
-		marginLeft: drawerClosed,
-		width: `calc(95% - ${drawerClosed}px)`,
-		transition: theme.transitions.create(["width", "margin"], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen})
-	},
-	drawerOpen: {
-		marginLeft: drawerWidth,
-		width: `calc(95% - ${drawerWidth}px)`,
-		transition: theme.transitions.create(["width", "margin"], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen})
-},
+		}
 }));
 
 export function ConvertView({
@@ -94,7 +78,7 @@ return(
 	<Grid 
 	container 
 	justify={'center'}
-	className={clsx(classes.drawer, {
+	className={clsx({
 		[classes.drawerOpen]: opendrawer,
 		[classes.drawerClose]: !opendrawer})}>
 		{[
@@ -123,6 +107,12 @@ return(
 		</Flippy>
 		))}
 	</Grid>
+	<Grid 
+	container 
+	justify={'center'}
+	className={clsx({
+		[classes.drawerOpen]: opendrawer,
+		[classes.drawerClose]: !opendrawer})}>
 	<Flippy
 		flipOnHover={false} // default false
 		flipOnClick={true} // default false
@@ -138,10 +128,7 @@ return(
 		<BackSide>
 		<Grid 
 		container 
-		justify={'center'}
-		/* className={clsx(classes.drawer,{
-			[classes.drawerOpenIntro]: opendrawer,
-			[classes.drawerCloseIntro]: !opendrawer})} */>
+		justify={'center'}>
 			<ConvertViewIntroCard
 				opendrawer={opendrawer}
 				currency={toCurrency}
@@ -152,6 +139,7 @@ return(
 			</Grid>
 		</BackSide>
 	</Flippy>
+	</Grid>
 </>
 )
 }
