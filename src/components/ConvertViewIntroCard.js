@@ -12,7 +12,6 @@ import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 const useStyles = makeStyles((theme) => ({
 
 	card: {
-		color:'#fff',
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
@@ -43,7 +42,6 @@ return(
 		className={classes.cardHeader}
 		avatar={avatar}
 		action={
-			
 			<IconButton aria-label="settings" >
 				<Typography variant="h4" color="secondary"className={classes.icon}>
 					Flip 

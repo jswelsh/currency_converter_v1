@@ -8,9 +8,7 @@ import {
 import { ConvertViewIntroCard } from './ConvertViewIntroCard'
 import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
 import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
-import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-/* import SwapHorizIcon from '@material-ui/icons/SwapHoriz'; */
 
 const drawerWidth = 240;
 const drawerClosed = 100;
@@ -19,14 +17,9 @@ const data = require('../helpers/currency.json'); // forward slashes will depend
 const useStyles = makeStyles((theme) => ({
 
 	card: {
-		color:'#fff',
 		borderRadius: 12,
 		margin:'auto',
 		minWidth:400,
-	},
-	container:{
-		margin: 'auto',
-		alignContent:'center'
 	},
 	cardHeader: {
 		backgroundColor:'secondary'},
@@ -113,32 +106,32 @@ return(
 	className={clsx({
 		[classes.drawerOpen]: opendrawer,
 		[classes.drawerClose]: !opendrawer})}>
-	<Flippy
-		flipOnHover={false} // default false
-		flipOnClick={true} // default false
-		flipDirection="vertical">  {/* horizontal or vertical */}
-		<FrontSide>
-			<ConvertViewIntroCard
-				currency={fromCurrency}
-				intro={fromIntro}
-				data={data}
-				avatar={iconHandler('converter', fromCurrency)}
-			/>
-		</FrontSide>	
-		<BackSide>
-		<Grid 
-		container 
-		justify={'center'}>
-			<ConvertViewIntroCard
-				opendrawer={opendrawer}
-				currency={toCurrency}
-				intro={toIntro}
-				data={data}
-				avatar={iconHandler('converter', toCurrency)}
-			/>
-			</Grid>
-		</BackSide>
-	</Flippy>
+		<Flippy
+			flipOnHover={false} // default false
+			flipOnClick={true} // default false
+			flipDirection="vertical">  {/* horizontal or vertical */}
+			<FrontSide>
+				<ConvertViewIntroCard
+					currency={fromCurrency}
+					intro={fromIntro}
+					data={data}
+					avatar={iconHandler('converter', fromCurrency)}
+				/>
+			</FrontSide>	
+			<BackSide>
+			<Grid 
+			container 
+			justify={'center'}>
+				<ConvertViewIntroCard
+					opendrawer={opendrawer}
+					currency={toCurrency}
+					intro={toIntro}
+					data={data}
+					avatar={iconHandler('converter', toCurrency)}
+				/>
+				</Grid>
+			</BackSide>
+		</Flippy>
 	</Grid>
 </>
 )
