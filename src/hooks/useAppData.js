@@ -43,7 +43,7 @@ export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
     result: {},
     currenciesList: [],
-    compareList: [],
+    compareList: {},
     history: [],
     mode: 'Converter',
   });
@@ -59,6 +59,7 @@ export default function useAppData() {
     axios
       .get(compareURL)
       .then((res) => {
+        console.log('geli', res.data)
         const compareList = []
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({
@@ -66,7 +67,8 @@ export default function useAppData() {
             value: (value*amount).toFixed(5)
           })
         })
-        setCompareList(compareList)
+        
+        setCompareList({selected:fromCurrency, compareList:compareList})
       })
   }
   const convertHandler = (payload) => {
@@ -115,7 +117,6 @@ export default function useAppData() {
               });
               const formattedArray = splicedArray.map(({date,value}, i) => {
                 /* adding the number of days from today to obj */
-                console.log(date)
                 return { date: shortenDateString(date, 5)/* shorten the date string removing yyyy- */, value:value.toFixed(5), daysAgo: Math.abs(slicePoints[i-1] || 1) }
               })
               return formattedArray
