@@ -40,8 +40,10 @@ const theme = createMuiTheme({
     MuiPaper:{
       root:{
         backgroundColor:'#222222'
-      }
+      },
+      
     },
+
     
     MuiTableCell:{
       head:{

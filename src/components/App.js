@@ -58,6 +58,8 @@ export default function App() {
         />)}
         {state.mode === 'Compare' && (
         <CompareView 
+        /* this isnt right the from currency isnt a source of truth */
+          fromCurrency={state.result.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
         />)}

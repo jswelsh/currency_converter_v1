@@ -37,24 +37,28 @@ const useStyles = makeStyles((theme) => ({
   },
   symbol: {
     marginRight: 16
-  },
+  }
 }));
 
 export function CompareView({
   opendrawer, 
-  compareList}){
+  compareList,
+  fromCurrency}){
   const classes = useStyles();
+  const list = compareList.compareList
   return(
   <List         
     className = {clsx(classes.drawer, {
       [classes.drawerOpen]: opendrawer,
       [classes.drawerClose]: !opendrawer})} >
     <Grid container spacing={2} alignItems="center" >
-      {(compareList).map((payload) => (
+      {(list).map((payload) => (
       <Grid item xs={4} key={payload.currency} >
         <CompareListItem
+          fromCurrency={compareList.selected}
           currency={payload.currency}
-          primary={payload.value}/>
+          primary={payload.value}
+          />
       </Grid>))}
     </Grid>
   </List> 
