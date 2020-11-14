@@ -10,23 +10,19 @@ import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
 
 
-function ListItemLink(props) {
-
-  const { 
-    icon, 
-    primary, 
-    modeHandler, 
-    mode 
-  } = props;
+function ListItemLink({ 
+  modeHandler, 
+  primary, 
+  icon, 
+  mode 
+}) {
 
   return (
     <ListItem
       button
       selected={mode === primary}
       onClick={() =>{
-        modeHandler(primary) 
-      }}
-    >
+        modeHandler(primary) }}>
       {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
       <ListItemText primary={primary} />
     </ListItem>
@@ -35,9 +31,10 @@ function ListItemLink(props) {
 
 export function TabSelector({
   compareListHandler,
-  modeHandler,
   compareList,
-  mode}) {
+  modeHandler,
+  mode
+}) {
 
   const commonProps = (payload) => ({
     mode:mode,

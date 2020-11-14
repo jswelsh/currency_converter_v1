@@ -60,7 +60,8 @@ export function ConvertView({
 	converted,
 	fromIntro,
 	toIntro,
-	recentRateHistory}){
+	recentRateHistory
+}){
 
 	const classes = useStyles();
 	function shortenDateString(string) {

@@ -55,7 +55,7 @@ export function CompareView({
       {(list).map((payload) => (
       <Grid item xs={4} key={payload.currency} >
         <CompareListItem
-          fromCurrency={compareList.selected}
+          fromCurrency={/* compareList.selected */fromCurrency}
           currency={payload.currency}
           primary={payload.value}
           />

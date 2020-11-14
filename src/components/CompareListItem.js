@@ -13,14 +13,19 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
-  symbol: {
-    marginRight: 16
+  selectedSymbol: {
+    marginRight: 16,
+    color:'red'
+  },
+  notSelectedSymbol: {
+    marginRight: 16,
   },
   Card:{
     borderRadius: 12,
   },
   selected:{
-    backgroundColor:'#ff8cb0',
+    // backgroundColor:'#ff8cb0',
+    backgroundColor:'#009868',
     color: '#212121',
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -43,21 +48,25 @@ export function CompareListItem ({
   currency,
   primary, 
   }) {
+    console.log('athena', fromCurrency, currency)
   const classes = useStyles();
   const CurrencySymbol = (currency) => {
     return (
-      <Typography variant='h5' className={classes.symbol} color={'secondary'}>{data[currency]['symbol_native']} </Typography>
+      <Typography 
+        variant='h5'
+        className={classes.symbol} 
+        color={fromCurrency!==currency && 'secondary'|| 'primary'}>
+          {data[currency]['symbol_native']} 
+      </Typography>
     )
   }
   
   return (
   <Card className={classes.Cardgit}>
     <ListItem 
-/*     selected={true}
-      className={ (fromCurrency===currency) ? 'selected' : 'notSelected' } */
-    className={clsx({
-      [classes.selected]: (fromCurrency===currency), 
-      [classes.notSelected]: !(fromCurrency===currency)})}>
+      className={clsx({
+        [classes.selected]: (fromCurrency===currency), 
+        [classes.notSelected]: !(fromCurrency===currency)})}>
       <Grid container spacing={1} direction="row" justify="space-around" >
         {gridBuilder(
           iconHandler('compare', currency)

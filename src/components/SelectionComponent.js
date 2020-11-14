@@ -1,45 +1,45 @@
 import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { 
-  Select, 
-  MenuItem, 
-  ListItem,
-  ListItemIcon, 
+Select, 
+MenuItem, 
+ListItem,
+ListItemIcon, 
 } from '@material-ui/core';
 import { handleChange } from '../helpers/selectionHelper'
 import { iconHandler } from '../helpers/compareHelper'
 
 const iconComponent = () => {
-  return (
-    <ExpandMoreIcon />)};
-    
+return (
+	<ExpandMoreIcon />
+)};
 export function SelectionComponent ({ 
-  icon, 
-  name, 
-  value, 
-  setter, 
-  currenciesList
+icon, 
+name, 
+value, 
+setter, 
+currenciesList
 }) {
-  return (  
-  <ListItem>
-    {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-    <Select
-      disableUnderline
-      name={name}
-      IconComponent={iconComponent}
-      value={value}
-      onChange={(event) => handleChange(event, setter)}>
-      {currenciesList.map(currency => (
-        <MenuItem
-          key={currency} 
-          value={currency}>
-          <ListItemIcon>
-            {iconHandler('selection', currency)}
-          </ListItemIcon>
-          {currency}
-        </MenuItem>
-      ))}
-    </Select>
-  </ListItem>
-  )
+return (  
+<ListItem>
+	{icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+	<Select
+		disableUnderline
+		name={name}
+		IconComponent={iconComponent}
+		value={value}
+		onChange={(event) => handleChange(event, setter)}>
+		{currenciesList.map(currency => (
+			<MenuItem
+				key={currency} 
+				value={currency}>
+				<ListItemIcon>
+					{iconHandler('selection', currency)}
+				</ListItemIcon>
+				{currency}
+			</MenuItem>
+		))}
+	</Select>
+</ListItem>
+)
 }

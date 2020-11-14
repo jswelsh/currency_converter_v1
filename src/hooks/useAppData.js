@@ -8,6 +8,8 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 
+const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY'
+const SET_TO_CURRENCY = 'SET_TO_CURRENCY'
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
@@ -41,6 +43,8 @@ const reducer = (state, action) => {
 };
 export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
+    fromCurrency:'CAD',
+    toCurrency:'USD',
     result: {},
     currenciesList: [],
     compareList: {},
@@ -48,6 +52,8 @@ export default function useAppData() {
     mode: 'Converter',
   });
 
+  const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
+  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
@@ -59,7 +65,7 @@ export default function useAppData() {
     axios
       .get(compareURL)
       .then((res) => {
-        console.log('geli', res.data)
+        // console.log('geli', res.data)
         const compareList = []
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({
@@ -117,7 +123,7 @@ export default function useAppData() {
               });
               const formattedArray = splicedArray.map(({date,value}, i) => {
                 /* adding the number of days from today to obj */
-                return { date: shortenDateString(date, 5)/* shorten the date string removing yyyy- */, value:value.toFixed(5), daysAgo: Math.abs(slicePoints[i-1] || 1) }
+                return { date: shortenDateString(date, 5)/* shorten the date string removing yyyy- */, value:value.toFixed(4), daysAgo: Math.abs(slicePoints[i-1] || 1) }
               })
               return formattedArray
             }
@@ -207,6 +213,8 @@ export default function useAppData() {
 
   return {
     state,
+    setFromCurrency,
+    setToCurrency,
     convertHandler,
     convertHistoryHandler,
     modeHandler,
