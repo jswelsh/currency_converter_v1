@@ -2,8 +2,7 @@ const data = require('../helpers/currency.json'); // forward slashes will depend
 
 
 const label = ({drawer, fromCurrency}) => {
-  // const {drawer, fromCurrency} = payload
-  // console.log('delta', drawer, fromCurrency)
+
   return (
     (fromCurrency && (drawer === true)) ? `Amount in ${data[fromCurrency]['name']}s` : 
     fromCurrency && fromCurrency)

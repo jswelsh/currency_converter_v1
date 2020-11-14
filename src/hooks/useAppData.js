@@ -52,9 +52,6 @@ export default function useAppData() {
     mode: 'Converter',
   });
 
-  /* const [fromCurrency, setFromCurrency] = useState('CAD');
-const [toCurrency, setToCurrency] = useState('USD'); */
-
   const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
   const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
