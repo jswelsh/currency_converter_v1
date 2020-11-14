@@ -64,9 +64,9 @@ export function ConvertView({
 }){
 
 	const classes = useStyles();
-	function shortenDateString(string) {
+/* 	function shortenDateString(string) {
 		return string.toISOString().split('T')[0]
-	}
+	} */
 return(
 <>
 	<Grid 
