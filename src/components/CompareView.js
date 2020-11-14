@@ -63,7 +63,7 @@ return(
 		[classes.drawerClose]: !opendrawer})} >
 	<Grid container spacing={2} alignItems="center" >
 		{(list).map((payload) => (
-		<Grid item xs={4} key={payload.currency} >
+		<Grid item xs={12} md={6} lg={4} key={payload.currency} >
 			<CompareListItem
 				currencySelectHandler={currencySelectHandler}
 				fromCurrency={fromCurrency}
