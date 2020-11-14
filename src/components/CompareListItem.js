@@ -10,7 +10,6 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core';
-import { color } from '@amcharts/amcharts4/core';
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
@@ -53,10 +52,10 @@ export function CompareListItem ({
   const CurrencySymbol = (currency) => {
     return (
       <Typography 
-      variant='h5'
-      className={classes.symbol} 
-      color={fromCurrency!==currency && 'secondary'|| 'primary'}>
-        {data[currency]['symbol_native']} 
+        variant='h5'
+        className={classes.symbol} 
+        color={fromCurrency!==currency && 'secondary'|| 'primary'}>
+          {data[currency]['symbol_native']} 
       </Typography>
     )
   }
@@ -64,9 +63,9 @@ export function CompareListItem ({
   return (
   <Card className={classes.Cardgit}>
     <ListItem 
-    className={clsx({
-      [classes.selected]: (fromCurrency===currency), 
-      [classes.notSelected]: !(fromCurrency===currency)})}>
+      className={clsx({
+        [classes.selected]: (fromCurrency===currency), 
+        [classes.notSelected]: !(fromCurrency===currency)})}>
       <Grid container spacing={1} direction="row" justify="space-around" >
         {gridBuilder(
           iconHandler('compare', currency)

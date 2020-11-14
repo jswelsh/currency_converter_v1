@@ -53,9 +53,7 @@ const currencySelectHandler = (mode, currency) => {
       amount={amount}
       setAmount={setAmount}
       fromCurrency={fromCurrency}
-      drawer={drawer}
-    />
-  )}
+      drawer={drawer}/>)}
     <HistorySelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
@@ -63,55 +61,38 @@ const currencySelectHandler = (mode, currency) => {
       setToCurrency={setToCurrency}
       currencySelectHandler={currencySelectHandler}
       currenciesList={currenciesList}
-      mode={mode}
-    />
+      mode={mode}/>
     <Divider />
     {mode === 'History' && (
       <ExchangeHistoryPopOver
         dateRange={dateRange}
         handleChange={handleChange}
         fromCurrency={fromCurrency}
-        toCurrency={toCurrency}
-      /> 
+        toCurrency={toCurrency}/> 
     )}
     {/* </div> */}
     {mode === 'Converter' && (
-      <>
-        <Button       
-          handleSubmit={()=>
-            convertHandler({
-              fromCurrency: fromCurrency, 
-              toCurrency: toCurrency,
-              amount: amount
-            })
-          }
-          primary='Connvert Currencies'
-        />
-      </>
-    )}
-    {mode === 'History' && (
     <Button       
+      primary='Connvert Currencies'
+      handleSubmit={()=>
+        convertHandler({
+          fromCurrency: fromCurrency, 
+          toCurrency: toCurrency,
+          amount: amount})}
+    />)}
+    {mode === 'History' && 
+    <Button       
+      primary='Generate Graph'
       handleSubmit={()=>
         convertHistoryHandler({
           fromCurrency, 
           toCurrency, 
-          dateRange
-        })
-      }
-      primary='Generate Graph'
-    />
-    )}
-    {mode === 'Compare' && (
-      <>
-        
-        <Button       
-          handleSubmit={()=>
-            compareListHandler(fromCurrency, amount)
-          }
-          primary='Compare Currencies'
-        />
-      </>
-    )}
+          dateRange})}/>}
+    {mode === 'Compare' && 
+    <Button       
+      primary='Compare Currencies'
+      handleSubmit={()=>
+        compareListHandler(fromCurrency, amount)}/>}
   </>
   )
 }
