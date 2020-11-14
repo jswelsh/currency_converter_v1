@@ -30,12 +30,18 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     minHeight: 136,
+    "&:hover": {
+      textDecoration: "none",
+      backgroundColor: "#ff8cb0",}
   },
   notSelected:{
     backgroundColor: '#212121',
     padding: theme.spacing(1),
     textAlign: 'center',
     minHeight: 136,
+    "&:hover": {
+      textDecoration: "none",
+      backgroundColor: "#ff8cb0",}
   }
 }));
 
@@ -44,11 +50,11 @@ const gridBuilder = (payload) => {
 }
 
 export function CompareListItem ({
+  currencySelectHandler,
   fromCurrency,
   currency,
-  primary, 
-  }) {
-    console.log('athena', fromCurrency, currency)
+  primary
+}) {
   const classes = useStyles();
   const CurrencySymbol = (currency) => {
     return (
@@ -62,8 +68,10 @@ export function CompareListItem ({
   }
   
   return (
-  <Card className={classes.Cardgit}>
+  <Card className={classes.Card}>
     <ListItem 
+      button
+      onClick={()=>currencySelectHandler(currency)}
       className={clsx({
         [classes.selected]: (fromCurrency===currency), 
         [classes.notSelected]: !(fromCurrency===currency)})}>

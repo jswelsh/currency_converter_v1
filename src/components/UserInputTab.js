@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
-import { HistorySelectionForm } from './HistorySelectionForm';
+import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
 import { InputAmountField } from './InputAmountField';
 
@@ -54,7 +54,7 @@ const currencySelectHandler = (mode, currency) => {
 			setAmount={setAmount}
 			fromCurrency={fromCurrency}
 			drawer={drawer}/>)}
-		<HistorySelectionForm 
+		<CurrencySelectionForm 
 			fromCurrency={fromCurrency}
 			toCurrency={toCurrency}
 			setFromCurrency={setFromCurrency}

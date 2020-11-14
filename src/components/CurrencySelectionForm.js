@@ -13,7 +13,7 @@ import SwapVertIcon from '@material-ui/icons/Cached';
 import { handleClick } from '../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
-export function HistorySelectionForm({
+export function CurrencySelectionForm({
   fromCurrency,
   toCurrency,
   currencySelectHandler,
