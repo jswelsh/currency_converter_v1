@@ -23,18 +23,7 @@ const useStyles = makeStyles((theme) => ({
   Card:{
     borderRadius: 12,
   },
-  selected:{
-    // backgroundColor:'#ff8cb0',
-    backgroundColor:'#009868',
-    color: '#212121',
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    minHeight: 136,
-    "&:hover": {
-      textDecoration: "none",
-      backgroundColor: "#ff8cb0",}
-  },
-  notSelected:{
+  ListItem:{
     backgroundColor: '#212121',
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -42,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       textDecoration: "none",
       backgroundColor: "#ff8cb0",}
-  }
+  },
+  selected:{
+    backgroundColor:'#009868',
+    color: '#212121',
+  },
+
 }));
 
 const gridBuilder = (payload) => {
@@ -72,9 +66,8 @@ export function CompareListItem ({
     <ListItem 
       button
       onClick={()=>currencySelectHandler(currency)}
-      className={clsx({
-        [classes.selected]: (fromCurrency===currency), 
-        [classes.notSelected]: !(fromCurrency===currency)})}>
+      className={clsx(classes.ListItem,{
+        [classes.selected]: (fromCurrency===currency), })}>
       <Grid container spacing={1} direction="row" justify="space-around" >
         {gridBuilder(
           iconHandler('compare', currency)
