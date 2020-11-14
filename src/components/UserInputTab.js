@@ -16,11 +16,14 @@ export function UserInputTab({
   compareListHandler,
   currenciesList,
   convertHandler,
+  setFromCurrency,
+  setToCurrency,
+  fromCurrency,
+  toCurrency,
   drawer,
   mode,
 }) {
-const [fromCurrency, setFromCurrency] = useState('CAD');
-const [toCurrency, setToCurrency] = useState('USD');
+
 const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange(365));
 

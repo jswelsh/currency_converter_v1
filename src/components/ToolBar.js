@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function ToolBar({
-  convertHistoryHandler,
+/*   convertHistoryHandler,
   currencySelectHandler,
   compareListHandler,
   convertHandler,
@@ -92,6 +92,19 @@ export function ToolBar({
   setDrawerOpen,
   opendrawer,
   modeHandler,
+  mode */
+  convertHistoryHandler,
+  compareListHandler,
+  currenciesList,
+  compareList,
+  convertHandler,
+  setDrawerOpen,
+  setFromCurrency,
+  setToCurrency,
+  fromCurrency,
+  toCurrency,
+  modeHandler,
+  opendrawer,
   mode
 }) {
   const classes = useStyles();
@@ -170,13 +183,18 @@ export function ToolBar({
           </div>
             <UserInputTab
               convertHistoryHandler={convertHistoryHandler}
+              // currencySelectHandler={currencySelectHandler}
               compareListHandler={compareListHandler}
-              convertHandler={convertHandler}
-              currencySelectHandler={currencySelectHandler}
               currenciesList={currenciesList}
-              compareList={compareList}
-              mode={mode}
-              drawer={opendrawer}/>
+              convertHandler={convertHandler}
+              setFromCurrency={setFromCurrency}
+              setToCurrency={setToCurrency}
+              fromCurrency={fromCurrency}
+              toCurrency={toCurrency}
+              //compareList={compareList}
+              drawer={opendrawer}
+              mode={mode}/>
+              
           <div className={clsx({
                 [classes.hide]: mode !== 'Compare'
               })}>

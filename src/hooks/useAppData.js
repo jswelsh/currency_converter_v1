@@ -8,6 +8,8 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 
+const SET_FROMCURRENCY = 'SET_FROMCURRENCY'
+const SET_TOCURRENCY = 'SET_TOCURRENCY'
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
@@ -41,6 +43,8 @@ const reducer = (state, action) => {
 };
 export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
+    fromCurrency:'CAD',
+    toCurrency:'USD',
     result: {},
     currenciesList: [],
     compareList: {},
@@ -48,6 +52,11 @@ export default function useAppData() {
     mode: 'Converter',
   });
 
+  /* const [fromCurrency, setFromCurrency] = useState('CAD');
+const [toCurrency, setToCurrency] = useState('USD'); */
+
+  const setFromCurrency = (fromCurrency) => { dispatch({ type: SET_FROMCURRENCY, fromCurrency}); };
+  const setToCurrency = (toCurrency) => { dispatch({ type: SET_TOCURRENCY, toCurrency}); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
@@ -207,6 +216,8 @@ export default function useAppData() {
 
   return {
     state,
+    setFromCurrency,
+    setToCurrency,
     convertHandler,
     convertHistoryHandler,
     modeHandler,
