@@ -4,7 +4,6 @@ import 'fontsource-roboto';
 import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
-import { Grid } from '@material-ui/core';
 import { ToolBar } from './ToolBar';
 import { CompareView } from './CompareView'
 import { ConvertView } from './ConvertView'
@@ -40,12 +39,7 @@ export default function App() {
           opendrawer={opendrawer}
           mode={state.mode}
           />
-  {/*    <Grid
-          container
-          //direction="column"
-          //justify="flex-start"
-          //alignItems="center"
-          > */}
+
         {state.mode === 'Converter' && (
         <ConvertView
           opendrawer={opendrawer}
@@ -64,9 +58,8 @@ export default function App() {
         />)}
         {state.mode === 'Compare' && (
         <CompareView 
-        /* this isnt right the from currency isnt a source of truth */
-        fromCurrency={state.result.fromCurrency}
-        compareList={state.compareList}
+          fromCurrency={state.result.fromCurrency}
+          compareList={state.compareList}
           opendrawer={opendrawer}
         />)}
      {/*    </Grid> */}
