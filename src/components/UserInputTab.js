@@ -29,6 +29,7 @@ const [dateRange, setDateRange] = useState(initializeDateRange(365));
 
 
 const currencySelectHandler = (mode, currency) => { 
+  console.log('currency selector', mode, currency)
   return (
     mode === 'fromCurrency' ? setFromCurrency(currency):
     mode === 'toCurrency' ? setToCurrency(currency) :

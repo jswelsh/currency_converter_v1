@@ -45,7 +45,7 @@ export function InputAmountField({
 return (
   <div className={classes.TextField}  >
     <TextField
-      label= {label({drawer: drawer,fromCurrency: fromCurrency })}
+      label= {label({drawer: drawer, fromCurrency: fromCurrency })}
       value={amount}
       onChange={(event) => handleChange({event: event, setAmount: setAmount})}
       name="amountField"

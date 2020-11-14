@@ -8,8 +8,8 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 
-const SET_FROMCURRENCY = 'SET_FROMCURRENCY'
-const SET_TOCURRENCY = 'SET_TOCURRENCY'
+const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY'
+const SET_TO_CURRENCY = 'SET_TO_CURRENCY'
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
@@ -55,8 +55,8 @@ export default function useAppData() {
   /* const [fromCurrency, setFromCurrency] = useState('CAD');
 const [toCurrency, setToCurrency] = useState('USD'); */
 
-  const setFromCurrency = (fromCurrency) => { dispatch({ type: SET_FROMCURRENCY, fromCurrency}); };
-  const setToCurrency = (toCurrency) => { dispatch({ type: SET_TOCURRENCY, toCurrency}); };
+  const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
+  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
@@ -68,7 +68,7 @@ const [toCurrency, setToCurrency] = useState('USD'); */
     axios
       .get(compareURL)
       .then((res) => {
-        console.log('geli', res.data)
+        // console.log('geli', res.data)
         const compareList = []
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({

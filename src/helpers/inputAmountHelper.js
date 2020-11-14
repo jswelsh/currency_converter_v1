@@ -1,11 +1,12 @@
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 
-const label = (payload) => {
-  const {drawer, fromCurrency} = payload
+const label = ({drawer, fromCurrency}) => {
+  // const {drawer, fromCurrency} = payload
+  // console.log('delta', drawer, fromCurrency)
   return (
-    drawer === true ? `Amount in ${data[fromCurrency]['name']}s` : 
-    fromCurrency)
+    (fromCurrency && (drawer === true)) ? `Amount in ${data[fromCurrency]['name']}s` : 
+    fromCurrency && fromCurrency)
 }
 const handleChange = (payload) => {
   const {event, setAmount} = payload
