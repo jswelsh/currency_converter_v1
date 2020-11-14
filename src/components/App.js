@@ -43,8 +43,8 @@ export default function App() {
         {state.mode === 'Converter' && (
         <ConvertView
           opendrawer={opendrawer}
-          fromCurrency={state.result.fromCurrency}
-          toCurrency={state.result.toCurrency}
+          fromCurrency={state.fromCurrency}
+          toCurrency={state.toCurrency}
           toStart={state.result.toStart}
           converted={state.result.converted}
           fromIntro={state.result.fromIntro}
@@ -58,7 +58,7 @@ export default function App() {
         />)}
         {state.mode === 'Compare' && (
         <CompareView 
-          fromCurrency={state.result.fromCurrency}
+          fromCurrency={state.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
         />)}

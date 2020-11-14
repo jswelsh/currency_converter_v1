@@ -48,6 +48,7 @@ export function CompareListItem ({
   currency,
   primary, 
   }) {
+    console.log('athena', fromCurrency, currency)
   const classes = useStyles();
   const CurrencySymbol = (currency) => {
     return (
