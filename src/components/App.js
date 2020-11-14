@@ -58,6 +58,7 @@ export default function App() {
         />)}
         {state.mode === 'Compare' && (
         <CompareView 
+          setFromCurrency={setFromCurrency}
           fromCurrency={state.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
