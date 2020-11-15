@@ -7,8 +7,8 @@ const label = ({drawer, fromCurrency}) => {
     (fromCurrency && (drawer === true)) ? `Amount in ${data[fromCurrency]['name']}s` : 
     fromCurrency && fromCurrency)
 }
-const handleChange = (payload) => {
-  const {event, setAmount} = payload
+const handleChange = ({event, setAmount}) => {
+  console.log('demeter',event.target.value)
   setAmount( 
     event.target.value
   );

@@ -14,12 +14,13 @@ export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState(false);
   const {
     state,
-    setFromCurrency,
-    setToCurrency,
     convertHistoryHandler,
-    modeHandler,
-    convertHandler,
     compareListHandler,
+    setFromCurrency,
+    convertHandler,
+    setToCurrency,
+    modeHandler,
+    setAmount,
   } = useAppData();
   return (
     <ThemeProvider theme={theme}>
@@ -37,6 +38,8 @@ export default function App() {
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
+          setAmount={setAmount}
+          amount={state.amount}
           mode={state.mode}
           />
 
@@ -62,6 +65,8 @@ export default function App() {
           fromCurrency={state.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
+          setAmount={setAmount}
+          amount={state.amount}
         />)}
      {/*    </Grid> */}
       </main>

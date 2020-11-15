@@ -95,6 +95,8 @@ export function ToolBar({
   toCurrency,
   modeHandler,
   opendrawer,
+  setAmount,
+  amount,
   mode
 }) {
   const classes = useStyles();
@@ -180,7 +182,9 @@ export function ToolBar({
               setToCurrency={setToCurrency}
               fromCurrency={fromCurrency}
               toCurrency={toCurrency}
+              setAmount={setAmount}
               drawer={opendrawer}
+              amount={amount}
               mode={mode}/>
 
           <div className={clsx({

@@ -50,7 +50,6 @@ function NumberFormatCustom(props) {
     id, 
     ...other 
   } = props;
-  console.log('ares',)
   return (
     <NumberFormat
       {...other}
@@ -76,8 +75,9 @@ const gridBuilder = (payload) => {
 export function CompareListItem ({
   currencySelectHandler,
   fromCurrency,
+  setAmount,
   currency,
-  primary
+  primary,
 }) {
   const classes = useStyles();
   const CurrencySymbol = (currency) => {
@@ -113,18 +113,18 @@ export function CompareListItem ({
           </ListItemText>
         )}
         {gridBuilder(
-/*           <div>
+          <div>
             {CurrencySymbol(currency)}
             <ListItemText primary={primary} />
-          </div> */
-          <TextField
+          </div>
+ /*          <TextField
             label= {currency}
             value={primary}
-            // onChange={(event) => handleChange({event: event, setAmount: setAmount})}
+            onChange={(event) => handleChange({event: event, setAmount: setAmount})}
             name={currency}
             id={currency}
             InputProps={{
-              inputComponent: NumberFormatCustom}}/>
+              inputComponent: NumberFormatCustom}}/> */
         )}
       </Grid>
     </ListItem>
