@@ -54,11 +54,13 @@ export default function App() {
           toIntro={state.result.toIntro}
           recentRateHistory={state.result.recentRateHistory}
         />)}
+
         {state.mode === 'History' && (
         <ExchangeHistoryGraph
           history={state.history}
           opendrawer={opendrawer}
         />)}
+
         {state.mode === 'Compare' && (
         <CompareView 
           setFromCurrency={setFromCurrency}
@@ -68,7 +70,7 @@ export default function App() {
           setAmount={setAmount}
           amount={state.amount}
         />)}
-     {/*    </Grid> */}
+
       </main>
     </ThemeProvider>
   );
