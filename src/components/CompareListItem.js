@@ -117,7 +117,7 @@ export function CompareListItem ({
             {CurrencySymbol(currency)}
             <ListItemText primary={primary} />
           </div>
- /*          <TextField
+/*           <TextField
             label= {currency}
             value={primary}
             onChange={(event) => handleChange({event: event, setAmount: setAmount})}

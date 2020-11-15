@@ -52,7 +52,7 @@ export function CompareView({
 	const currencySelectHandler = (currency) => { 
 			setFromCurrency(currency)
 	}
-
+	console.log('hermes', amount)
 const classes = useStyles();
 const list = compareList.compareList
 return(
