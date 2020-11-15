@@ -1,6 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 
+import { handleChange, label } from '../helpers/inputAmountHelper'
+import NumberFormat from 'react-number-format';
+import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
@@ -39,6 +42,32 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+
+function NumberFormatCustom(props) {
+  const { 
+    inputRef, 
+    onChange,
+    id, 
+    ...other 
+  } = props;
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(amount) => {
+        onChange({
+          target: {
+            value: amount.value,
+          },
+        });
+      }}
+      thousandSeparator
+      isNumericString
+      prefix={data[id]['symbol_native']}
+    />
+  );
+}
+
 const gridBuilder = (payload) => {
   return <Grid item xs={3}> {payload} </Grid>
 }
@@ -46,8 +75,9 @@ const gridBuilder = (payload) => {
 export function CompareListItem ({
   currencySelectHandler,
   fromCurrency,
+  setAmount,
   currency,
-  primary
+  primary,
 }) {
   const classes = useStyles();
   const CurrencySymbol = (currency) => {
@@ -83,13 +113,35 @@ export function CompareListItem ({
           </ListItemText>
         )}
         {gridBuilder(
-          <div className={classes.amount}>
+          <div>
             {CurrencySymbol(currency)}
             <ListItemText primary={primary} />
           </div>
+/*           <TextField
+            label= {currency}
+            value={primary}
+            onChange={(event) => handleChange({event: event, setAmount: setAmount})}
+            name={currency}
+            id={currency}
+            InputProps={{
+              inputComponent: NumberFormatCustom}}/> */
         )}
       </Grid>
     </ListItem>
   </Card>
   )
 }
+
+/*
+
+  <div className={classes.TextField}  >
+    <TextField
+      label= {label({drawer: drawer, fromCurrency: fromCurrency })}
+      value={amount}
+      onChange={(event) => handleChange({event: event, setAmount: setAmount})}
+      name="amountField"
+      id="formatted-numberformat-input"
+      InputProps={{
+        inputComponent: NumberFormatCustom,}}/>
+  </div>
+*/

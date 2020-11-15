@@ -10,6 +10,7 @@ const data = require('../helpers/currency.json'); // forward slashes will depend
 
 const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY'
 const SET_TO_CURRENCY = 'SET_TO_CURRENCY'
+const SET_AMOUNT = 'SET_AMOUNT'
 const SET_RESULT = 'SET_RESULT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
@@ -29,6 +30,8 @@ const reducer = (state, action) => {
       return { ...state, toCurrency: action.currency };
     case 'SET_RESULT':
       return { ...state, result: action.result };
+    case 'SET_AMOUNT':
+      return { ...state, result: action.amount };
     case 'SET_CURRENCIES_LIST':
       return { ...state, currenciesList: action.currenciesList };
     case 'SET_COMPARE_LIST':
@@ -46,6 +49,7 @@ export default function useAppData() {
     fromCurrency:'CAD',
     toCurrency:'USD',
     result: {},
+    amount:1,
     currenciesList: [],
     compareList: {},
     history: [],
@@ -55,6 +59,9 @@ export default function useAppData() {
   const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
   const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
   const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
+
+  const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); }; 
+
   const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
   const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
@@ -215,6 +222,7 @@ export default function useAppData() {
     state,
     setFromCurrency,
     setToCurrency,
+    setAmount,
     convertHandler,
     convertHistoryHandler,
     modeHandler,

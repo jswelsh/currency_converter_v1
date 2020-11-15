@@ -51,7 +51,7 @@ return (
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{
-        inputComponent: NumberFormatCustom,}}/>
+        inputComponent: NumberFormatCustom}}/>
   </div>
 );
 }

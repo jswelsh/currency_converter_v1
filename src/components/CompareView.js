@@ -40,20 +40,19 @@ symbol: {
 }
 }));
 
-
-
 export function CompareView({
 	setFromCurrency,
 	fromCurrency,
 	compareList,
-	opendrawer
+	opendrawer,
+	setAmount,
+	amount
 }){
 
 	const currencySelectHandler = (currency) => { 
 			setFromCurrency(currency)
-
 	}
-	
+	console.log('hermes', amount)
 const classes = useStyles();
 const list = compareList.compareList
 return(
@@ -61,14 +60,25 @@ return(
 	className = {clsx(classes.drawer, {
 		[classes.drawerOpen]: opendrawer,
 		[classes.drawerClose]: !opendrawer})} >
-	<Grid container spacing={2} alignItems="center" >
+	<Grid 
+		container 
+		spacing={2}
+		alignItems="center" >
 		{(list).map((payload) => (
-		<Grid item xs={12} md={6} lg={4} key={payload.currency} >
+		<Grid 
+			item 
+			xs={12} 
+			md={opendrawer ? 12 : 6} 
+			lg={opendrawer ? 6 : 4} 
+			lx={4} 
+			key={payload.currency} >
 			<CompareListItem
 				currencySelectHandler={currencySelectHandler}
 				fromCurrency={fromCurrency}
 				currency={payload.currency}
 				primary={payload.value}
+				setAmount={setAmount}
+				// amount={amount}
 				/>
 		</Grid>))}
 	</Grid>
