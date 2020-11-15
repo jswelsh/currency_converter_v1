@@ -46,7 +46,30 @@ export function ExchangeHistoryGraph({
   let chart = am4core.create("chartdiv", am4charts.XYChart);
     chart.marginLeft = 230
     chart.marginRight = 200
-    chart.data = history
+    //chart.data = history
+  let data = [];
+  let value;
+  let date;
+  let previousValue;
+  console.log(history[1]['value'])
+
+  for (let i = 0; i < history.length; i++) {
+    value = history[i]['value'];
+    date = history[i]['date'];
+    if(i > 0){
+        // add color to previous data item depending on whether current value is less or more than previous value
+        if(previousValue <= value){
+            data[i - 1].color = '#8CFFDA'; /* chart.colors.getIndex(0); */
+        }
+        else{
+            data[i - 1].color = '#dc67ab'; /* chart.colors.getIndex(5); */
+        }
+    }     
+    data.push({ date: date, value: value });
+    previousValue =  value;
+} 
+
+chart.data = data;
 
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   
@@ -57,6 +80,7 @@ export function ExchangeHistoryGraph({
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
   series.stroke = '#8CFFDA';
+  series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;
   dateAxis.renderer.minGridDistance = 60;

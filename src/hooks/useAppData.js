@@ -93,6 +93,7 @@ export default function useAppData() {
       toDate}&base=${
       fromCurrency}&symbols=${
       toCurrency}`
+      console.log('ares', amount)
 
     const latestFromRates = `
     https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
@@ -140,7 +141,7 @@ export default function useAppData() {
               fromCurrency: fromCurrency,
               toCurrency: toCurrency,
               toStart: amount,
-              converted: result.toFixed(5),
+              converted: amount*result.toFixed(5),
               fromIntro: fromDrillDown[Object.keys(fromDrillDown)]['extract'],
               toIntro: toDrillDown[Object.keys(toDrillDown)]['extract']
             });
@@ -215,7 +216,7 @@ export default function useAppData() {
     compareListHandler('CAD', 1)
     convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:1})
     //if you change this, make sure to change inside userinput aswell
-    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(365)})
+    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(365/2)})
   }, []); // Empty array to only run once on mount.
 
   return {
