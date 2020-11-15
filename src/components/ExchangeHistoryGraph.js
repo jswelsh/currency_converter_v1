@@ -79,7 +79,7 @@ chart.data = data;
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
-  //series.stroke = '#8CFFDA';
+  series.stroke = '#8CFFDA';
   series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;

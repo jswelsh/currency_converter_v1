@@ -20,13 +20,13 @@ export function UserInputTab({
 	setToCurrency,
 	fromCurrency,
 	toCurrency,
-	setAmount,
+/* 	setAmount,
+	amount, */
 	drawer,
-	amount,
 	mode,
 }) {
 
-//const [amount, setAmount] = useState(1);
+const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange(365));
 
 
