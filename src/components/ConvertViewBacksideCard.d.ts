@@ -1,8 +1,15 @@
-export function ConvertViewBacksideCard({ recentRateHistory, converted, currency, avatar, name, }: {
-    recentRateHistory: any;
-    converted: any;
-    currency: any;
-    avatar: any;
-    name: any;
-}): React.FunctionComponentElement<import("@material-ui/core").CardProps>;
-import React from "react";
+import { FC } from 'react';
+interface IRecentRateHistoryItem {
+    value: string
+    date: Date
+}
+interface IConvertViewBacksideCardProps {
+    // recentRateHistory: Array<IRecentRateHistoryItem>
+    recentRateHistory: any
+    converted: number
+    currency: string | number
+    avatar: Object
+    name: string
+}
+declare const ConvertViewBacksideCard: FC<IConvertViewBacksideCardProps>;
+export {ConvertViewBacksideCard}
