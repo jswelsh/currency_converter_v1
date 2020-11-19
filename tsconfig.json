@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
+      "es6",
       "dom",
-      "dom.iterable",
-      "esnext"
+      "dom.iterable"
     ],
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,7 +19,6 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "outDir": "src/build",
     "jsx": "react",
     "sourceMap": true,
     "declaration": true,
@@ -27,7 +29,7 @@
 
   },
   "include": [
-    "src/tsx/CompareListItem.tsx"
+    "src/tsx/*"
   ],
   "exclude": [
     "node_modules",

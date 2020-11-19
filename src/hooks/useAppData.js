@@ -81,7 +81,7 @@ export default function useAppData() {
           })
         })
         
-        setCompareList({selected:fromCurrency, compareList:compareList})
+        setCompareList(compareList)
       })
   }
   const convertHandler = (payload) => {
@@ -169,24 +169,10 @@ export default function useAppData() {
           fromCurrency}&symbols=${
           toCurrency}`)
         .then((res) => {
-/*           const historyController = (historyObj) => {
-            const history = [];
-            Object.entries(historyObj).forEach(([key, value]) => {
-              history.push({
-                date: new Date(key),
-                value: value[toCurrency],
-              });
-            });
-            return history;
-          }; */
           setHistory(
             historyFormatter(res.data.rates, toCurrency)
           )
-          // sort the dates from "res" = {obj} payload 
-  /*         setHistory(
-            historyController(res.data.rates)
-              .sort((a, b) =>  a.date - b.date ),
-          ); */
+          // sort the dates from "res" = {obj} payload
         })
         .catch((error) => {
           console.log('Opps', error.message);

@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { iconHandler } from '../helpers/compareHelper'
 import {
@@ -10,6 +9,7 @@ import {
   ListItemText,
   Typography,
 } from '@material-ui/core';
+
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface CompareListItemProps {
-  currencySelectHandler(string:string): void; 
+interface ICompareListItemProps {
+  currencySelectHandler(currency:string): void; 
   fromCurrency: string
   currency: string
   primary: number
@@ -51,7 +51,7 @@ const gridBuilder = (props: object) => {
   return <Grid item xs={3}> {props} </Grid>
 }
 
-const CompareListItem: FC<CompareListItemProps> = ({
+const CompareListItem: FC<ICompareListItemProps> = ({
   currencySelectHandler,
   fromCurrency,
   currency,

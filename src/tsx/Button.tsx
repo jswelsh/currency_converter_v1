@@ -7,15 +7,15 @@ import {
 } from '@material-ui/core';
 import Exchange from '@material-ui/icons/Shuffle';
 
-interface ButtonProps {
+interface IButtonProps {
   handleSubmit(): void;
   primary: string;
 }
 
-const Button: FC<ButtonProps> = ({ 
+const Button: FC<IButtonProps> = ({ 
   primary,
   handleSubmit
-  }) => {
+}) => {
 
   return (
   <FormControl>
