@@ -8,10 +8,10 @@ import {
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 
-const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY'
-const SET_TO_CURRENCY = 'SET_TO_CURRENCY'
-const SET_AMOUNT = 'SET_AMOUNT'
+const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
+const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
 const SET_RESULT = 'SET_RESULT';
+const SET_AMOUNT = 'SET_AMOUNT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
 const SET_HISTORY = 'SET_HISTORY';
