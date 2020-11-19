@@ -26,7 +26,7 @@
     "noUnusedParameters": true,
     "incremental": true,
     "noFallthroughCasesInSwitch": true,
-
+    "noEmit": false 
   },
   "include": [
     "src/tsx/*"

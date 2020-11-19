@@ -1937,13 +1937,48 @@
         "affectsGlobalScope": true
       },
       "./src/components/CompareListItem.js": {
-        "version": "77ed28d2f615908b8d7c38a5176531ae49b191332dcb4294cb49870de6fe935d",
-        "signature": "f11fc6bb2600554e4e5c6d9769c924d34739c140d5accd12e32c715ec9853177",
+        "version": "a05158e5c38bf3cb2551a0a6b45b453792e201a45ebbce7861487859c721d4e7",
+        "signature": "22bd9698e53bf296ae33ee3d2dec3259d0bd85cfe584a2ece987af079441e4b5",
         "affectsGlobalScope": false
       },
       "./src/tsx/CompareView.tsx": {
-        "version": "3cc4246d9109c64ca0c0abe8d16ead97ba808d145ee714e4ea7733fb5a8f06c7",
-        "signature": "9fe884c1014911e729bf75cdd302694bf84a2e332d0a36e077624d0cd036ee6d",
+        "version": "154504b5ab493e81ddd8d7bd0b12ceffb269ef8aff330d6bb5299e52f8279763",
+        "signature": "8956ae17fca815f959d50f9282e374c0c3c71e2989c263b1c28032933b13fc8a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@material-ui/icons/ThreeDRotation.d.ts": {
+        "version": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
+        "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
+        "affectsGlobalScope": false
+      },
+      "./src/components/ConvertViewIntroCard.js": {
+        "version": "22c5cd3372306ca9763c78df49189d77c6fcb743fa7159912798d2f0ff56ade3",
+        "signature": "d2ad8dca1030822adbcb3cf03f35afe40c918dc03f08c75660ff55a09991222d",
+        "affectsGlobalScope": false
+      },
+      "./src/components/ConvertViewFrontsideCard.js": {
+        "version": "4a05a0f756b9452bbea06d786201add585730a1a122d7335c4bc8304ddb7beff",
+        "signature": "581fb80f43ceb6316f885896bd42bedc5a23ab57b850d405ac152178c5ddf478",
+        "affectsGlobalScope": false
+      },
+      "./src/components/ConvertViewCardTable.js": {
+        "version": "e039c39c4e29e03fb0dcab0d44b3868a290787b3c8f921260df4fb624435ab16",
+        "signature": "b64b759c46fcd905b45224b3f106206c035ce0556a2137d6f50534adcf5b67de",
+        "affectsGlobalScope": false
+      },
+      "./src/components/ConvertViewBacksideCard.js": {
+        "version": "2227e7b2cd4059caa0cb5e031962a42b421dd50ba6aceb3c163241f5aa56e53d",
+        "signature": "6a3753830ef83b6c947a8567179307fe58cf1a3ed308ce03c4de151297bbbfb0",
+        "affectsGlobalScope": false
+      },
+      "./src/tsx/ConvertView.tsx": {
+        "version": "d9bc16f1c11d992e2f067048794b56a364a87c914ccc502bacfafd45362124b8",
+        "signature": "7158b6c40cfe10ca3dc816aeecde449a88a17cf2ac87ad40c1702ae95af4fc2e",
+        "affectsGlobalScope": false
+      },
+      "./src/tsx/react-flippy.d.ts": {
+        "version": "2429532fff6dfaa09772d03879b12bb913bd9f9d724b0178b736d06250bd4efb",
+        "signature": "2429532fff6dfaa09772d03879b12bb913bd9f9d724b0178b736d06250bd4efb",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/anymatch/index.d.ts": {
@@ -2799,6 +2834,7 @@
       "noUnusedParameters": true,
       "incremental": true,
       "noFallthroughCasesInSwitch": true,
+      "noEmit": false,
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
@@ -4252,6 +4288,9 @@
       "./node_modules/@material-ui/icons/Shuffle.d.ts": [
         "./node_modules/@material-ui/core/SvgIcon/index.d.ts"
       ],
+      "./node_modules/@material-ui/icons/ThreeDRotation.d.ts": [
+        "./node_modules/@material-ui/core/SvgIcon/index.d.ts"
+      ],
       "./node_modules/@material-ui/styles/ServerStyleSheets/ServerStyleSheets.d.ts": [
         "./node_modules/@material-ui/styles/StylesProvider/index.d.ts",
         "./node_modules/@types/react/index.d.ts"
@@ -4915,6 +4954,29 @@
         "./src/helpers/compareHelper.d.ts",
         "./src/helpers/currency.json"
       ],
+      "./src/components/ConvertViewBacksideCard.js": [
+        "./node_modules/@material-ui/core/index.d.ts",
+        "./node_modules/@material-ui/core/styles/index.d.ts",
+        "./node_modules/@material-ui/icons/ThreeDRotation.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./src/components/ConvertViewCardTable.js"
+      ],
+      "./src/components/ConvertViewCardTable.js": [
+        "./node_modules/@material-ui/core/index.d.ts",
+        "./node_modules/@types/react/index.d.ts"
+      ],
+      "./src/components/ConvertViewFrontsideCard.js": [
+        "./node_modules/@material-ui/core/index.d.ts",
+        "./node_modules/@material-ui/core/styles/index.d.ts",
+        "./node_modules/@material-ui/icons/ThreeDRotation.d.ts",
+        "./node_modules/@types/react/index.d.ts"
+      ],
+      "./src/components/ConvertViewIntroCard.js": [
+        "./node_modules/@material-ui/core/index.d.ts",
+        "./node_modules/@material-ui/core/styles/index.d.ts",
+        "./node_modules/@material-ui/icons/ThreeDRotation.d.ts",
+        "./node_modules/@types/react/index.d.ts"
+      ],
       "./src/tsx/Button.tsx": [
         "./node_modules/@material-ui/core/index.d.ts",
         "./node_modules/@material-ui/icons/Shuffle.d.ts",
@@ -4933,6 +4995,17 @@
         "./node_modules/@types/react/index.d.ts",
         "./node_modules/clsx/clsx.d.ts",
         "./src/components/CompareListItem.js"
+      ],
+      "./src/tsx/ConvertView.tsx": [
+        "./node_modules/@material-ui/core/index.d.ts",
+        "./node_modules/@material-ui/core/styles/index.d.ts",
+        "./node_modules/@types/react/index.d.ts",
+        "./node_modules/clsx/clsx.d.ts",
+        "./src/components/ConvertViewBacksideCard.js",
+        "./src/components/ConvertViewFrontsideCard.js",
+        "./src/components/ConvertViewIntroCard.js",
+        "./src/helpers/compareHelper.d.ts",
+        "./src/tsx/react-flippy.d.ts"
       ]
     },
     "exportedModulesMap": {
@@ -6386,6 +6459,9 @@
       "./node_modules/@material-ui/icons/Shuffle.d.ts": [
         "./node_modules/@material-ui/core/SvgIcon/index.d.ts"
       ],
+      "./node_modules/@material-ui/icons/ThreeDRotation.d.ts": [
+        "./node_modules/@material-ui/core/SvgIcon/index.d.ts"
+      ],
       "./node_modules/@material-ui/styles/ServerStyleSheets/ServerStyleSheets.d.ts": [
         "./node_modules/@material-ui/styles/StylesProvider/index.d.ts",
         "./node_modules/@types/react/index.d.ts"
@@ -7051,6 +7127,9 @@
         "./node_modules/@types/react/index.d.ts"
       ],
       "./src/tsx/CompareView.tsx": [
+        "./node_modules/@types/react/index.d.ts"
+      ],
+      "./src/tsx/ConvertView.tsx": [
         "./node_modules/@types/react/index.d.ts"
       ]
     },

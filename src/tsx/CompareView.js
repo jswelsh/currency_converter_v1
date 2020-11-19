@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 16
     }
 }));
-const CompareView = ({ setFromCurrency, fromCurrency, compareList, opendrawer, setAmount }) => {
+const CompareView = ({ setFromCurrency, fromCurrency, compareList, opendrawer }) => {
     const currencySelectHandler = (currency) => {
         setFromCurrency(currency);
     };
@@ -44,7 +44,7 @@ const CompareView = ({ setFromCurrency, fromCurrency, compareList, opendrawer, s
             [classes.drawerClose]: !opendrawer
         }) },
         React.createElement(Grid, { container: true, spacing: 2, alignItems: "center" }, compareList.map(({ currency, value }) => (React.createElement(Grid, { item: true, xs: 12, md: opendrawer ? 12 : 6, lg: opendrawer ? 6 : 4, key: currency },
-            React.createElement(CompareListItem, { currencySelectHandler: currencySelectHandler, fromCurrency: fromCurrency, currency: currency, primary: value, setAmount: setAmount })))))));
+            React.createElement(CompareListItem, { currencySelectHandler: currencySelectHandler, fromCurrency: fromCurrency, currency: currency, primary: value })))))));
 };
 export { CompareView };
 //# sourceMappingURL=CompareView.js.map

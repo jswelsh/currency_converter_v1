@@ -43,29 +43,26 @@ interface ICompareListItem {
   value: number
 }
 
-
 interface ICompareViewProps {
   setFromCurrency(currency:string): void
   fromCurrency: string
   compareList: Array<ICompareListItem>
   opendrawer: boolean
-  setAmount: number
-  amount: number
 }
-
 
 const CompareView: FC<ICompareViewProps> = ({
   setFromCurrency,
   fromCurrency,
   compareList,
-  opendrawer,
-  setAmount
+  opendrawer
 }) => {
+
   const currencySelectHandler = (currency: string) => { 
   setFromCurrency(currency)
   }
 
   const classes = useStyles();
+  
   return(
   <List
     className = {clsx({
@@ -75,7 +72,6 @@ const CompareView: FC<ICompareViewProps> = ({
       container 
       spacing={2}
       alignItems="center" >
-
 
       {compareList.map(({currency, value}) => (
       <Grid 
@@ -89,8 +85,6 @@ const CompareView: FC<ICompareViewProps> = ({
           fromCurrency={fromCurrency}
           currency={currency}
           primary={value}
-          setAmount={setAmount}
-          // amount={amount}
           />
       </Grid>))}
     </Grid>

@@ -1,9 +1,7 @@
-import { FormControl } from '@material-ui/core';
 import React from 'react';
-import { ListItem, ListItemText, ListItemIcon, } from '@material-ui/core';
+import { ListItemText, ListItemIcon, FormControl, ListItem, } from '@material-ui/core';
 import Exchange from '@material-ui/icons/Shuffle';
-var Button = function (_a) {
-    var primary = _a.primary, handleSubmit = _a.handleSubmit;
+const Button = ({ primary, handleSubmit }) => {
     return (React.createElement(FormControl, null,
         React.createElement(ListItem, { button: true, onClick: handleSubmit },
             React.createElement(ListItemIcon, null,

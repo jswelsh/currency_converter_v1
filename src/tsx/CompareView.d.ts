@@ -8,8 +8,6 @@ interface ICompareViewProps {
     fromCurrency: string;
     compareList: Array<ICompareListItem>;
     opendrawer: boolean;
-    setAmount: number;
-    amount: number;
 }
 declare const CompareView: FC<ICompareViewProps>;
 export { CompareView };
