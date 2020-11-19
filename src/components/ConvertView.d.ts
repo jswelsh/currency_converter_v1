@@ -4,14 +4,14 @@ interface IRecentRateHistoryItem {
     value: number;
 }
 interface IConvertViewProps {
-    opendrawer: boolean;
+    recentRateHistory: Array<IRecentRateHistoryItem>;
     fromCurrency: string;
     toCurrency: string;
-    toStart: number;
-    converted: number;
+    opendrawer: boolean;
     fromIntro: string;
+    converted: number;
+    toStart: number;
     toIntro: string;
-    recentRateHistory: Array<IRecentRateHistoryItem>;
 }
 declare const ConvertView: FC<IConvertViewProps>;
 export { ConvertView };

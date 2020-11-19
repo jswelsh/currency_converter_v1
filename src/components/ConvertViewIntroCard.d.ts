@@ -1,6 +1,6 @@
-export function ConvertViewIntroCard({ currency, intro, data, avatar, }: {
-    currency: any;
-    intro: any;
-    data: any;
-    avatar: any;
+export function ConvertViewIntroCard({ currency, intro, title, avatar, }: {
+    currency: string;
+    intro: string;
+    title: string
+    avatar: Object;
 }): JSX.Element;

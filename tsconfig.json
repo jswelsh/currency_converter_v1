@@ -26,7 +26,8 @@
     "noUnusedParameters": true,
     "incremental": true,
     "noFallthroughCasesInSwitch": true,
-    "noEmit": false 
+    "outDir": "src/components/",
+    "noEmit": true
   },
   "include": [
     "src/tsx/*"

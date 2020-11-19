@@ -59,25 +59,25 @@ interface IRecentRateHistoryItem {
 }
 
 interface IConvertViewProps {
-  opendrawer: boolean
+  recentRateHistory: Array<IRecentRateHistoryItem>
   fromCurrency: string
   toCurrency: string
-  toStart: number
-  converted: number
+  opendrawer: boolean
   fromIntro: string
+  converted: number
+  toStart: number
   toIntro: string
-  recentRateHistory: Array<IRecentRateHistoryItem>
 }
 
 const ConvertView: FC<IConvertViewProps> = ({
-  opendrawer,
+  recentRateHistory,
   fromCurrency,
   toCurrency,
-  toStart,
-  converted,
+  opendrawer,
   fromIntro,
+  converted,
+  toStart,
   toIntro,
-  recentRateHistory
 }) => {
 
 const classes = useStyles();
@@ -101,14 +101,15 @@ return(
       <FrontSide>
         <ConvertViewFrontsideCard
         currency={currency}
-        data={data}
+        symbol={data[currency]['symbol_native']}
         amount={amount}
-        avatar={iconHandler('converter', currency)}/>
+        avatar={iconHandler('converter', currency)}
+        title={data[currency]['name']}/>
       </FrontSide>	
       <BackSide>
         <ConvertViewBacksideCard
           currency={currency}
-          data={data}
+          name={data[currency]['name']}
           recentRateHistory={recentRateHistory}
           converted={converted}
           avatar={iconHandler('converter', currency)}/>
@@ -128,10 +129,10 @@ return(
       flipDirection="vertical">  {/* horizontal or vertical */}
       <FrontSide>
         <ConvertViewIntroCard
+          avatar={iconHandler('converter', fromCurrency)}
+          title={data[fromCurrency]['name']}
           currency={fromCurrency}
           intro={fromIntro}
-          data={data}
-          avatar={iconHandler('converter', fromCurrency)}
         />
       </FrontSide>	
       <BackSide>
@@ -139,10 +140,10 @@ return(
       container 
       justify={'center'}>
         <ConvertViewIntroCard
+          avatar={iconHandler('converter', toCurrency)}
+          title={data[toCurrency]['name']}
           currency={toCurrency}
           intro={toIntro}
-          data={data}
-          avatar={iconHandler('converter', toCurrency)}
         />
         </Grid>
       </BackSide>

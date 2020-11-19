@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
 	Card,
@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 
 	card: {
 		borderRadius: 12,
@@ -24,13 +24,20 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+interface IConvertViewIntroCardProps {
+	avatar: Object
+	title: string
+	currency: string
+	intro: string
 
-export function ConvertViewIntroCard ({ 
+}
+
+const ConvertViewIntroCard: FC <IConvertViewIntroCardProps> = ({ 
 	avatar,
 	title,
 	currency,	
 	intro,
-}){
+}) => {
 const classes = useStyles();
 
 return(

@@ -1,6 +1,8 @@
-export function ConvertViewFrontsideCard({ data, amount, currency, avatar }: {
-    data: any;
-    amount: any;
+export function ConvertViewFrontsideCard({ currency, symbol, amount, avatar, title, }: {
     currency: any;
+    symbol: any;
+    amount: any;
     avatar: any;
-}): JSX.Element;
+    title: any;
+}): React.FunctionComponentElement<import("@material-ui/core/OverridableComponent").DefaultComponentProps<import("@material-ui/core").GridTypeMap<{}, "div">>>;
+import React from "react";

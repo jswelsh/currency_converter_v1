@@ -1,7 +1,8 @@
-export function ConvertViewBacksideCard({ data, currency, recentRateHistory, avatar, converted }: {
-    data: any;
-    currency: any;
+export function ConvertViewBacksideCard({ recentRateHistory, converted, currency, avatar, name, }: {
     recentRateHistory: any;
-    avatar: any;
     converted: any;
-}): JSX.Element;
+    currency: any;
+    avatar: any;
+    name: any;
+}): React.FunctionComponentElement<import("@material-ui/core").CardProps>;
+import React from "react";
