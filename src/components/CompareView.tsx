@@ -12,31 +12,31 @@ const drawerWidth = 280;
 const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
-drawerClose: {  
-  //marginLeft: drawerClosed,
-  marginRight: 'min(100px, 15%)',
-  marginLeft: 'min(100px, 15%)',
-  width: `calc(95% - ${drawerClosed}px)`,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen})
-},
-drawerOpen: {
-  marginLeft: drawerWidth,
-  width: `calc(95% - ${drawerWidth}px)`,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen})
-},
-ListItem: {
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  backgroundColor: '#212121',
-  minHeight: 100
-},
-symbol: {
-  marginRight: 16
-}
+  drawerClose: {  
+    //marginLeft: drawerClosed,
+    marginRight: 'min(100px, 15%)',
+    marginLeft: 'min(100px, 15%)',
+    width: `calc(95% - ${drawerClosed}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen})
+  },
+  drawerOpen: {
+    marginLeft: drawerWidth,
+    width: `calc(95% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen})
+  },
+  ListItem: {
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    backgroundColor: '#212121',
+    minHeight: 100
+  },
+  symbol: {
+    marginRight: 16
+  }
 }));
 
 

@@ -2311,6 +2311,11 @@
         "signature": "6fe3bed4a75d241430559093a5278d4f41b35f30cb0be6e6e581ada3ef7a048c",
         "affectsGlobalScope": false
       },
+      "./types.tsx": {
+        "version": "1e8e11ed9dad7de3ee46e8a070e7a350f2278c8754624c6bcd5b05c320941155",
+        "signature": "e75c9682c66b836078ff8cd1298d617c601819b4d86a460f719574f122edd159",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/@material-ui/icons/CompareArrows.d.ts": {
         "version": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
@@ -2352,8 +2357,8 @@
         "affectsGlobalScope": false
       },
       "./CurrencySelectionForm.tsx": {
-        "version": "aef09d05d34939b30dab016a04a6cad3d4e4df22b4fcc6aa4d1b158d4418409c",
-        "signature": "2e0a54971ee84036451762e34a25c63f81008eff8d0c835208d6fb01f371e98a",
+        "version": "04dc09213f49b9bf7e741debb4c24b8ac0dea45661e61939c8c8c636e94caad2",
+        "signature": "bc2426f432fd7e56b3cfa767f541abcd78331055fc1d70a02dbacc6bd074e950",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/Shuffle.d.ts": {
@@ -2362,8 +2367,8 @@
         "affectsGlobalScope": false
       },
       "./Button.tsx": {
-        "version": "77627877a03d8ea1381aa3317d2e5f1e7c13c57a7be6cc277de7e126430328c9",
-        "signature": "bc700948b9f3b5ef0a4761caf9d6d46cd66f5556b4ba2f3ea9801fd69e507f1c",
+        "version": "37b9c950215f7b3f9c432eedd0fcaa2349f55ed191e62f579680e5a617744349",
+        "signature": "35ba6b226b6f229a3318927a08f3b48b7cb2fdcbe1f26cdb7d8cf64d6f13288a",
         "affectsGlobalScope": false
       },
       "../../node_modules/react-number-format/typings/number_format.d.ts": {
@@ -2381,9 +2386,9 @@
         "signature": "b86cd86e8c4906daee5195899acce87ad347d2b48924cdfc727ae5259231d945",
         "affectsGlobalScope": false
       },
-      "./UserInputTab.js": {
-        "version": "2584cf3933b345966cf0a21695e5f0a839463f15af80d8845ad82df1cfd9341e",
-        "signature": "d1573a7d4fffa0d2b5616e74e81169c348433e828e0db99008bd31cad356d12a",
+      "./UserInputTab.tsx": {
+        "version": "71ce07200f9854cb4f1ca965f27773038c2d9d5ad4ed52b5b9bb8610bbfbbe8b",
+        "signature": "3557d2e0100230760541c71e2846292ededf3f399958ba7ee619fc41d85b14ef",
         "affectsGlobalScope": false
       },
       "./ToolBar.js": {
@@ -2392,13 +2397,13 @@
         "affectsGlobalScope": false
       },
       "./CompareListItem.tsx": {
-        "version": "f7d025a8c931640785bcf75fabadb1f309691da5c7cc21c8e4b48801278f9ff9",
-        "signature": "d272cad5ea8cc75004cb2ef1ca7ba99e2d3139aa5646eab56b68203eb688f292",
+        "version": "1aa4f37bde5c01346f24ada81bb9af9a66f863745e25af1703896c9fb98af37a",
+        "signature": "2399f5cf14bf2e304317ff9837add4daef5673e728ec0a0112e160ba51fcad34",
         "affectsGlobalScope": false
       },
       "./CompareView.tsx": {
-        "version": "154504b5ab493e81ddd8d7bd0b12ceffb269ef8aff330d6bb5299e52f8279763",
-        "signature": "8956ae17fca815f959d50f9282e374c0c3c71e2989c263b1c28032933b13fc8a",
+        "version": "4be484bd33627d33e93fdb0e2fd2a5641972b61c1ab0615bbea5325e9b1c1b05",
+        "signature": "82fbefcfe68edcaddad4cf6a0d4d979b3f80cd70997aaed932c2a2dc59f7aafe",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/ThreeDRotation.d.ts": {
@@ -2407,28 +2412,28 @@
         "affectsGlobalScope": false
       },
       "./ConvertViewIntroCard.tsx": {
-        "version": "b74c8bb817cf73ae72d2feac3da2e217f1ddd7b85fa7253cbed25f4edf4b2df4",
-        "signature": "0843f51f969a613bc58a45aed4a1c958909053d47fc280134558d32f25cdcbea",
+        "version": "f25ba93a74ee56535cd22b978fd75217f5802c1fee053728ae684fc9497b5859",
+        "signature": "67fbb638cafed407a6dd5dc682ccc1bd5b66b4e698b7eecda6cca56843f55050",
         "affectsGlobalScope": false
       },
       "./ConvertViewFrontsideCard.tsx": {
-        "version": "981821de449f72e015dc791776dea000e79346531b23005eb801f70a06f2bd72",
-        "signature": "a294874a19bfca64c78051913149011b52e35f182c44307f843973a9c6d79874",
+        "version": "86a33cdde9f86d4cb0f50f98e1284ecd91ecfffe17c58571f3964976bf6a2a3e",
+        "signature": "ec41eb9544aa71c5e96f430d31836aa4f8425403d7ae35bc7aa09768beb5b0d1",
         "affectsGlobalScope": false
       },
       "./ConvertViewCardTable.tsx": {
-        "version": "2c193acfb9109e4ec03ddc155948efebfad6e9a78e05a4cf8e939992be4c3b79",
-        "signature": "1b88f5e4650c207fc089f23b29ee0812332df334a9da2efd088f70cf42047872",
+        "version": "c4527b11ea12b3dcb5e86dae7bd02e54ad43c6dd01c3122b5e198c940c59f9d7",
+        "signature": "dad4d5747a869018daae5e2dca7f7a116e65cc7e2834e36942be6c1dff7f0e5b",
         "affectsGlobalScope": false
       },
       "./ConvertViewBacksideCard.tsx": {
-        "version": "08e9a5c81acea930b9d6e10536c5669d588cd5b27ab4e588ac298cc66ec577a2",
-        "signature": "3cadf9d24720c03365a8e6957075cbf143403ffa23ed0264eb87675959133d20",
+        "version": "e8425288e31f181d41bc1df8cc1bada172ea137f60bbebd8749db59dec5d6040",
+        "signature": "1c1ea7f314b7ab6ed3b7d6b4848ee4f4a580de9082653ed7520abe00b142b65f",
         "affectsGlobalScope": false
       },
       "./ConvertView.tsx": {
-        "version": "83b0ad152b856e1ba43570ef54647471eb7484b354ca3f9f1d821cfc108d5b88",
-        "signature": "2c5593d28810c4ebe78ee8e51a7347c5c02f98d8a5d46ce2ed392fd2249aa109",
+        "version": "161a11c4a08aafb1ec10f8bf608e971fdee38d44953cafb8557a7010ec03d4ea",
+        "signature": "8293d3366f6b42a20e9c4634c5d76a8c6e6914ed9cfaa080053f8472ca0b7287",
         "affectsGlobalScope": false
       },
       "../../node_modules/@amcharts/amcharts4/.internal/core/utils/Clone.d.ts": {
@@ -3656,9 +3661,9 @@
         "signature": "ac99ad65c7f235d23ca9ecf23a55b482c772cc6664227b3d41d6b8b7b91b73d8",
         "affectsGlobalScope": false
       },
-      "./ExchangeHistoryGraph.js": {
-        "version": "6245d79d2ef3101d262f3d0a8ecde463db7c21bcff9095b13676ed2860a66489",
-        "signature": "09a37f8543b2fcd0b7d96b9be39f5cc6ac9e9f38afac75fee00db4c9207a45c0",
+      "./ExchangeHistoryGraph.tsx": {
+        "version": "781b037f36c211922c00d66a0556d9124dbee08bc4cbe3072a70fc36217585e9",
+        "signature": "77cff393d3bf7be24a354f466dd151c8049191ffa873e66f2baf79ed58c01a9a",
         "affectsGlobalScope": false
       },
       "./App.js": {
@@ -8794,27 +8799,30 @@
         "../styles/AppStyles.js",
         "./CompareView.tsx",
         "./ConvertView.tsx",
-        "./ExchangeHistoryGraph.js",
+        "./ExchangeHistoryGraph.tsx",
         "./ToolBar.js"
       ],
       "./Button.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/icons/Shuffle.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./CompareListItem.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
-        "../helpers/compareHelper.d.ts"
+        "../helpers/compareHelper.d.ts",
+        "./types.tsx"
       ],
       "./CompareView.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
-        "./CompareListItem.tsx"
+        "./CompareListItem.tsx",
+        "./types.tsx"
       ],
       "./ConvertView.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -8825,30 +8833,35 @@
         "./ConvertViewBacksideCard.tsx",
         "./ConvertViewFrontsideCard.tsx",
         "./ConvertViewIntroCard.tsx",
-        "./react-flippy.d.ts"
+        "./react-flippy.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewBacksideCard.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@material-ui/icons/ThreeDRotation.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "./ConvertViewCardTable.tsx"
+        "./ConvertViewCardTable.tsx",
+        "./types.tsx"
       ],
       "./ConvertViewCardTable.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewFrontsideCard.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@material-ui/icons/ThreeDRotation.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewIntroCard.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@material-ui/icons/ThreeDRotation.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./CurrencySelectionForm.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -8858,7 +8871,8 @@
         "../../node_modules/@material-ui/icons/SubdirectoryArrowRight.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../helpers/selectionHelper.js",
-        "./SelectionComponent.js"
+        "./SelectionComponent.js",
+        "./types.tsx"
       ],
       "./DatePickerComponent.js": [
         "../../node_modules/@material-ui/core/TextField/index.d.ts",
@@ -8868,14 +8882,15 @@
         "../../node_modules/@material-ui/pickers/index.d.ts",
         "../../node_modules/@types/react/index.d.ts"
       ],
-      "./ExchangeHistoryGraph.js": [
+      "./ExchangeHistoryGraph.tsx": [
         "../../node_modules/@amcharts/amcharts4/charts.d.ts",
         "../../node_modules/@amcharts/amcharts4/core.d.ts",
         "../../node_modules/@amcharts/amcharts4/themes/animated.d.ts",
         "../../node_modules/@amcharts/amcharts4/themes/dark.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../../node_modules/clsx/clsx.d.ts"
+        "../../node_modules/clsx/clsx.d.ts",
+        "./types.tsx"
       ],
       "./ExchangeHistoryPopOver.js": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -8914,9 +8929,9 @@
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
         "./TabSelector.js",
-        "./UserInputTab.js"
+        "./UserInputTab.tsx"
       ],
-      "./UserInputTab.js": [
+      "./UserInputTab.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../helpers/dataHelpers.js",
@@ -13195,31 +13210,44 @@
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./Button.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./CompareListItem.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./CompareView.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertView.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewBacksideCard.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewCardTable.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewFrontsideCard.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ConvertViewIntroCard.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./CurrencySelectionForm.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
+      ],
+      "./ExchangeHistoryGraph.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "../styles/AppStyles.js": [
         "../../node_modules/@material-ui/core/index.d.ts"
@@ -14105,19 +14133,327 @@
       "./CompareView.tsx",
       "./ConvertView.tsx",
       "./ConvertViewBacksideCard.tsx",
-      "./ConvertViewCardTable.tsx",
+      [
+        "./ConvertViewCardTable.tsx",
+        [
+          {
+            "file": "./ConvertViewCardTable.tsx",
+            "start": 1575,
+            "length": 5,
+            "code": 2345,
+            "category": 1,
+            "messageText": "Argument of type 'number' is not assignable to parameter of type 'string'."
+          }
+        ]
+      ],
       "./ConvertViewFrontsideCard.tsx",
       "./ConvertViewIntroCard.tsx",
       "./CurrencySelectionForm.tsx",
       "./DatePickerComponent.js",
-      "./ExchangeHistoryGraph.js",
+      [
+        "./ExchangeHistoryGraph.tsx",
+        [
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 1996,
+            "length": 13,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 2045,
+            "length": 5,
+            "code": 2339,
+            "category": 1,
+            "messageText": "Property 'color' does not exist on type '{ date: Date; value: number; }'."
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 2144,
+            "length": 5,
+            "code": 2339,
+            "category": 1,
+            "messageText": "Property 'color' does not exist on type '{ date: Date; value: number; }'."
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 2882,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3105,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3152,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3201,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3251,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3295,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3333,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3372,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3417,
+            "length": 14,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3818,
+            "length": 6,
+            "code": 2339,
+            "category": 1,
+            "messageText": "Property 'series' does not exist on type 'Scrollbar'."
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 3920,
+            "length": 4,
+            "messageText": "Parameter 'grip' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./ExchangeHistoryGraph.tsx",
+            "start": 4649,
+            "length": 15,
+            "messageText": "Object is possibly 'undefined'.",
+            "category": 1,
+            "code": 2532
+          }
+        ]
+      ],
       "./ExchangeHistoryPopOver.js",
       "./InputAmountField.js",
       "./SelectionComponent.js",
       "./TabSelector.js",
       "./ToolBar.js",
-      "./UserInputTab.js",
+      [
+        "./UserInputTab.tsx",
+        [
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 458,
+            "length": 18,
+            "messageText": "'IUserInputTabProps' is declared but never used.",
+            "category": 1,
+            "code": 6196,
+            "reportsUnnecessary": true
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 751,
+            "length": 2,
+            "messageText": "Cannot find name 'FC'.",
+            "category": 1,
+            "code": 2304
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 753,
+            "length": 2,
+            "messageText": "Type argument list cannot be empty.",
+            "category": 1,
+            "code": 1099
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 762,
+            "length": 21,
+            "messageText": "Binding element 'convertHistoryHandler' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 786,
+            "length": 18,
+            "messageText": "Binding element 'compareListHandler' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 807,
+            "length": 14,
+            "messageText": "Binding element 'currenciesList' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 824,
+            "length": 14,
+            "messageText": "Binding element 'convertHandler' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 841,
+            "length": 15,
+            "messageText": "Binding element 'setFromCurrency' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 859,
+            "length": 13,
+            "messageText": "Binding element 'setToCurrency' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 875,
+            "length": 12,
+            "messageText": "Binding element 'fromCurrency' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 890,
+            "length": 10,
+            "messageText": "Binding element 'toCurrency' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 903,
+            "length": 6,
+            "messageText": "Binding element 'drawer' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 912,
+            "length": 4,
+            "messageText": "Binding element 'mode' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7031
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 1071,
+            "length": 4,
+            "messageText": "Parameter 'mode' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 1077,
+            "length": 8,
+            "messageText": "Parameter 'currency' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 1246,
+            "length": 5,
+            "messageText": "Parameter 'event' implicitly has an 'any' type.",
+            "category": 1,
+            "code": 7006
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 1729,
+            "length": 15,
+            "code": 2322,
+            "category": 1,
+            "messageText": {
+              "messageText": "Type '{ fromCurrency: any; toCurrency: any; setFromCurrency: any; setToCurrency: any; currencySelectHandler: (mode: any, currency: any) => any; currenciesList: any; mode: any; }' is not assignable to type 'IntrinsicAttributes & ICurrencySelectionFormProps & { children?: ReactNode; }'.",
+              "category": 1,
+              "code": 2322,
+              "next": [
+                {
+                  "messageText": "Property 'setFromCurrency' does not exist on type 'IntrinsicAttributes & ICurrencySelectionFormProps & { children?: ReactNode; }'.",
+                  "category": 1,
+                  "code": 2339
+                }
+              ]
+            }
+          },
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 2027,
+            "length": 12,
+            "code": 2322,
+            "category": 1,
+            "messageText": {
+              "messageText": "Type '{ dateRange: any[]; handleChange: (event: any) => void; fromCurrency: any; toCurrency: any; }' is not assignable to type 'IntrinsicAttributes & { dateRange: any; handleChange: any; }'.",
+              "category": 1,
+              "code": 2322,
+              "next": [
+                {
+                  "messageText": "Property 'fromCurrency' does not exist on type 'IntrinsicAttributes & { dateRange: any; handleChange: any; }'.",
+                  "category": 1,
+                  "code": 2339
+                }
+              ]
+            }
+          }
+        ]
+      ],
       "./react-flippy.d.ts",
+      "./types.tsx",
       "../helpers/compareHelper.d.ts",
       "../helpers/compareHelper.js",
       "../helpers/currency.json",
@@ -17591,6 +17927,10 @@
         1
       ],
       [
+        "./ExchangeHistoryGraph.tsx",
+        1
+      ],
+      [
         "./ExchangeHistoryPopOver.js",
         1
       ],
@@ -17615,7 +17955,15 @@
         1
       ],
       [
+        "./UserInputTab.tsx",
+        1
+      ],
+      [
         "./react-flippy.d.ts",
+        1
+      ],
+      [
+        "./types.tsx",
         1
       ],
       [

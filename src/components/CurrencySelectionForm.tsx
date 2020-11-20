@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { ICurrencySelectionFormProps } from './types'
 import { 
   FormControl,
   List,
@@ -13,18 +14,6 @@ import SwapVertIcon from '@material-ui/icons/Cached';
 import { handleClick } from '../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
-interface currenciesListItem {
-  currency: string
-}
-
-interface ICurrencySelectionFormProps {
-  currencySelectHandler(mode: string, currency: string): void
-  currenciesList: Array<currenciesListItem>
-  fromCurrency: string
-  toCurrency: string
-  mode: string
-}
-
 const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
   currencySelectHandler,
   currenciesList,
@@ -32,7 +21,7 @@ const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
   toCurrency,
   mode
 }) => {
-  return (
+return (
   <List>
     <FormControl>
       {mode === 'Compare' && (
@@ -69,6 +58,5 @@ const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
       )}
     </FormControl>
   </List>
-  )
-}
+)}
 export {CurrencySelectionForm}

@@ -1,6 +1,6 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { FC, useLayoutEffect } from "react";
 import clsx from 'clsx';
-
+import { IExchangeHistoryGraphProps } from './types'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
     width: "90%", height: "800px"}
 }));
 
-export function ExchangeHistoryGraph({
+const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   history,
-  opendrawer}) {
+  opendrawer}) => {
   const classes = useStyles();
 
   useLayoutEffect(() => {
@@ -46,7 +46,6 @@ export function ExchangeHistoryGraph({
   let chart = am4core.create("chartdiv", am4charts.XYChart);
     chart.marginLeft = 230
     chart.marginRight = 200
-    //chart.data = history
   let data = [];
   let value;
   let date;
@@ -59,10 +58,10 @@ export function ExchangeHistoryGraph({
     if(i > 0){
         // add color to previous data item depending on whether current value is less or more than previous value
         if(previousValue <= value){
-            data[i - 1].color = '#8CFFDA'; /* chart.colors.getIndex(0); */
+            data[i - 1].color = am4core.color('#8CFFDA'); /* chart.colors.getIndex(0); */
         }
         else{
-            data[i - 1].color = '#dc67ab'; /* chart.colors.getIndex(5); */
+            data[i - 1].color = am4core.color('#dc67ab'); /* chart.colors.getIndex(5); */
         }
     }     
     data.push({ date: date, value: value });
@@ -79,7 +78,7 @@ chart.data = data;
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
-  series.stroke = '#8CFFDA';
+  series.stroke = am4core.color('#8CFFDA');;
   series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;
@@ -145,7 +144,7 @@ chart.data = data;
     <>
       <div 
         id="chartdiv" 
-        className={clsx(classes.drawer, {
+        className={clsx({
           [classes.drawerOpen]: opendrawer,
           [classes.drawerClose]: !opendrawer
         })}
@@ -154,3 +153,5 @@ chart.data = data;
     
   );
 }
+
+export { ExchangeHistoryGraph }

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { IRecentRateHistoryItem, IConvertViewProps } from './types'
+import { IConvertViewProps } from './types'
 import { iconHandler } from '../helpers/compareHelper';
 import {
   Grid,
@@ -17,7 +17,6 @@ const drawerClosed = 100;
 const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
-
   card: {
     borderRadius: 12,
     margin:'auto',

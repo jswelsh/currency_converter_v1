@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
+import { IUserInputTabProps, ICurrencySelectorProps } from './types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
@@ -10,24 +11,7 @@ import {
 	shortenDateString 
 } from '../helpers/dataHelpers'
 
-interface currenciesListItem {
-  currency: string
-}
-
-interface IUserInputTabProps {
-	convertHistoryHandler(): void 
-	compareListHandler(): void 
-  currenciesList: Array<currenciesListItem>
-	convertHandler: string
-	setFromCurrency: string
-	setToCurrency: string
-	fromCurrency: string
-	toCurrency: string
-	drawer: string
-	mode: string
-}
-
-const UserInputTab: FC<> = ({
+const UserInputTab: FC<IUserInputTabProps> = ({
 	convertHistoryHandler,
 	compareListHandler,
 	currenciesList,
@@ -43,16 +27,16 @@ const UserInputTab: FC<> = ({
 const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange(365));
 
-
-const currencySelectHandler = (mode, currency) => { 
+/* ICurrencySelectorProps */
+const currencySelectHandler( setFromCurrency(currency:string): void, currency: string, Hmode: string): boolean => { 
 	return (
-		mode === 'fromCurrency' ? setFromCurrency(currency):
-		mode === 'toCurrency' ? setToCurrency(currency) :
+		Hmode === 'fromCurrency' ? setFromCurrency(currency):
+		Hmode === 'toCurrency' ? setToCurrency(currency) :
 		null
 	)
 }
 
-	const handleChange = (event) => {
+	const handleChange = (event: Array<Date>) => {
 		//error check that both start and end date have been selected
 		if(event[1] !== null){
 			const [startDate, endDate] = event
