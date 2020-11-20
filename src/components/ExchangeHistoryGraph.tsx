@@ -1,6 +1,6 @@
 import React, { FC, useLayoutEffect } from "react";
 import clsx from 'clsx';
-import { IExchangeHistoryGraphProps } from './types'
+import { IExchangeHistoryGraphProps, IDataItem } from './types'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
@@ -42,19 +42,12 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
   am4core.options.autoDispose = true;
-  
-  interface IDataItem {
-    date: Date
-    value: number
-    color: Object
-  }
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
-    chart.marginLeft = 230
-    chart.marginRight = 200
+    chart.marginLeft = drawerWidth -10
+    chart.marginRight = drawerWidth -40
   let data: Array<IDataItem> = [];
   let value, date, color;
- 
   let previousValue = 0;
 
   for (let i = 0; i < history.length; i++) {
@@ -108,33 +101,35 @@ chart.data = data;
   series.tooltip.label.minWidth = 40;
   series.tooltip.label.minHeight = 40;
   series.tooltip.label.textAlign = "middle";
-  series.tooltip.label.textValign = "middle";
   }
   // Create vertical scrollbar and place it before the value axis
-  chart.scrollbarY = new am4core.Scrollbar();
-  chart.scrollbarY.parent = chart.leftAxesContainer;
-  chart.scrollbarY.toBack();
+  let scrollbarY = new am4core.Scrollbar();
+  scrollbarY.parent = chart.leftAxesContainer;
+  scrollbarY.toBack();
 
    // Create a horizontal scrollbar with preview and place it underneath the date axis
-  chart.scrollbarX = new am4charts.XYChartScrollbar();
-  //chart.scrollbarX.series.push(series);
-  chart.scrollbarX.parent = chart.bottomAxesContainer;
+  let scrollbarX = new am4charts.XYChartScrollbar();
+  scrollbarX.series.push(series);
+  scrollbarX.parent = chart.bottomAxesContainer;
   /* 
     need to fix this typing later on, shoulnt have any
   */
   function customizeGrip(grip: any) {
-    grip.background.fill = am4core.color('#8CFFDA');
-    grip.background.fillOpacity = 0.5;
+    grip.background.fill = am4core.color('#dc67ab');
+    grip.background.fillOpacity = 0.9;
   }
-  //stlying for the scroll bar
-  customizeGrip(chart.scrollbarY.startGrip);
-  customizeGrip(chart.scrollbarY.endGrip);
-  chart.scrollbarY.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
-  chart.scrollbarY.background.fillOpacity = 0.2;
-  customizeGrip(chart.scrollbarX.startGrip);
-  customizeGrip(chart.scrollbarX.endGrip);
-  chart.scrollbarX.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
-  chart.scrollbarX.background.fillOpacity = 0.2;
+  //styling for the scroll bar
+  customizeGrip(scrollbarY.startGrip);
+  customizeGrip(scrollbarY.endGrip);
+  scrollbarY.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
+  scrollbarY.endGrip.icon.stroke = am4core.color('#00ffae');
+  scrollbarY.startGrip.icon.stroke = am4core.color('#00ffae');
+  customizeGrip(scrollbarX.startGrip);
+  customizeGrip(scrollbarX.endGrip);
+  scrollbarX.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
+  scrollbarX.endGrip.icon.stroke = am4core.color('#00ffae');
+  scrollbarX.startGrip.icon.stroke = am4core.color('#00ffae');
+
 
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
@@ -156,9 +151,8 @@ chart.data = data;
         id="chartdiv" 
         className={clsx({
           [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer
-        })}
-        ></div>
+          [classes.drawerClose]: !opendrawer  })}
+      />
     </>
     
   );

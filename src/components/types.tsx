@@ -69,6 +69,12 @@ export interface IExchangeHistoryGraphProps {
   opendrawer: boolean
 }
 
+export interface IDataItem {
+  date: Date
+  value: number
+  color: Object
+}
+
 export interface IUserInputTabProps {
   convertHistoryHandler(payload: object): void 
   compareListHandler(fromCurrency: string, amount: number): void 
