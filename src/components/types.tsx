@@ -72,7 +72,7 @@ export interface IExchangeHistoryGraphProps {
 export interface IDataItem {
   date: Date
   value: number
-  color: Object
+  color?: Object
 }
 
 export interface IUserInputTabProps {

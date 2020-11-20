@@ -39,10 +39,9 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
 
   useLayoutEffect(() => {
   const color = { 
-    primary: color.primary,
-    secondary: color.secondary
+    primary: am4core.color('#8CFFDA'),
+    secondary: am4core.color('#dc67ab')
   }
-
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
   am4core.options.autoDispose = true;
@@ -51,50 +50,44 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     chart.marginLeft = drawerWidth -10
     chart.marginRight = drawerWidth -40
   let data: Array<IDataItem> = [];
-  let value, date, lineColor;
+  let value, date;
   let previousValue = 0;
 
   for (let i = 0; i < history.length; i++) {
-    lineColor = color.primary
     value = history[i]['value'];
     date = history[i]['date'];
-
+    //change the color of previous value
     if(i > 0){
-      lineColor = previousValue <= value ?
+      data[i - 1].color = previousValue <= value ?
         color.primary :
         color.secondary
     }     
     data.push({ 
       date: date, 
-      value: value, 
-      color: color });
+      value: value });
     previousValue = value;
 } 
 
 chart.data = data;
-
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
-  
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
   let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
   let series = chart.series.push(new am4charts.LineSeries());
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
-  series.stroke = color.primary;;
+  series.stroke = color.primary;
   series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;
   dateAxis.renderer.minGridDistance = 60;
   dateAxis.renderer.grid.template.location = 0;
 
-
   series.strokeWidth = 3;
   series.tensionX = 0.8;
   series.fill = series.stroke;
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
-  
 
   // Drop-shaped tooltips
   if (series.tooltip) {
@@ -107,40 +100,42 @@ chart.data = data;
   series.tooltip.label.textAlign = "middle";
   }
   // Create vertical scrollbar and place it before the value axis
-  let scrollbarY = new am4core.Scrollbar();
-  scrollbarY.parent = chart.leftAxesContainer;
-  scrollbarY.toBack();
+  chart.scrollbarY = new am4core.Scrollbar();
+  chart.scrollbarY.parent = chart.leftAxesContainer;
+  chart.scrollbarY.toBack();
 
-   // Create a horizontal scrollbar with preview and place it underneath the date axis
-  let scrollbarX = new am4charts.XYChartScrollbar();
-  scrollbarX.series.push(series);
-  scrollbarX.parent = chart.bottomAxesContainer;
+  // Create a horizontal scrollbar with preview and place it underneath the date axis
+  chart.scrollbarX = new am4charts.XYChartScrollbar();
+
+
+  //need to fix the series on this with typescript yelling
+  //chart.scrollbarX.series.push(series);
+  chart.scrollbarX.parent = chart.bottomAxesContainer;
   /* 
     need to fix this typing later on, shoulnt have any
     */
   //styling for the scroll bar
   function customizeGrip(grip: any) {
     grip.background.fill = color.secondary;
-    grip.background.fillOpacity = 0.9;
-  }
-  function scrollbarConstructor(scrollbar) {
+    grip.background.fillOpacity = 0.9;}
+
+  function scrollbarConstructor(scrollbar: any) {
     customizeGrip(scrollbar.startGrip);
     customizeGrip(scrollbar.endGrip);
     scrollbar.background.fill = color.primary;
     scrollbar.endGrip.icon.stroke = color.primary;
-    scrollbar.startGrip.icon.stroke = color.primary;
-  }
-  scrollbarConstructor(scrollbarY)
-  scrollbarConstructor(scrollbarX)
+    scrollbar.startGrip.icon.stroke = color.primary;}
 
+  scrollbarConstructor(chart.scrollbarY)
+  scrollbarConstructor(chart.scrollbarX)
+  
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
   chart.cursor = new am4charts.XYCursor();
 
   dateAxis.keepSelection = true;
   if (dateAxisTooltip) {
-    dateAxisTooltip.background.fill = color.primary;
-  }
+    dateAxisTooltip.background.fill = color.primary;}
 
   return () => {
     chart.dispose();
