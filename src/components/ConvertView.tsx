@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { IRecentRateHistoryItem, IConvertViewProps } from './types'
 import { iconHandler } from '../helpers/compareHelper';
 import {
   Grid,
@@ -52,22 +53,6 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})
     }
 }));
-
-interface IRecentRateHistoryItem {
-  date: Date
-  value: number
-}
-
-interface IConvertViewProps {
-  recentRateHistory: Array<IRecentRateHistoryItem>
-  fromCurrency: string
-  toCurrency: string
-  opendrawer: boolean
-  fromIntro: string
-  converted: number
-  toStart: number
-  toIntro: string
-}
 
 const ConvertView: FC<IConvertViewProps> = ({
   recentRateHistory,

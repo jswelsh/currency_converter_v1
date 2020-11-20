@@ -10,8 +10,24 @@ import {
 	shortenDateString 
 } from '../helpers/dataHelpers'
 
+interface currenciesListItem {
+  currency: string
+}
 
-export function UserInputTab({
+interface IUserInputTabProps {
+	convertHistoryHandler(): void 
+	compareListHandler(): void 
+  currenciesList: Array<currenciesListItem>
+	convertHandler: string
+	setFromCurrency: string
+	setToCurrency: string
+	fromCurrency: string
+	toCurrency: string
+	drawer: string
+	mode: string
+}
+
+const UserInputTab: FC<> = ({
 	convertHistoryHandler,
 	compareListHandler,
 	currenciesList,
@@ -20,11 +36,9 @@ export function UserInputTab({
 	setToCurrency,
 	fromCurrency,
 	toCurrency,
-/* 	setAmount,
-	amount, */
 	drawer,
 	mode,
-}) {
+}) => {
 
 const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange(365));
@@ -97,3 +111,5 @@ const currencySelectHandler = (mode, currency) => {
 	</>
 	)
 }
+
+export {UserInputTab}

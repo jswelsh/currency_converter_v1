@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { ICompareListItemProps } from './types'
 import { iconHandler } from '../helpers/compareHelper'
 import {
   Grid, 
@@ -37,14 +38,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#212121',
   },
 }));
-
-interface ICompareListItemProps {
-  currencySelectHandler(currency:string): void; 
-  fromCurrency: string
-  currency: string
-  primary: number
-}
-
 
 
 const gridBuilder = (props: object) => {

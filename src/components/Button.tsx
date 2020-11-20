@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { IButtonProps } from './types'
 import {  
   ListItemText,
   ListItemIcon,
@@ -7,10 +8,6 @@ import {
 } from '@material-ui/core';
 import Exchange from '@material-ui/icons/Shuffle';
 
-interface IButtonProps {
-  handleSubmit(): void;
-  primary: string;
-}
 
 const Button: FC<IButtonProps> = ({ 
   primary,

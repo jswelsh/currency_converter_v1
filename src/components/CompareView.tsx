@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
+import { ICompareViewProps } from './types'
 import { CompareListItem } from '../components/CompareListItem'
 import {
 Grid,
@@ -38,17 +39,6 @@ symbol: {
 }
 }));
 
-interface ICompareListItem {
-  currency: string
-  value: number
-}
-
-interface ICompareViewProps {
-  setFromCurrency(currency:string): void
-  fromCurrency: string
-  compareList: Array<ICompareListItem>
-  opendrawer: boolean
-}
 
 const CompareView: FC<ICompareViewProps> = ({
   setFromCurrency,

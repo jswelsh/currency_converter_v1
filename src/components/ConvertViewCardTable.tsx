@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { recentRateHistoryItem, IConvertViewCardTableProps } from './types'
 import {
 	Table,
 	TableBody,
@@ -9,16 +10,6 @@ import {
 	Paper,
 	Typography
 } from '@material-ui/core';
-
-interface recentRateHistoryItem {
-	date: Date
-	value: string
-}
-
-interface IConvertViewCardTableProps {
-	recentRateHistory: Array<recentRateHistoryItem>
-	converted: number
-}
 
 const ConvertViewCardTable: FC<IConvertViewCardTableProps> = ({
 	recentRateHistory,
