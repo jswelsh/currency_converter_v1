@@ -53,9 +53,8 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     chart.marginLeft = 230
     chart.marginRight = 200
   let data: Array<IDataItem> = [];
-  let value;
-  let date;
-  let color;
+  let value, date, color;
+ 
   let previousValue = 0;
 
   for (let i = 0; i < history.length; i++) {
@@ -64,20 +63,15 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     date = history[i]['date'];
 
     if(i > 0){
-        // add color to previous data item depending on whether current value is less or more than previous value
-  /*       if(previousValue <= value){
-          color = am4core.color('#8CFFDA'); 
-        }
-        else{
-          color = am4core.color('#dc67ab'); 
-        } */
-
-        color = previousValue <= value ?
-          am4core.color('#8CFFDA') :
-          am4core.color('#dc67ab')
+      color = previousValue <= value ?
+        am4core.color('#8CFFDA') :
+        am4core.color('#dc67ab')
     }     
-    data.push({ date: date, value: value, color: color });
-    previousValue =  value;
+    data.push({ 
+      date: date, 
+      value: value, 
+      color: color });
+    previousValue = value;
 } 
 
 chart.data = data;
@@ -98,7 +92,6 @@ chart.data = data;
   dateAxis.renderer.grid.template.location = 0;
 
 
-  series.tooltip.pointerOrientation = "vertical";
   series.strokeWidth = 3;
   series.tensionX = 0.8;
   series.fill = series.stroke;
@@ -107,6 +100,7 @@ chart.data = data;
   
 
   // Drop-shaped tooltips
+  if (series.tooltip) {
   series.tooltip.background.cornerRadius = 20;
   series.tooltip.background.strokeOpacity = 0.5;
   series.tooltip.pointerOrientation = "vertical";
@@ -115,7 +109,7 @@ chart.data = data;
   series.tooltip.label.minHeight = 40;
   series.tooltip.label.textAlign = "middle";
   series.tooltip.label.textValign = "middle";
-
+  }
   // Create vertical scrollbar and place it before the value axis
   chart.scrollbarY = new am4core.Scrollbar();
   chart.scrollbarY.parent = chart.leftAxesContainer;
@@ -123,10 +117,12 @@ chart.data = data;
 
    // Create a horizontal scrollbar with preview and place it underneath the date axis
   chart.scrollbarX = new am4charts.XYChartScrollbar();
-  chart.scrollbarX.series.push(series);
+  //chart.scrollbarX.series.push(series);
   chart.scrollbarX.parent = chart.bottomAxesContainer;
-
-  function customizeGrip(grip) {
+  /* 
+    need to fix this typing later on, shoulnt have any
+  */
+  function customizeGrip(grip: any) {
     grip.background.fill = am4core.color('#8CFFDA');
     grip.background.fillOpacity = 0.5;
   }
@@ -145,10 +141,12 @@ chart.data = data;
   chart.cursor = new am4charts.XYCursor();
 
   dateAxis.keepSelection = true;
-  dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
+  if (dateAxisTooltip) {
+    dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
+  }
 
-    return () => {
-      chart.dispose();
+  return () => {
+    chart.dispose();
     };
   }, [history]);
 

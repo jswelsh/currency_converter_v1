@@ -26,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
 
-  const handleClick = (event) => {
+  /* 
+    need to changed the type for this at some point
+  */
+
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);};
   const handleClose = () => {
     setAnchorEl(null);};

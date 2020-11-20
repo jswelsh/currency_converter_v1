@@ -2312,7 +2312,7 @@
         "affectsGlobalScope": false
       },
       "./ExchangeHistoryPopOver.tsx": {
-        "version": "a3c06dff296c647a2a886a6eaa45a0d1b1829c284901daf8f6307883fe59f74e",
+        "version": "8265c8a813def77dc2a1fb41b0fea754849d3e340bcfdce34c99f2bdd45310ae",
         "signature": "83e05cf55399b82a37b05a47226660a79e06e3cd92ce6b18d749b62357e62b02",
         "affectsGlobalScope": false
       },
@@ -2387,7 +2387,7 @@
         "affectsGlobalScope": false
       },
       "./UserInputTab.tsx": {
-        "version": "2134f5f57911a992e7882e43203fc459ad904503075b7bddc50be364576ddda8",
+        "version": "02121dfdefd78fc1fd1cf3b40677e2c27f24b69793d245685d34ede80f26abbf",
         "signature": "1fd50e9536cc0e2fa0b412d25ce8ce68b7fbf3204e2420e68adc0169af8bbc29",
         "affectsGlobalScope": false
       },
@@ -3662,7 +3662,7 @@
         "affectsGlobalScope": false
       },
       "./ExchangeHistoryGraph.tsx": {
-        "version": "7ef8a49183ca34e9e813ab79827aa7dce32cd1da8fc6aa7676a5c401d4e5fb84",
+        "version": "a919c1d71a13a53c134b26f2a51ba09f913476d39534602ced6c22d6541f70a6",
         "signature": "77cff393d3bf7be24a354f466dd151c8049191ffa873e66f2baf79ed58c01a9a",
         "affectsGlobalScope": false
       },
@@ -14148,164 +14148,13 @@
       "./ConvertViewIntroCard.tsx",
       "./CurrencySelectionForm.tsx",
       "./DatePickerComponent.js",
-      [
-        "./ExchangeHistoryGraph.tsx",
-        [
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 2116,
-            "length": 5,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'color' does not exist on type '{ date: Date; value: number; }'."
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 2230,
-            "length": 5,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'color' does not exist on type '{ date: Date; value: number; }'."
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 2983,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3206,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3253,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3302,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3352,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3396,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3434,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3473,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3518,
-            "length": 14,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 3919,
-            "length": 6,
-            "code": 2339,
-            "category": 1,
-            "messageText": "Property 'series' does not exist on type 'Scrollbar'."
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 4021,
-            "length": 4,
-            "messageText": "Parameter 'grip' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7006
-          },
-          {
-            "file": "./ExchangeHistoryGraph.tsx",
-            "start": 4750,
-            "length": 15,
-            "messageText": "Object is possibly 'undefined'.",
-            "category": 1,
-            "code": 2532
-          }
-        ]
-      ],
-      [
-        "./ExchangeHistoryPopOver.tsx",
-        [
-          {
-            "file": "./ExchangeHistoryPopOver.tsx",
-            "start": 761,
-            "length": 5,
-            "messageText": "Parameter 'event' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7006
-          }
-        ]
-      ],
+      "./ExchangeHistoryGraph.tsx",
+      "./ExchangeHistoryPopOver.tsx",
       "./InputAmountField.js",
       "./SelectionComponent.js",
       "./TabSelector.js",
       "./ToolBar.js",
-      [
-        "./UserInputTab.tsx",
-        [
-          {
-            "file": "./UserInputTab.tsx",
-            "start": 1877,
-            "length": 10,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type '{ dateRange: any[]; handleChange: (event: Date[]) => void; toCurrency: string; }' is not assignable to type 'IntrinsicAttributes & IExchangeHistoryPopOverProps & { children?: ReactNode; }'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Property 'toCurrency' does not exist on type 'IntrinsicAttributes & IExchangeHistoryPopOverProps & { children?: ReactNode; }'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          }
-        ]
-      ],
+      "./UserInputTab.tsx",
       "./react-flippy.d.ts",
       "./types.tsx",
       "../helpers/compareHelper.d.ts",

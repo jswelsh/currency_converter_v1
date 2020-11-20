@@ -65,8 +65,7 @@ return (
     {mode === 'History' && (
       <ExchangeHistoryPopOver
         dateRange={dateRange}
-        handleChange={handleChange}
-        toCurrency={toCurrency}/> 
+        handleChange={handleChange}/> 
     )}
     {mode === 'Converter' && (
     <Button       
