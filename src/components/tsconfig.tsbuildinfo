@@ -2352,8 +2352,8 @@
         "affectsGlobalScope": false
       },
       "./CurrencySelectionForm.tsx": {
-        "version": "d746ed7ae142dac552d4fe794156e0938b1cae81a10fa889e7d84d5140f31fad",
-        "signature": "615989716e0b6fde4f192231f302767ed3acb7fa448f58bccbd3e4528b21550e",
+        "version": "aef09d05d34939b30dab016a04a6cad3d4e4df22b4fcc6aa4d1b158d4418409c",
+        "signature": "2e0a54971ee84036451762e34a25c63f81008eff8d0c835208d6fb01f371e98a",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/Shuffle.d.ts": {
@@ -2412,8 +2412,8 @@
         "affectsGlobalScope": false
       },
       "./ConvertViewFrontsideCard.tsx": {
-        "version": "a9e14c66046de444386aff6bd1f5e718810b1931edf2f9c64ff6b8c4283307ce",
-        "signature": "ec0a86b8ff8d407ab09816d9f09747297c063a2282d98dd2e81dfdb56fa234d3",
+        "version": "981821de449f72e015dc791776dea000e79346531b23005eb801f70a06f2bd72",
+        "signature": "a294874a19bfca64c78051913149011b52e35f182c44307f843973a9c6d79874",
         "affectsGlobalScope": false
       },
       "./ConvertViewCardTable.tsx": {
@@ -2422,8 +2422,8 @@
         "affectsGlobalScope": false
       },
       "./ConvertViewBacksideCard.tsx": {
-        "version": "7be445ecc4048419818b7551e64e8a151c04cafb6a19ffddb3f2d88d5d3a9dda",
-        "signature": "eaf5b33d3cb7071ffde20a48914b8643aa64408f3fc71097922e49981271cfab",
+        "version": "08e9a5c81acea930b9d6e10536c5669d588cd5b27ab4e588ac298cc66ec577a2",
+        "signature": "3cadf9d24720c03365a8e6957075cbf143403ffa23ed0264eb87675959133d20",
         "affectsGlobalScope": false
       },
       "./ConvertView.tsx": {
@@ -13218,6 +13218,9 @@
       "./ConvertViewIntroCard.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
+      "./CurrencySelectionForm.tsx": [
+        "../../node_modules/@types/react/index.d.ts"
+      ],
       "../styles/AppStyles.js": [
         "../../node_modules/@material-ui/core/index.d.ts"
       ]
@@ -14100,265 +14103,12 @@
       "./Button.tsx",
       "./CompareListItem.tsx",
       "./CompareView.tsx",
-      [
-        "./ConvertView.tsx",
-        [
-          {
-            "file": "./ConvertView.tsx",
-            "start": 2541,
-            "length": 8,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type 'ReactText' is not assignable to type 'string'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Type 'number' is not assignable to type 'string'.",
-                  "category": 1,
-                  "code": 2322
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "./ConvertViewFrontsideCard.tsx",
-                "start": 519,
-                "length": 8,
-                "messageText": "The expected type comes from property 'currency' which is declared here on type 'IntrinsicAttributes & IConvertViewFrontsideCardProps & { children?: ReactNode; }'",
-                "category": 3,
-                "code": 6500
-              }
-            ]
-          },
-          {
-            "file": "./ConvertView.tsx",
-            "start": 2618,
-            "length": 6,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type 'ReactText' is not assignable to type 'number'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Type 'string' is not assignable to type 'number'.",
-                  "category": 1,
-                  "code": 2322
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "./ConvertViewFrontsideCard.tsx",
-                "start": 553,
-                "length": 6,
-                "messageText": "The expected type comes from property 'amount' which is declared here on type 'IntrinsicAttributes & IConvertViewFrontsideCardProps & { children?: ReactNode; }'",
-                "category": 3,
-                "code": 6500
-              }
-            ]
-          },
-          {
-            "file": "./ConvertView.tsx",
-            "start": 2807,
-            "length": 8,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type 'ReactText' is not assignable to type 'string'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Type 'number' is not assignable to type 'string'.",
-                  "category": 1,
-                  "code": 2322
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "./ConvertViewBacksideCard.tsx",
-                "start": 737,
-                "length": 8,
-                "messageText": "The expected type comes from property 'currency' which is declared here on type 'IntrinsicAttributes & IConvertViewBacksideCardProps & { children?: ReactNode; }'",
-                "category": 3,
-                "code": 6500
-              }
-            ]
-          },
-          {
-            "file": "./ConvertView.tsx",
-            "start": 2877,
-            "length": 17,
-            "code": 2719,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type 'IRecentRateHistoryItem[]' is not assignable to type 'IRecentRateHistoryItem[]'. Two different types with this name exist, but they are unrelated.",
-              "category": 1,
-              "code": 2719,
-              "next": [
-                {
-                  "messageText": "Type 'IRecentRateHistoryItem' is not assignable to type 'IRecentRateHistoryItem'. Two different types with this name exist, but they are unrelated.",
-                  "category": 1,
-                  "code": 2719,
-                  "next": [
-                    {
-                      "messageText": "Types of property 'value' are incompatible.",
-                      "category": 1,
-                      "code": 2326,
-                      "next": [
-                        {
-                          "messageText": "Type 'number' is not assignable to type 'string'.",
-                          "category": 1,
-                          "code": 2322
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "./ConvertViewBacksideCard.tsx",
-                "start": 666,
-                "length": 17,
-                "messageText": "The expected type comes from property 'recentRateHistory' which is declared here on type 'IntrinsicAttributes & IConvertViewBacksideCardProps & { children?: ReactNode; }'",
-                "category": 3,
-                "code": 6500
-              }
-            ]
-          }
-        ]
-      ],
+      "./ConvertView.tsx",
       "./ConvertViewBacksideCard.tsx",
       "./ConvertViewCardTable.tsx",
       "./ConvertViewFrontsideCard.tsx",
       "./ConvertViewIntroCard.tsx",
-      [
-        "./CurrencySelectionForm.tsx",
-        [
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 15,
-            "length": 2,
-            "messageText": "'FC' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 539,
-            "length": 12,
-            "messageText": "Binding element 'fromCurrency' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7031
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 555,
-            "length": 10,
-            "messageText": "Binding element 'toCurrency' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7031
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 569,
-            "length": 21,
-            "messageText": "Binding element 'currencySelectHandler' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7031
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 594,
-            "length": 14,
-            "messageText": "Binding element 'currenciesList' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7031
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 612,
-            "length": 4,
-            "messageText": "Binding element 'mode' implicitly has an 'any' type.",
-            "category": 1,
-            "code": 7031
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 729,
-            "length": 5,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type '{ props: any; icon: Element; name: string; value: any; setter: any; currenciesList: any; }' is not assignable to type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Property 'props' does not exist on type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 1030,
-            "length": 5,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type '{ props: any; icon: Element; name: string; value: any; setter: any; currenciesList: any; }' is not assignable to type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Property 'props' does not exist on type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 1277,
-            "length": 5,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type '{ props: any; icon: Element; name: string; value: any; setter: any; currenciesList: any; }' is not assignable to type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Property 'props' does not exist on type 'IntrinsicAttributes & { icon: any; name: any; value: any; setter: any; currenciesList: any; }'.",
-                  "category": 1,
-                  "code": 2339
-                }
-              ]
-            }
-          },
-          {
-            "file": "./CurrencySelectionForm.tsx",
-            "start": 1534,
-            "length": 5,
-            "messageText": "'event' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
+      "./CurrencySelectionForm.tsx",
       "./DatePickerComponent.js",
       "./ExchangeHistoryGraph.js",
       "./ExchangeHistoryPopOver.js",

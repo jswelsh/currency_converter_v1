@@ -26,15 +26,15 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-interface IRecentRateHistoryItem {
+/* interface IRecentRateHistoryItem {
   value: string
   date: Date
-}
+} */
 
 interface IConvertViewBacksideCardProps {
-  recentRateHistory: Array<IRecentRateHistoryItem>
+  recentRateHistory: any
   converted: number
-  currency: string
+  currency: any
   avatar: Object
   name: string
 }

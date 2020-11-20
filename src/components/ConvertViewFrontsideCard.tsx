@@ -27,11 +27,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface IConvertViewFrontsideCardProps {
-	currency: string
-	symbol: string
-	amount: number
+	currency: any
+	symbol: any
+	amount: any
 	avatar: Object
-	title: string
+	title: any
 }
 
 const ConvertViewFrontsideCard: FC<IConvertViewFrontsideCardProps> = ({
