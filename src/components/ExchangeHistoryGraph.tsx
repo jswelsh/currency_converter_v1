@@ -38,6 +38,10 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   const classes = useStyles();
 
   useLayoutEffect(() => {
+  const color = { 
+    primary: color.primary,
+    secondary: color.secondary
+  }
 
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
@@ -47,18 +51,18 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     chart.marginLeft = drawerWidth -10
     chart.marginRight = drawerWidth -40
   let data: Array<IDataItem> = [];
-  let value, date, color;
+  let value, date, lineColor;
   let previousValue = 0;
 
   for (let i = 0; i < history.length; i++) {
-    color = am4core.color('#8CFFDA')
+    lineColor = color.primary
     value = history[i]['value'];
     date = history[i]['date'];
 
     if(i > 0){
-      color = previousValue <= value ?
-        am4core.color('#8CFFDA') :
-        am4core.color('#dc67ab')
+      lineColor = previousValue <= value ?
+        color.primary :
+        color.secondary
     }     
     data.push({ 
       date: date, 
@@ -77,7 +81,7 @@ chart.data = data;
   series.dataFields.valueY = "value";
   series.dataFields.dateX = "date";
   series.tooltipText = "{value}";
-  series.stroke = am4core.color('#8CFFDA');;
+  series.stroke = color.primary;;
   series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;
@@ -113,23 +117,21 @@ chart.data = data;
   scrollbarX.parent = chart.bottomAxesContainer;
   /* 
     need to fix this typing later on, shoulnt have any
-  */
+    */
+  //styling for the scroll bar
   function customizeGrip(grip: any) {
-    grip.background.fill = am4core.color('#dc67ab');
+    grip.background.fill = color.secondary;
     grip.background.fillOpacity = 0.9;
   }
-  //styling for the scroll bar
-  customizeGrip(scrollbarY.startGrip);
-  customizeGrip(scrollbarY.endGrip);
-  scrollbarY.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
-  scrollbarY.endGrip.icon.stroke = am4core.color('#00ffae');
-  scrollbarY.startGrip.icon.stroke = am4core.color('#00ffae');
-  customizeGrip(scrollbarX.startGrip);
-  customizeGrip(scrollbarX.endGrip);
-  scrollbarX.background.fill = am4core.color(/* '#dc67ab' */'#8CFFDA');
-  scrollbarX.endGrip.icon.stroke = am4core.color('#00ffae');
-  scrollbarX.startGrip.icon.stroke = am4core.color('#00ffae');
-
+  function scrollbarConstructor(scrollbar) {
+    customizeGrip(scrollbar.startGrip);
+    customizeGrip(scrollbar.endGrip);
+    scrollbar.background.fill = color.primary;
+    scrollbar.endGrip.icon.stroke = color.primary;
+    scrollbar.startGrip.icon.stroke = color.primary;
+  }
+  scrollbarConstructor(scrollbarY)
+  scrollbarConstructor(scrollbarX)
 
   let dateAxisTooltip = dateAxis.tooltip;
   valueAxis.cursorTooltipEnabled = false;
@@ -137,7 +139,7 @@ chart.data = data;
 
   dateAxis.keepSelection = true;
   if (dateAxisTooltip) {
-    dateAxisTooltip.background.fill = am4core.color("#8CFFDA");
+    dateAxisTooltip.background.fill = color.primary;
   }
 
   return () => {
