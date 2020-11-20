@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-//import {  } from './types'
+import { IInputAmountFieldProps } from './types'
 import TextField from '@material-ui/core/TextField';
 import NumberFormat from 'react-number-format';
 import { handleChange, label } from '../helpers/inputAmountHelper'
@@ -11,13 +11,14 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2)
   }
 }));
-interface NumberFormatCustomProps {
+
+interface INumberFormatCustomProps {
   inputRef: (instance: NumberFormat | null) => void;
   onChange: (event: { target: { name: string; value: string } }) => void;
   name: string;
 }
 
-function NumberFormatCustom(props: NumberFormatCustomProps) {
+function NumberFormatCustom(props: INumberFormatCustomProps) {
   console.log('delta',props)
   const { 
     inputRef, 
@@ -32,7 +33,7 @@ function NumberFormatCustom(props: NumberFormatCustomProps) {
         onChange({
           target: {
             value: amount.value,
-          },
+            name: 'numberformat'}
         });
       }}
       thousandSeparator
@@ -42,14 +43,14 @@ function NumberFormatCustom(props: NumberFormatCustomProps) {
   );
 }
 
-export function InputAmountField({
+const InputAmountField: FC<IInputAmountFieldProps> = ({
   amount,
   setAmount,
   fromCurrency,
-  drawer}) {
+  drawer
+}) => {
   const classes = useStyles();
-  console.log('echo', amount, setAmount, fromCurrency, drawer)
-  
+
 return (
   <div className={classes.TextField}  >
     <TextField
@@ -59,7 +60,7 @@ return (
       name="amountField"
       id="formatted-numberformat-input"
       InputProps={{
-        inputComponent: NumberFormatCustom}}/>
+        inputComponent: NumberFormatCustom as any}}/>
   </div>
-);
-}
+);}
+export { InputAmountField }

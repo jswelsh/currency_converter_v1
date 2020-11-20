@@ -1972,8 +1972,8 @@
         "affectsGlobalScope": false
       },
       "./types.tsx": {
-        "version": "4f5225243fc0c0ab123b8f3b376e50a576a8b73b9ca16cd1e83a83a2c820b486",
-        "signature": "cbda0c1f9e4f984b85e3dc8eb480e456cb24ca3a7224800da8cb6e9cef33eaf2",
+        "version": "fe1478f188d1158b1e23c14f733a073c904fc1b6cae0a99312665c56f0d2af1b",
+        "signature": "85f7f5797177edfcc7964a6a65bc16a3f81a3ecd3a2aef2d12258f1a6a86e7d8",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/CalendarToday.d.ts": {
@@ -2381,9 +2381,9 @@
         "signature": "c18996d93a4e8fdc7d2644cbdccf3ecb4783b8072dbe407677ec84f455ea41a9",
         "affectsGlobalScope": false
       },
-      "./InputAmountField.js": {
-        "version": "c6d3906102a77a1071af42be02890959ac4b05558a495017aa036c4e5b9350f1",
-        "signature": "b86cd86e8c4906daee5195899acce87ad347d2b48924cdfc727ae5259231d945",
+      "./InputAmountField.tsx": {
+        "version": "de7d0686ef85c2344936c41a84d9ae3e022b90d29bb12b9c7634ecb4f2390f90",
+        "signature": "22e279c39fbc57ccc34e168e59b5fb66e96c3e9633a6397b64f785d3c8ba7e41",
         "affectsGlobalScope": false
       },
       "./UserInputTab.tsx": {
@@ -3662,7 +3662,7 @@
         "affectsGlobalScope": false
       },
       "./ExchangeHistoryGraph.tsx": {
-        "version": "a919c1d71a13a53c134b26f2a51ba09f913476d39534602ced6c22d6541f70a6",
+        "version": "f11ddbcb37142c55e25d543f1f8f127de657255bc7f5c1feccfa41ee210c88ba",
         "signature": "77cff393d3bf7be24a354f466dd151c8049191ffa873e66f2baf79ed58c01a9a",
         "affectsGlobalScope": false
       },
@@ -8900,7 +8900,7 @@
         "./DatePickerComponent.js",
         "./types.tsx"
       ],
-      "./InputAmountField.js": [
+      "./InputAmountField.tsx": [
         "../../node_modules/@material-ui/core/TextField/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
@@ -8939,7 +8939,7 @@
         "./Button.tsx",
         "./CurrencySelectionForm.tsx",
         "./ExchangeHistoryPopOver.tsx",
-        "./InputAmountField.js",
+        "./InputAmountField.tsx",
         "./types.tsx"
       ],
       "../helpers/compareHelper.js": [
@@ -13255,6 +13255,9 @@
         "../../node_modules/@types/react/index.d.ts",
         "./types.tsx"
       ],
+      "./InputAmountField.tsx": [
+        "../../node_modules/@types/react/index.d.ts"
+      ],
       "./UserInputTab.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "./types.tsx"
@@ -14150,11 +14153,44 @@
       "./DatePickerComponent.js",
       "./ExchangeHistoryGraph.tsx",
       "./ExchangeHistoryPopOver.tsx",
-      "./InputAmountField.js",
+      "./InputAmountField.tsx",
       "./SelectionComponent.js",
       "./TabSelector.js",
       "./ToolBar.js",
-      "./UserInputTab.tsx",
+      [
+        "./UserInputTab.tsx",
+        [
+          {
+            "file": "./UserInputTab.tsx",
+            "start": 1444,
+            "length": 9,
+            "code": 2322,
+            "category": 1,
+            "messageText": {
+              "messageText": "Type 'Dispatch<SetStateAction<number>>' is not assignable to type '(amount: number) => boolean'.",
+              "category": 1,
+              "code": 2322,
+              "next": [
+                {
+                  "messageText": "Type 'void' is not assignable to type 'boolean'.",
+                  "category": 1,
+                  "code": 2322
+                }
+              ]
+            },
+            "relatedInformation": [
+              {
+                "file": "./InputAmountField.tsx",
+                "start": 1132,
+                "length": 34,
+                "messageText": "The expected type comes from property 'setAmount' which is declared here on type 'IntrinsicAttributes & IInputAmountFieldProps & { children?: ReactNode; }'",
+                "category": 3,
+                "code": 6500
+              }
+            ]
+          }
+        ]
+      ],
       "./react-flippy.d.ts",
       "./types.tsx",
       "../helpers/compareHelper.d.ts",
@@ -17643,6 +17679,10 @@
       ],
       [
         "./InputAmountField.js",
+        1
+      ],
+      [
+        "./InputAmountField.tsx",
         1
       ],
       [

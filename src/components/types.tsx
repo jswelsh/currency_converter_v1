@@ -96,3 +96,24 @@ export interface IExchangeHistoryPopOverProps {
   dateRange: Array<Date>
   handleChange(event: Array<Date>): void
 }
+
+export interface INumberFormatCustomProps {
+  inputRef: (instance: NumberFormat | null) => void;
+  onChange: (event: { target: { name: string; value: string } }) => void;
+  name: string;
+}
+
+export interface IInputAmountFieldProps {
+  amount: number
+  setAmount(amount: number): boolean 
+  fromCurrency: string
+  drawer: string
+}
+
+export interface ISelectionComponentProps {
+  icon: Object
+  name: string
+  value: number
+  currencySelectHandler(mode: string, currency: string): void
+  currenciesList: Array<ICurrency>
+}
