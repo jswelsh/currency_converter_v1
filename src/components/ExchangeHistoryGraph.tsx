@@ -42,31 +42,41 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
   am4core.options.autoDispose = true;
+  
+  interface IDataItem {
+    date: Date
+    value: number
+    color: Object
+  }
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
     chart.marginLeft = 230
     chart.marginRight = 200
-  let data = [];
+  let data: Array<IDataItem> = [];
   let value;
   let date;
-  // let color;
+  let color;
   let previousValue = 0;
 
   for (let i = 0; i < history.length; i++) {
+    color = am4core.color('#8CFFDA')
     value = history[i]['value'];
     date = history[i]['date'];
 
     if(i > 0){
         // add color to previous data item depending on whether current value is less or more than previous value
-        if(previousValue <= value){
-          // color = am4core.color('#8CFFDA'); /* chart.colors.getIndex(0); */
-          data[i - 1].color = /* am4core.color('#8CFFDA'); */ chart.colors.getIndex(0);
+  /*       if(previousValue <= value){
+          color = am4core.color('#8CFFDA'); 
         }
         else{
-            data[i - 1].color = /* am4core.color('#dc67ab'); */ chart.colors.getIndex(5);
-        }
+          color = am4core.color('#dc67ab'); 
+        } */
+
+        color = previousValue <= value ?
+          am4core.color('#8CFFDA') :
+          am4core.color('#dc67ab')
     }     
-    data.push({ date: date, value: value });
+    data.push({ date: date, value: value, color: color });
     previousValue =  value;
 } 
 
