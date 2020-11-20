@@ -38,21 +38,21 @@ export interface IConvertViewBacksideCardProps {
   name: string }
 
 export interface IConvertViewCardTableProps {
-	recentRateHistory: Array<ICurrencyArrayItem>
-	converted: number }
+  recentRateHistory: Array<ICurrencyArrayItem>
+  converted: number }
 
 export interface IConvertViewFrontsideCardProps {
-	currency: any
-	symbol: any
-	amount: any
-	avatar: Object
-	title: any }
+  currency: any
+  symbol: any
+  amount: any
+  avatar: Object
+  title: any }
 
 export interface IConvertViewIntroCardProps {
-	avatar: Object
-	title: string
-	currency: string
-	intro: string }
+  avatar: Object
+  title: string
+  currency: string
+  intro: string }
 
 interface ICurrency {
   currency: string }
@@ -70,22 +70,23 @@ export interface IExchangeHistoryGraphProps {
 }
 
 export interface IUserInputTabProps {
-	convertHistoryHandler(): void 
-	compareListHandler(): void 
+  convertHistoryHandler(payload: object): void 
+  compareListHandler(fromCurrency: string, amount: number): void 
   currenciesList: Array<ICurrency>
-	convertHandler: string
-	setFromCurrency(currency: string): boolean
-	setToCurrency(currency: string): boolean
-	fromCurrency: string
-	toCurrency: string
-	drawer: string
-	mode: boolean
+  convertHandler(payload: object): void 
+  setFromCurrency(currency: string): boolean
+  setToCurrency(currency: string): boolean
+  fromCurrency: string
+  toCurrency: string
+  drawer: string
+  mode: string
 }
 
-interface ICurrencySelectHandlerProps {
-  mode: string
-  currency: string
+export interface IcurrencySelectHandlerFunc {
+  (currency: string, mode: string): boolean;
 }
-export interface currencySelectHandler {
-  
+
+export interface IExchangeHistoryPopOverProps {
+  dateRange: Array<Date>
+  handleChange(event: Array<Date>): void
 }

@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { IUserInputTabProps, ICurrencySelectorProps } from './types'
+import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
@@ -7,93 +7,91 @@ import { InputAmountField } from './InputAmountField';
 
 import { Divider } from '@material-ui/core';
 import { 
-	initializeDateRange, 
-	shortenDateString 
+  initializeDateRange, 
+  shortenDateString 
 } from '../helpers/dataHelpers'
 
 const UserInputTab: FC<IUserInputTabProps> = ({
-	convertHistoryHandler,
-	compareListHandler,
-	currenciesList,
-	convertHandler,
-	setFromCurrency,
-	setToCurrency,
-	fromCurrency,
-	toCurrency,
-	drawer,
-	mode,
+  convertHistoryHandler,
+  compareListHandler,
+  currenciesList,
+  convertHandler,
+  setFromCurrency,
+  setToCurrency,
+  fromCurrency,
+  toCurrency,
+  drawer,
+  mode,
 }) => {
 
 const [amount, setAmount] = useState(1);
 const [dateRange, setDateRange] = useState(initializeDateRange(365));
 
-/* ICurrencySelectorProps */
-const currencySelectHandler( setFromCurrency(currency:string): void, currency: string, Hmode: string): boolean => { 
-	return (
-		Hmode === 'fromCurrency' ? setFromCurrency(currency):
-		Hmode === 'toCurrency' ? setToCurrency(currency) :
-		null
-	)
+let currencySelectHandler: IcurrencySelectHandlerFunc
+
+currencySelectHandler = function( currency: string, mode: string) { 
+  return (
+    mode === 'fromCurrency' ? setFromCurrency(currency):
+    mode === 'toCurrency' ? setToCurrency(currency) :
+    false
+  )
 }
 
-	const handleChange = (event: Array<Date>) => {
-		//error check that both start and end date have been selected
-		if(event[1] !== null){
-			const [startDate, endDate] = event
-			setDateRange(
-				[shortenDateString(startDate), 
-				shortenDateString(endDate)
-			])
-		}
-	}
-	return (
-	<> 
-		{mode !== 'History' && (
-		<InputAmountField
-			amount={amount}
-			setAmount={setAmount}
-			fromCurrency={fromCurrency}
-			drawer={drawer}/>)}
-		<CurrencySelectionForm 
-			fromCurrency={fromCurrency}
-			toCurrency={toCurrency}
-			setFromCurrency={setFromCurrency}
-			setToCurrency={setToCurrency}
-			currencySelectHandler={currencySelectHandler}
-			currenciesList={currenciesList}
-			mode={mode}/>
-		<Divider />
-		{mode === 'History' && (
-			<ExchangeHistoryPopOver
-				dateRange={dateRange}
-				handleChange={handleChange}
-				fromCurrency={fromCurrency}
-				toCurrency={toCurrency}/> 
-		)}
-		{mode === 'Converter' && (
-		<Button       
-			primary='Connvert Currencies'
-			handleSubmit={()=>
-				convertHandler({
-					fromCurrency: fromCurrency, 
-					toCurrency: toCurrency,
-					amount: amount})}
-		/>)}
-		{mode === 'History' && 
-		<Button       
-			primary='Generate Graph'
-			handleSubmit={()=>
-				convertHistoryHandler({
-					fromCurrency, 
-					toCurrency, 
-					dateRange})}/>}
-		{mode === 'Compare' && 
-		<Button       
-			primary='Compare Currencies'
-			handleSubmit={()=>
-				compareListHandler(fromCurrency, amount)}/>}
-	</>
-	)
+const handleChange = (event: Array<Date>) => {
+  //error check that both start and end date have been selected
+  if(event[1] !== null){
+    const [startDate, endDate] = event
+    setDateRange(
+      [shortenDateString(startDate), 
+      shortenDateString(endDate)
+    ])
+  }
+}
+return (
+  <> 
+    {mode !== 'History' && (
+    <InputAmountField
+      amount={amount}
+      setAmount={setAmount}
+      fromCurrency={fromCurrency}
+      drawer={drawer}/>)}
+    <CurrencySelectionForm 
+      fromCurrency={fromCurrency}
+      toCurrency={toCurrency}
+      currencySelectHandler={currencySelectHandler}
+      currenciesList={currenciesList}
+      mode={mode}/>
+    <Divider />
+    {mode === 'History' && (
+      <ExchangeHistoryPopOver
+        dateRange={dateRange}
+        handleChange={handleChange}
+        toCurrency={toCurrency}/> 
+    )}
+    {mode === 'Converter' && (
+    <Button       
+      primary='Connvert Currencies'
+      handleSubmit={()=>
+        convertHandler({
+          fromCurrency: fromCurrency, 
+          toCurrency: toCurrency,
+          amount: amount})}
+    />)}
+    {mode === 'History' && 
+    <Button       
+      primary='Generate Graph'
+      handleSubmit={()=>
+        convertHistoryHandler({
+          fromCurrency, 
+          toCurrency, 
+          dateRange})}/>}
+    {mode === 'Compare' && 
+    <Button       
+      primary='Compare Currencies'
+      handleSubmit={()=>
+        compareListHandler(fromCurrency, amount)}/>}
+  </>
+  )
 }
 
 export {UserInputTab}

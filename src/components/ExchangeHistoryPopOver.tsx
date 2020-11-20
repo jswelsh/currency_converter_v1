@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { FC,useState } from "react";
+import { IExchangeHistoryPopOverProps } from './types'
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Popover,  
@@ -18,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
   pop:{
     padding:theme.spacing(4)}}));
 
-export function ExchangeHistoryPopOver({
+ const ExchangeHistoryPopOver: FC<IExchangeHistoryPopOverProps> = ({
   dateRange,
-  handleChange}) {
+  handleChange}) => {
     
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
@@ -65,3 +66,5 @@ export function ExchangeHistoryPopOver({
   </>
   );
 }
+
+export { ExchangeHistoryPopOver }
