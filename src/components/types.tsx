@@ -8,7 +8,7 @@ export interface ICompareListItemProps {
   currency: string
   primary: number }
 
-interface ICompareListItem {
+export interface ICompareListItem {
   currency: string
   value: number }
 export interface ICompareViewProps {
@@ -17,7 +17,7 @@ export interface ICompareViewProps {
   compareList: Array<ICompareListItem>
   opendrawer: boolean }
 
-interface ICurrencyArrayItem {
+export interface ICurrencyArrayItem {
   date: Date
   value: number }
 export interface IConvertViewProps {
@@ -54,7 +54,7 @@ export interface IConvertViewIntroCardProps {
   currency: string
   intro: string }
 
-interface ICurrency {
+export interface ICurrency {
   currency: string }
 
 export interface ICurrencySelectionFormProps {
@@ -122,4 +122,12 @@ export interface ITabSelectorProps {
 export interface IToolBarProps extends IUserInputTabProps {
   setDrawerOpen(state: boolean): void
   modeHandler(mode: string): void
+}
+
+export interface IconvertHandlerFunc {
+  (payload: {
+    fromCurrency: string
+    toCurrency: string
+    amount: string
+  }): any
 }
