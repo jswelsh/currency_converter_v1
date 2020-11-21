@@ -166,6 +166,11 @@
         "signature": "416e5d547a57e2fc9bac063ff167eee2c34aad14296acf9688eaa24fee981e05",
         "affectsGlobalScope": true
       },
+      "./types.tsx": {
+        "version": "96019481ff4eeb4ddea77fdb363eddaa27c4c660eb5383ae8a654e27e91895bb",
+        "signature": "e8153d30c16f65e6a171c899916cc34d0c0b3c107d4e9cb9543eab6c5ffb2fae",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/axios/index.d.ts": {
         "version": "c50b2f015a8bddda1689f8228703f177614f9e10348f4a845104f04351264507",
         "signature": "c50b2f015a8bddda1689f8228703f177614f9e10348f4a845104f04351264507",
@@ -176,14 +181,9 @@
         "signature": "72c3e317a95983c364b73e9014227a22188bcacb02cd9c46d6548e050057aa90",
         "affectsGlobalScope": false
       },
-      "../helpers/currency.json": {
-        "version": "f64b48f487fd70eb62378efd969a06d1107b63383e551d48977fe31c62d25a17",
-        "signature": "e62f8f5e4067380326477f807d3037fc9a144e94b917e8cf43da72e375263ab2",
-        "affectsGlobalScope": true
-      },
-      "../hooks/useAppData.js": {
-        "version": "139dbbc27404abcced3b4cdd5f33abb78ac22a61c950280ab67d5d03b8d4b64a",
-        "signature": "773081566926646bc9714600781e80860e0efc29342d6b87c97e07930f7fda72",
+      "../hooks/useAppData.tsx": {
+        "version": "5217d77ed99b1be164a0913e484196b9ae82566b73c53a8a4355f1ca3812d776",
+        "signature": "f54d4bd7b487d461e21a2f95ad4c21dae5e5e8d1a43f3a8ad1a3278e82a23b09",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/types/index.d.ts": {
@@ -1951,11 +1951,6 @@
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "affectsGlobalScope": false
       },
-      "./types.tsx": {
-        "version": "ee3e375deae728a5bba028cd17de51ccf2c604ec9d6e56e44d71ad8255edcdc0",
-        "signature": "1771930a9722c561318616295e0d34ccb8c81e898857ef80eb836cc5466985dc",
-        "affectsGlobalScope": false
-      },
       "../../node_modules/@material-ui/icons/Timeline.d.ts": {
         "version": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
@@ -1972,7 +1967,7 @@
         "affectsGlobalScope": false
       },
       "./TabSelector.tsx": {
-        "version": "a4160394c5d9cabe91f2d7af8e2e6dbfa14a668da0231fa09f8f3a61aee6bb0e",
+        "version": "971024c21537e70118938f271f53bc52ca33ca8315ac84dfba17da326ebbcee0",
         "signature": "fd3ed8f99296aabb604439ceff0d0a931041d3e9397528ca1cd95cbf6d24c696",
         "affectsGlobalScope": false
       },
@@ -2307,7 +2302,7 @@
         "affectsGlobalScope": false
       },
       "./DatePickerComponent.js": {
-        "version": "aea60cfdc4c7176f5b3d72f446f6f6df90ed144198d40b4ebd828d8b9c63d1ba",
+        "version": "62435f3456f4bfbce1703f0976864b676a2b80c232b87dc143c3d66d667e437e",
         "signature": "ba3425fc956b59fd681074fe35fe0b6d2711b4c8dd88784569ec7216207c05c7",
         "affectsGlobalScope": false
       },
@@ -2376,24 +2371,29 @@
         "signature": "5643c68c6cc62df7695ea977129445d05c2d7e850e5264fbcc49d5f65668bdd7",
         "affectsGlobalScope": false
       },
+      "../helpers/currency.json": {
+        "version": "f64b48f487fd70eb62378efd969a06d1107b63383e551d48977fe31c62d25a17",
+        "signature": "e62f8f5e4067380326477f807d3037fc9a144e94b917e8cf43da72e375263ab2",
+        "affectsGlobalScope": true
+      },
       "../helpers/inputAmountHelper.js": {
         "version": "57afed5f531cae5a3030fe6eb0ce333370882a9126b11f5118e22d223f479838",
         "signature": "c18996d93a4e8fdc7d2644cbdccf3ecb4783b8072dbe407677ec84f455ea41a9",
         "affectsGlobalScope": false
       },
       "./InputAmountField.tsx": {
-        "version": "b332dbc4135debdd8050b0a37d50c3d1304a3f5f22b80dbbbef3a8c8f469c956",
+        "version": "f3d6d3f6526385b473f586f0dfb36be0b85d2b7504fb71a27157a9e6e6223527",
         "signature": "2c5e3e84e2daa3ee109fc2871d14102e2b12b1ba879cf28a6cd722eeb8ae94ac",
         "affectsGlobalScope": false
       },
       "./UserInputTab.tsx": {
-        "version": "2b65bda1e822eb5fd44c78c20face8008845a42e4fb53c14ac730b1bb01ab5a7",
+        "version": "e66ffd464232e7d54cc1ded3b420f768913755c6509618ec3d755a38163895d2",
         "signature": "1fd50e9536cc0e2fa0b412d25ce8ce68b7fbf3204e2420e68adc0169af8bbc29",
         "affectsGlobalScope": false
       },
-      "./ToolBar.js": {
-        "version": "a88e08367b8aa594a89ae2e63b5b6c02ab823ece8abae15ea610d6eeb15ba503",
-        "signature": "7061d8fa20ef3590056019555c5712f7b787626c3e8d7503e329cc7195ae2797",
+      "./ToolBar.tsx": {
+        "version": "60419170161421e3f6f28c5af2fc644112a8ff15dc890fc34947f6c504dc334b",
+        "signature": "202acc317b449e66d296352a10f7d7d6cdda73623ce22b8c51f95ee85a67c11f",
         "affectsGlobalScope": false
       },
       "./CompareListItem.tsx": {
@@ -3666,9 +3666,9 @@
         "signature": "77cff393d3bf7be24a354f466dd151c8049191ffa873e66f2baf79ed58c01a9a",
         "affectsGlobalScope": false
       },
-      "./App.js": {
-        "version": "039445330aa27b41942a520b29cbba758967b16257b7ae9e37f351795d19b01a",
-        "signature": "96f6dfee194c72c96824bb3d5f97a3344f0e6dcc5f7dc9473605d753825b2313",
+      "./App.tsx": {
+        "version": "6a4c98fa387799bab90c63c5c63586f1cb6c76a99ae0130547caab55ee9cf769",
+        "signature": "f3a552f7fe410f1ff06fefa38004401cf1644a624c5c0d7cd6cc32ca6a31b22a",
         "affectsGlobalScope": false
       },
       "./react-flippy.d.ts": {
@@ -8792,15 +8792,16 @@
       "../../node_modules/react-number-format/typings/number_format.d.ts": [
         "../../node_modules/@types/react/index.d.ts"
       ],
-      "./App.js": [
+      "./App.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
-        "../hooks/useAppData.js",
+        "../hooks/useAppData.tsx",
         "../styles/AppStyles.js",
         "./CompareView.tsx",
         "./ConvertView.tsx",
         "./ExchangeHistoryGraph.tsx",
-        "./ToolBar.js"
+        "./ToolBar.tsx",
+        "./types.tsx"
       ],
       "./Button.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -8924,7 +8925,7 @@
         "../../node_modules/@types/react/index.d.ts",
         "./types.tsx"
       ],
-      "./ToolBar.js": [
+      "./ToolBar.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@material-ui/icons/ChevronLeft.d.ts",
@@ -8933,7 +8934,8 @@
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
         "./TabSelector.tsx",
-        "./UserInputTab.tsx"
+        "./UserInputTab.tsx",
+        "./types.tsx"
       ],
       "./UserInputTab.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -8953,11 +8955,11 @@
       "../helpers/inputAmountHelper.js": [
         "../helpers/currency.json"
       ],
-      "../hooks/useAppData.js": [
+      "../hooks/useAppData.tsx": [
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/axios/index.d.ts",
-        "../helpers/currency.json",
-        "../helpers/dataHelpers.js"
+        "../helpers/dataHelpers.js",
+        "./types.tsx"
       ],
       "../stories/Button.js": [
         "../../node_modules/@types/prop-types/index.d.ts",
@@ -13270,8 +13272,15 @@
         "../../node_modules/@types/react/index.d.ts",
         "./types.tsx"
       ],
+      "./ToolBar.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
+      ],
       "./UserInputTab.tsx": [
         "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
+      ],
+      "../hooks/useAppData.tsx": [
         "./types.tsx"
       ],
       "../styles/AppStyles.js": [
@@ -14152,7 +14161,7 @@
       "../../node_modules/typescript/lib/lib.es2020.bigint.d.ts",
       "../../node_modules/typescript/lib/lib.es5.d.ts",
       "../../node_modules/typescript/lib/lib.esnext.intl.d.ts",
-      "./App.js",
+      "./App.tsx",
       "./Button.tsx",
       "./CompareListItem.tsx",
       "./CompareView.tsx",
@@ -14168,7 +14177,7 @@
       "./InputAmountField.tsx",
       "./SelectionComponent.tsx",
       "./TabSelector.tsx",
-      "./ToolBar.js",
+      "./ToolBar.tsx",
       "./UserInputTab.tsx",
       "./react-flippy.d.ts",
       "./types.tsx",
@@ -14178,7 +14187,7 @@
       "../helpers/dataHelpers.js",
       "../helpers/inputAmountHelper.js",
       "../helpers/selectionHelper.js",
-      "../hooks/useAppData.js",
+      "../hooks/useAppData.tsx",
       "../stories/Button.js",
       "../stories/Button.stories.js",
       "../stories/Header.js",
@@ -17585,6 +17594,10 @@
         1
       ],
       [
+        "./App.tsx",
+        1
+      ],
+      [
         "./Button.tsx",
         1
       ],
@@ -17685,6 +17698,10 @@
         1
       ],
       [
+        "./ToolBar.tsx",
+        1
+      ],
+      [
         "./UserInputTab.js",
         1
       ],
@@ -17726,6 +17743,10 @@
       ],
       [
         "../hooks/useAppData.js",
+        1
+      ],
+      [
+        "../hooks/useAppData.tsx",
         1
       ],
       [

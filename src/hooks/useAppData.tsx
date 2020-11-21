@@ -27,7 +27,7 @@ const getCurrencies = axios.get(latestURl);
 
 //for future refactor
 //use the reducer design pattern
-const reducer = (state, action) => {
+const reducer = (state:any, action:any) => {
   switch (action.type) {
     case 'SET_FROM_CURRENCY':
       return { ...state, fromCurrency: action.currency };
@@ -122,6 +122,7 @@ export default function useAppData() {
           fromIntro, 
           toIntro
           ]) => {
+            //console.log('Athena', /* fromIntro['data']['query']['pages'] */Object.keys(fromIntro['data']['query']['pages']))
             const fromDrillDown = fromIntro['data']['query']['pages']
             const toDrillDown = toIntro['data']['query']['pages']
             const result = fromRates.data.rates[toCurrency];
@@ -146,8 +147,8 @@ export default function useAppData() {
               toCurrency: toCurrency,
               toStart: amount,
               converted: parseInt(amount)*result.toFixed(5),
-              fromIntro: fromDrillDown[Object.keys(fromDrillDown)]['extract'],
-              toIntro: toDrillDown[Object.keys(toDrillDown)]['extract']
+              fromIntro: fromDrillDown[Object.keys(fromDrillDown)[0]]['extract'],
+              toIntro: toDrillDown[Object.keys(toDrillDown)[0]]['extract']
             });
         })
         .catch((error) => {
