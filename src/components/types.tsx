@@ -33,7 +33,7 @@ export interface IConvertViewProps {
 export interface IConvertViewBacksideCardProps {
   recentRateHistory: any
   converted: number
-  currency: any
+  currency: string
   avatar: Object
   name: string }
 
@@ -42,7 +42,7 @@ export interface IConvertViewCardTableProps {
   converted: number }
 
 export interface IConvertViewFrontsideCardProps {
-  currency: any
+  currency: string
   symbol: any
   amount: any
   avatar: Object
