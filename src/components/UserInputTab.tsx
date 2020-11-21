@@ -33,8 +33,10 @@ let currencySelectHandler: IcurrencySelectHandlerFunc
 
 currencySelectHandler = function( currency: string, mode: string) { 
 if(mode === 'fromCurrency'){
+  console.log('cur',currency, 'mode', mode)
   setFromCurrency(currency)
 }else if(mode === 'toCurrency'){
+  console.log('aphrodite',mode)
   setToCurrency(currency)
 }}
 

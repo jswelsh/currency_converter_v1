@@ -10,7 +10,8 @@ const handleChange = (event, setter) => {
 const target = event.target;
 const value = target.value;
 const name = target.name
-setter(name, value)
+console.log('selection component', name, value)
+setter(value, name)
 }
 
 

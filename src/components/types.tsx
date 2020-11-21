@@ -54,8 +54,7 @@ export interface IConvertViewIntroCardProps {
   currency: string
   intro: string }
 
-export interface ICurrency {
-  currency: string }
+
 
 export interface ICurrencySelectionFormProps {
   currencySelectHandler(mode: string, currency: string): void

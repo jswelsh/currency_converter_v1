@@ -14,9 +14,13 @@ const useStyles = makeStyles((theme) => ({
 
 interface INumberFormatCustomProps {
   inputRef: (instance: NumberFormat | null) => void;
-  onChange: (event: { target: { name: string; value: number } }) => void;
-  name: string;
-}
+  onChange: (
+    event: { 
+      target: { 
+        name: string 
+        value: number 
+    } }) => void;
+  name: string;}
 
 function NumberFormatCustom(props: INumberFormatCustomProps) {
 

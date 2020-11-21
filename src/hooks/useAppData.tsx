@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { 
   IconvertHandlerFunc,
-  ICurrency,
+
   ICompareListItem } from '../../src/components/types'
 import axios from 'axios';
 import { 
@@ -64,7 +64,7 @@ export default function useAppData() {
   const setToCurrency = (currency: string) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
   const setResult = (result: any) => { dispatch({ type: SET_RESULT, result }); }; 
   
-  const setCurrenciesList = (currenciesList: Array<ICurrency>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
+  const setCurrenciesList = (currenciesList: Array<string>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList: Array<ICompareListItem>) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
   const setHistory = (history: Object) => { dispatch({ type: SET_HISTORY, history }); };
   const setMode = (mode: string) => { dispatch({ type: SET_MODE, mode }); };
@@ -89,7 +89,6 @@ export default function useAppData() {
 
   let convertHandler: IconvertHandlerFunc
   convertHandler = function ({ fromCurrency, toCurrency, amount}) {
-    //const { fromCurrency, toCurrency, amount} = payload
     const [ fromDate, toDate] = initializeDateRange(325)
     const exchangeRates = `
       https://api.exchangeratesapi.io/history?start_at=${
@@ -97,7 +96,6 @@ export default function useAppData() {
       toDate}&base=${
       fromCurrency}&symbols=${
       toCurrency}`
-
     const latestFromRates = `
     https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
     const fromCurrencyWikipediaIntro = `

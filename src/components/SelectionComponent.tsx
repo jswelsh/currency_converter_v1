@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-/* import { ICurrency } from './types' */
 import { ISelectionComponentProps } from './types'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { 
@@ -15,16 +14,15 @@ const iconComponent = () => {
 return (
   <ExpandMoreIcon />
 )};
-const menuItemConstructor = (currency: string, index: number) => {
+const menuItemConstructor = (currency: string) => {
   return (
   <MenuItem
-    key={index}
+    key={currency}
     value={currency}
   >
     <ListItemIcon>
       {iconHandler('selection', currency)}
     </ListItemIcon>
-    {console.log(currency)}
     {currency}
   </MenuItem>
   )
@@ -46,8 +44,8 @@ return (
       IconComponent={iconComponent}
       value={value}
       onChange={(event) => handleChange(event, currencySelectHandler)}>
-      {(currenciesList.length !== 0) && currenciesList.map((currency, index) => (
-        menuItemConstructor(currency, index)
+      {currenciesList.map((currency) => (
+        menuItemConstructor(currency)
       ))}
     </Select>
   </ListItem>
