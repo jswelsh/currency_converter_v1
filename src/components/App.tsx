@@ -29,7 +29,6 @@ export default function App() {
           convertHistoryHandler={convertHistoryHandler}
           compareListHandler={compareListHandler}
           currenciesList={state.currenciesList}
-          compareList={state.compareList}
           convertHandler={convertHandler}
           setDrawerOpen={setDrawerOpen}
           setFromCurrency={setFromCurrency}

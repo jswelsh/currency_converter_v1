@@ -80,11 +80,11 @@ export interface IUserInputTabProps {
   compareListHandler(fromCurrency: string, amount: number): void 
   currenciesList: Array<ICurrency>
   convertHandler(payload: object): void 
-  setFromCurrency(currency: string): boolean
-  setToCurrency(currency: string): boolean
+  setFromCurrency(currency: string): void
+  setToCurrency(currency: string): void
   fromCurrency: string
   toCurrency: string
-  opendrawer: string
+  opendrawer: boolean
   mode: string
 }
 
