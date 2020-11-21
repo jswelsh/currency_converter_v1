@@ -8,7 +8,7 @@ export interface ICompareListItemProps {
   currency: string
   primary: number }
 
-interface ICompareListItem {
+export interface ICompareListItem {
   currency: string
   value: number }
 export interface ICompareViewProps {
@@ -17,7 +17,7 @@ export interface ICompareViewProps {
   compareList: Array<ICompareListItem>
   opendrawer: boolean }
 
-interface ICurrencyArrayItem {
+export interface ICurrencyArrayItem {
   date: Date
   value: number }
 export interface IConvertViewProps {
@@ -54,12 +54,11 @@ export interface IConvertViewIntroCardProps {
   currency: string
   intro: string }
 
-interface ICurrency {
-  currency: string }
+
 
 export interface ICurrencySelectionFormProps {
   currencySelectHandler(mode: string, currency: string): void
-  currenciesList: Array<ICurrency>
+  currenciesList: Array<string>
   fromCurrency: string
   toCurrency: string
   mode: string }
@@ -69,24 +68,65 @@ export interface IExchangeHistoryGraphProps {
   opendrawer: boolean
 }
 
+export interface IDataItem {
+  date: Date
+  value: number
+  color?: Object
+}
+
 export interface IUserInputTabProps {
   convertHistoryHandler(payload: object): void 
   compareListHandler(fromCurrency: string, amount: number): void 
-  currenciesList: Array<ICurrency>
+  currenciesList: Array<string>
   convertHandler(payload: object): void 
-  setFromCurrency(currency: string): boolean
-  setToCurrency(currency: string): boolean
+  setFromCurrency(currency: string): void
+  setToCurrency(currency: string): void
   fromCurrency: string
   toCurrency: string
-  drawer: string
+  opendrawer: boolean
   mode: string
 }
 
 export interface IcurrencySelectHandlerFunc {
-  (currency: string, mode: string): boolean;
+  (currency: string, mode: string): void;
 }
 
 export interface IExchangeHistoryPopOverProps {
   dateRange: Array<Date>
   handleChange(event: Array<Date>): void
+}
+
+export interface IInputAmountFieldProps {
+  fromCurrency: string
+  setAmount(amount: number): void
+  opendrawer: boolean
+  amount: number
+  // this one is a hard one to fix
+  //setAmount(amount: number): void
+}
+
+export interface ISelectionComponentProps {
+  icon: Object
+  name: string
+  value: string
+  currencySelectHandler(mode: string, currency: string): void
+  currenciesList: Array<string>
+}
+
+export interface ITabSelectorProps {
+  modeHandler(mode: string): void,
+  mode: string
+}
+
+export interface IToolBarProps extends IUserInputTabProps {
+  setDrawerOpen(state: boolean): void
+  modeHandler(mode: string): void
+}
+
+export interface IconvertHandlerFunc {
+  (payload: {
+    fromCurrency: string
+    toCurrency: string
+    amount: string
+  }): any
 }

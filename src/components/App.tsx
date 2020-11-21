@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'fontsource-roboto';
+import {} from './types'
 import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
@@ -11,7 +12,7 @@ import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 
 
 export default function App() {
-  const [opendrawer, setDrawerOpen] = React.useState(false);
+  const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const {
     state,
     convertHistoryHandler,
@@ -20,7 +21,6 @@ export default function App() {
     convertHandler,
     setToCurrency,
     modeHandler,
-    setAmount,
   } = useAppData();
   return (
     <ThemeProvider theme={theme}>
@@ -29,7 +29,6 @@ export default function App() {
           convertHistoryHandler={convertHistoryHandler}
           compareListHandler={compareListHandler}
           currenciesList={state.currenciesList}
-          compareList={state.compareList}
           convertHandler={convertHandler}
           setDrawerOpen={setDrawerOpen}
           setFromCurrency={setFromCurrency}
@@ -38,8 +37,6 @@ export default function App() {
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
-          setAmount={setAmount}
-          amount={state.amount}
           mode={state.mode}
           />
 
@@ -67,8 +64,6 @@ export default function App() {
           fromCurrency={state.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
-          setAmount={setAmount}
-          amount={state.amount}
         />)}
 
       </main>

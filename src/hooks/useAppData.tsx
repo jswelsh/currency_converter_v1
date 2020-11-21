@@ -1,4 +1,8 @@
 import { useEffect, useReducer } from 'react';
+import { 
+  IconvertHandlerFunc,
+
+  ICompareListItem } from '../../src/components/types'
 import axios from 'axios';
 import { 
   initializeDateRange,
@@ -11,7 +15,7 @@ const data = require('../helpers/currency.json'); // forward slashes will depend
 const SET_FROM_CURRENCY = 'SET_FROM_CURRENCY';
 const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
 const SET_RESULT = 'SET_RESULT';
-const SET_AMOUNT = 'SET_AMOUNT';
+//const SET_AMOUNT = 'SET_AMOUNT';
 const SET_CURRENCIES_LIST = 'SET_CURRENCIES_LIST';
 const SET_COMPARE_LIST = 'SET_COMPARE_LIST';
 const SET_HISTORY = 'SET_HISTORY';
@@ -22,7 +26,7 @@ const getCurrencies = axios.get(latestURl);
 
 //for future refactor
 //use the reducer design pattern
-const reducer = (state, action) => {
+const reducer = (state:any, action:any) => {
   switch (action.type) {
     case 'SET_FROM_CURRENCY':
       return { ...state, fromCurrency: action.currency };
@@ -30,8 +34,8 @@ const reducer = (state, action) => {
       return { ...state, toCurrency: action.currency };
     case 'SET_RESULT':
       return { ...state, result: action.result };
-    case 'SET_AMOUNT':
-      return { ...state, result: action.amount };
+    /* case 'SET_AMOUNT':
+      return { ...state, result: action.amount }; */
     case 'SET_CURRENCIES_LIST':
       return { ...state, currenciesList: action.currenciesList };
     case 'SET_COMPARE_LIST':
@@ -49,43 +53,42 @@ export default function useAppData() {
     fromCurrency:'CAD',
     toCurrency:'USD',
     result: {},
-    amount:1,
+    //amount:1,
     currenciesList: [],
     compareList: {},
     history: [],
     mode: 'Converter',
   });
 
-  const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
-  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
-  const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
+  const setFromCurrency = (currency: string) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
+  const setToCurrency = (currency: string) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
+  const setResult = (result: any) => { dispatch({ type: SET_RESULT, result }); }; 
+  
+  const setCurrenciesList = (currenciesList: Array<string>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
+  const setCompareList = (compareList: Array<ICompareListItem>) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
+  const setHistory = (history: Object) => { dispatch({ type: SET_HISTORY, history }); };
+  const setMode = (mode: string) => { dispatch({ type: SET_MODE, mode }); };
 
-  const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); }; 
-
-  const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
-  const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
-  const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
-  const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
-
-  const compareListHandler = (fromCurrency, amount) => {
+  const compareListHandler = (fromCurrency: string, amount: number) => {
     const compareURL = `${latestURl}?base=${fromCurrency}`
     axios
       .get(compareURL)
       .then((res) => {
-        // console.log('geli', res.data)
-        const compareList = []
-        Object.entries(res.data.rates).forEach(([key,value]) => {
+        
+        const compareList: Array<ICompareListItem> = []
+        Object.entries(res.data.rates).forEach((props:any) => {
           compareList.push({
-            currency: key,
-            value: (value*amount).toFixed(5)
+            currency: props[0],
+            value: parseInt((props[1]*amount).toFixed(5))
           })
         })
         
         setCompareList(compareList)
       })
   }
-  const convertHandler = (payload) => {
-    const { fromCurrency, toCurrency, amount} = payload
+
+  let convertHandler: IconvertHandlerFunc
+  convertHandler = function ({ fromCurrency, toCurrency, amount}) {
     const [ fromDate, toDate] = initializeDateRange(325)
     const exchangeRates = `
       https://api.exchangeratesapi.io/history?start_at=${
@@ -93,8 +96,6 @@ export default function useAppData() {
       toDate}&base=${
       fromCurrency}&symbols=${
       toCurrency}`
-      console.log('ares', amount)
-
     const latestFromRates = `
     https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
     const fromCurrencyWikipediaIntro = `
@@ -118,14 +119,22 @@ export default function useAppData() {
           fromIntro, 
           toIntro
           ]) => {
+            /* 
+            get the json of each currency's intro text from wikipedia; 
+            drill down the json tree to get to the queried pages,
+            only queried one, so we use the first index [0]  */
             const fromDrillDown = fromIntro['data']['query']['pages']
             const toDrillDown = toIntro['data']['query']['pages']
+            /* 
+            drill drown the response to get the converted value */
             const result = fromRates.data.rates[toCurrency];
+            /* 
+            used for the backside of the convert card */
             const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-5,-10,-15])
           
-            function slicer (array, slicePoints) {
+            function slicer (array:any, slicePoints:any) {
               const splicedArray = [array.pop()]//grab yesterdays rates
-              slicePoints.forEach(point => {
+              slicePoints.forEach((point:any) => {
                 /* add each recent history rate to array */
                 splicedArray.push(array.slice(point, point + 1).pop())
               });
@@ -141,9 +150,12 @@ export default function useAppData() {
               fromCurrency: fromCurrency,
               toCurrency: toCurrency,
               toStart: amount,
-              converted: amount*result.toFixed(5),
-              fromIntro: fromDrillDown[Object.keys(fromDrillDown)]['extract'],
-              toIntro: toDrillDown[Object.keys(toDrillDown)]['extract']
+              converted: parseInt(amount)*result.toFixed(5),
+              /* 
+              get the keys for the pages (this is deceptive as we only query
+              one page but have to use the first index to grap it as its an array) */
+              fromIntro: fromDrillDown[Object.keys(fromDrillDown)[0]]['extract'],
+              toIntro: toDrillDown[Object.keys(toDrillDown)[0]]['extract']
             });
         })
         .catch((error) => {
@@ -153,7 +165,7 @@ export default function useAppData() {
       setResult({error:'You cant convert the same currency!'});
     }
   };
-  const convertHistoryHandler = (payload) => {
+  const convertHistoryHandler = (payload: any) => {
     const { fromCurrency, toCurrency, dateRange } = payload
     const [ fromDate, toDate ] = dateRange;
 
@@ -181,8 +193,10 @@ export default function useAppData() {
       console.log({error:"You can't convert the same currency!"});
     }
   };
-
-  const modeHandler = (mode) => {
+/*   const amountHandler = (amount) => {
+    setAmount(amount)
+  } */
+  const modeHandler = (mode: string): void => {
     setMode(mode)
   }
 
@@ -200,7 +214,7 @@ export default function useAppData() {
         console.log('Something went wrong', err);
       });
     compareListHandler('CAD', 1)
-    convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:1})
+    convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:'1'})
     //if you change this, make sure to change inside userinput aswell
     convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(365/2)})
   }, []); // Empty array to only run once on mount.
@@ -209,7 +223,7 @@ export default function useAppData() {
     state,
     setFromCurrency,
     setToCurrency,
-    setAmount,
+    //amountHandler,
     convertHandler,
     convertHistoryHandler,
     modeHandler,

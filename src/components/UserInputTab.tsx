@@ -20,22 +20,25 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   setToCurrency,
   fromCurrency,
   toCurrency,
-  drawer,
+  opendrawer,
   mode,
 }) => {
 
-const [amount, setAmount] = useState(1);
-const [dateRange, setDateRange] = useState(initializeDateRange(365));
+const [amount, setAmount] = useState<number>(1);
+
+/* need to fix the any props later */
+const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
 
 currencySelectHandler = function( currency: string, mode: string) { 
-  return (
-    mode === 'fromCurrency' ? setFromCurrency(currency):
-    mode === 'toCurrency' ? setToCurrency(currency) :
-    false
-  )
-}
+if(mode === 'fromCurrency'){
+  console.log('cur',currency, 'mode', mode)
+  setFromCurrency(currency)
+}else if(mode === 'toCurrency'){
+  console.log('aphrodite',mode)
+  setToCurrency(currency)
+}}
 
 const handleChange = (event: Array<Date>) => {
   //error check that both start and end date have been selected
@@ -51,10 +54,12 @@ return (
   <> 
     {mode !== 'History' && (
     <InputAmountField
-      amount={amount}
-      setAmount={setAmount}
       fromCurrency={fromCurrency}
-      drawer={drawer}/>)}
+      setAmount={setAmount}
+      opendrawer={opendrawer}
+      amount={amount}
+      //amountHandler={amountHandler}
+      />)}
     <CurrencySelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
