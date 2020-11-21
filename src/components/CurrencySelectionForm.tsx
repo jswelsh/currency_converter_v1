@@ -21,7 +21,7 @@ const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
   toCurrency,
   mode
 }) => {
-  console.log('hephaestus', fromCurrency)
+
 return (
   <List>
     <FormControl>

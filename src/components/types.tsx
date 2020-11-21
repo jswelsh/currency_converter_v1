@@ -57,7 +57,7 @@ export interface IConvertViewIntroCardProps {
 
 
 export interface ICurrencySelectionFormProps {
-  currencySelectHandler(mode: string, currency: string): void
+  currencySelectHandler(payload:{mode: string, currency: string}): void
   currenciesList: Array<string>
   fromCurrency: string
   toCurrency: string
@@ -88,7 +88,10 @@ export interface IUserInputTabProps {
 }
 
 export interface IcurrencySelectHandlerFunc {
-  (currency: string, mode: string): void;
+  (payload:{
+    currency: string 
+    mode: string
+  }): void;
 }
 
 export interface IExchangeHistoryPopOverProps {
@@ -109,7 +112,7 @@ export interface ISelectionComponentProps {
   icon: Object
   name: string
   value: string
-  currencySelectHandler(mode: string, currency: string): void
+  currencySelectHandler(payload:{mode: string, currency: string}): void
   currenciesList: Array<string>
 }
 
