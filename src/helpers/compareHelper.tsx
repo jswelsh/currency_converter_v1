@@ -41,15 +41,17 @@ const iconMap ={
   PLN : 'pl'
 }
 
-const iconHandler = (mode, payload) => {
+const iconHandler = (mode: string, payload: any) => {
   const height = mode === 
   'selection' ? 25 :
   'converter' ? 75 :
   35
-  
+  let um = payload.toString()
+  const val = iconMap[um]
+  console.log(val)
   return (
-    <ListItemIcon spacing={0}>
-      <CircleFlag countryCode={iconMap[payload]}  height={height}/> 
+    <ListItemIcon>
+      <CircleFlag countryCode={val}  height={height}/> 
     </ListItemIcon>
   )
 }
