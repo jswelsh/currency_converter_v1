@@ -30,13 +30,10 @@ const [amount, setAmount] = useState<number>(1);
 const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
-
-currencySelectHandler = function( currency: string, mode: string) { 
+currencySelectHandler = function({currency, mode}) { 
 if(mode === 'fromCurrency'){
-  console.log('cur',currency, 'mode', mode)
   setFromCurrency(currency)
 }else if(mode === 'toCurrency'){
-  console.log('aphrodite',mode)
   setToCurrency(currency)
 }}
 
