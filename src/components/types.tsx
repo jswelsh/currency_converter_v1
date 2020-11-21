@@ -89,7 +89,7 @@ export interface IUserInputTabProps {
 }
 
 export interface IcurrencySelectHandlerFunc {
-  (currency: string, mode: string): boolean;
+  (currency: string, mode: string): void;
 }
 
 export interface IExchangeHistoryPopOverProps {
@@ -100,7 +100,7 @@ export interface IExchangeHistoryPopOverProps {
 export interface IInputAmountFieldProps {
   fromCurrency: string
   setAmount(amount: number): void
-  opendrawer: string
+  opendrawer: boolean
   amount: number
   // this one is a hard one to fix
   //setAmount(amount: number): void

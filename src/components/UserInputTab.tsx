@@ -32,12 +32,11 @@ const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(
 let currencySelectHandler: IcurrencySelectHandlerFunc
 
 currencySelectHandler = function( currency: string, mode: string) { 
-  return (
-    mode === 'fromCurrency' ? setFromCurrency(currency):
-    mode === 'toCurrency' ? setToCurrency(currency) :
-    false
-  )
-}
+if(mode === 'fromCurrency'){
+  setFromCurrency(currency)
+}else if(mode === 'toCurrency'){
+  setToCurrency(currency)
+}}
 
 const handleChange = (event: Array<Date>) => {
   //error check that both start and end date have been selected

@@ -90,8 +90,16 @@ export default function useAppData() {
         setCompareList(compareList)
       })
   }
-  const convertHandler = (payload) => {
-    const { fromCurrency, toCurrency, amount} = payload
+  interface IconvertHandlerFunc {
+    (payload: {
+      fromCurrency: string
+      toCurrency: string
+      amount: string
+    }): void
+  }
+  let convertHandler: IconvertHandlerFunc
+  convertHandler = function ({ fromCurrency, toCurrency, amount}) {
+    //const { fromCurrency, toCurrency, amount} = payload
     const [ fromDate, toDate] = initializeDateRange(325)
     const exchangeRates = `
       https://api.exchangeratesapi.io/history?start_at=${
@@ -159,7 +167,7 @@ export default function useAppData() {
       setResult({error:'You cant convert the same currency!'});
     }
   };
-  const convertHistoryHandler = (payload) => {
+  const convertHistoryHandler = (payload: object) => {
     const { fromCurrency, toCurrency, dateRange } = payload
     const [ fromDate, toDate ] = dateRange;
 
@@ -190,7 +198,7 @@ export default function useAppData() {
 /*   const amountHandler = (amount) => {
     setAmount(amount)
   } */
-  const modeHandler = (mode) => {
+  const modeHandler = (mode: string): void => {
     setMode(mode)
   }
 
