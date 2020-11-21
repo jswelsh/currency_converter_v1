@@ -76,17 +76,29 @@ export interface IDataItem {
 }
 
 export interface IUserInputTabProps {
+
+
+
+
+
+
+
+
+
+
   convertHistoryHandler(payload: object): void 
   compareListHandler(fromCurrency: string, amount: number): void 
+
   currenciesList: Array<ICurrency>
   convertHandler(payload: object): void 
+
   setFromCurrency(currency: string): boolean
   setToCurrency(currency: string): boolean
-  //amountHandler(amout: number): void
+
   fromCurrency: string
   toCurrency: string
-  drawer: string
-  //amount: number
+
+  opendrawer: string
   mode: string
 }
 
@@ -102,7 +114,7 @@ export interface IExchangeHistoryPopOverProps {
 export interface IInputAmountFieldProps {
   fromCurrency: string
   setAmount(amount: number): void
-  drawer: string
+  opendrawer: string
   amount: number
   // this one is a hard one to fix
   //setAmount(amount: number): void
@@ -116,6 +128,14 @@ export interface ISelectionComponentProps {
   currenciesList: Array<ICurrency>
 }
 
-export interface IToolBarProps {
+export interface ITabSelectorProps {
+  compareListHandler(fromCurrency: string, amount: number): void 
+  compareList: Array<ICompareListItem>
+  modeHandler(mode: string): void,
+  mode: string
+}
 
+export interface IToolBarProps extends IUserInputTabProps {
+  setDrawerOpen: any
+  modeHandler: any
 }

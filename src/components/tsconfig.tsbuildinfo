@@ -1951,6 +1951,11 @@
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "affectsGlobalScope": false
       },
+      "./types.tsx": {
+        "version": "ee3e375deae728a5bba028cd17de51ccf2c604ec9d6e56e44d71ad8255edcdc0",
+        "signature": "1771930a9722c561318616295e0d34ccb8c81e898857ef80eb836cc5466985dc",
+        "affectsGlobalScope": false
+      },
       "../../node_modules/@material-ui/icons/Timeline.d.ts": {
         "version": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
@@ -1967,13 +1972,8 @@
         "affectsGlobalScope": false
       },
       "./TabSelector.tsx": {
-        "version": "5ea8867195ffdd4b690f8b15aa5bccc58b98e821f6519780cab0296d4c182fbb",
-        "signature": "13e1bac19adf0079ebec09deaf49d78e392615cd2514de6f417846845da12257",
-        "affectsGlobalScope": false
-      },
-      "./types.tsx": {
-        "version": "d771fa76e9ffdf6d0537439740f37655c508171b7f59d0a8f2444009195be370",
-        "signature": "843a03d45f7ca107d900992841bf132de2b478a8198295a86ce90849817b8db8",
+        "version": "a4160394c5d9cabe91f2d7af8e2e6dbfa14a668da0231fa09f8f3a61aee6bb0e",
+        "signature": "fd3ed8f99296aabb604439ceff0d0a931041d3e9397528ca1cd95cbf6d24c696",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/CalendarToday.d.ts": {
@@ -8921,7 +8921,8 @@
         "../../node_modules/@material-ui/icons/Sort.d.ts",
         "../../node_modules/@material-ui/icons/Timeline.d.ts",
         "../../node_modules/@material-ui/icons/Transform.d.ts",
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./ToolBar.js": [
         "../../node_modules/@material-ui/core/index.d.ts",
@@ -13266,7 +13267,8 @@
         "./types.tsx"
       ],
       "./TabSelector.tsx": [
-        "../../node_modules/@types/react/index.d.ts"
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
       ],
       "./UserInputTab.tsx": [
         "../../node_modules/@types/react/index.d.ts",

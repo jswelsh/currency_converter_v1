@@ -18,11 +18,9 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   convertHandler,
   setFromCurrency,
   setToCurrency,
-  //amountHandler,
   fromCurrency,
   toCurrency,
-  drawer,
-  //amount,
+  opendrawer,
   mode,
 }) => {
 
@@ -57,7 +55,7 @@ return (
     <InputAmountField
       fromCurrency={fromCurrency}
       setAmount={setAmount}
-      drawer={drawer}
+      opendrawer={opendrawer}
       amount={amount}
       //amountHandler={amountHandler}
       />)}
