@@ -56,23 +56,29 @@ export default function useAppData() {
     mode: 'Converter',
   });
 
-  const setFromCurrency = (currency) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
-  const setToCurrency = (currency) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
-  const setResult = (result) => { dispatch({ type: SET_RESULT, result }); }; 
+  const setFromCurrency = (currency: string) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
+  const setToCurrency = (currency: string) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
+  const setResult = (result: number) => { dispatch({ type: SET_RESULT, result }); }; 
 
   //const setAmount = (amount) => { dispatch({ type: SET_AMOUNT, amount }); }; 
 
-  const setCurrenciesList = (currenciesList) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
-  const setCompareList = (compareList) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
-  const setHistory = (history) => { dispatch({ type: SET_HISTORY, history }); };
-  const setMode = (mode) => { dispatch({ type: SET_MODE, mode }); };
+  interface ICurrency {
+    currency: string }
+  interface ICompareListItem {
+    currency: string
+    value: number }
+  
+  const setCurrenciesList = (currenciesList: Array<ICurrency>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
+  const setCompareList = (compareList: Array<ICompareListItem>) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
+  const setHistory = (history: Object) => { dispatch({ type: SET_HISTORY, history }); };
+  const setMode = (mode: string) => { dispatch({ type: SET_MODE, mode }); };
 
-  const compareListHandler = (fromCurrency, amount) => {
+  const compareListHandler = (fromCurrency: string, amount: number) => {
     const compareURL = `${latestURl}?base=${fromCurrency}`
     axios
       .get(compareURL)
       .then((res) => {
-        // console.log('geli', res.data)
+
         const compareList = []
         Object.entries(res.data.rates).forEach(([key,value]) => {
           compareList.push({

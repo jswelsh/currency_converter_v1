@@ -76,28 +76,14 @@ export interface IDataItem {
 }
 
 export interface IUserInputTabProps {
-
-
-
-
-
-
-
-
-
-
   convertHistoryHandler(payload: object): void 
   compareListHandler(fromCurrency: string, amount: number): void 
-
   currenciesList: Array<ICurrency>
   convertHandler(payload: object): void 
-
   setFromCurrency(currency: string): boolean
   setToCurrency(currency: string): boolean
-
   fromCurrency: string
   toCurrency: string
-
   opendrawer: string
   mode: string
 }
@@ -129,13 +115,11 @@ export interface ISelectionComponentProps {
 }
 
 export interface ITabSelectorProps {
-  compareListHandler(fromCurrency: string, amount: number): void 
-  compareList: Array<ICompareListItem>
   modeHandler(mode: string): void,
   mode: string
 }
 
 export interface IToolBarProps extends IUserInputTabProps {
-  setDrawerOpen: any
-  modeHandler: any
+  setDrawerOpen(state: boolean): void
+  modeHandler(mode: string): void
 }

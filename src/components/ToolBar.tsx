@@ -161,7 +161,6 @@ return (
             toCurrency={toCurrency}
             opendrawer={opendrawer}
             mode={mode}/>
-
         <div className={clsx({
               [classes.hide]: mode !== 'Compare'
             })}>

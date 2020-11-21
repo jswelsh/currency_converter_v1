@@ -27,7 +27,7 @@ const UserInputTab: FC<IUserInputTabProps> = ({
 const [amount, setAmount] = useState<number>(1);
 
 /* need to fix the any props later */
-const [dateRange, setDateRange] = useState<any>(initializeDateRange(365));
+const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
 

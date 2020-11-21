@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'fontsource-roboto';
+import {} from './types'
 import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
@@ -11,7 +12,7 @@ import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 
 
 export default function App() {
-  const [opendrawer, setDrawerOpen] = React.useState(false);
+  const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const {
     state,
     convertHistoryHandler,
@@ -37,8 +38,6 @@ export default function App() {
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
-/*           amountHandler={amountHandler}
-          amount={state.amount} */
           mode={state.mode}
           />
 
