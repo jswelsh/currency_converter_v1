@@ -90,13 +90,13 @@ export function ToolBar({
   convertHandler,
   setDrawerOpen,
   setFromCurrency,
+  //amountHandler,
   setToCurrency,
   fromCurrency,
   toCurrency,
   modeHandler,
   opendrawer,
-  setAmount,
-  amount,
+  //amount,
   mode
 }) {
   const classes = useStyles();
@@ -159,11 +159,9 @@ export function ToolBar({
             )}
           </IconButton>
           </div>
+          
 
           <TabSelector
-            convertHistoryHandler={convertHistoryHandler}
-            compareListHandler={compareListHandler}
-            compareList={compareList}
             modeHandler={modeHandler}
             mode={mode}/> 
 
@@ -182,9 +180,9 @@ export function ToolBar({
               setToCurrency={setToCurrency}
               fromCurrency={fromCurrency}
               toCurrency={toCurrency}
-              setAmount={setAmount}
+              //amountHandler={amountHandler}
               drawer={opendrawer}
-              amount={amount}
+              //amount={amount}
               mode={mode}/>
 
           <div className={clsx({

@@ -82,9 +82,11 @@ export interface IUserInputTabProps {
   convertHandler(payload: object): void 
   setFromCurrency(currency: string): boolean
   setToCurrency(currency: string): boolean
+  //amountHandler(amout: number): void
   fromCurrency: string
   toCurrency: string
   drawer: string
+  //amount: number
   mode: string
 }
 
@@ -97,23 +99,23 @@ export interface IExchangeHistoryPopOverProps {
   handleChange(event: Array<Date>): void
 }
 
-export interface INumberFormatCustomProps {
-  inputRef: (instance: NumberFormat | null) => void;
-  onChange: (event: { target: { name: string; value: string } }) => void;
-  name: string;
-}
-
 export interface IInputAmountFieldProps {
-  amount: number
-  setAmount(amount: number): boolean 
   fromCurrency: string
+  setAmount(amount: number): void
   drawer: string
+  amount: number
+  // this one is a hard one to fix
+  //setAmount(amount: number): void
 }
 
 export interface ISelectionComponentProps {
   icon: Object
   name: string
-  value: number
+  // value: string
   currencySelectHandler(mode: string, currency: string): void
   currenciesList: Array<ICurrency>
+}
+
+export interface IToolBarProps {
+
 }

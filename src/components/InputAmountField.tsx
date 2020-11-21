@@ -14,15 +14,16 @@ const useStyles = makeStyles((theme) => ({
 
 interface INumberFormatCustomProps {
   inputRef: (instance: NumberFormat | null) => void;
-  onChange: (event: { target: { name: string; value: string } }) => void;
+  onChange: (event: { target: { name: string; value: number } }) => void;
   name: string;
 }
 
 function NumberFormatCustom(props: INumberFormatCustomProps) {
-  console.log('delta',props)
+
   const { 
     inputRef, 
-    onChange, 
+    onChange,
+    name,
     ...other 
   } = props;
   return (
@@ -32,8 +33,8 @@ function NumberFormatCustom(props: INumberFormatCustomProps) {
       onValueChange={(amount) => {
         onChange({
           target: {
-            value: amount.value,
-            name: 'numberformat'}
+            value: parseInt(amount.value, 10),
+            name: name}
         });
       }}
       thousandSeparator
@@ -44,10 +45,10 @@ function NumberFormatCustom(props: INumberFormatCustomProps) {
 }
 
 const InputAmountField: FC<IInputAmountFieldProps> = ({
-  amount,
-  setAmount,
   fromCurrency,
-  drawer
+  setAmount,
+  drawer,
+  amount,
 }) => {
   const classes = useStyles();
 

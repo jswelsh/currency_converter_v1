@@ -20,7 +20,6 @@ export default function App() {
     convertHandler,
     setToCurrency,
     modeHandler,
-    setAmount,
   } = useAppData();
   return (
     <ThemeProvider theme={theme}>
@@ -38,8 +37,8 @@ export default function App() {
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
-          setAmount={setAmount}
-          amount={state.amount}
+/*           amountHandler={amountHandler}
+          amount={state.amount} */
           mode={state.mode}
           />
 
@@ -67,8 +66,6 @@ export default function App() {
           fromCurrency={state.fromCurrency}
           compareList={state.compareList}
           opendrawer={opendrawer}
-          setAmount={setAmount}
-          amount={state.amount}
         />)}
 
       </main>

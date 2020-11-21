@@ -18,7 +18,7 @@ return (
 const SelectionComponent: FC<ISelectionComponentProps> = ({ 
   icon, 
   name, 
-  value, 
+  //value, 
   currencySelectHandler, 
   currenciesList
 }) => {
@@ -29,12 +29,12 @@ return (
       disableUnderline
       name={name}
       IconComponent={iconComponent}
-      value={value}
+      //value={value}
       onChange={(event) => handleChange(event, currencySelectHandler)}>
       {currenciesList.map(currency => (
         <MenuItem
-          key={currency} 
-          value={currency}>
+/*           key={currency} 
+          value={currency} */>
           <ListItemIcon>
             {iconHandler('selection', currency)}
           </ListItemIcon>

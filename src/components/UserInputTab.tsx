@@ -18,14 +18,18 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   convertHandler,
   setFromCurrency,
   setToCurrency,
+  //amountHandler,
   fromCurrency,
   toCurrency,
   drawer,
+  //amount,
   mode,
 }) => {
 
-const [amount, setAmount] = useState(1);
-const [dateRange, setDateRange] = useState(initializeDateRange(365));
+const [amount, setAmount] = useState<number>(1);
+
+/* need to fix the any props later */
+const [dateRange, setDateRange] = useState<any>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
 
@@ -51,10 +55,12 @@ return (
   <> 
     {mode !== 'History' && (
     <InputAmountField
-      amount={amount}
-      setAmount={setAmount}
       fromCurrency={fromCurrency}
-      drawer={drawer}/>)}
+      setAmount={setAmount}
+      drawer={drawer}
+      amount={amount}
+      //amountHandler={amountHandler}
+      />)}
     <CurrencySelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}

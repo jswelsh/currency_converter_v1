@@ -182,8 +182,8 @@
         "affectsGlobalScope": true
       },
       "../hooks/useAppData.js": {
-        "version": "60aea4f2d3d2ecae753f3f2b862457a4c3910d2547f4cceba10721000e0d530c",
-        "signature": "fcad5f45a440a2a7796719092c811878d63fa3d5f4b2d0b65e71cb23a74a40c1",
+        "version": "139dbbc27404abcced3b4cdd5f33abb78ac22a61c950280ab67d5d03b8d4b64a",
+        "signature": "773081566926646bc9714600781e80860e0efc29342d6b87c97e07930f7fda72",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/types/index.d.ts": {
@@ -1966,14 +1966,14 @@
         "signature": "865950dbe055cab1e6850f12d921894f46972e039f3f557791d77a214eb4d090",
         "affectsGlobalScope": false
       },
-      "./TabSelector.js": {
-        "version": "406fb3559c7c3e9c82e4d93ff9c5e1944516efa154328d62016cc67fcf3aab22",
-        "signature": "db4a6fc39ac9f9e5aaccccf6bd4dce709e03312cbd28725d82039ecf5fd84855",
+      "./TabSelector.tsx": {
+        "version": "5ea8867195ffdd4b690f8b15aa5bccc58b98e821f6519780cab0296d4c182fbb",
+        "signature": "13e1bac19adf0079ebec09deaf49d78e392615cd2514de6f417846845da12257",
         "affectsGlobalScope": false
       },
       "./types.tsx": {
-        "version": "fe1478f188d1158b1e23c14f733a073c904fc1b6cae0a99312665c56f0d2af1b",
-        "signature": "85f7f5797177edfcc7964a6a65bc16a3f81a3ecd3a2aef2d12258f1a6a86e7d8",
+        "version": "d771fa76e9ffdf6d0537439740f37655c508171b7f59d0a8f2444009195be370",
+        "signature": "843a03d45f7ca107d900992841bf132de2b478a8198295a86ce90849817b8db8",
         "affectsGlobalScope": false
       },
       "../../node_modules/@material-ui/icons/CalendarToday.d.ts": {
@@ -2351,13 +2351,13 @@
         "signature": "b97f6c2acabaad605fee8414283df7091c40a9ce7a04819eb590cde8b49869b0",
         "affectsGlobalScope": false
       },
-      "./SelectionComponent.js": {
-        "version": "c574cae3798c746bca87f02261592e15d4e3ad621abc89b7b7cb42f1655afc5c",
-        "signature": "fd62dac553c1a9cce561a9bae7004c76137eb02c7bf6b5593672424c919b8a94",
+      "./SelectionComponent.tsx": {
+        "version": "9846c2ecb0501dc75cb95b6ad2064d78589ca12d1bf90552f428766b7d682424",
+        "signature": "4e2c5954f3a53d6031a0839209d57ae7ac9d94e859df94c5428d49a1a1b6deca",
         "affectsGlobalScope": false
       },
       "./CurrencySelectionForm.tsx": {
-        "version": "04dc09213f49b9bf7e741debb4c24b8ac0dea45661e61939c8c8c636e94caad2",
+        "version": "7624b2a5d6cc916a54ab4ddfc3981b6830f41e9f8a6e15af8c504779eecd24ef",
         "signature": "bc2426f432fd7e56b3cfa767f541abcd78331055fc1d70a02dbacc6bd074e950",
         "affectsGlobalScope": false
       },
@@ -2382,18 +2382,18 @@
         "affectsGlobalScope": false
       },
       "./InputAmountField.tsx": {
-        "version": "de7d0686ef85c2344936c41a84d9ae3e022b90d29bb12b9c7634ecb4f2390f90",
-        "signature": "22e279c39fbc57ccc34e168e59b5fb66e96c3e9633a6397b64f785d3c8ba7e41",
+        "version": "b332dbc4135debdd8050b0a37d50c3d1304a3f5f22b80dbbbef3a8c8f469c956",
+        "signature": "2c5e3e84e2daa3ee109fc2871d14102e2b12b1ba879cf28a6cd722eeb8ae94ac",
         "affectsGlobalScope": false
       },
       "./UserInputTab.tsx": {
-        "version": "02121dfdefd78fc1fd1cf3b40677e2c27f24b69793d245685d34ede80f26abbf",
+        "version": "2b65bda1e822eb5fd44c78c20face8008845a42e4fb53c14ac730b1bb01ab5a7",
         "signature": "1fd50e9536cc0e2fa0b412d25ce8ce68b7fbf3204e2420e68adc0169af8bbc29",
         "affectsGlobalScope": false
       },
       "./ToolBar.js": {
-        "version": "5cc3605edc630de5ee0dcde733517515a532cc15ee0f24b1be2a1dab32945c48",
-        "signature": "34f6cb37a41ceddced999b9818e698eba2fb9619f0c1e9804bdd9f32f677a1ea",
+        "version": "a88e08367b8aa594a89ae2e63b5b6c02ab823ece8abae15ea610d6eeb15ba503",
+        "signature": "7061d8fa20ef3590056019555c5712f7b787626c3e8d7503e329cc7195ae2797",
         "affectsGlobalScope": false
       },
       "./CompareListItem.tsx": {
@@ -3667,7 +3667,7 @@
         "affectsGlobalScope": false
       },
       "./App.js": {
-        "version": "446c81e5a1b8016eb51c6c689e13749fef75b5b3577d5031e635ffe6a05af476",
+        "version": "039445330aa27b41942a520b29cbba758967b16257b7ae9e37f351795d19b01a",
         "signature": "96f6dfee194c72c96824bb3d5f97a3344f0e6dcc5f7dc9473605d753825b2313",
         "affectsGlobalScope": false
       },
@@ -8871,7 +8871,7 @@
         "../../node_modules/@material-ui/icons/SubdirectoryArrowRight.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../helpers/selectionHelper.js",
-        "./SelectionComponent.js",
+        "./SelectionComponent.tsx",
         "./types.tsx"
       ],
       "./DatePickerComponent.js": [
@@ -8905,16 +8905,18 @@
         "../../node_modules/@material-ui/core/styles/index.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/react-number-format/typings/number_format.d.ts",
-        "../helpers/inputAmountHelper.js"
+        "../helpers/inputAmountHelper.js",
+        "./types.tsx"
       ],
-      "./SelectionComponent.js": [
+      "./SelectionComponent.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/icons/ExpandMore.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../helpers/compareHelper.d.ts",
-        "../helpers/selectionHelper.js"
+        "../helpers/selectionHelper.js",
+        "./types.tsx"
       ],
-      "./TabSelector.js": [
+      "./TabSelector.tsx": [
         "../../node_modules/@material-ui/core/index.d.ts",
         "../../node_modules/@material-ui/icons/Sort.d.ts",
         "../../node_modules/@material-ui/icons/Timeline.d.ts",
@@ -8929,7 +8931,7 @@
         "../../node_modules/@material-ui/icons/Menu.d.ts",
         "../../node_modules/@types/react/index.d.ts",
         "../../node_modules/clsx/clsx.d.ts",
-        "./TabSelector.js",
+        "./TabSelector.tsx",
         "./UserInputTab.tsx"
       ],
       "./UserInputTab.tsx": [
@@ -13256,6 +13258,14 @@
         "./types.tsx"
       ],
       "./InputAmountField.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
+      ],
+      "./SelectionComponent.tsx": [
+        "../../node_modules/@types/react/index.d.ts",
+        "./types.tsx"
+      ],
+      "./TabSelector.tsx": [
         "../../node_modules/@types/react/index.d.ts"
       ],
       "./UserInputTab.tsx": [
@@ -14154,43 +14164,10 @@
       "./ExchangeHistoryGraph.tsx",
       "./ExchangeHistoryPopOver.tsx",
       "./InputAmountField.tsx",
-      "./SelectionComponent.js",
-      "./TabSelector.js",
+      "./SelectionComponent.tsx",
+      "./TabSelector.tsx",
       "./ToolBar.js",
-      [
-        "./UserInputTab.tsx",
-        [
-          {
-            "file": "./UserInputTab.tsx",
-            "start": 1444,
-            "length": 9,
-            "code": 2322,
-            "category": 1,
-            "messageText": {
-              "messageText": "Type 'Dispatch<SetStateAction<number>>' is not assignable to type '(amount: number) => boolean'.",
-              "category": 1,
-              "code": 2322,
-              "next": [
-                {
-                  "messageText": "Type 'void' is not assignable to type 'boolean'.",
-                  "category": 1,
-                  "code": 2322
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "./InputAmountField.tsx",
-                "start": 1132,
-                "length": 34,
-                "messageText": "The expected type comes from property 'setAmount' which is declared here on type 'IntrinsicAttributes & IInputAmountFieldProps & { children?: ReactNode; }'",
-                "category": 3,
-                "code": 6500
-              }
-            ]
-          }
-        ]
-      ],
+      "./UserInputTab.tsx",
       "./react-flippy.d.ts",
       "./types.tsx",
       "../helpers/compareHelper.d.ts",
@@ -17690,7 +17667,15 @@
         1
       ],
       [
+        "./SelectionComponent.tsx",
+        1
+      ],
+      [
         "./TabSelector.js",
+        1
+      ],
+      [
+        "./TabSelector.tsx",
         1
       ],
       [
