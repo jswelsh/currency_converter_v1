@@ -59,7 +59,7 @@ export interface ICurrency {
 
 export interface ICurrencySelectionFormProps {
   currencySelectHandler(mode: string, currency: string): void
-  currenciesList: Array<ICurrency>
+  currenciesList: Array<string>
   fromCurrency: string
   toCurrency: string
   mode: string }
@@ -78,7 +78,7 @@ export interface IDataItem {
 export interface IUserInputTabProps {
   convertHistoryHandler(payload: object): void 
   compareListHandler(fromCurrency: string, amount: number): void 
-  currenciesList: Array<ICurrency>
+  currenciesList: Array<string>
   convertHandler(payload: object): void 
   setFromCurrency(currency: string): void
   setToCurrency(currency: string): void
@@ -109,9 +109,9 @@ export interface IInputAmountFieldProps {
 export interface ISelectionComponentProps {
   icon: Object
   name: string
-  // value: string
+  value: string
   currencySelectHandler(mode: string, currency: string): void
-  currenciesList: Array<ICurrency>
+  currenciesList: Array<string>
 }
 
 export interface ITabSelectorProps {

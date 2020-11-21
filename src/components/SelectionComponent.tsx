@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+/* import { ICurrency } from './types' */
 import { ISelectionComponentProps } from './types'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { 
@@ -14,11 +15,25 @@ const iconComponent = () => {
 return (
   <ExpandMoreIcon />
 )};
+const menuItemConstructor = (currency: string, index: number) => {
+  return (
+  <MenuItem
+    key={index}
+    value={currency}
+  >
+    <ListItemIcon>
+      {iconHandler('selection', currency)}
+    </ListItemIcon>
+    {console.log(currency)}
+    {currency}
+  </MenuItem>
+  )
+}
 
 const SelectionComponent: FC<ISelectionComponentProps> = ({ 
   icon, 
   name, 
-  //value, 
+  value, 
   currencySelectHandler, 
   currenciesList
 }) => {
@@ -29,17 +44,10 @@ return (
       disableUnderline
       name={name}
       IconComponent={iconComponent}
-      //value={value}
+      value={value}
       onChange={(event) => handleChange(event, currencySelectHandler)}>
-      {currenciesList.map(currency => (
-        <MenuItem
-/*           key={currency} 
-          value={currency} */>
-          <ListItemIcon>
-            {iconHandler('selection', currency)}
-          </ListItemIcon>
-          {currency}
-        </MenuItem>
+      {(currenciesList.length !== 0) && currenciesList.map((currency, index) => (
+        menuItemConstructor(currency, index)
       ))}
     </Select>
   </ListItem>

@@ -1,4 +1,3 @@
-//import React, {FC} from 'react';
 import { useEffect, useReducer } from 'react';
 import { 
   IconvertHandlerFunc,
@@ -122,10 +121,17 @@ export default function useAppData() {
           fromIntro, 
           toIntro
           ]) => {
-            //console.log('Athena', /* fromIntro['data']['query']['pages'] */Object.keys(fromIntro['data']['query']['pages']))
+            /* 
+            get the json of each currency's intro text from wikipedia; 
+            drill down the json tree to get to the queried pages,
+            only queried one, so we use the first index [0]  */
             const fromDrillDown = fromIntro['data']['query']['pages']
             const toDrillDown = toIntro['data']['query']['pages']
+            /* 
+            drill drown the response to get the converted value */
             const result = fromRates.data.rates[toCurrency];
+            /* 
+            used for the backside of the convert card */
             const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-5,-10,-15])
           
             function slicer (array:any, slicePoints:any) {
@@ -147,6 +153,9 @@ export default function useAppData() {
               toCurrency: toCurrency,
               toStart: amount,
               converted: parseInt(amount)*result.toFixed(5),
+              /* 
+              get the keys for the pages (this is deceptive as we only query
+              one page but have to use the first index to grap it as its an array) */
               fromIntro: fromDrillDown[Object.keys(fromDrillDown)[0]]['extract'],
               toIntro: toDrillDown[Object.keys(toDrillDown)[0]]['extract']
             });

@@ -28,7 +28,7 @@ return (
         <SelectionComponent 
           icon={<CompareArrowsIcon color='secondary'/>}
           name={'fromCurrency'}
-          //value={fromCurrency}
+          value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>)}
       {mode !== 'Compare' && (
@@ -36,13 +36,13 @@ return (
         <SelectionComponent 
           icon={<FromIcon color='secondary'/>}
           name={'fromCurrency'}
-          //value={fromCurrency}
+          value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>
         <SelectionComponent 
           icon={<ToIcon color='secondary'/>}
           name={'toCurrency'}
-          //value={toCurrency}
+          value={toCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>
         <ListItem
