@@ -30,18 +30,25 @@ export interface IConvertViewProps {
   toStart: number
   toIntro: string }
 
-export interface IConvertViewBacksideCardProps {
+  export interface IConvertViewCardProps {
+    recentRateHistory: Array<ICurrencyArrayItem>
+    converted: number
+    currency: string
+    amount: number}
+  
+
+export interface IConvertViewCardBacksideProps {
   recentRateHistory: any
   converted: number
   currency: string
   avatar: Object
   name: string }
 
-export interface IConvertViewCardTableProps {
+export interface IConvertViewCardBacksideTableProps {
   recentRateHistory: Array<ICurrencyArrayItem>
   converted: number }
 
-export interface IConvertViewFrontsideCardProps {
+export interface IConvertViewCardFrontsideProps {
   currency: string
   symbol: any
   amount: any

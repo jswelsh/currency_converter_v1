@@ -15,7 +15,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-
 import { TabSelector } from './TabSelector';
 import { UserInputTab } from './UserInputTab';
 
@@ -83,11 +82,10 @@ const ToolBar: FC<IToolBarProps> = ({
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-
+  
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
-
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };

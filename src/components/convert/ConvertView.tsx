@@ -7,8 +7,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import { ConvertViewIntroCard } from './ConvertViewIntroCard'
-import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
-import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
+import { ConvertViewCard } from './ConvertViewCard'
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const drawerWidth = 240;
@@ -52,54 +51,6 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})
     }
 }));
-interface ICurrencyArrayItem {
-  date: Date
-  value: number }
-interface IcardConstructorFunc {
-  (payload:{
-    recentRateHistory: Array<ICurrencyArrayItem>
-    converted: number
-    currency: string, 
-    amount: number
-  }): any;
-}
-
-let cardConstructor: IcardConstructorFunc 
-cardConstructor = ({ 
-  recentRateHistory,
-  converted,
-  currency, 
-  amount
-}) => {
-return (
-  <Flippy
-    flipOnHover={false} // default false
-    flipOnClick={true} // default false
-    flipDirection="horizontal">  {/* horizontal or vertical */}
-    <FrontSide>
-      <ConvertViewFrontsideCard
-      currency={currency}
-      symbol={data[currency]['symbol_native']}
-      amount={amount}
-      avatar={iconHandler({
-        mode: 'converter', 
-        currency: currency
-      })}
-      title={data[currency]['name']}/>
-    </FrontSide>	
-    <BackSide>
-      <ConvertViewBacksideCard
-        currency={currency}
-        name={data[currency]['name']}
-        recentRateHistory={recentRateHistory}
-        converted={converted}
-        avatar={iconHandler({
-          mode: 'converter', 
-          currency: currency
-        })}/>
-    </BackSide>
-  </Flippy>
-)}
 
 const ConvertView: FC<IConvertViewProps> = ({
   recentRateHistory,
@@ -122,20 +73,18 @@ return(
   className={clsx({
     [classes.drawerOpen]: opendrawer,
     [classes.drawerClose]: !opendrawer})}>
-    { cardConstructor({
-      recentRateHistory,
-      currency: fromCurrency, 
-      converted,
-      amount: toStart,
-      })
-    }
-    { cardConstructor({
-      recentRateHistory,
-      currency: toCurrency, 
-      converted,
-      amount: converted,
-      })
-    }
+    <ConvertViewCard
+      recentRateHistory={recentRateHistory}
+      currency={fromCurrency}
+      converted={converted}
+      amount={toStart}
+    />
+    <ConvertViewCard
+      recentRateHistory={recentRateHistory}
+      currency={toCurrency}
+      converted={converted}
+      amount={converted}
+    />
   </Grid>
   <Grid 
   container 
