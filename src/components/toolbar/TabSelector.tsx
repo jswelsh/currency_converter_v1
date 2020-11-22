@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { ITabSelectorProps } from './types'
+import { ITabSelectorProps } from '../types'
 import { 
   List,
   ListItem,

@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { IButtonProps } from './types'
+import { IButtonProps } from '../types'
 import {  
   ListItemText,
   ListItemIcon,

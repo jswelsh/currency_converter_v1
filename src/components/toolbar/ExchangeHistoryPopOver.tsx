@@ -1,5 +1,5 @@
 import React, { FC,useState } from "react";
-import { IExchangeHistoryPopOverProps } from './types'
+import { IExchangeHistoryPopOverProps } from '../types'
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Popover,  

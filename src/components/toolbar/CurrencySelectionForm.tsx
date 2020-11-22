@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { ICurrencySelectionFormProps } from './types'
+import { ICurrencySelectionFormProps } from '../types'
 import { 
   FormControl,
   List,
@@ -11,7 +11,7 @@ import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import FromIcon from '@material-ui/icons/ArrowDownward';
 import ToIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import SwapVertIcon from '@material-ui/icons/Cached';
-import { handleClick } from '../helpers/selectionHelper';
+import { handleClick } from '../../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
 const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({

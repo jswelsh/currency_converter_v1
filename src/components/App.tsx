@@ -5,7 +5,7 @@ import {} from './types'
 import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
-import { ToolBar } from './ToolBar';
+import { ToolBar } from './toolbar/ToolBar';
 import { CompareView } from './CompareView'
 import { ConvertView } from './convert/ConvertView'
 import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
