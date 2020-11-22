@@ -1961,7 +1961,7 @@
         "signature": "88ee6fe1586f95ffca70504e8950d9cb9f2fbcf32d585a9ada5a795119fc9a3d",
         "affectsGlobalScope": false
       },
-      "./src/components/ConvertViewBacksideCard.js": {
+      "./src/components/ConvertViewCardBackside.js": {
         "version": "69b1b71f9131a6b6d6f9ba30a906cb72b6bc5aa978d7de57aa9e4b39226e8299",
         "signature": "60afb4acc9ac1ac46cba952eb3b2ff12ef54e63176fc170406113fb58a0c9e9a",
         "affectsGlobalScope": false
@@ -1971,12 +1971,12 @@
         "signature": "2c5593d28810c4ebe78ee8e51a7347c5c02f98d8a5d46ce2ed392fd2249aa109",
         "affectsGlobalScope": false
       },
-      "./src/tsx/ConvertViewCardTable.tsx": {
+      "./src/tsx/ConvertViewCardBacksideTable.tsx": {
         "version": "2c193acfb9109e4ec03ddc155948efebfad6e9a78e05a4cf8e939992be4c3b79",
         "signature": "1b88f5e4650c207fc089f23b29ee0812332df334a9da2efd088f70cf42047872",
         "affectsGlobalScope": false
       },
-      "./src/tsx/ConvertViewBacksideCard.tsx": {
+      "./src/tsx/ConvertViewCardBackside.tsx": {
         "version": "7be445ecc4048419818b7551e64e8a151c04cafb6a19ffddb3f2d88d5d3a9dda",
         "signature": "eaf5b33d3cb7071ffde20a48914b8643aa64408f3fc71097922e49981271cfab",
         "affectsGlobalScope": false
@@ -4963,7 +4963,7 @@
         "./src/helpers/compareHelper.d.ts",
         "./src/helpers/currency.json"
       ],
-      "./src/components/ConvertViewBacksideCard.js": [
+      "./src/components/ConvertViewCardBackside.js": [
         "./node_modules/@material-ui/core/index.d.ts",
         "./node_modules/@material-ui/core/styles/index.d.ts",
         "./node_modules/@material-ui/icons/ThreeDRotation.d.ts",
@@ -5005,20 +5005,20 @@
         "./node_modules/@material-ui/core/styles/index.d.ts",
         "./node_modules/@types/react/index.d.ts",
         "./node_modules/clsx/clsx.d.ts",
-        "./src/components/ConvertViewBacksideCard.js",
+        "./src/components/ConvertViewCardBackside.js",
         "./src/components/ConvertViewFrontsideCard.js",
         "./src/components/ConvertViewIntroCard.js",
         "./src/helpers/compareHelper.d.ts",
         "./src/tsx/react-flippy.d.ts"
       ],
-      "./src/tsx/ConvertViewBacksideCard.tsx": [
+      "./src/tsx/ConvertViewCardBackside.tsx": [
         "./node_modules/@material-ui/core/index.d.ts",
         "./node_modules/@material-ui/core/styles/index.d.ts",
         "./node_modules/@material-ui/icons/ThreeDRotation.d.ts",
         "./node_modules/@types/react/index.d.ts",
-        "./src/tsx/ConvertViewCardTable.tsx"
+        "./src/tsx/ConvertViewCardBacksideTable.tsx"
       ],
-      "./src/tsx/ConvertViewCardTable.tsx": [
+      "./src/tsx/ConvertViewCardBacksideTable.tsx": [
         "./node_modules/@material-ui/core/index.d.ts",
         "./node_modules/@types/react/index.d.ts"
       ],
@@ -7141,7 +7141,7 @@
       "./src/components/CompareListItem.js": [
         "./node_modules/@material-ui/core/index.d.ts"
       ],
-      "./src/components/ConvertViewBacksideCard.js": [
+      "./src/components/ConvertViewCardBackside.js": [
         "./node_modules/@material-ui/core/index.d.ts"
       ],
       "./src/components/ConvertViewFrontsideCard.js": [
@@ -7160,10 +7160,10 @@
       "./src/tsx/ConvertView.tsx": [
         "./node_modules/@types/react/index.d.ts"
       ],
-      "./src/tsx/ConvertViewBacksideCard.tsx": [
+      "./src/tsx/ConvertViewCardBackside.tsx": [
         "./node_modules/@types/react/index.d.ts"
       ],
-      "./src/tsx/ConvertViewCardTable.tsx": [
+      "./src/tsx/ConvertViewCardBacksideTable.tsx": [
         "./node_modules/@types/react/index.d.ts"
       ],
       "./src/tsx/ConvertViewFrontsideCard.tsx": [
@@ -7721,7 +7721,7 @@
       "./node_modules/typescript/lib/lib.es5.d.ts",
       "./node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "./src/components/CompareListItem.js",
-      "./src/components/ConvertViewBacksideCard.js",
+      "./src/components/ConvertViewCardBackside.js",
       "./src/components/ConvertViewFrontsideCard.js",
       "./src/components/ConvertViewIntroCard.js",
       "./src/helpers/compareHelper.d.ts",
@@ -7730,8 +7730,8 @@
       "./src/tsx/CompareListItem.tsx",
       "./src/tsx/CompareView.tsx",
       "./src/tsx/ConvertView.tsx",
-      "./src/tsx/ConvertViewBacksideCard.tsx",
-      "./src/tsx/ConvertViewCardTable.tsx",
+      "./src/tsx/ConvertViewCardBackside.tsx",
+      "./src/tsx/ConvertViewCardBacksideTable.tsx",
       "./src/tsx/ConvertViewFrontsideCard.tsx",
       "./src/tsx/react-flippy.d.ts"
     ]

@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewFrontsideCardProps } from './types'
+import { IConvertViewCardFrontsideProps } from '../types'
 import {
   Card,
   Grid,
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const ConvertViewFrontsideCard: FC<IConvertViewFrontsideCardProps> = ({
+const ConvertViewCardFrontside: FC<IConvertViewCardFrontsideProps> = ({
   currency,
   symbol,
   amount,
@@ -72,4 +72,4 @@ return(
   </Grid>
 )}
 
-export {ConvertViewFrontsideCard}
+export {ConvertViewCardFrontside}

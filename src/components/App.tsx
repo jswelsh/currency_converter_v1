@@ -7,7 +7,7 @@ import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
 import { ToolBar } from './ToolBar';
 import { CompareView } from './CompareView'
-import { ConvertView } from './ConvertView'
+import { ConvertView } from './convert/ConvertView'
 import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 
 

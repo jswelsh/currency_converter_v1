@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import { ConvertViewCardTable } from './ConvertViewCardTable'
+import { ConvertViewCardBacksideTable } from './ConvertViewCardBacksideTable'
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewBacksideCardProps } from './types'
+import { IConvertViewCardBacksideProps } from '../types'
 import {
   Card,
   Grid,
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const ConvertViewBacksideCard: FC<IConvertViewBacksideCardProps> = ({
+const ConvertViewCardBackside: FC<IConvertViewCardBacksideProps> = ({
   recentRateHistory,
   converted,
   currency,
@@ -55,7 +55,7 @@ return(
   <CardContent>
     <Grid container justify="center" >
       <Grid item >
-      <ConvertViewCardTable
+      <ConvertViewCardBacksideTable
         recentRateHistory={recentRateHistory}
         converted={converted}
       />
@@ -66,4 +66,4 @@ return(
 )
 }
 
-export {ConvertViewBacksideCard}
+export {ConvertViewCardBackside}

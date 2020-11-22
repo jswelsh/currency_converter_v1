@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { IConvertViewCardTableProps } from './types'
+import { IConvertViewCardBacksideTableProps } from '../types'
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   Typography
 } from '@material-ui/core';
 
-const ConvertViewCardTable: FC<IConvertViewCardTableProps> = ({
+const ConvertViewCardBacksideTable: FC<IConvertViewCardBacksideTableProps> = ({
   recentRateHistory,
   converted
 }) => {
@@ -56,4 +56,4 @@ return(
   </TableContainer>
 )}
 
-export {ConvertViewCardTable}
+export {ConvertViewCardBacksideTable}

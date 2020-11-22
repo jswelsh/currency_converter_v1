@@ -1,20 +1,19 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewProps } from './types'
-import { iconHandler } from '../helpers/compareHelper';
+import { IConvertViewProps } from './../types'
+import { iconHandler } from '../../helpers/compareHelper';
 import {
   Grid,
 } from '@material-ui/core';
-import { ConvertViewIntroCard } from '../components/ConvertViewIntroCard'
-import { ConvertViewFrontsideCard } from '../components/ConvertViewFrontsideCard'
-import { ConvertViewBacksideCard } from '../components/ConvertViewBacksideCard'
+import { ConvertViewIntroCard } from './ConvertViewIntroCard'
+import { ConvertViewCard } from './ConvertViewCard'
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const drawerWidth = 240;
 const drawerClosed = 100;
 
-const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
+const data = require('../../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -74,32 +73,18 @@ return(
   className={clsx({
     [classes.drawerOpen]: opendrawer,
     [classes.drawerClose]: !opendrawer})}>
-    {[
-    [fromCurrency, toStart], 
-    [toCurrency, converted]].map((
-      [currency, amount]) => (
-    <Flippy
-      flipOnHover={false} // default false
-      flipOnClick={true} // default false
-      flipDirection="horizontal">  {/* horizontal or vertical */}
-      <FrontSide>
-        <ConvertViewFrontsideCard
-        currency={currency}
-        symbol={data[currency]['symbol_native']}
-        amount={amount}
-        avatar={iconHandler('converter', currency)}
-        title={data[currency]['name']}/>
-      </FrontSide>	
-      <BackSide>
-        <ConvertViewBacksideCard
-          currency={currency}
-          name={data[currency]['name']}
-          recentRateHistory={recentRateHistory}
-          converted={converted}
-          avatar={iconHandler('converter', currency)}/>
-      </BackSide>
-    </Flippy>
-    ))}
+    <ConvertViewCard
+      recentRateHistory={recentRateHistory}
+      currency={fromCurrency}
+      converted={converted}
+      amount={toStart}
+    />
+    <ConvertViewCard
+      recentRateHistory={recentRateHistory}
+      currency={toCurrency}
+      converted={converted}
+      amount={converted}
+    />
   </Grid>
   <Grid 
   container 
@@ -113,7 +98,10 @@ return(
       flipDirection="vertical">  {/* horizontal or vertical */}
       <FrontSide>
         <ConvertViewIntroCard
-          avatar={iconHandler('converter', fromCurrency)}
+          avatar={iconHandler({
+            mode: 'converter', 
+            currency: fromCurrency
+          })}
           title={data[fromCurrency]['name']}
           currency={fromCurrency}
           intro={fromIntro}
@@ -124,7 +112,10 @@ return(
       container 
       justify={'center'}>
         <ConvertViewIntroCard
-          avatar={iconHandler('converter', toCurrency)}
+          avatar={iconHandler({
+            mode: 'converter', 
+            currency: toCurrency
+          })}
           title={data[toCurrency]['name']}
           currency={toCurrency}
           intro={toIntro}
