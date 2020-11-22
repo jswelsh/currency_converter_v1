@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import { ConvertViewCardTable } from './ConvertViewCardTable'
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewBacksideCardProps } from './types'
+import { IConvertViewBacksideCardProps } from './../types'
 import {
   Card,
   Grid,

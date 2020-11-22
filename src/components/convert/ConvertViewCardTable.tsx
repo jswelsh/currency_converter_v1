@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { IConvertViewCardTableProps } from './types'
+import { IConvertViewCardTableProps } from './../types'
 import {
   Table,
   TableBody,

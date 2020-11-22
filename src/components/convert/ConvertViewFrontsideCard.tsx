@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewFrontsideCardProps } from './types'
+import { IConvertViewFrontsideCardProps } from './../types'
 import {
   Card,
   Grid,

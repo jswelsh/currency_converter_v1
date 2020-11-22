@@ -30,7 +30,7 @@
     "noEmit": true
   },
   "include": [
-    "src/*/*"
+    "src/*/*/*", "src/components/convert/react-flippy.d.ts"
   ],
   "exclude": [
     "node_modules",

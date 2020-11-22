@@ -1,20 +1,20 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewProps } from './types'
-import { iconHandler } from '../helpers/compareHelper';
+import { IConvertViewProps } from './../types'
+import { iconHandler } from '../../helpers/compareHelper';
 import {
   Grid,
 } from '@material-ui/core';
-import { ConvertViewIntroCard } from '../components/ConvertViewIntroCard'
-import { ConvertViewFrontsideCard } from '../components/ConvertViewFrontsideCard'
-import { ConvertViewBacksideCard } from '../components/ConvertViewBacksideCard'
+import { ConvertViewIntroCard } from './ConvertViewIntroCard'
+import { ConvertViewFrontsideCard } from './ConvertViewFrontsideCard'
+import { ConvertViewBacksideCard } from './ConvertViewBacksideCard'
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
 const drawerWidth = 240;
 const drawerClosed = 100;
 
-const data = require('../helpers/currency.json'); // forward slashes will depend on the file location
+const data = require('../../helpers/currency.json'); // forward slashes will depend on the file location
 
 const useStyles = makeStyles((theme) => ({
   card: {
