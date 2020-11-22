@@ -45,7 +45,7 @@ return (
       name={name}
       IconComponent={iconComponent}
       value={value}
-      onChange={(event) => handleChange(event, currencySelectHandler)}>
+      onChange={(event) => handleChange({event, setter:currencySelectHandler})}>
       {currenciesList.map((currency) => (
         menuItemConstructor(currency)
       ))}
