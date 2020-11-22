@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core'
 const theme = createMuiTheme({
 palette: {
 primary: {
-	main: '#fff'
+	main: '#8CFFDA'
 },
 secondary: {
 	main: '#8CFFDA'
@@ -19,9 +19,25 @@ overrides: {
 
 MuiTouchRipple:{
 	root:{
-		color:'#1dd7a6'
+		color:'#0df2c8ff'
 	}
 },
+MuiOutlinedInput:{
+	root:{
+		'&:hover':{
+			backgroundColor:'#0df2c829',
+
+		},
+
+	},
+	notchedOutline :{
+		borderColor:'#8CFFDA',
+
+	},
+
+
+},
+
 MuiToolbar:{
 	root:{
 		backgroundColor:'#212121'

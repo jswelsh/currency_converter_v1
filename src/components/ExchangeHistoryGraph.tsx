@@ -6,6 +6,9 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
+import {
+  Link
+}from "react-router-dom";
 
 const drawerWidth = 240;
 const drawerClosed = 100;
@@ -150,6 +153,7 @@ chart.data = data;
           [classes.drawerOpen]: opendrawer,
           [classes.drawerClose]: !opendrawer  })}
       />
+      <Link to="/signin">SignIn</Link>
     </>
     
   );
