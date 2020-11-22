@@ -4,8 +4,12 @@ import {
   ListItemIcon, 
 } from '@material-ui/core';
 
+export interface IIconMapProps {
+  [key: string]: any;
+  CAD: string;
+}
 
-const iconMap ={
+const iconMap:IIconMapProps ={
   CAD : 'ca',
   HKD : 'hk',
   ISK : 'is',
@@ -41,17 +45,25 @@ const iconMap ={
   PLN : 'pl'
 }
 
-const iconHandler = (mode: string, payload: any) => {
+
+interface IIconHandlerFunc {
+  (payload:{
+    currency: string, 
+    mode: string
+  }): any;
+}
+
+let iconHandler: IIconHandlerFunc 
+
+iconHandler = ({mode, currency}) => {
   const height = mode === 
   'selection' ? 25 :
   'converter' ? 75 :
   35
-  let um = payload.toString()
-  const val = iconMap[um]
-  console.log(val)
+  console.log(iconMap[currency.toString()], currency)
   return (
     <ListItemIcon>
-      <CircleFlag countryCode={val}  height={height}/> 
+      <CircleFlag countryCode={iconMap[currency]}  height={height}/> 
     </ListItemIcon>
   )
 }

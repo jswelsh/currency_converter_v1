@@ -52,6 +52,54 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})
     }
 }));
+interface ICurrencyArrayItem {
+  date: Date
+  value: number }
+interface IcardConstructorFunc {
+  (payload:{
+    recentRateHistory: Array<ICurrencyArrayItem>
+    converted: number
+    currency: string, 
+    amount: number
+  }): any;
+}
+
+let cardConstructor: IcardConstructorFunc 
+cardConstructor = ({ 
+  recentRateHistory,
+  converted,
+  currency, 
+  amount
+}) => {
+return (
+  <Flippy
+    flipOnHover={false} // default false
+    flipOnClick={true} // default false
+    flipDirection="horizontal">  {/* horizontal or vertical */}
+    <FrontSide>
+      <ConvertViewFrontsideCard
+      currency={currency}
+      symbol={data[currency]['symbol_native']}
+      amount={amount}
+      avatar={iconHandler({
+        mode: 'converter', 
+        currency: currency
+      })}
+      title={data[currency]['name']}/>
+    </FrontSide>	
+    <BackSide>
+      <ConvertViewBacksideCard
+        currency={currency}
+        name={data[currency]['name']}
+        recentRateHistory={recentRateHistory}
+        converted={converted}
+        avatar={iconHandler({
+          mode: 'converter', 
+          currency: currency
+        })}/>
+    </BackSide>
+  </Flippy>
+)}
 
 const ConvertView: FC<IConvertViewProps> = ({
   recentRateHistory,
@@ -74,32 +122,20 @@ return(
   className={clsx({
     [classes.drawerOpen]: opendrawer,
     [classes.drawerClose]: !opendrawer})}>
-    {[
-    [fromCurrency, toStart], 
-    [toCurrency, converted]].map((
-      [currency, amount]) => (
-    <Flippy
-      flipOnHover={false} // default false
-      flipOnClick={true} // default false
-      flipDirection="horizontal">  {/* horizontal or vertical */}
-      <FrontSide>
-        <ConvertViewFrontsideCard
-        currency={currency}
-        symbol={data[currency]['symbol_native']}
-        amount={amount}
-        avatar={iconHandler('converter', currency)}
-        title={data[currency]['name']}/>
-      </FrontSide>	
-      <BackSide>
-        <ConvertViewBacksideCard
-          currency={currency}
-          name={data[currency]['name']}
-          recentRateHistory={recentRateHistory}
-          converted={converted}
-          avatar={iconHandler('converter', currency)}/>
-      </BackSide>
-    </Flippy>
-    ))}
+    { cardConstructor({
+      recentRateHistory,
+      currency: fromCurrency, 
+      converted,
+      amount: toStart,
+      })
+    }
+    { cardConstructor({
+      recentRateHistory,
+      currency: toCurrency, 
+      converted,
+      amount: converted,
+      })
+    }
   </Grid>
   <Grid 
   container 
@@ -113,7 +149,10 @@ return(
       flipDirection="vertical">  {/* horizontal or vertical */}
       <FrontSide>
         <ConvertViewIntroCard
-          avatar={iconHandler('converter', fromCurrency)}
+          avatar={iconHandler({
+            mode: 'converter', 
+            currency: fromCurrency
+          })}
           title={data[fromCurrency]['name']}
           currency={fromCurrency}
           intro={fromIntro}
@@ -124,7 +163,10 @@ return(
       container 
       justify={'center'}>
         <ConvertViewIntroCard
-          avatar={iconHandler('converter', toCurrency)}
+          avatar={iconHandler({
+            mode: 'converter', 
+            currency: toCurrency
+          })}
           title={data[toCurrency]['name']}
           currency={toCurrency}
           intro={toIntro}

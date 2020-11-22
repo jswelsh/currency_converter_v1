@@ -71,7 +71,9 @@ const CompareListItem: FC<ICompareListItemProps> = ({
         [classes.selected]: (fromCurrency===currency), })}>
       <Grid container spacing={1} direction="row" justify="space-around" >
         {gridBuilder(
-          iconHandler('compare', currency)
+          iconHandler({
+            mode:'compare', 
+            currency:currency})
         )}
         {gridBuilder(
           <ListItemText>

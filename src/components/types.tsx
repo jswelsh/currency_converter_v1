@@ -55,7 +55,6 @@ export interface IConvertViewIntroCardProps {
   intro: string }
 
 
-
 export interface ICurrencySelectionFormProps {
   currencySelectHandler(payload:{mode: string, currency: string}): void
   currenciesList: Array<string>

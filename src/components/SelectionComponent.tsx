@@ -21,7 +21,9 @@ const menuItemConstructor = (currency: string) => {
     value={currency}
   >
     <ListItemIcon>
-      {iconHandler('selection', currency)}
+      {iconHandler({
+        mode: 'selection', 
+        currency: currency})}
     </ListItemIcon>
     {currency}
   </MenuItem>
