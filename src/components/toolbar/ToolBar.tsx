@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import clsx from 'clsx';
-import { IToolBarProps } from './types'
+import { IToolBarProps } from '../types'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { 
   Drawer, 
@@ -106,13 +106,12 @@ return (
           onClick={handleDrawerOpen}
           edge="start"
           className={clsx(classes.menuButton, {
-            [classes.hide]: opendrawer
-          })}
+            [classes.hide]: opendrawer})}
         >
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap>
-          Currency Exchange
+          CurrExC
         </Typography>
       </Toolbar>
     </AppBar>
@@ -120,15 +119,11 @@ return (
       variant="permanent"
       className={clsx(classes.drawer, {
         [classes.drawerOpen]: opendrawer,
-        [classes.drawerClose]: !opendrawer
-      })}
+        [classes.drawerClose]: !opendrawer})}
       classes={{
         paper: clsx({
           [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer
-        }),
-      }}
-      
+          [classes.drawerClose]: !opendrawer}),}}
     >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
@@ -159,9 +154,10 @@ return (
             toCurrency={toCurrency}
             opendrawer={opendrawer}
             mode={mode}/>
-        <div className={clsx({
-              [classes.hide]: mode !== 'Compare'
-            })}>
+        <div 
+          className={clsx({
+            [classes.hide]: mode !== 'Compare'})}
+        >
         </div>
         <Divider />  
     </Drawer>

@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IInputAmountFieldProps } from './types'
+import { IInputAmountFieldProps } from '../types'
 import TextField from '@material-ui/core/TextField';
 import NumberFormat from 'react-number-format';
-import { handleChange, label } from '../helpers/inputAmountHelper'
+import { handleChange, label } from '../../helpers/inputAmountHelper'
 
 const useStyles = makeStyles((theme) => ({
   TextField: {

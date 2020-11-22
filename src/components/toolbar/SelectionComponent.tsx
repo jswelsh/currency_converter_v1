@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { ISelectionComponentProps } from './types'
+import { ISelectionComponentProps } from '../types'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { 
   Select, 
@@ -7,8 +7,8 @@ import {
   ListItem,
   ListItemIcon, 
 } from '@material-ui/core';
-import { handleChange } from '../helpers/selectionHelper'
-import { iconHandler } from '../helpers/compareHelper'
+import { handleChange } from '../../helpers/selectionHelper'
+import { iconHandler } from '../../helpers/compareHelper'
 
 const iconComponent = () => {
 return (

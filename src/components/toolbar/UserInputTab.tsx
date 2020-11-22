@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './types'
+import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './../types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
@@ -9,7 +9,7 @@ import { Divider } from '@material-ui/core';
 import { 
   initializeDateRange, 
   shortenDateString 
-} from '../helpers/dataHelpers'
+} from '../../helpers/dataHelpers'
 
 const UserInputTab: FC<IUserInputTabProps> = ({
   convertHistoryHandler,
