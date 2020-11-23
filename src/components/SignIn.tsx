@@ -8,10 +8,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import {ReactComponent as SvgIcon} from './logo.svg'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Icon } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -53,9 +55,12 @@ export function SignIn() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+{/*         <Avatar className={classes.avatar}>
+          <SvgIcon />
+        </Avatar> */}
+        <div>
+          <SvgIcon />
+        </div>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
