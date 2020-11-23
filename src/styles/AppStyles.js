@@ -19,18 +19,25 @@ overrides: {
 
 MuiTouchRipple:{
 	root:{
-		color:'#0df2c8ff'
+		color:'#c90349	'
 	}
 },
-MuiOutlinedInput:{
-	root:{
+Mui:{
+	selected: {
+		backgroundColor:'#0df2c829'
+	}
+},
+MuiOutlinedInput: {
+	root: {
 		'&:hover':{
+			backgroundColor:'#ff8aaf4f',
+		},
+		'&$focused':{
 			backgroundColor:'#0df2c829',
-
 		},
 
 	},
-	notchedOutline :{
+	notchedOutline: {
 		borderColor:'#8CFFDA',
 
 	},
@@ -39,7 +46,7 @@ MuiOutlinedInput:{
 },
 
 MuiToolbar:{
-	root:{
+	root: {
 		backgroundColor:'#212121'
 	}
 },

@@ -49,7 +49,7 @@ const handleChange = (event: Array<Date>) => {
 }
 return (
   <> 
-    {mode !== 'History' && (
+    {mode !== 'History' && mode !== 'SignIn' && (
     <InputAmountField
       fromCurrency={fromCurrency}
       setAmount={setAmount}
@@ -57,12 +57,14 @@ return (
       amount={amount}
       //amountHandler={amountHandler}
       />)}
-    <CurrencySelectionForm 
+    {mode !== 'SignIn' &&
+    (<CurrencySelectionForm 
       fromCurrency={fromCurrency}
       toCurrency={toCurrency}
       currencySelectHandler={currencySelectHandler}
       currenciesList={currenciesList}
-      mode={mode}/>
+      mode={mode}/>)
+    }
     <Divider />
     {mode === 'History' && (
       <ExchangeHistoryPopOver

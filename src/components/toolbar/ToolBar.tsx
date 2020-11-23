@@ -79,7 +79,6 @@ const ToolBar: FC<IToolBarProps> = ({
   modeHandler,
   opendrawer,
   mode,
-  Link
 }) => {
   const classes = useStyles();
   const theme = useTheme();
@@ -138,7 +137,7 @@ return (
         <TabSelector
           modeHandler={modeHandler}
           mode={mode}
-          Link={Link}/> 
+        /> 
         <Divider/>
         
         <div className={clsx({

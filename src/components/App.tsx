@@ -48,38 +48,56 @@ export default function App() {
           modeHandler={modeHandler}
           opendrawer={opendrawer}
           mode={state.mode}
-          Link={<Link to="/signin">signin</Link>}
           />
           <Link to="/signin">SignIn</Link>
         {/* <Route path="/converter"></Route> */}
-        {state.mode === 'Converter' && (
-        <ConvertView
-          opendrawer={opendrawer}
-          fromCurrency={state.fromCurrency}
-          toCurrency={state.toCurrency}
-          toStart={state.result.toStart}
-          converted={state.result.converted}
-          fromIntro={state.result.fromIntro}
-          toIntro={state.result.toIntro}
-          recentRateHistory={state.result.recentRateHistory}
-        />)}
+        {/* {state.mode === 'Converter' && ()} */}
         {/* <Route path="/history"></Route> */}
-        {state.mode === 'History' && (
-        <ExchangeHistoryGraph
-          history={state.history}
-          opendrawer={opendrawer}
-        />)}
-        {/* <Route path="/compare"></Route> */}
-        {state.mode === 'Compare' && (
+        {/* {state.mode === 'History' && ()} */}
 
-        <SignIn />
-        )}
+        {/* {state.mode === 'Compare' && ()} */}
 
         <Switch>
           <Route path="/signin">
             <SignIn />
           </Route>
+          <Route path="/convert">
+            <ConvertView
+              opendrawer={opendrawer}
+              fromCurrency={state.fromCurrency}
+              toCurrency={state.toCurrency}
+              toStart={state.result.toStart}
+              converted={state.result.converted}
+              fromIntro={state.result.fromIntro}
+              toIntro={state.result.toIntro}
+              recentRateHistory={state.result.recentRateHistory}
+            />
+          </Route>
+          <Route path="/history">
+            <ExchangeHistoryGraph
+              history={state.history}
+              opendrawer={opendrawer}
+            />
+          </Route>
+          <Route path="/compare">
+            <CompareView
+              setFromCurrency={setFromCurrency}
+              fromCurrency={state.fromCurrency}
+              compareList={state.compareList}
+              opendrawer={opendrawer}
+            />
+          </Route>
           <Route path="/">
+            <ConvertView
+              opendrawer={opendrawer}
+              fromCurrency={state.fromCurrency}
+              toCurrency={state.toCurrency}
+              toStart={state.result.toStart}
+              converted={state.result.converted}
+              fromIntro={state.result.fromIntro}
+              toIntro={state.result.toIntro}
+              recentRateHistory={state.result.recentRateHistory}
+            />
           </Route>
         </Switch>  
       </main>

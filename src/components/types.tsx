@@ -124,13 +124,11 @@ export interface ISelectionComponentProps {
 export interface ITabSelectorProps {
   modeHandler(mode: string): void,
   mode: string
-  Link: any
 }
 
 export interface IToolBarProps extends IUserInputTabProps {
   setDrawerOpen(state: boolean): void
   modeHandler(mode: string): void
-  Link: any
 }
 
 export interface IconvertHandlerFunc {
