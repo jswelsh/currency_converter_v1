@@ -59,6 +59,7 @@ export function SignIn() {
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
+            color='secondary'
             margin="normal"
             required
             fullWidth
@@ -70,6 +71,7 @@ export function SignIn() {
           />
           <TextField
             variant="outlined"
+            color='secondary'
             margin="normal"
             required
             fullWidth
@@ -80,14 +82,14 @@ export function SignIn() {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="secondary" />}
             label="Remember me"
           />
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
           >
             Sign In

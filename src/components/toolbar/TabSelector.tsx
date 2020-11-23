@@ -48,9 +48,10 @@ const classes = useStyles()
 
 return (
   <List aria-label="currency exchange views">
-    <Link to="/converter">
       <ListItem
         button
+        component={Link}
+        to={'/converter'}
         className={clsx(classes.ListItem,{
           [classes.selected]: (mode === 'Converter'), })}
         onClick={() =>{
@@ -58,10 +59,10 @@ return (
         {<ListItemIcon><Converter /></ListItemIcon> }
         <ListItemText primary={'Converter'} />
       </ListItem>
-    </Link>
-    <Link to="/history">
       <ListItem
         button
+        component={Link}
+        to={'/history'}
         className={clsx(classes.ListItem,{
           [classes.selected]: (mode === 'History'), })}
         onClick={() =>{
@@ -69,10 +70,10 @@ return (
         {<ListItemIcon><History /></ListItemIcon> }
         <ListItemText primary={'History'} />
       </ListItem>
-    </Link>
-    <Link to="/compare">
       <ListItem
         button
+        component={Link}
+        to={'/compare'}
         className={clsx(classes.ListItem,{
           [classes.selected]: (mode === 'Compare'), })}
         onClick={() =>{
@@ -80,10 +81,10 @@ return (
         {<ListItemIcon><Compare /></ListItemIcon> }
         <ListItemText primary={'Compare'} />
       </ListItem>
-    </Link>
-    <Link to="/signin">
       <ListItem
         button
+        component={Link}
+        to={'/signin'}
         className={clsx(classes.ListItem,{
           [classes.selected]: (mode === 'SignIn'), })}
         onClick={() =>{
@@ -91,7 +92,6 @@ return (
         {<ListItemIcon><PermIdentityIcon /></ListItemIcon> }
         <ListItemText primary={'SignIn'} />
       </ListItem>
-    </Link>
   </List>  
 )}
 export { TabSelector }
