@@ -6,13 +6,16 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
+import {
+  Link
+} from "react-router-dom";
 import History from '@material-ui/icons/Timeline';
 import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
 
 const TabSelector: FC<ITabSelectorProps> = ({
   modeHandler,
-  mode
+  mode,
 }) => {
 
 return (
@@ -41,6 +44,16 @@ return (
       {<ListItemIcon><Compare /></ListItemIcon> }
       <ListItemText primary={'Compare'} />
     </ListItem>
+    <Link to="/signin">
+    <ListItem
+      button
+      selected={mode === ''}
+      onClick={() =>{
+        modeHandler('') }}>
+      {<ListItemIcon><Compare /></ListItemIcon> }
+      <ListItemText primary={'SignIn'} />
+    </ListItem>
+    </Link>
   </List>  
 )}
 export { TabSelector }

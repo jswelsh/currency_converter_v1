@@ -48,6 +48,7 @@ export default function App() {
           modeHandler={modeHandler}
           opendrawer={opendrawer}
           mode={state.mode}
+          Link={<Link to="/signin">signin</Link>}
           />
           <Link to="/signin">SignIn</Link>
         {/* <Route path="/converter"></Route> */}
