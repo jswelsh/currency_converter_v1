@@ -16,7 +16,7 @@ import { ConvertView } from './convert/ConvertView'
 import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
-
+import { NotFound } from './NotFound'
 
 
 export default function App() {
@@ -107,6 +107,9 @@ export default function App() {
               toIntro={state.result.toIntro}
               recentRateHistory={state.result.recentRateHistory}
             />
+          </Route>
+          <Route path="*">
+           <NotFound />
           </Route>
         </Switch>  
       </main>

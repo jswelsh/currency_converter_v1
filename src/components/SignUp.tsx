@@ -112,7 +112,7 @@ export function SignUp() {
             <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color='secondary' />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+                label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
               />
             </Grid>
           </Grid>
@@ -127,7 +127,7 @@ export function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
