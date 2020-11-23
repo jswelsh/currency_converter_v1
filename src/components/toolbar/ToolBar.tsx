@@ -144,7 +144,7 @@ return (
               [classes.hide]: mode !== 'Converter'
             })}>
         </div>
-          <UserInputTab
+        {mode !== 'SignUp' && mode !== 'SignIn' && <UserInputTab
             convertHistoryHandler={convertHistoryHandler}
             compareListHandler={compareListHandler}
             currenciesList={currenciesList}
@@ -155,6 +155,7 @@ return (
             toCurrency={toCurrency}
             opendrawer={opendrawer}
             mode={mode}/>
+        }
         <div 
           className={clsx({
             [classes.hide]: mode !== 'Compare'})}

@@ -12,7 +12,9 @@ import {
 import History from '@material-ui/icons/Timeline';
 import Converter from '@material-ui/icons/Transform';
 import Compare from '@material-ui/icons/Sort';
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+/* import PermIdentityIcon from '@material-ui/icons/PermIdentity'; */
+import PersonIcon from '@material-ui/icons/Person';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -30,8 +32,7 @@ const useStyles = makeStyles(() => ({
   },
   ListItem:{
     "&:hover": {
-   /*    textDecoration: "none", */
-      backgroundColor: "#ff8cb0",}
+      backgroundColor: '#ff8cb0',}
   },
   selected:{
     backgroundColor:'#009868',
@@ -89,7 +90,18 @@ return (
           [classes.selected]: (mode === 'SignIn'), })}
         onClick={() =>{
           modeHandler('SignIn') }}>
-        {<ListItemIcon><PermIdentityIcon /></ListItemIcon> }
+        {<ListItemIcon><PersonIcon /></ListItemIcon> }
+        <ListItemText primary={'SignIn'} />
+      </ListItem>
+      <ListItem
+        button
+        component={Link}
+        to={'/signup'}
+        className={clsx(classes.ListItem,{
+          [classes.selected]: (mode === 'Signup'), })}
+        onClick={() =>{
+          modeHandler('SignUp') }}>
+        {<ListItemIcon><PersonAddIcon /></ListItemIcon> }
         <ListItemText primary={'SignIn'} />
       </ListItem>
   </List>  

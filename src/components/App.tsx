@@ -15,6 +15,8 @@ import { CompareView } from './CompareView'
 import { ConvertView } from './convert/ConvertView'
 import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 import { SignIn } from './SignIn';
+import { SignUp } from './SignUp';
+
 
 
 export default function App() {
@@ -58,8 +60,15 @@ export default function App() {
         {/* {state.mode === 'Compare' && ()} */}
 
         <Switch>
-          <Route path="/signin">
-            <SignIn />
+          <Route path='/signin'>
+            <SignIn 
+              /* mode={'SignIn'} */
+            />
+          </Route>
+          <Route path='/signup'>
+            <SignUp 
+              /* mode={'SignUp'} */
+            />
           </Route>
           <Route path="/convert">
             <ConvertView
