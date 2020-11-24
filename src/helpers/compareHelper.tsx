@@ -60,7 +60,6 @@ iconHandler = ({mode, currency}) => {
   'selection' ? 25 :
   'converter' ? 75 :
   35
-  console.log(iconMap[currency.toString()], currency)
   return (
     <ListItemIcon>
       <CircleFlag countryCode={iconMap[currency]}  height={height}/> 

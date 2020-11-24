@@ -25,9 +25,11 @@
     "react-circle-flags": "0.0.10",
     "react-dom": "^16.13.1",
     "react-flippy": "^0.1.5",
+    "react-hook-form": "^6.11.5",
     "react-number-format": "^4.4.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "validator": "^13.1.17"
   },
   "scripts": {
     "tsc": "react-scripts tsc",
