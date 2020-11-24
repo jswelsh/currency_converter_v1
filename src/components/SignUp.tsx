@@ -15,6 +15,10 @@ import {
   Box,
 } from '@material-ui/core/';
 
+import { useForm } from "react-hook-form";
+import isEmail from "validator/lib/isEmail";
+
+
 import InputAdornment from '@material-ui/core/InputAdornment';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {ReactComponent as SvgIcon} from './logo.svg'
@@ -26,7 +30,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+
+
+
 function Copyright() {
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -69,8 +77,15 @@ export function SignUp() {
   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
-
   });
+
+  const { register, handleSubmit, errors } = useForm({
+    mode: "onBlur",
+  });
+  function onSubmit(data) {
+    console.log(data);
+  }
+
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -83,6 +98,24 @@ export function SignUp() {
     event.preventDefault();
   };
 
+  /* 
+      const handleInputChange = e => {
+        const { name, value } = e.target
+        setValues({
+            ...values,
+            [name]: value
+        })
+        if (validateOnChange)
+            validate({ [name]: value })
+    }
+
+        const resetForm = () => {
+        setValues(initialFValues);
+        setErrors({})
+    }
+  
+  */
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -93,7 +126,11 @@ export function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form 
+        className={classes.form} 
+        /* noValidate */
+        onSubmit={onSubmit}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -120,12 +157,12 @@ export function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
                 autoComplete="email"
               />
             </Grid>
@@ -133,6 +170,12 @@ export function SignUp() {
             <FormControl className={clsx(classes.form/* classes.margin, classes.textField */)} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
             <OutlinedInput
+              name="password"
+              ref={register({
+                required: true,
+                minLength: 6,
+              })}
+              
               id="outlined-adornment-password"
               type={values.showPassword ? 'text' : 'password'}
               value={values.password}

@@ -3,7 +3,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
-
+import { useForm, FormProvider } from "react-hook-form";
+import FormInput from "./FormInput";
 import { 
   FormControlLabel,
   OutlinedInput,
@@ -23,23 +24,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-//import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {ReactComponent as SvgIcon} from './logo.svg'
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,20 +43,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),},
   submit: {
     margin: theme.spacing(3, 0, 2),},
-
- /*    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-    withoutLabel: {
-      marginTop: theme.spacing(3),
-    },
-    textField: {
-      width: '25ch',
-    }, */
 }));
 
 interface State {
@@ -78,6 +51,48 @@ interface State {
 }
 
 export function SignIn() {
+  const classes = useStyles();
+  const [values, setValues] = React.useState<State>({
+    showPassword: false,
+    password: '',
+  });
+
+  const methods = useForm();
+  const { handleSubmit } = methods;
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <div style={{ padding: "10px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit(onSubmit)}
+        >
+          SUBMIT
+        </Button>
+    
+        <div style={{ padding: "10px" }}>
+          <FormProvider {...methods}> // pass all methods into the context
+            <form>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <FormInput name="name" label="Name" />
+                </Grid>
+              </Grid>
+            </form>
+          </FormProvider>
+        </div>
+      </div>
+    </Container>
+  );
+}
+
+
+/* 
   const classes = useStyles();
   const [values, setValues] = React.useState<State>({
     showPassword: false,
@@ -97,7 +112,6 @@ export function SignIn() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <div>
@@ -119,58 +133,58 @@ export function SignIn() {
             autoComplete="email"
             autoFocus
           />
-          <FormControl className={clsx(classes.form/* classes.margin, classes.textField */)} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              labelWidth={70}
-            />
-          </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="secondary" />}
-            label="Remember me"
+          // classes.margin, classes.textField 
+          <FormControl className={clsx(classes.form)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
           />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-       {/*      <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid> */}
-            <Grid item>
-              <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+        </FormControl>
+        <FormControlLabel
+          control={<Checkbox value="remember" color="secondary" />}
+          label="Remember me"
+        />
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+        >
+          Sign In
+        </Button>
+        <Grid container>
+        //<Grid item xs>
+          //  <Link href="#" variant="body2">
+            //  Forgot password?
+           // </Link>
+         // </Grid> 
+          <Grid item>
+            <Link href="/signup" variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
           </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-    </Container>
-  );
-}
+        </Grid>
+      </form>
+    </div>
+    <Box mt={8}>
+      <Copyright />
+    </Box>
+
+*/

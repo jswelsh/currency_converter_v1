@@ -56,7 +56,7 @@ const CompareListItem: FC<ICompareListItemProps> = ({
     return (
       <Typography 
         variant='h5'
-        color={(fromCurrency!==currency && 'secondary')|| 'primary'}>
+        color={(fromCurrency!==currency && 'secondary') || 'primary'}>
           {data[currency]['symbol_native']} 
       </Typography>
     )
