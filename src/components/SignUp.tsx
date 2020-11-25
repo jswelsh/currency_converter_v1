@@ -16,8 +16,8 @@ import {
 } from '@material-ui/core/';
 
 import { useForm } from "react-hook-form";
-import isEmail from "validator/lib/isEmail";
-
+/* import isEmail from "validator/lib/isEmail";
+ */
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';

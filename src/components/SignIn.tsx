@@ -20,12 +20,12 @@ import {
 } from '@material-ui/core/';
 
 
-import Visibility from '@material-ui/icons/Visibility';
+/* import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import {ReactComponent as SvgIcon} from './logo.svg'
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'; */
 import Container from '@material-ui/core/Container';
 
 
@@ -50,8 +50,28 @@ interface State {
   password: string;
 }
 
+/* 
+Email regex
+/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+
+Password regex
+^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$
+This regex will enforce these rules:
+
+At least one upper case English letter, (?=.*?[A-Z])
+At least one lower case English letter, (?=.*?[a-z])
+At least one digit, (?=.*?[0-9])
+At least one special character, (?=.*?[#?!@$%^&*-])
+Minimum eight in length .{8,} (with the anchors)
+*/
+
 export function SignIn() {
-  const classes = useStyles();
+  const { register, handleSubmit, errors /*, reset  */} = useForm();
+  const onSubmit = data => console.log('athena',data.password)/* reset(); */;
+  console.log('hades', errors);
+  
+/*   const classes = useStyles();
   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
@@ -63,30 +83,15 @@ export function SignIn() {
   const onSubmit = (data) => {
     console.log(data);
   };
-
+ */
   return (
     <Container component="main" maxWidth="xs">
-      <div style={{ padding: "10px" }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit(onSubmit)}
-        >
-          SUBMIT
-        </Button>
-    
-        <div style={{ padding: "10px" }}>
-          <FormProvider {...methods}> // pass all methods into the context
-            <form>
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
-                  <FormInput name="name" label="Name" />
-                </Grid>
-              </Grid>
-            </form>
-          </FormProvider>
-        </div>
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+    <input type="email" placeholder="Email" name="Email" ref={register({required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i})} />
+    <input type="text" placeholder="Password" name="Password" ref={register({required: true, min: 8, pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i})} />
+
+      <input type="submit" />
+    </form>
     </Container>
   );
 }
