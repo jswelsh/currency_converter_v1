@@ -113,14 +113,11 @@ export function SignIn() {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField 
-        /* required */
-        /*   type="email"  */
-          placeholder="Email" 
           name="Email" 
+          placeholder="Email" 
           label="Email Address"
           variant="outlined"
           fullWidth
-          /* autoComplete="email" */
           inputRef={
             register({
               required: "Required", 
@@ -128,63 +125,78 @@ export function SignIn() {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,/* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, */
                 message: 'invalid email address'
           }})} />
-      {errors.Email && errors.Email.type === "required" && <Typography>This is required</Typography>}
       {errors?.Email?.message && <Typography>{errors.Email.message} </Typography>}
       </Grid>
       <Grid item xs={12}>
-      <TextField
-        name="Password"
-        placeholder="Password" 
-        variant="outlined"
-        fullWidth
-        inputRef={register({
-          required: "Required",
-          minLength: {
-            value:6,
-            message: 'minimum length is 6 characters ' },
-/*           pattern:{
-            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-            message: 'wrong pattern'}, */
-          validate: {
-            specialChar: value => specialChar.test(value),
-            numericChar: value => numericChar.test(value),
-            capitalChar: value => capitalChar.test(value),
-            lowerChar: value => lowerChar.test(value)
-          }
-        })}
-
-          /*const regex = /(.*[a-z])/i; // the "global" flag is set
-``
-// regex.lastIndex is at 0
-regex.test('foo')     // true
-
-*/
-        id="outlined-adornment-password"
-        type={values.showPassword ? 'text' : 'password'}
-        value={values.password}
-        onChange={handleChange('password')}
-        InputProps={{
-          endAdornment: <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }}
-        label="Password"
+        <TextField
+          name="Password"
+          placeholder="Password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          inputRef={
+            register({
+              required: "Required",
+              minLength: {
+                value:6,
+                message: 'minimum length is 6 characters ' },
+              pattern:{
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+                message: 'wrong pattern; must be at minimum 6 characters in length and  atleast one of each is required; lowercase, uppercase, number and special character; @$!%*?&'},
+           /*  validate: {
+              test: (value) => {
+                let error = []
+                if (!specialChar.test(value)){
+                  error.push('Must have a special character; @ $ ! % * ? &')
+                }
+                if (!numericChar.test(value)) {
+                  error.push('Must have a numeric character; 0 to 9')
+                }
+                if (!capitalChar.test(value)) {
+                  error.push('Must have a capitalized character; A to Z')
+                }
+                if (!lowerChar.test(value)) {
+                  error.push('Must have a lowercase character; a to z')
+                }
+                if(specialChar.test(value) && numericChar.test(value) && capitalChar.test(value) && lowerChar.test(value)){
+                  return 'valid'
+                } else {
+                  console.log(error)
+                  return error
+                }
+              },
+            } */
+            })}
+/*           id="outlined-adornment-password"
+          type={values.showPassword ? 'text' : 'password'}
+          value={values.password}
+          onChange={handleChange('password')}
+          InputProps={{
+            endAdornment: <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }} */
         />
       </Grid>
       </Grid>
         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
+
+        {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
+
+{/*         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
         {errors?.Password?.type === 'specialChar' && <Typography> Must have a special character; @ $ ! % * ? & </Typography>}
         {errors?.Password?.type === 'numericChar' && <Typography> Must have a numeric character; 0 to 9 </Typography>}
         {errors?.Password?.type === 'capitalChar' && <Typography> Must have a capitalized character; A to Z  </Typography>}
         {errors?.Password?.type === 'lowerChar' && <Typography> Must have a lowercase character; a to z </Typography>}
-        
+         */}
         <Button
             type="submit"
             fullWidth
