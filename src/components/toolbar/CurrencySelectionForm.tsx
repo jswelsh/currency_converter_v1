@@ -14,6 +14,15 @@ import SwapVertIcon from '@material-ui/icons/Cached';
 import { handleClick } from '../../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+/*  style={{ backgroundColor: theme.palette.primary.light }} */
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.primary.light
+  }
+}));
+
 const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
   currencySelectHandler,
   currenciesList,
@@ -21,13 +30,15 @@ const CurrencySelectionForm: FC<ICurrencySelectionFormProps> = ({
   toCurrency,
   mode
 }) => {
+  const classes = useStyles();
+
 
 return (
   <List>
     <FormControl>
       {mode === 'Compare' && (
         <SelectionComponent 
-          icon={<CompareArrowsIcon color='secondary'/>}
+          icon={<CompareArrowsIcon color='primary'/>}
           name={'fromCurrency'}
           value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
@@ -35,13 +46,16 @@ return (
       {mode !== 'Compare' && (
       <>   
         <SelectionComponent 
-          icon={<FromIcon color='secondary'/>}
+          icon={<FromIcon 
+          className={classes.icon}
+          />}
           name={'fromCurrency'}
           value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>
         <SelectionComponent 
-          icon={<ToIcon color='secondary'/>}
+          icon={<ToIcon 
+            className={classes.icon}/>}
           name={'toCurrency'}
           value={toCurrency}
           currencySelectHandler={currencySelectHandler}
@@ -52,7 +66,7 @@ return (
             toCurrency:toCurrency, 
             fromCurrency:fromCurrency, 
             setter:currencySelectHandler})}>
-          <ListItemIcon><SwapVertIcon/></ListItemIcon>
+          <ListItemIcon><SwapVertIcon className={classes.icon}/></ListItemIcon>
           <ListItemText primary="Swap Currencies" />
         </ListItem>
       </>

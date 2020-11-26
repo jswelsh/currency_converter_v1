@@ -1,28 +1,21 @@
 import { createMuiTheme } from '@material-ui/core'
-import { deepPurple } from '@material-ui/core/colors';
+import { deepPurple, pink, teal } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
 palette: {
 primary: {
-	main: '#fff'
+	main: teal[400],
+	light:'#6dffe7'
 },
 secondary: {
-	main: '#8CFFDA'
+	main: pink[200]
 },
 error: {
-	main: '#fd5c91'
+	main: '#D733E8'
 },
 warning:{
-	light: '#FFFF80',
-	main: '#FFBF80',
-	contrastText: '#000'
-},
-info: {
-	main: '#e3d',
-	light:'#3e3',
-	contrastText: '#3e3'
-
-	},
+	main: '#E8AF05'
+}
 },
 overrides: {
 
@@ -33,12 +26,7 @@ overrides: {
 	},
 MuiTouchRipple:{
 	root:{
-		color:'#c90349	'
-	}
-},
-Mui:{
-	selected: {
-		backgroundColor:'#0df2c829'
+		color:'#c90349'
 	}
 },
 MuiOutlinedInput: {
@@ -53,10 +41,7 @@ MuiOutlinedInput: {
 	},
 	notchedOutline: {
 		borderColor:'#8CFFDA',
-
 	},
-
-
 },
 
 MuiToolbar:{
@@ -74,6 +59,7 @@ MuiCardContent:{
 		alignItems:'center'
 	}
 },
+
 MuiPaper:{
 	root:{
 		backgroundColor:'#222222'
@@ -119,44 +105,43 @@ MuiCardHeader:{
 	}
 },
 
-MuiPickersArrowSwitcher:{
-	iconButton:{
-		backgroundColor:'transparent'
-	}
-},
-MuiListItemIcon:{
-	root:{
-		color:'#8CFFDA',
-	}
-},
-MuiPickersCalendar:{
-	weekDayLabel:{
-		color:'#8CFFDA',
-		fontSize:'large'
+	MuiPickersArrowSwitcher:{
+		iconButton:{
+			backgroundColor:'transparent'
+		}
 	},
-}, 
-/* MuiTypography: {
-	root: {
-		color:'#fff'
-	}
-}, */
-MuiPickersDay:{
-	root:{
-		/* color:'#69e8ea' */
-		color:'#fff'
-	}
-},
-MuiPickersStaticWrapper:{
-	root:{
-		backgroundColor:'#222222'
-	}
-},
-MuiPickersDateRangeDay:{
-	rangeIntervalDayHighlight: {
-		backgroundColor:'#488a74',
-		color:'black'
-	}  
-},
+/* 	MuiListItemIcon:{
+		root:{
+			color:'#8CFFDA',
+		}
+	}, */
+	MuiPickersCalendar:{
+		weekDayLabel:{
+			color:'#8CFFDA',
+			fontSize:'large'
+		},
+	}, 
+	MuiTypography: {
+		root: {
+			color:'#fff'
+		}
+	},
+	MuiPickersDay:{
+		root:{
+			color:'#fff'
+		}
+	},
+	MuiPickersStaticWrapper:{
+		root:{
+			backgroundColor:'#222222'
+		}
+	},
+	MuiPickersDateRangeDay:{
+		rangeIntervalDayHighlight: {
+			backgroundColor:'#488a74',
+			color:'black'
+		}  
+	},
 },
 }
 )
