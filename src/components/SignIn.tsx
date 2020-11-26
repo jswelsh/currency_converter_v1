@@ -20,7 +20,7 @@ import {
   Box,
   Typography,
 } from '@material-ui/core/';
-import { Alert } from '@material-ui/lab';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 
 
@@ -126,8 +126,20 @@ export function SignIn() {
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,/* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, */
                 message: 'invalid email address'
-          }})} />
-      {errors?.Email?.message && <Typography>{errors.Email.message} </Typography>}
+                }})} />
+      </Grid>
+      <Grid item xs={12}>
+        {errors?.Email?.message && 
+          <Alert
+            severity= 'warning'
+            variant= 'outlined'
+            /* variant="filled" */
+            color='warning'>
+            <AlertTitle color= 'warning'>
+              <strong>Warning</strong>
+              </AlertTitle>
+            {errors.Email.message}
+          </Alert>}
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -188,12 +200,21 @@ export function SignIn() {
           }} */
         />
       </Grid>
+      <Grid item xs={12}>
+        {errors?.Password?.message && 
+          <Alert
+            severity= 'warning'
+            variant= 'outlined'
+            /* variant="filled" */
+            color='warning'>
+            <AlertTitle color= 'warning'>
+              <strong>Warning</strong>
+              </AlertTitle>
+            {errors.Password.message}
+          </Alert>}
       </Grid>
-      {errors?.Password?.message && 
-      <Alert
-        severity= 'warning'
-        variant= 'outlined'>
-          {errors.Password.message}</Alert>}
+      </Grid>
+
         {/* {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>} */}
 
 {/*         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}

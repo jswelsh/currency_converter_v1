@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core'
+import { deepPurple } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
 palette: {
@@ -12,10 +13,15 @@ error: {
 	main: '#fd5c91'
 },
 warning:{
-	main: '#FFBF80'
+	light: '#FFFF80',
+	main: '#FFBF80',
+	contrastText: '#000'
 },
-action: {
-	
+info: {
+	main: '#e3d',
+	light:'#3e3',
+	contrastText: '#3e3'
+
 	},
 },
 overrides: {
@@ -123,18 +129,17 @@ MuiListItemIcon:{
 		color:'#8CFFDA',
 	}
 },
-
 MuiPickersCalendar:{
 	weekDayLabel:{
 		color:'#8CFFDA',
 		fontSize:'large'
 	},
 }, 
-MuiTypography: {
+/* MuiTypography: {
 	root: {
 		color:'#fff'
 	}
-},
+}, */
 MuiPickersDay:{
 	root:{
 		/* color:'#69e8ea' */
