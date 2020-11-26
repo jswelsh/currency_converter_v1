@@ -90,99 +90,67 @@ export function SignIn() {
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
-  
-/*   const classes = useStyles();
-  const [values, setValues] = React.useState<State>({
-    showPassword: false,
-    password: '',
-  });
 
-  const methods = useForm();
-  const { handleSubmit } = methods;
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
- */
-
-
- /* 
-               <TextField
-                name="username"
-                variant="outlined"
-
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                autoComplete="email"
-              />
- */
   return (
     <Container component="main" maxWidth="xs">
     <form onSubmit={handleSubmit(onSubmit)}>
-    <TextField 
-    /* required */
-    /*   type="email"  */
-      placeholder="Email" 
-      name="Email" 
-      label="Email Address"
-      variant="outlined"
-      /* autoComplete="email" */
-      inputRef={
-        register({
-          required: true, 
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-            message: 'wrong pattern'
-      }})} />
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <TextField 
+        /* required */
+        /*   type="email"  */
+          placeholder="Email" 
+          name="Email" 
+          label="Email Address"
+          variant="outlined"
+          /* autoComplete="email" */
+          inputRef={
+            register({
+              required: true, 
+              pattern: {
+                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+                message: 'wrong pattern'
+          }})} />
+      </Grid>
             {errors.Password && <Typography role="alert">{errors.Password.message}</Typography>}
       {errors.Email && errors.Email.type === "required" && <Typography>This is required</Typography>}
       {errors?.Email?.message && <Typography>{errors.Email.message} </Typography>}
-
+      <Grid item xs={12}>
       <TextField
-              name="Password"
-              placeholder="Password" 
+        name="Password"
+        placeholder="Password" 
+        variant="outlined"
+        inputRef={register({
+          required: true,
+          minLength: {
+            value:6,
+            message: 'password toooooo short' },
+          pattern:{
+            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i,
+            message: 'wrong pattern'}})}
 
-              inputRef={register({
-                required: true,
-                minLength: {
-                  value:6,
-                  message: 'password toooooo short' 
-                },
-                pattern:{
-                  value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i,
-                  message: 'wrong pattern'}
-              })}
-              
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              InputProps={{
-                endAdornment: <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }}
-              label="Password"
-              /* labelWidth={70} */
-              
-              />
-              {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
-    {/* <input 
-      type="text" 
-      placeholder="Password" 
-      name="Password" 
-      ref={register({
-        required: true, 
-      pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i})} /> */}
+        id="outlined-adornment-password"
+        type={values.showPassword ? 'text' : 'password'}
+        value={values.password}
+        onChange={handleChange('password')}
+        InputProps={{
+          endAdornment: <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {values.showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+          </InputAdornment>
+        }}
+        label="Password"
+        />
+      </Grid>
+      </Grid>
+
+        {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
     <input type="submit" />
     </form>
     </Container>
