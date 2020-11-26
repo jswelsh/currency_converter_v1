@@ -11,12 +11,20 @@ secondary: {
 error: {
 	main: '#fd5c91'
 },
+warning:{
+	main: '#FFBF80'
+},
 action: {
 	
 	},
 },
 overrides: {
 
+	MuiAlert:{
+		outlinedWarning: {
+			color: '#FFBF80'
+		}
+	},
 MuiTouchRipple:{
 	root:{
 		color:'#c90349	'
@@ -110,13 +118,12 @@ MuiPickersArrowSwitcher:{
 		backgroundColor:'transparent'
 	}
 },
-MuiSvgIcon: {
+MuiListItemIcon:{
 	root:{
 		color:'#8CFFDA',
-/*       height:'35px',
-		width:'35px' */
 	}
 },
+
 MuiPickersCalendar:{
 	weekDayLabel:{
 		color:'#8CFFDA',

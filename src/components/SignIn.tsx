@@ -20,6 +20,8 @@ import {
   Box,
   Typography,
 } from '@material-ui/core/';
+import { Alert } from '@material-ui/lab';
+
 
 
 import Visibility from '@material-ui/icons/Visibility';
@@ -187,9 +189,12 @@ export function SignIn() {
         />
       </Grid>
       </Grid>
-        {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
-
-        {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
+      {errors?.Password?.message && 
+      <Alert
+        severity= 'warning'
+        variant= 'outlined'>
+          {errors.Password.message}</Alert>}
+        {/* {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>} */}
 
 {/*         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
         {errors?.Password?.type === 'specialChar' && <Typography> Must have a special character; @ $ ! % * ? & </Typography>}
