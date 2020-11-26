@@ -74,6 +74,10 @@ export function SignIn() {
   });
   
   const classes = useStyles();
+  const specialChar = /[@$!%*?&]/;
+  const numericChar = /[0-9]/
+  const capitalChar = /[A-Z]/;
+  const lowerChar = /[a-z]/;
 
 
   function onSubmit(data) {
@@ -137,12 +141,24 @@ export function SignIn() {
           required: "Required",
           minLength: {
             value:6,
-            message: 'password toooooo short' },
-     /*      pattern:{
-            value: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i,
-            message: 'wrong pattern'}}*/
-     })}
+            message: 'minimum length is 6 characters ' },
+/*           pattern:{
+            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+            message: 'wrong pattern'}, */
+          validate: {
+            specialChar: value => specialChar.test(value),
+            numericChar: value => numericChar.test(value),
+            capitalChar: value => capitalChar.test(value),
+            lowerChar: value => lowerChar.test(value)
+          }
+        })}
 
+          /*const regex = /(.*[a-z])/i; // the "global" flag is set
+``
+// regex.lastIndex is at 0
+regex.test('foo')     // true
+
+*/
         id="outlined-adornment-password"
         type={values.showPassword ? 'text' : 'password'}
         value={values.password}
@@ -163,8 +179,12 @@ export function SignIn() {
         />
       </Grid>
       </Grid>
-
         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
+        {errors?.Password?.type === 'specialChar' && <Typography> Must have a special character; @ $ ! % * ? & </Typography>}
+        {errors?.Password?.type === 'numericChar' && <Typography> Must have a numeric character; 0 to 9 </Typography>}
+        {errors?.Password?.type === 'capitalChar' && <Typography> Must have a capitalized character; A to Z  </Typography>}
+        {errors?.Password?.type === 'lowerChar' && <Typography> Must have a lowercase character; a to z </Typography>}
+        
         <Button
             type="submit"
             fullWidth
