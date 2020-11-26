@@ -104,7 +104,7 @@ export function SignIn() {
       </Typography>
     <form 
       onSubmit={handleSubmit(onSubmit)}
-      className={clsx(classes.form/* classes.margin, classes.textField */)}
+      className={classes.form}
     >
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -119,15 +119,14 @@ export function SignIn() {
           /* autoComplete="email" */
           inputRef={
             register({
-              required: true, 
+              required: "Required", 
               pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-                message: 'wrong pattern'
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,/* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, */
+                message: 'invalid email address'
           }})} />
-      </Grid>
-            {errors.Password && <Typography role="alert">{errors.Password.message}</Typography>}
       {errors.Email && errors.Email.type === "required" && <Typography>This is required</Typography>}
       {errors?.Email?.message && <Typography>{errors.Email.message} </Typography>}
+      </Grid>
       <Grid item xs={12}>
       <TextField
         name="Password"
@@ -135,13 +134,14 @@ export function SignIn() {
         variant="outlined"
         fullWidth
         inputRef={register({
-          required: true,
+          required: "Required",
           minLength: {
             value:6,
             message: 'password toooooo short' },
-          pattern:{
-            value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i,
-            message: 'wrong pattern'}})}
+     /*      pattern:{
+            value: /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])$/i,
+            message: 'wrong pattern'}}*/
+     })}
 
         id="outlined-adornment-password"
         type={values.showPassword ? 'text' : 'password'}
@@ -165,7 +165,15 @@ export function SignIn() {
       </Grid>
 
         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
-    <input type="submit" />
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
     </form>
     </div>
     </Container>
