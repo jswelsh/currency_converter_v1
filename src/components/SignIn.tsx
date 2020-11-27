@@ -44,7 +44,13 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),},
   submit: {
+ /*    color:'#000', */
+    backgroundColor: theme.palette.primary.dark,
     margin: theme.spacing(3, 0, 2),},
+  warning: {
+    color:'white'
+  }
+  
 }));
 
 interface State {
@@ -133,9 +139,10 @@ export function SignIn() {
         {errors?.Email?.message && 
           <Alert
             severity= 'warning'
+            className={classes.warning}
             variant= 'outlined'
             /* variant="filled" */
-            color='warning'>
+            >
             <AlertTitle color= 'warning'>
               <strong>Warning</strong>
               </AlertTitle>
@@ -206,7 +213,7 @@ export function SignIn() {
           <Alert
             severity= 'warning'
             variant= 'outlined'
-            /* variant="filled" */
+            className={classes.warning}
             color='warning'>
             <AlertTitle color= 'warning'>
               <strong>Warning</strong>
@@ -228,7 +235,8 @@ export function SignIn() {
             type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
+            color="primary"
+            size='large'
             className={classes.submit}
           >
             Sign In

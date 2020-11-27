@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 136,
     "&:hover": {
       textDecoration: "none",
-      backgroundColor: "#ff8cb0",}
+      backgroundColor: "#f48fb1",}
   },
   selected:{
     backgroundColor:'#009868',
@@ -55,8 +55,8 @@ const CompareListItem: FC<ICompareListItemProps> = ({
   const CurrencySymbol = (currency: string) => {
     return (
       <Typography 
-        variant='h5'
-        color={(fromCurrency!==currency && 'secondary') || 'primary'}>
+        variant='h4'
+        color={(fromCurrency!==currency && 'primary') || 'secondary'}>
           {data[currency]['symbol_native']} 
       </Typography>
     )

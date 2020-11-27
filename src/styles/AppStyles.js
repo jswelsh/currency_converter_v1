@@ -5,25 +5,25 @@ const theme = createMuiTheme({
 palette: {
 primary: {
 	main: teal[400],
-	light:'#6dffe7'
+	light:'#33ffbd',
+	dark:'#00b279'
 },
 secondary: {
-	main: pink[200]
+	main: pink[200],
+	light: '#e385bb',
+	dark:'#9a4877'
 },
 error: {
-	main: '#D733E8'
+	main: '#f44336',
+	light:'#e57373',
+	dark:'#d32f2f'
 },
 warning:{
-	main: '#E8AF05'
+	main: pink[200]/* '#FFBF80' *//* E8AF05 */
 }
 },
 overrides: {
 
-	MuiAlert:{
-		outlinedWarning: {
-			color: '#FFBF80'
-		}
-	},
 MuiTouchRipple:{
 	root:{
 		color:'#c90349'
@@ -32,7 +32,8 @@ MuiTouchRipple:{
 MuiOutlinedInput: {
 	root: {
 		'&:hover':{
-			backgroundColor:'#ff8aaf4f',
+			/* backgroundColor:'#f48fb1', */
+			backgroundColor:'#f490b154',
 		},
 		'&$focused':{
 			backgroundColor:'#0df2c829',
@@ -67,9 +68,24 @@ MuiPaper:{
 },
 MuiInputBase:{
 	root:{
-		color: '#6dffe7'
+		color: '#fff'
 	}
 },
+MuiFormLabel:{
+	root:{
+		color: '#fff'
+	}
+},
+MuiCardHeader:{
+	root:{
+		background:'#009868',
+	}, 
+	subheader:{
+		color:'#fff',
+		fontSize: 18,
+		fontWeight: 'bold',
+	}
+}, 
 /* MuiTableCell:{
 	head:{
 		color:'#fff',

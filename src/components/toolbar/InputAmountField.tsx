@@ -6,13 +6,9 @@ import NumberFormat from 'react-number-format';
 import { handleChange, label } from '../../helpers/inputAmountHelper'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    color:'pink',
-  },
   TextField: {
     textAlign: 'center',
     padding: theme.spacing(2),
-
   }
 }));
 
@@ -64,7 +60,7 @@ const InputAmountField: FC<IInputAmountFieldProps> = ({
 return (
   <div className={classes.TextField}  >
     <TextField
-      /* color={'primary'} */
+      color={'secondary'}
       label= {label({drawer: opendrawer, fromCurrency: fromCurrency })}
       value={amount}
       onChange={(event) => handleChange({event: event, setAmount: setAmount})}

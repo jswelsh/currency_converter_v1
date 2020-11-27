@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   ListItem:{
     "&:hover": {
-      backgroundColor: '#ff8cb0',}
+      backgroundColor: '#f48fb1',}
   },
   selected:{
     backgroundColor:'#009868',

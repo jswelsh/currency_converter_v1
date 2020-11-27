@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
     minHeight:296,
   },
   icon:{
+    color: 'white',
     marginTop: 15,
     marginBottom:15,
     marginLeft: 10
@@ -57,12 +58,12 @@ return(
       <CardContent>
         <Grid container justify="center"  style={{marginTop:40}}>
           <Grid item >
-            <Typography component="h2" variant="h2" color="secondary">
+            <Typography component="h2" variant="h2" color="primary">
               {symbol }
             </Typography>
           </Grid>
           <Grid item >
-            <Typography variant="h2" color="primary" >
+            <Typography variant="h2">
               {amount}
             </Typography>
           </Grid>
