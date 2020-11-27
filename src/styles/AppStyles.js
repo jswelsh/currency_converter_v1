@@ -86,7 +86,7 @@ MuiCardHeader:{
 		fontWeight: 'bold',
 	}
 }, 
-/* MuiTableCell:{
+MuiTableCell:{
 	head:{
 		color:'#fff',
 		fontSize:20
@@ -96,6 +96,7 @@ MuiCardHeader:{
 		fontSize:20
 	}
 },
+/*
 MuiMenuItem: {
 	root: {
 		color:'#fff'
@@ -107,17 +108,7 @@ MuiMenuItem: {
 		color:'#8CFFDA'
 	}
 },
-MuiCardHeader:{
-	root:{
-		background:'#009868',
-	}, */
-
-/* 	subheader:{
-		color:'#fff',
-		fontSize: 18,
-		fontWeight: 'bold',
-	}
-}, */
+*/
 
 	MuiPickersArrowSwitcher:{
 		iconButton:{
