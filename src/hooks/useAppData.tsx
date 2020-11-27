@@ -79,10 +79,9 @@ export default function useAppData() {
         Object.entries(res.data.rates).forEach((props:any) => {
           compareList.push({
             currency: props[0],
-            value: parseInt((props[1]*amount).toFixed(5))
+            value: parseFloat((props[1]*amount).toFixed(5))
           })
         })
-        
         setCompareList(compareList)
       })
   }

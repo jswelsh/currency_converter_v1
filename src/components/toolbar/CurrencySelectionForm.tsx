@@ -11,6 +11,7 @@ import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import FromIcon from '@material-ui/icons/ArrowDownward';
 import ToIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import SwapVertIcon from '@material-ui/icons/Cached';
+import WarningTwoToneIcon from '@material-ui/icons/WarningTwoTone';
 import { handleClick } from '../../helpers/selectionHelper';
 import { SelectionComponent } from './SelectionComponent';
 
@@ -20,6 +21,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   icon: {
     color: theme.palette.primary.light
+  },
+  twoToned: {
+    // filter: 'invert(56%) sepia(82%) saturate(376%) hue-rotate(125deg) brightness(83%) contrast(90%)'
   }
 }));
 
@@ -60,6 +64,12 @@ return (
           value={toCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>
+        {fromCurrency === toCurrency && 
+        <ListItem >
+          <ListItemIcon><WarningTwoToneIcon color='secondary' className={classes.twoToned}/></ListItemIcon>
+          <ListItemText primary="Change currency" />
+        </ListItem>}
+        {fromCurrency !== toCurrency && 
         <ListItem
           button
           onClick={() => handleClick({
@@ -68,7 +78,7 @@ return (
             setter:currencySelectHandler})}>
           <ListItemIcon><SwapVertIcon className={classes.icon}/></ListItemIcon>
           <ListItemText primary="Swap Currencies" />
-        </ListItem>
+        </ListItem>}
       </>
       )}
     </FormControl>

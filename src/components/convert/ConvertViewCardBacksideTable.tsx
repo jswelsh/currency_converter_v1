@@ -16,10 +16,10 @@ const ConvertViewCardBacksideTable: FC<IConvertViewCardBacksideTableProps> = ({
   converted
 }) => {
 
-  const cellConstructor = (value: string) => {
+  const cellConstructor = (value: number) => {
   //styling the delta of previous days to being green +, white =, red -
-    const delta = (parseFloat(value) > 0) ? 
-    <Typography color={'primary'}>{'+'+value+'%'}</Typography> :  (parseFloat(value) < 0) ?
+    const delta = (value > 0) ? 
+    <Typography color={'primary'}>{'+'+value+'%'}</Typography> :  (value < 0) ?
     <Typography color={'error'}>{value+'%'}</Typography> :
     <Typography color={'secondary'}>{value+'%'}</Typography>  
     return delta
@@ -47,11 +47,11 @@ return(
             {recentRateHistory && recentRateHistory.map(({value}) => {
               return (
               <TableCell align="right">
-                {cellConstructor(((
-                  parseFloat(value.toString()) - 
-                  parseFloat(converted.toString()))/
-                  (converted) *100)
-                  .toFixed(3))}
+                {cellConstructor(
+                  parseFloat((
+                    (value - converted)/
+                    converted *100)
+                    .toFixed(3)))}
               </TableCell>)
             })}
         </TableRow>
