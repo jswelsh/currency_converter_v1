@@ -13,6 +13,9 @@ import CalendarIcon from '@material-ui/icons/CalendarToday';
 import { DatePickerComponent } from "./DatePickerComponent";
 
 const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.primary.light
+  },
   header: {
     textAlign: 'center',
     padding: theme.spacing(4)},
@@ -45,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
         button
         onClick={handleClick}>
         <ListItemIcon>
-          <CalendarIcon />
+          <CalendarIcon className={classes.icon} />
         </ListItemIcon>
       <ListItemText 
         primary={'Date Range'} />

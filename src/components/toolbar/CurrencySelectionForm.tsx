@@ -42,7 +42,7 @@ return (
     <FormControl>
       {mode === 'Compare' && (
         <SelectionComponent 
-          icon={<CompareArrowsIcon color='primary'/>}
+          icon={<CompareArrowsIcon className={classes.icon}/>}
           name={'fromCurrency'}
           value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
@@ -50,16 +50,13 @@ return (
       {mode !== 'Compare' && (
       <>   
         <SelectionComponent 
-          icon={<FromIcon 
-          className={classes.icon}
-          />}
+          icon={<FromIcon className={classes.icon}/>}
           name={'fromCurrency'}
           value={fromCurrency}
           currencySelectHandler={currencySelectHandler}
           currenciesList={currenciesList}/>
         <SelectionComponent 
-          icon={<ToIcon 
-            className={classes.icon}/>}
+          icon={<ToIcon className={classes.icon}/>}
           name={'toCurrency'}
           value={toCurrency}
           currencySelectHandler={currencySelectHandler}

@@ -40,7 +40,8 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   useLayoutEffect(() => {
   const color = { 
     primary: am4core.color('#8CFFDA'),
-    secondary: am4core.color('#dc67ab')
+    secondary: am4core.color('#e385bb')
+    /*secondary: am4core.color('#dc67ab')*/
   }
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
