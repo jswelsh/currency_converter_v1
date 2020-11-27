@@ -8,7 +8,7 @@ import { handleChange, label } from '../../helpers/inputAmountHelper'
 const useStyles = makeStyles((theme) => ({
   TextField: {
     textAlign: 'center',
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   }
 }));
 
@@ -33,6 +33,7 @@ function NumberFormatCustom(props: INumberFormatCustomProps) {
   return (
     <NumberFormat
       {...other}
+      
       getInputRef={inputRef}
       onValueChange={(amount) => {
         onChange({
@@ -59,6 +60,7 @@ const InputAmountField: FC<IInputAmountFieldProps> = ({
 return (
   <div className={classes.TextField}  >
     <TextField
+      color={'secondary'}
       label= {label({drawer: opendrawer, fromCurrency: fromCurrency })}
       value={amount}
       onChange={(event) => handleChange({event: event, setAmount: setAmount})}

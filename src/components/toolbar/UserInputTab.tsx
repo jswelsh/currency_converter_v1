@@ -71,17 +71,17 @@ return (
         dateRange={dateRange}
         handleChange={handleChange}/> 
     )}
-    {mode === 'Converter' && (
-    <Button       
+    {mode === 'Converter' && fromCurrency !== toCurrency &&
+    <Button
       primary='Connvert Currencies'
       handleSubmit={()=>
         convertHandler({
           fromCurrency: fromCurrency, 
           toCurrency: toCurrency,
           amount: amount})}
-    />)}
-    {mode === 'History' && 
-    <Button       
+    />}
+    {mode === 'History' && fromCurrency !== toCurrency &&
+    <Button
       primary='Generate Graph'
       handleSubmit={()=>
         convertHistoryHandler({
@@ -89,7 +89,7 @@ return (
           toCurrency, 
           dateRange})}/>}
     {mode === 'Compare' && 
-    <Button       
+    <Button
       primary='Compare Currencies'
       handleSubmit={()=>
         compareListHandler(fromCurrency, amount)}/>}

@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   OutlinedInput,
   FormControl,
+  Container,
   CssBaseline,
   InputLabel,
   TextField,
@@ -17,7 +18,10 @@ import {
   Link,
   Grid,
   Box,
+  Typography,
 } from '@material-ui/core/';
+import { Alert, AlertTitle } from '@material-ui/lab';
+
 
 
 import Visibility from '@material-ui/icons/Visibility';
@@ -25,8 +29,6 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import {ReactComponent as SvgIcon} from './logo.svg'
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +44,13 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),},
   submit: {
+ /*    color:'#000', */
+    backgroundColor: theme.palette.primary.dark,
     margin: theme.spacing(3, 0, 2),},
+  warning: {
+    color:'white'
+  }
+  
 }));
 
 interface State {
@@ -50,55 +58,40 @@ interface State {
   password: string;
 }
 
-export function SignIn() {
-  const classes = useStyles();
-  const [values, setValues] = React.useState<State>({
-    showPassword: false,
-    password: '',
-  });
-
-  const methods = useForm();
-  const { handleSubmit } = methods;
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  return (
-    <Container component="main" maxWidth="xs">
-      <div style={{ padding: "10px" }}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit(onSubmit)}
-        >
-          SUBMIT
-        </Button>
-    
-        <div style={{ padding: "10px" }}>
-          <FormProvider {...methods}> // pass all methods into the context
-            <form>
-              <Grid container spacing={2}>
-                <Grid item xs={6}>
-                  <FormInput name="name" label="Name" />
-                </Grid>
-              </Grid>
-            </form>
-          </FormProvider>
-        </div>
-      </div>
-    </Container>
-  );
-}
-
-
 /* 
-  const classes = useStyles();
+Email regex
+/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+
+Password regex
+^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$
+This regex will enforce these rules:
+
+At least one upper case English letter, (?=.*?[A-Z])
+At least one lower case English letter, (?=.*?[a-z])
+At least one digit, (?=.*?[0-9])
+At least one special character, (?=.*?[#?!@$%^&*-])
+Minimum eight in length .{8,} (with the anchors)
+*/
+
+export function SignIn() {
+  const { register, handleSubmit, errors /*, reset  */} = useForm();
   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
-
   });
+  
+  const classes = useStyles();
+  const specialChar = /[@$!%*?&]/;
+  const numericChar = /[0-9]/
+  const capitalChar = /[A-Z]/;
+  const lowerChar = /[a-z]/;
+
+
+  function onSubmit(data) {
+    console.log(data);
+  }
+
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -112,79 +105,144 @@ export function SignIn() {
   };
 
   return (
-      <CssBaseline />
-      <div className={classes.paper}>
-        <div>
-          <SvgIcon />
-        </div>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            color='secondary'
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          // classes.margin, classes.textField 
-          <FormControl className={clsx(classes.form)} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={70}
-          />
-        </FormControl>
-        <FormControlLabel
-          control={<Checkbox value="remember" color="secondary" />}
-          label="Remember me"
-        />
-        <Button
-          type="submit"
+    <Container component="main" maxWidth="xs">
+    <CssBaseline />
+    <div className={classes.paper}>
+      <div>
+        <SvgIcon />
+      </div>
+      <Typography component="h1" variant="h5">
+        Sign in
+      </Typography>
+    <form 
+      autoComplete="off"
+      onSubmit={handleSubmit(onSubmit)}
+      className={classes.form}
+    >
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <TextField 
+          name="Email" 
+          placeholder="Email" 
+          label="Email Address"
+          variant="outlined"
           fullWidth
-          variant="contained"
-          color="secondary"
-          className={classes.submit}
-        >
-          Sign In
-        </Button>
-        <Grid container>
-        //<Grid item xs>
-          //  <Link href="#" variant="body2">
-            //  Forgot password?
-           // </Link>
-         // </Grid> 
-          <Grid item>
-            <Link href="/signup" variant="body2">
-              {"Don't have an account? Sign Up"}
-            </Link>
-          </Grid>
-        </Grid>
-      </form>
-    </div>
-    <Box mt={8}>
-      <Copyright />
-    </Box>
+          inputRef={
+            register({
+              required: "Required", 
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,/* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, */
+                message: 'invalid email address'
+                }})} />
+      </Grid>
+      <Grid item xs={12}>
+        {errors?.Email?.message && 
+          <Alert
+            severity= 'warning'
+            className={classes.warning}
+            variant= 'outlined'
+            /* variant="filled" */
+            >
+            <AlertTitle color= 'warning'>
+              <strong>Warning</strong>
+              </AlertTitle>
+            {errors.Email.message}
+          </Alert>}
+      </Grid>
+      <Grid item xs={12}>
+        <TextField
+          name="Password"
+          placeholder="Password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          inputRef={
+            register({
+              required: "Required",
+              minLength: {
+                value:6,
+                message: 'minimum length is 6 characters ' },
+              pattern:{
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+                message: 'wrong pattern; must be at minimum 6 characters in length and  atleast one of each is required; lowercase, uppercase, number and special character; @$!%*?&'},
+           /*  validate: {
+              test: (value) => {
+                let error = []
+                if (!specialChar.test(value)){
+                  error.push('Must have a special character; @ $ ! % * ? &')
+                }
+                if (!numericChar.test(value)) {
+                  error.push('Must have a numeric character; 0 to 9')
+                }
+                if (!capitalChar.test(value)) {
+                  error.push('Must have a capitalized character; A to Z')
+                }
+                if (!lowerChar.test(value)) {
+                  error.push('Must have a lowercase character; a to z')
+                }
+                if(specialChar.test(value) && numericChar.test(value) && capitalChar.test(value) && lowerChar.test(value)){
+                  return 'valid'
+                } else {
+                  console.log(error)
+                  return error
+                }
+              },
+            } */
+            })}
+/*           id="outlined-adornment-password"
+          type={values.showPassword ? 'text' : 'password'}
+          value={values.password}
+          onChange={handleChange('password')}
+          InputProps={{
+            endAdornment: <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }} */
+        />
+      </Grid>
+      <Grid item xs={12}>
+        {errors?.Password?.message && 
+          <Alert
+            severity= 'warning'
+            variant= 'outlined'
+            className={classes.warning}
+            color='warning'>
+            <AlertTitle color= 'warning'>
+              <strong>Warning</strong>
+              </AlertTitle>
+            {errors.Password.message}
+          </Alert>}
+      </Grid>
+      </Grid>
 
-*/
+        {/* {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>} */}
+
+{/*         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
+        {errors?.Password?.type === 'specialChar' && <Typography> Must have a special character; @ $ ! % * ? & </Typography>}
+        {errors?.Password?.type === 'numericChar' && <Typography> Must have a numeric character; 0 to 9 </Typography>}
+        {errors?.Password?.type === 'capitalChar' && <Typography> Must have a capitalized character; A to Z  </Typography>}
+        {errors?.Password?.type === 'lowerChar' && <Typography> Must have a lowercase character; a to z </Typography>}
+         */}
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            size='large'
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+    </form>
+    </div>
+    </Container>
+  );
+}

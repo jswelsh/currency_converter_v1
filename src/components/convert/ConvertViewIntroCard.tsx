@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
     maxWidth:900
   },
   icon:{
+    color: 'white',
     marginTop: 15,
     marginBottom:15,
     marginLeft: 10
@@ -42,14 +43,14 @@ return(
     avatar={avatar}
     action={
       <IconButton aria-label="settings" >
-        <Typography variant="h4" color="secondary"className={classes.icon}>
+        <Typography variant="h4" className={classes.icon}>
           Flip 
         </Typography>
         <ThreeDRotationIcon fontSize='large'className={classes.icon}/>
       </IconButton>
     }/>
   <CardContent>
-    <Typography variant="h6" color="primary">
+    <Typography variant="h6">
       {intro}
     </Typography>
   </CardContent>

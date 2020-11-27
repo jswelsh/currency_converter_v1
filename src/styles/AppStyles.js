@@ -1,36 +1,39 @@
 import { createMuiTheme } from '@material-ui/core'
+import { deepPurple, pink, teal } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
 palette: {
 primary: {
-	main: '#fff'
+	main: teal[400],
+	light:'#33ffbd',
+	dark:'#00b279'
 },
 secondary: {
-	main: '#8CFFDA'
+	main: pink[200],
+	light: '#e385bb',
+	dark:'#9a4877'
 },
 error: {
-	main: '#fd5c91'
+	main: '#f44336',
+	light:'#e57373',
+	dark:'#d32f2f'
 },
-action: {
-	
-	},
+warning:{
+	main: pink[200]/* '#FFBF80' *//* E8AF05 */
+}
 },
 overrides: {
 
 MuiTouchRipple:{
 	root:{
-		color:'#c90349	'
-	}
-},
-Mui:{
-	selected: {
-		backgroundColor:'#0df2c829'
+		color:'#c90349'
 	}
 },
 MuiOutlinedInput: {
 	root: {
 		'&:hover':{
-			backgroundColor:'#ff8aaf4f',
+			/* backgroundColor:'#f48fb1', */
+			backgroundColor:'#f490b154',
 		},
 		'&$focused':{
 			backgroundColor:'#0df2c829',
@@ -39,10 +42,7 @@ MuiOutlinedInput: {
 	},
 	notchedOutline: {
 		borderColor:'#8CFFDA',
-
 	},
-
-
 },
 
 MuiToolbar:{
@@ -60,14 +60,32 @@ MuiCardContent:{
 		alignItems:'center'
 	}
 },
+
 MuiPaper:{
 	root:{
-		backgroundColor:'#222222'
+		backgroundColor:'#222222'	
 	},
-	
 },
-
-
+MuiInputBase:{
+	root:{
+		color: '#fff'
+	}
+},
+MuiFormLabel:{
+	root:{
+		color: '#fff'
+	}
+},
+MuiCardHeader:{
+	root:{
+		background:'#009868',
+	}, 
+	subheader:{
+		color:'#fff',
+		fontSize: 18,
+		fontWeight: 'bold',
+	}
+}, 
 MuiTableCell:{
 	head:{
 		color:'#fff',
@@ -78,73 +96,52 @@ MuiTableCell:{
 		fontSize:20
 	}
 },
+/*
 MuiMenuItem: {
 	root: {
 		color:'#fff'
 	},
 },
-MuiInputBase:{
-	root:{
-		color:'#fff'
-	}
-},
-MuiInputLabel:{
+ */
+/* MuiInputLabel:{
 	root:{
 		color:'#8CFFDA'
 	}
 },
-MuiCardHeader:{
-	root:{
-		background:'#009868',
-	},
+*/
 
-	subheader:{
-		color:'#fff',
-		fontSize: 18,
-		fontWeight: 'bold',
-	}
-},
-
-MuiPickersArrowSwitcher:{
-	iconButton:{
-		backgroundColor:'transparent'
-	}
-},
-MuiSvgIcon: {
-	root:{
-		color:'#8CFFDA',
-/*       height:'35px',
-		width:'35px' */
-	}
-},
-MuiPickersCalendar:{
-	weekDayLabel:{
-		color:'#8CFFDA',
-		fontSize:'large'
+	MuiPickersArrowSwitcher:{
+		iconButton:{
+			backgroundColor:'transparent'
+		}
 	},
-}, 
-MuiTypography: {
-	root: {
-		color:'#fff'
-	}
-},
-MuiPickersDay:{
-	root:{
-		/* color:'#69e8ea' */
-		color:'#fff'
-	}
-},
-MuiPickersStaticWrapper:{
-	root:{
-		backgroundColor:'#222222'
-	}
-},
-MuiPickersDateRangeDay:{
-	rangeIntervalDayHighlight: {
-		backgroundColor:'#488a74',
-		color:'black'
-	}  
-},
+	MuiPickersCalendar:{
+		weekDayLabel:{
+			color:'#8CFFDA',
+			fontSize:'large'
+		},
+	}, 
+	MuiTypography: {
+		root: {
+			color:'#fff'
+		}
+	},
+	MuiPickersDay:{
+		root:{
+			color:'#fff'
+		}
+	},
+	MuiPickersStaticWrapper:{
+		root:{
+			backgroundColor:'#222222'
+		}
+	},
+	MuiPickersDateRangeDay:{
+		rangeIntervalDayHighlight: {
+			backgroundColor:'#488a74',
+			color:'black'
+		}  
+	},
 },
 }
 )

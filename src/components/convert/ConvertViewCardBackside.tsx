@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
     minHeight:296,
   },
   icon:{
+    color: 'white',
     marginTop: 15,
     marginBottom:15,
     marginLeft: 10
