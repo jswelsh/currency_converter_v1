@@ -19,7 +19,10 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: theme.palette.primary.light
+  },
   selectedSymbol: {
     marginRight: 16,
     color:'red'
@@ -57,7 +60,7 @@ return (
           [classes.selected]: (mode === 'Converter'), })}
         onClick={() =>{
           modeHandler('Converter') }}>
-        {<ListItemIcon><Converter /></ListItemIcon> }
+        {<ListItemIcon><Converter className={classes.icon}/></ListItemIcon> }
         <ListItemText primary={'Converter'} />
       </ListItem>
       <ListItem
@@ -68,7 +71,7 @@ return (
           [classes.selected]: (mode === 'History'), })}
         onClick={() =>{
           modeHandler('History') }}>
-        {<ListItemIcon><History /></ListItemIcon> }
+        {<ListItemIcon><History className={classes.icon}/></ListItemIcon> }
         <ListItemText primary={'History'} />
       </ListItem>
       <ListItem
@@ -79,7 +82,7 @@ return (
           [classes.selected]: (mode === 'Compare'), })}
         onClick={() =>{
           modeHandler('Compare') }}>
-        {<ListItemIcon><Compare /></ListItemIcon> }
+        {<ListItemIcon><Compare className={classes.icon}/></ListItemIcon> }
         <ListItemText primary={'Compare'} />
       </ListItem>
       <ListItem
@@ -90,7 +93,7 @@ return (
           [classes.selected]: (mode === 'SignIn'), })}
         onClick={() =>{
           modeHandler('SignIn') }}>
-        {<ListItemIcon><PersonIcon /></ListItemIcon> }
+        {<ListItemIcon><PersonIcon className={classes.icon}/></ListItemIcon> }
         <ListItemText primary={'SignIn'} />
       </ListItem>
       <ListItem
@@ -101,7 +104,7 @@ return (
           [classes.selected]: (mode === 'Signup'), })}
         onClick={() =>{
           modeHandler('SignUp') }}>
-        {<ListItemIcon><PersonAddIcon /></ListItemIcon> }
+        {<ListItemIcon><PersonAddIcon className={classes.icon}/></ListItemIcon> }
         <ListItemText primary={'SignIn'} />
       </ListItem>
   </List>  

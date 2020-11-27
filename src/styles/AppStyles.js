@@ -62,13 +62,15 @@ MuiCardContent:{
 
 MuiPaper:{
 	root:{
-		backgroundColor:'#222222'
+		backgroundColor:'#222222'	
 	},
-	
 },
-
-
-MuiTableCell:{
+MuiInputBase:{
+	root:{
+		color: '#6dffe7'
+	}
+},
+/* MuiTableCell:{
 	head:{
 		color:'#fff',
 		fontSize:20
@@ -83,12 +85,8 @@ MuiMenuItem: {
 		color:'#fff'
 	},
 },
-MuiInputBase:{
-	root:{
-		color:'#fff'
-	}
-},
-MuiInputLabel:{
+ */
+/* MuiInputLabel:{
 	root:{
 		color:'#8CFFDA'
 	}
@@ -96,25 +94,20 @@ MuiInputLabel:{
 MuiCardHeader:{
 	root:{
 		background:'#009868',
-	},
+	}, */
 
-	subheader:{
+/* 	subheader:{
 		color:'#fff',
 		fontSize: 18,
 		fontWeight: 'bold',
 	}
-},
+}, */
 
 	MuiPickersArrowSwitcher:{
 		iconButton:{
 			backgroundColor:'transparent'
 		}
 	},
-/* 	MuiListItemIcon:{
-		root:{
-			color:'#8CFFDA',
-		}
-	}, */
 	MuiPickersCalendar:{
 		weekDayLabel:{
 			color:'#8CFFDA',

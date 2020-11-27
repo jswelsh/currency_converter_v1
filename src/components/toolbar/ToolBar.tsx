@@ -21,7 +21,9 @@ import { UserInputTab } from './UserInputTab';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-
+  icon: {
+    color: theme.palette.primary.light
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
@@ -105,7 +107,7 @@ return (
           aria-label="open drawer"
           onClick={handleDrawerOpen}
           edge="start"
-          className={clsx(classes.menuButton, {
+          className={clsx(classes.icon, classes.menuButton, {
             [classes.hide]: opendrawer})}
         >
           <MenuIcon />
@@ -126,7 +128,9 @@ return (
           [classes.drawerClose]: !opendrawer}),}}
     >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            className={classes.icon}
+            onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
