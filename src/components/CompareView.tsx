@@ -138,7 +138,6 @@ const CompareView: FC<ICompareViewProps> = ({
             item
             xs={12} >
             <Box component="span">
-              {console.log('in wide','number of pages', noOfPages, 'page', page)}
               <Pagination
                 count={noOfPages}
                 page={page<=noOfPages ? page :Math.ceil(page/2) }

@@ -15,7 +15,7 @@ export function DatePickerComponent({
     if(event[1] !== null){
       const dateRange = event
       handleChange(dateRange) }
-      console.log(event)
+
   }
   return (
     <LocalizationProvider 

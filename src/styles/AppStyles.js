@@ -126,7 +126,8 @@ MuiMenuItem: {
 	},
 	MuiPickersCalendar:{
 		weekDayLabel:{
-			color:'#8CFFDA',
+			color:'#f48fb1',
+			// color:'#8CFFDA',
 			fontSize:'large'
 		},
 	}, 
@@ -137,7 +138,8 @@ MuiMenuItem: {
 	},
 	MuiPickersDay:{
 		root:{
-			color:'#fff'
+			color:'#fff',
+
 		}
 	},
 	MuiPickersStaticWrapper:{
@@ -147,7 +149,7 @@ MuiMenuItem: {
 	},
 	MuiPickersDateRangeDay:{
 		rangeIntervalDayHighlight: {
-			backgroundColor:'#488a74',
+			backgroundColor:'#00b279',
 			color:'black'
 		}  
 	},
