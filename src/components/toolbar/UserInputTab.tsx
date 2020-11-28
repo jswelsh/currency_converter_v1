@@ -35,16 +35,24 @@ currencySelectHandler = function({currency, mode}) {
     setFromCurrency(currency)
     convertHandler({
       fromCurrency: currency, 
-      toCurrency: toCurrency,
-      amount: amount})
+      toCurrency,
+      amount})
+    convertHistoryHandler({
+      fromCurrency: currency, 
+      toCurrency, 
+      dateRange})
+    compareListHandler(currency, amount)
   }else if(mode === 'toCurrency' && currency !== fromCurrency){
     setToCurrency(currency)
     convertHandler({
-      fromCurrency: fromCurrency, 
       toCurrency: currency,
-      amount: amount})
+      fromCurrency, 
+      amount})
+      convertHistoryHandler({
+        toCurrency: currency, 
+        fromCurrency, 
+        dateRange})
   }
-  
 }
 
 const handleChange = (event: Array<Date>) => {
