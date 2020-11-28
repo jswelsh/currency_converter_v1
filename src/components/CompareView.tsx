@@ -107,6 +107,7 @@ const CompareView: FC<ICompareViewProps> = ({
                 defaultPage={1}
                 color="secondary"
                 size="large"
+                variant="outlined"
                 showFirstButton
                 showLastButton
                 classes={{ ul: classes.paginator }}
