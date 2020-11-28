@@ -88,7 +88,7 @@ export default function useAppData() {
 
   let convertHandler: IconvertHandlerFunc
   convertHandler = function ({ fromCurrency, toCurrency, amount}) {
-    const [ fromDate, toDate] = initializeDateRange(90)//325
+    const [ fromDate, toDate] = initializeDateRange(325)//325
     const exchangeRates = `
       https://api.exchangeratesapi.io/history?start_at=${
       fromDate}&end_at=${
@@ -211,10 +211,10 @@ export default function useAppData() {
       .catch((err) => {
         console.log('Something went wrong', err);
       });
-    // compareListHandler('CAD', 1)
+    compareListHandler('CAD', 1)
     convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:'1'})
     //if you change this, make sure to change inside userinput aswell
-    // convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(90)})
+    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(5)})
   }, []); // Empty array to only run once on mount.
 
   return {
