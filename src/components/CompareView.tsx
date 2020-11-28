@@ -60,7 +60,6 @@ const CompareView: FC<ICompareViewProps> = ({
   const [noOfPages] = React.useState(
     Math.ceil(compareList.length / itemsPerPage)
   );
-
   const handleChange = (event, value) => {
     setPage(value);
   };
@@ -86,7 +85,9 @@ const CompareView: FC<ICompareViewProps> = ({
             item
             xs={12} 
             md={opendrawer ? 12 : 6}       
-            lg={opendrawer ? 6 : 4} 
+            lg={6}
+/*             md={opendrawer ? 12 : 6}       
+            lg={opendrawer ? 6 : 4}  */
             key={currency} >
             <CompareListItem
               currencySelectHandler={currencySelectHandler}
@@ -94,6 +95,9 @@ const CompareView: FC<ICompareViewProps> = ({
               currency={currency}
               primary={value}
               />
+              {
+console.log('hermes', document.documentElement.clientWidth )
+              }
           </Grid>))}
           <Divider />
           <Grid 
@@ -107,7 +111,7 @@ const CompareView: FC<ICompareViewProps> = ({
                 defaultPage={1}
                 color="secondary"
                 size="large"
-                variant="outlined"
+/*                 variant="outlined" */
                 showFirstButton
                 showLastButton
                 classes={{ ul: classes.paginator }}

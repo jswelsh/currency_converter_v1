@@ -31,14 +31,14 @@ MuiTouchRipple:{
 },
 MuiPaginationItem: {
 	root:{
-		color:'#00b279',
-	
+		backgroundColor:'#00b279',
+
 	},
-	outlined:{
+/* 	outlined:{
 		border:'1px solid #00b279',
 		backgroundColor:'#0df2c829',
 
-	}
+	} */
 },
 MuiOutlinedInput: {
 	root: {
