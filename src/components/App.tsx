@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import 'fontsource-roboto';
 import {
@@ -21,6 +21,8 @@ import { NotFound } from './NotFound'
 
 export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
+  const [amount, setAmount] = useState<number>(1);
+
   const {
     state,
     convertHistoryHandler,
@@ -49,6 +51,8 @@ export default function App() {
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
+          setAmount={setAmount}
+          amount={amount}
           mode={state.mode}
           />
           <Link to="/signin">SignIn</Link>
@@ -93,6 +97,8 @@ export default function App() {
               setFromCurrency={setFromCurrency}
               fromCurrency={state.fromCurrency}
               compareList={state.compareList}
+              compareListHandler={compareListHandler}
+              amount={amount}
               opendrawer={opendrawer}
             />
           </Route>

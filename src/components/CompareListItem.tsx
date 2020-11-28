@@ -46,11 +46,17 @@ const gridBuilder = (props: object) => {
 
 const CompareListItem: FC<ICompareListItemProps> = ({
   currencySelectHandler,
+  compareListHandler,
   fromCurrency,
   currency,
   primary,
+  amount
 }) => {
 
+  const onClick = () => {
+    compareListHandler(currency, amount)
+    currencySelectHandler(currency)
+  }
   const classes = useStyles()
   const CurrencySymbol = (currency: string) => {
     return (
@@ -66,7 +72,7 @@ const CompareListItem: FC<ICompareListItemProps> = ({
   <Card className={classes.Card}>
     <ListItem 
       button
-      onClick={()=>currencySelectHandler(currency)}
+      onClick={()=>onClick()}
       className={clsx(classes.ListItem,{
         [classes.selected]: (fromCurrency===currency), })}>
       <Grid container spacing={1} direction="row" justify="space-around" >

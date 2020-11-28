@@ -3,10 +3,12 @@ export interface IButtonProps {
   primary: string; }
 
 export interface ICompareListItemProps {
+  compareListHandler(fromCurrency: string, amount: number): void 
   currencySelectHandler(currency:string): void; 
   fromCurrency: string
   currency: string
-  primary: number }
+  primary: number 
+  amount: number}
 
 export interface ICompareListItem {
   currency: string
@@ -14,8 +16,10 @@ export interface ICompareListItem {
 export interface ICompareViewProps {
   setFromCurrency(currency:string): void
   fromCurrency: string
+  compareListHandler(fromCurrency: string, amount: number): void 
   compareList: Array<ICompareListItem>
-  opendrawer: boolean }
+  opendrawer: boolean 
+  amount: number}
 
 export interface ICurrencyArrayItem {
   date: Date
@@ -88,7 +92,9 @@ export interface IUserInputTabProps {
   setToCurrency(currency: string): void
   fromCurrency: string
   toCurrency: string
+  setAmount(amount: number): void
   opendrawer: boolean
+  amount: number
   mode: string
 }
 

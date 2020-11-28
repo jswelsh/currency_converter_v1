@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC,useState } from 'react';
 import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './../types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CurrencySelectionForm } from './CurrencySelectionForm';
@@ -21,13 +21,15 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   fromCurrency,
   toCurrency,
   opendrawer,
+  setAmount,
+  amount,
   mode,
 }) => {
 
-const [amount, setAmount] = useState<number>(1);
+
 
 /* need to fix the any props later */
-const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(5));
+const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
 currencySelectHandler = function({currency, mode}) { 

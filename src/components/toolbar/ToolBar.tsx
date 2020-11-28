@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import clsx from 'clsx';
 import { IToolBarProps } from '../types'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -79,12 +79,14 @@ const ToolBar: FC<IToolBarProps> = ({
   fromCurrency,
   toCurrency,
   modeHandler,
+  setAmount,
   opendrawer,
+  amount,
   mode,
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-  
+
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -158,6 +160,8 @@ return (
             fromCurrency={fromCurrency}
             toCurrency={toCurrency}
             opendrawer={opendrawer}
+            setAmount={setAmount}
+            amount={amount}
             mode={mode}/>
         }
         <div 

@@ -49,10 +49,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 const CompareView: FC<ICompareViewProps> = ({
+  compareListHandler,
   setFromCurrency,
   fromCurrency,
   compareList,
-  opendrawer
+  opendrawer,
+  amount
 }) => {
   const classes = useStyles();
   const itemsPerPage = 12;
@@ -89,9 +91,11 @@ const CompareView: FC<ICompareViewProps> = ({
               key={currency} >
               <CompareListItem
                 currencySelectHandler={currencySelectHandler}
+                compareListHandler={compareListHandler}
                 fromCurrency={fromCurrency}
                 currency={currency}
                 primary={value}
+                amount={amount}
                 />
             </Grid>))}
             <Grid
@@ -129,9 +133,11 @@ const CompareView: FC<ICompareViewProps> = ({
             key={currency} >
             <CompareListItem
               currencySelectHandler={currencySelectHandler}
+              compareListHandler={compareListHandler}
               fromCurrency={fromCurrency}
               currency={currency}
               primary={value}
+              amount={amount}
               />
           </Grid>))}
           <Grid 
