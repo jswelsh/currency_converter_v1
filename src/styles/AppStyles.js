@@ -29,10 +29,19 @@ MuiTouchRipple:{
 		color:'#c90349'
 	}
 },
+MuiPaginationItem: {
+	root:{
+		backgroundColor:'#00b279',
+	},
+	page:{
+		'&:hover':{
+			backgroundColor:'#0df2c829'
+		}
+	}
+},
 MuiOutlinedInput: {
 	root: {
 		'&:hover':{
-			/* backgroundColor:'#f48fb1', */
 			backgroundColor:'#f490b154',
 		},
 		'&$focused':{
@@ -117,7 +126,8 @@ MuiMenuItem: {
 	},
 	MuiPickersCalendar:{
 		weekDayLabel:{
-			color:'#8CFFDA',
+			color:'#f48fb1',
+			// color:'#8CFFDA',
 			fontSize:'large'
 		},
 	}, 
@@ -128,7 +138,8 @@ MuiMenuItem: {
 	},
 	MuiPickersDay:{
 		root:{
-			color:'#fff'
+			color:'#fff',
+
 		}
 	},
 	MuiPickersStaticWrapper:{
@@ -138,7 +149,7 @@ MuiMenuItem: {
 	},
 	MuiPickersDateRangeDay:{
 		rangeIntervalDayHighlight: {
-			backgroundColor:'#488a74',
+			backgroundColor:'#00b279',
 			color:'black'
 		}  
 	},
