@@ -39,6 +39,7 @@ toCurrency
         currency={currency}
         name={data[currency]['name']}
         recentRateHistory={recentRateHistory}
+        amount={amount}
         converted={converted}
         avatar={iconHandler({
           mode: 'converter', 

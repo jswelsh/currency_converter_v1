@@ -13,7 +13,8 @@ import {
 
 const ConvertViewCardBacksideTable: FC<IConvertViewCardBacksideTableProps> = ({
   recentRateHistory,
-  converted
+  converted,
+  amount
 }) => {
 
   const cellConstructor = (value: number) => {
@@ -49,8 +50,8 @@ return(
               <TableCell align="right">
                 {cellConstructor(
                   parseFloat((
-                    (value - converted)/
-                    converted *100)
+                    (value - converted/amount)/
+                    converted/amount *100)
                     .toFixed(3)))}
               </TableCell>)
             })}

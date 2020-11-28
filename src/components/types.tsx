@@ -44,13 +44,15 @@ export interface IConvertViewCardProps {
 export interface IConvertViewCardBacksideProps {
   recentRateHistory: any
   converted: number
+  amount: number
   currency: string
   avatar: Object
   name: string }
 
 export interface IConvertViewCardBacksideTableProps {
   recentRateHistory: Array<ICurrencyArrayItem>
-  converted: number }
+  converted: number 
+  amount: number }
 
 export interface IConvertViewCardFrontsideProps {
   currency: string

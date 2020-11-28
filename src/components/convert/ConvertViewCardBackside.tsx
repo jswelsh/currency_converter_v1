@@ -33,6 +33,7 @@ const ConvertViewCardBackside: FC<IConvertViewCardBacksideProps> = ({
   converted,
   currency,
   avatar,
+  amount,
   name,
 }) => {
 const classes = useStyles();
@@ -59,6 +60,7 @@ return(
       <ConvertViewCardBacksideTable
         recentRateHistory={recentRateHistory}
         converted={converted}
+        amount={amount}
       />
       </Grid>
     </Grid>
