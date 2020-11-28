@@ -84,10 +84,8 @@ const CompareView: FC<ICompareViewProps> = ({
             <Grid 
               item
               xs={12} 
-              md={opendrawer ? 12 : 6}       
+              md={opendrawer ? 12 : 6}
               lg={6}
-/*               md={opendrawer ? 12 : 6}       
-              lg={opendrawer ? 6 : 4}  */
               key={currency} >
               <CompareListItem
                 currencySelectHandler={currencySelectHandler}
@@ -96,7 +94,7 @@ const CompareView: FC<ICompareViewProps> = ({
                 primary={value}
                 />
             </Grid>))}
-            <Grid 
+            <Grid
               item
               xs={12} >
               <Box component="span">
@@ -107,7 +105,6 @@ const CompareView: FC<ICompareViewProps> = ({
                   defaultPage={1}
                   color="secondary"
                   size="large"
-/*                   variant="outlined" */
                   showFirstButton
                   showLastButton
                   classes={{ ul: classes.paginator }}
@@ -115,22 +112,20 @@ const CompareView: FC<ICompareViewProps> = ({
               </Box>
             </Grid>
           </Grid>
-        </Box>            
+        </Box>
         <Box display={{ xs: 'none', md: 'block' }}>
         <Grid 
           container 
           spacing={2}
           alignItems="center" >
           {compareList
-          .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+          .slice(((page<=noOfPages ? page :Math.ceil(page/2))  - 1) * itemsPerPage, (page<=noOfPages ? page :Math.ceil(page/2))  * itemsPerPage)
           .map(({currency, value}) => (
           <Grid 
             item
             xs={12} 
             md={opendrawer ? 12 : 6}       
             lg={6}
-/*             md={opendrawer ? 12 : 6}       
-            lg={opendrawer ? 6 : 4}  */
             key={currency} >
             <CompareListItem
               currencySelectHandler={currencySelectHandler}
@@ -143,14 +138,14 @@ const CompareView: FC<ICompareViewProps> = ({
             item
             xs={12} >
             <Box component="span">
+              {console.log('in wide','number of pages', noOfPages, 'page', page)}
               <Pagination
                 count={noOfPages}
-                page={page}
+                page={page<=noOfPages ? page :Math.ceil(page/2) }
                 onChange={handleChange}
                 defaultPage={1}
                 color="secondary"
                 size="large"
-/*                 variant="outlined" */
                 showFirstButton
                 showLastButton
                 classes={{ ul: classes.paginator }}
