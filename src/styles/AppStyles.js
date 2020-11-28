@@ -32,18 +32,16 @@ MuiTouchRipple:{
 MuiPaginationItem: {
 	root:{
 		backgroundColor:'#00b279',
-
 	},
-/* 	outlined:{
-		border:'1px solid #00b279',
-		backgroundColor:'#0df2c829',
-
-	} */
+	page:{
+		'&:hover':{
+			backgroundColor:'#0df2c829'
+		}
+	}
 },
 MuiOutlinedInput: {
 	root: {
 		'&:hover':{
-			/* backgroundColor:'#f48fb1', */
 			backgroundColor:'#f490b154',
 		},
 		'&$focused':{

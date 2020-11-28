@@ -55,7 +55,7 @@ const CompareView: FC<ICompareViewProps> = ({
   opendrawer
 }) => {
   const classes = useStyles();
-  const itemsPerPage = 6;
+  const itemsPerPage = 12;
   const [page, setPage] = React.useState(1);
   const [noOfPages] = React.useState(
     Math.ceil(compareList.length / itemsPerPage)
@@ -73,11 +73,54 @@ const CompareView: FC<ICompareViewProps> = ({
         className = {clsx({
           [classes.drawerOpen]: opendrawer,
           [classes.drawerClose]: !opendrawer})} >
+        <Box display={{ xs: 'block', md: 'none' }}>
+          <Grid 
+            container 
+            spacing={2}
+            alignItems="center" >
+            {compareList
+            .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
+            .map(({currency, value}) => (
+            <Grid 
+              item
+              xs={12} 
+              md={opendrawer ? 12 : 6}       
+              lg={6}
+/*               md={opendrawer ? 12 : 6}       
+              lg={opendrawer ? 6 : 4}  */
+              key={currency} >
+              <CompareListItem
+                currencySelectHandler={currencySelectHandler}
+                fromCurrency={fromCurrency}
+                currency={currency}
+                primary={value}
+                />
+            </Grid>))}
+            <Grid 
+              item
+              xs={12} >
+              <Box component="span">
+                <Pagination
+                  count={noOfPages*2}
+                  page={page}
+                  onChange={handleChange}
+                  defaultPage={1}
+                  color="secondary"
+                  size="large"
+/*                   variant="outlined" */
+                  showFirstButton
+                  showLastButton
+                  classes={{ ul: classes.paginator }}
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>            
+        <Box display={{ xs: 'none', md: 'block' }}>
         <Grid 
           container 
           spacing={2}
           alignItems="center" >
-          
           {compareList
           .slice((page - 1) * itemsPerPage, page * itemsPerPage)
           .map(({currency, value}) => (
@@ -95,11 +138,7 @@ const CompareView: FC<ICompareViewProps> = ({
               currency={currency}
               primary={value}
               />
-              {
-console.log('hermes', document.documentElement.clientWidth )
-              }
           </Grid>))}
-          <Divider />
           <Grid 
             item
             xs={12} >
@@ -119,6 +158,7 @@ console.log('hermes', document.documentElement.clientWidth )
             </Box>
           </Grid>
         </Grid>
+        </Box>
       </List> 
 
     </>
