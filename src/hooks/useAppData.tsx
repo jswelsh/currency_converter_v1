@@ -130,7 +130,7 @@ export default function useAppData() {
             /* 
             used for the backside of the convert card */
             const recentRateHistory = slicer(historyFormatter(ratesHistory.data.rates, toCurrency), [-5,-10,-15])
-          
+
             function slicer (array:any, slicePoints:any) {
               const splicedArray = [array.pop()]//grab yesterdays rates
               slicePoints.forEach((point:any) => {
@@ -143,7 +143,6 @@ export default function useAppData() {
               })
               return formattedArray
             }
-
             setResult({
               recentRateHistory: recentRateHistory,
               fromCurrency: fromCurrency,

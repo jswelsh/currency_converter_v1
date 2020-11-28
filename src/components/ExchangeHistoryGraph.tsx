@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect } from "react";
+import React, { FC, useLayoutEffect,useEffect } from "react";
 import clsx from 'clsx';
 import { IExchangeHistoryGraphProps, IDataItem } from './types'
 import * as am4core from "@amcharts/amcharts4/core";
@@ -37,10 +37,12 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   opendrawer}) => {
   const classes = useStyles();
 
-  useLayoutEffect(() => {
+  /* useLayoutEffect */
+  useEffect(() => {
   const color = { 
     primary: am4core.color('#8CFFDA'),
-    secondary: am4core.color('#dc67ab')
+    secondary: am4core.color('#e385bb')
+    /*secondary: am4core.color('#dc67ab')*/
   }
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);

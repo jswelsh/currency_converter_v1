@@ -73,8 +73,8 @@ export default function App() {
           <Route path="/convert">
             <ConvertView
               opendrawer={opendrawer}
-              fromCurrency={state.fromCurrency}
-              toCurrency={state.toCurrency}
+              fromCurrency={state.result.fromCurrency}
+              toCurrency={state.result.toCurrency}
               toStart={state.result.toStart}
               converted={state.result.converted}
               fromIntro={state.result.fromIntro}

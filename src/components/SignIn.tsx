@@ -232,15 +232,16 @@ export function SignIn() {
         {errors?.Password?.type === 'lowerChar' && <Typography> Must have a lowercase character; a to z </Typography>}
          */}
         <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            size='large'
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
+          // disabled={errors?.Password?.message !== undefined || errors?.Email?.message !== undefined }
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          size='large'
+          className={classes.submit}
+        >
+        Sign In
+        </Button>
     </form>
     </div>
     </Container>

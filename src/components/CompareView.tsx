@@ -52,7 +52,6 @@ const CompareView: FC<ICompareViewProps> = ({
   }
 
   const classes = useStyles();
-  console.log(compareList)
   return(
   <List
     className = {clsx({
