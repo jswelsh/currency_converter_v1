@@ -48,11 +48,9 @@ return(
             {recentRateHistory && recentRateHistory.map(({value}) => {
               return (
               <TableCell align="right">
+                {console.log('value', parseFloat(value.toString()) , 'converted',  converted,'amount', amount)}
                 {cellConstructor(
-                  parseFloat((
-                    (value - converted/amount)/
-                    converted/amount *100)
-                    .toFixed(3)))}
+                  parseFloat((((value*amount) - (converted))/ (converted)*100).toFixed(5)))}
               </TableCell>)
             })}
         </TableRow>
@@ -62,3 +60,7 @@ return(
 )}
 
 export {ConvertViewCardBacksideTable}
+/*  parseFloat((
+                    ((value) - (converted/amount))/
+                    converted *100)
+                    .toFixed(4)) */

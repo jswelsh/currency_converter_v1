@@ -14,7 +14,7 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   amount,
   mode,
 }) => {
-  console.log('amount', amount, 'converted', converted)
+  // console.log('amount', amount, 'converted', converted)
 return (
   <>
   fromCurrency
