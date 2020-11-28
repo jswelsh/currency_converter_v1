@@ -29,6 +29,11 @@ MuiTouchRipple:{
 		color:'#c90349'
 	}
 },
+MuiPaginationItem: {
+	root:{
+		backgroundColor:'#00b279'
+	}
+},
 MuiOutlinedInput: {
 	root: {
 		'&:hover':{
