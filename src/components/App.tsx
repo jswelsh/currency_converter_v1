@@ -115,7 +115,7 @@ export default function App() {
             />
           </Route>
           <Route path="*">
-           <NotFound />
+          <NotFound />{/* 404 page */}
           </Route>
         </Switch>  
       </main>

@@ -105,13 +105,12 @@ MuiTableCell:{
 		fontSize:20
 	}
 },
-/*
+
 MuiMenuItem: {
 	root: {
 		color:'#fff'
 	},
 },
- */
 /* MuiInputLabel:{
 	root:{
 		color:'#8CFFDA'

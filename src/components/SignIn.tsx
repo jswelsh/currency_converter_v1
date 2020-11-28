@@ -165,8 +165,8 @@ export function SignIn() {
                 message: 'minimum length is 6 characters ' },
               pattern:{
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-                message: 'wrong pattern; must be at minimum 6 characters in length and  atleast one of each is required; lowercase, uppercase, number and special character; @$!%*?&'},
-           /*  validate: {
+                message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
+          /*  validate: {
               test: (value) => {
                 let error = []
                 if (!specialChar.test(value)){

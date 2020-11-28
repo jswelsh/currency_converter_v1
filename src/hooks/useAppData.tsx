@@ -114,8 +114,8 @@ export default function useAppData() {
         fetchToIntro])
         .then(([
           ratesHistory,
-          fromRates, 
-          fromIntro, 
+          fromRates,
+          fromIntro,
           toIntro
           ]) => {
             /* 
@@ -147,8 +147,8 @@ export default function useAppData() {
               recentRateHistory: recentRateHistory,
               fromCurrency: fromCurrency,
               toCurrency: toCurrency,
-              toStart: amount,
-              converted: parseInt(amount)*result.toFixed(5),
+              toStart: parseFloat(amount),
+              converted: parseFloat((parseFloat(amount)*result).toFixed(5)),
               /* 
               get the keys for the pages (this is deceptive as we only query
               one page but have to use the first index to grap it as its an array) */

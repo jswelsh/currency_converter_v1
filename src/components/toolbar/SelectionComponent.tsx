@@ -39,13 +39,13 @@ const menuItemConstructor = (currency: string) => {
 }
 
 const SelectionComponent: FC<ISelectionComponentProps> = ({ 
-  icon, 
-  name, 
-  value, 
-  currencySelectHandler, 
+  icon,
+  name,
+  value,
+  currencySelectHandler,
   currenciesList
 }) => {
-return (  
+return (
   <ListItem>
     {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
     <Select

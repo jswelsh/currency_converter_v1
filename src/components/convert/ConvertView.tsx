@@ -64,6 +64,7 @@ const ConvertView: FC<IConvertViewProps> = ({
 }) => {
 
 const classes = useStyles();
+console.log(toStart, converted)
 return(
 <>
   <Grid 
@@ -74,15 +75,17 @@ return(
     [classes.drawerClose]: !opendrawer})}>
     <ConvertViewCard
       recentRateHistory={recentRateHistory}
-      currency={fromCurrency}
       converted={converted}
+      currency={fromCurrency}
       amount={toStart}
+      mode={'fromCurrency'}
     />
     <ConvertViewCard
       recentRateHistory={recentRateHistory}
-      currency={toCurrency}
       converted={converted}
-      amount={converted}
+      currency={toCurrency}
+      amount={toStart}
+      mode={'toCurrency'}
     />
   </Grid>
   <Grid 

@@ -38,7 +38,8 @@ export interface IConvertViewCardProps {
   recentRateHistory: Array<ICurrencyArrayItem>
   converted: number
   currency: string
-  amount: number}
+  amount: number
+  mode: string}
 
 export interface IConvertViewCardBacksideProps {
   recentRateHistory: any

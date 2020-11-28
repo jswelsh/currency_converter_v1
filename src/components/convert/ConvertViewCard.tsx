@@ -11,10 +11,14 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   recentRateHistory,
   converted,
   currency, 
-  amount
+  amount,
+  mode,
 }) => {
+  console.log('amount', amount, 'converted', converted)
 return (
   <>
+  fromCurrency
+toCurrency
   <Flippy
     flipOnHover={false} // default false
     flipOnClick={true} // default false
@@ -23,7 +27,7 @@ return (
       <ConvertViewCardFrontside
       currency={currency}
       symbol={data[currency]['symbol_native']}
-      amount={amount}
+      amount={mode === 'fromCurrency'? amount : converted}
       avatar={iconHandler({
         mode: 'converter', 
         currency: currency
