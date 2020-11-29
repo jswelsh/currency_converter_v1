@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
@@ -35,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 40,
     margin:'auto',
     height: '95%',
-    width: "95%", minHeight: 900},
- 
+    minHeight: 900},
     cardHeader: {
       backgroundColor:'secondary'},
     avatar: {
@@ -51,6 +50,7 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   fromCurrency,
   opendrawer,
   toCurrency,
+  dateRange,
   history,
 }) => {
   const classes = useStyles();
@@ -162,7 +162,7 @@ console.log(data)
     chart.dispose();
     };
   }, [history]);
-
+console.log('hello')
   return (
     <Grid 
       spacing={2}
@@ -175,10 +175,12 @@ console.log(data)
         xs={12} >
         <Card>
         <CardHeader
-          title={`${fromCurrency} to ${toCurrency}`}
-          subheader={'for the period of Start date to End date'}
+          //title={`${fromCurrency ? fromCurrency : '---'} to ${toCurrency ? toCurrency : '---'}`}
+          title={fromCurrency && toCurrency ? `${fromCurrency } to ${toCurrency }`: 'Loading'}
+
+          subheader={` ${dateRange[0]} - ${dateRange[1]}`}
           subheaderTypographyProps={{ align: 'center'}}
-          titleTypographyProps={{ align: 'center',variant: "h3" }}>
+          titleTypographyProps={{ align: 'center',variant: "h2" }}>
               <Divider variant="middle" />
             </CardHeader>  
 

@@ -17,11 +17,16 @@ import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { NotFound } from './NotFound'
+import { 
+  initializeDateRange 
+} from '../helpers/dataHelpers'
 
 
 export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const [amount, setAmount] = useState<number>(1);
+  const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
+
 
   const {
     state,
@@ -48,10 +53,12 @@ export default function App() {
           setFromCurrency={setFromCurrency}
           setToCurrency={setToCurrency}
           fromCurrency={state.fromCurrency}
+          setDateRange={setDateRange}
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
           opendrawer={opendrawer}
           setAmount={setAmount}
+          dateRange={dateRange}
           amount={amount}
           mode={state.mode}
           />
@@ -91,6 +98,7 @@ export default function App() {
               fromCurrency={state.result.fromCurrency}
               toCurrency={state.result.toCurrency}
               history={state.history}
+              dateRange={dateRange}
               opendrawer={opendrawer}
             />
           </Route>
