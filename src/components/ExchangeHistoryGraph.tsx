@@ -162,7 +162,7 @@ console.log(data)
     chart.dispose();
     };
   }, [history]);
-
+console.log('hello')
   return (
     <Grid 
       spacing={2}
@@ -175,10 +175,12 @@ console.log(data)
         xs={12} >
         <Card>
         <CardHeader
-          title={`${fromCurrency} to ${toCurrency}`}
+          //title={`${fromCurrency ? fromCurrency : '---'} to ${toCurrency ? toCurrency : '---'}`}
+          title={fromCurrency && toCurrency ? `${fromCurrency } to ${toCurrency }`: 'Loading'}
+
           subheader={` ${dateRange[0]} - ${dateRange[1]}`}
           subheaderTypographyProps={{ align: 'center'}}
-          titleTypographyProps={{ align: 'center',variant: "h3" }}>
+          titleTypographyProps={{ align: 'center',variant: "h2" }}>
               <Divider variant="middle" />
             </CardHeader>  
 
