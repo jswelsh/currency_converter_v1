@@ -1,4 +1,4 @@
-import React, { FC,useState } from 'react';
+import React, { FC } from 'react';
 import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './../types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CurrencySelectionForm } from './CurrencySelectionForm';
@@ -6,8 +6,7 @@ import { Button } from './Button';
 import { InputAmountField } from './InputAmountField';
 
 import { Divider } from '@material-ui/core';
-import { 
-  initializeDateRange, 
+import {  
   shortenDateString 
 } from '../../helpers/dataHelpers'
 
@@ -19,9 +18,11 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   setFromCurrency,
   setToCurrency,
   fromCurrency,
+  setDateRange,
   toCurrency,
   opendrawer,
   setAmount,
+  dateRange,
   amount,
   mode,
 }) => {
@@ -29,7 +30,6 @@ const UserInputTab: FC<IUserInputTabProps> = ({
 
 
 /* need to fix the any props later */
-const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
 
 let currencySelectHandler: IcurrencySelectHandlerFunc
 currencySelectHandler = function({currency, mode}) { 

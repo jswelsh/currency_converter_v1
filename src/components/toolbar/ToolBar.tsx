@@ -77,9 +77,11 @@ const ToolBar: FC<IToolBarProps> = ({
   setFromCurrency,
   setToCurrency,
   fromCurrency,
+  setDateRange,
   toCurrency,
   modeHandler,
   setAmount,
+  dateRange,
   opendrawer,
   amount,
   mode,
@@ -144,11 +146,8 @@ return (
           mode={mode}
         /> 
         <Divider/>
-        
         <div className={clsx({
-              [classes.hide]: mode !== 'Converter'
-            })}>
-        </div>
+          [classes.hide]: mode !== 'Converter'})}/>
         {mode !== 'SignUp' && mode !== 'SignIn' && <UserInputTab
             convertHistoryHandler={convertHistoryHandler}
             compareListHandler={compareListHandler}
@@ -157,9 +156,11 @@ return (
             setFromCurrency={setFromCurrency}
             setToCurrency={setToCurrency}
             fromCurrency={fromCurrency}
+            setDateRange={setDateRange}
             toCurrency={toCurrency}
             opendrawer={opendrawer}
             setAmount={setAmount}
+            dateRange={dateRange}
             amount={amount}
             mode={mode}/>
         }

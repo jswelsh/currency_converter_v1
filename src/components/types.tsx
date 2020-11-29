@@ -77,6 +77,7 @@ export interface ICurrencySelectionFormProps {
 
 export interface IExchangeHistoryGraphProps {
   history: Array<ICurrencyArrayItem>
+  dateRange: Array<Date>
   fromCurrency: string
   toCurrency: string
   opendrawer: boolean
@@ -94,11 +95,13 @@ export interface IUserInputTabProps {
   currenciesList: Array<string>
   convertHandler(payload: object): void 
   setFromCurrency(currency: string): void
+  setDateRange(payload:any):void
   setToCurrency(currency: string): void
   fromCurrency: string
   toCurrency: string
   setAmount(amount: number): void
   opendrawer: boolean
+  dateRange: Array<Date>
   amount: number
   mode: string
 }
