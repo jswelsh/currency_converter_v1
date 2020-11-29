@@ -109,7 +109,7 @@ return (
         component={Link}
         to={'/signup'}
         className={clsx(classes.ListItem,{
-          [classes.selected]: (mode === 'Signup'), })}
+          [classes.selected]: (mode === 'SignUp'), })}
         onClick={() =>{
           modeHandler('SignUp') }}>
         {<ListItemIcon><PersonAddIcon className={classes.icon}/></ListItemIcon> }
