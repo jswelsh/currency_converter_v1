@@ -20,6 +20,7 @@ import { NotFound } from './NotFound'
 import { 
   initializeDateRange 
 } from '../helpers/dataHelpers'
+import { Calculator } from './Calculator';
 
 
 export default function App() {
@@ -72,9 +73,9 @@ export default function App() {
 
         <Switch>
           <Route path='/signin'>
-            <SignIn 
-              /* mode={'SignIn'} */
-            />
+          {/*   <SignIn 
+            /> */}
+            <Calculator/>
           </Route>
           <Route path='/signup'>
             <SignUp 
