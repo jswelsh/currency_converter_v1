@@ -8,8 +8,6 @@ import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-
 const drawerWidth = 240;
 const drawerClosed = 100;
 
@@ -89,7 +87,6 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
 
 
 chart.data = data;
-console.log(data)
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
   let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
