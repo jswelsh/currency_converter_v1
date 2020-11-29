@@ -34,13 +34,6 @@ const useStyles = makeStyles((theme) => ({
     margin:'auto',
     height: '95%',
     width: "95%", minHeight: 900},
-/*   card: {
-      color:'#fff',
-      borderRadius: 12,
-      margin:'auto',
-      minWidth:600,
-      minHeight:1000,
-    }, */
     
 }));
 
@@ -54,7 +47,6 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   const color = { 
     primary: am4core.color('#8CFFDA'),
     secondary: am4core.color('#e385bb')
-    /*secondary: am4core.color('#dc67ab')*/
   }
   am4core.useTheme(am4themes_dark);
   am4core.useTheme(am4themes_animated);
@@ -157,25 +149,18 @@ chart.data = data;
   }, [history]);
 
   return (
-    <>
+    <Grid 
+      spacing={2}
+      container 
+      className={clsx({
+        [classes.drawerOpen]: opendrawer,
+        [classes.drawerClose]: !opendrawer})}>
       <Grid 
-        spacing={2}
-        container 
-        justify={'center'}
-        alignItems={"center"}
-        className={clsx({
-          [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer})}>
-        <Grid 
-          alignItems={"center"}
-          item
-          xs={12} >
-          <Card id="chartdiv" className={classes.ExchangeHistoryGraph} /* className={classes.card} */>
-
-          </Card>
-        </Grid>
+        item
+        xs={12} >
+        <Card id="chartdiv" className={classes.ExchangeHistoryGraph} />
       </Grid>
-    </>
+    </Grid>
   );
 }
 
