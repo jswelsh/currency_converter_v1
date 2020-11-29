@@ -1,33 +1,16 @@
 import React from 'react';
-//import Avatar from '@material-ui/core/Avatar';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { useForm, FormProvider } from "react-hook-form";
-import FormInput from "./FormInput";
 import { 
-  FormControlLabel,
-  OutlinedInput,
-  FormControl,
   Container,
   CssBaseline,
-  InputLabel,
   TextField,
-  Checkbox,
   Button,
-  Link,
   Grid,
-  Box,
   Typography,
 } from '@material-ui/core/';
 import { Alert, AlertTitle } from '@material-ui/lab';
-
-
-
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import {ReactComponent as SvgIcon} from './logo.svg'
 
 
@@ -44,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),},
   submit: {
- /*    color:'#000', */
     backgroundColor: theme.palette.primary.dark,
     margin: theme.spacing(3, 0, 2),},
   warning: {
@@ -58,30 +40,17 @@ interface State {
   password: string;
 }
 
-/* 
-Email regex
-/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-
-Password regex
-^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$
-This regex will enforce these rules:
-
-At least one upper case English letter, (?=.*?[A-Z])
-At least one lower case English letter, (?=.*?[a-z])
-At least one digit, (?=.*?[0-9])
-At least one special character, (?=.*?[#?!@$%^&*-])
-Minimum eight in length .{8,} (with the anchors)
-*/
-
 export function SignIn() {
-  const { register, handleSubmit, errors /*, reset  */} = useForm();
+  const classes = useStyles();
+  const { register, handleSubmit, errors } = useForm({
+    // mode: 'onBlur'
+  });
+
   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
   });
   
-  const classes = useStyles();
   const specialChar = /[@$!%*?&]/;
   const numericChar = /[0-9]/
   const capitalChar = /[A-Z]/;
@@ -108,46 +77,45 @@ export function SignIn() {
     <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={classes.paper}>
-      <div>
-        <SvgIcon />
-      </div>
+    <div><SvgIcon /></div>
       <Typography component="h1" variant="h5">
         Sign in
       </Typography>
     <form 
-      autoComplete="off"
+      autoComplete='off'
       onSubmit={handleSubmit(onSubmit)}
-      className={classes.form}
-    >
+      className={classes.form}>
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TextField 
-          name="Email" 
-          placeholder="Email" 
-          label="Email Address"
-          variant="outlined"
+          name='Email' 
+          id='email'
+          label='Email Address'
+          autoComplete='email'
+          variant='outlined'
           fullWidth
+          autoFocus
           inputRef={
             register({
               required: "Required", 
               pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,/* /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, */
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'invalid email address'
                 }})} />
       </Grid>
       <Grid item xs={12}>
         {errors?.Email?.message && 
-          <Alert
-            severity= 'warning'
-            className={classes.warning}
-            variant= 'outlined'
-            /* variant="filled" */
-            >
-            <AlertTitle color= 'warning'>
-              <strong>Warning</strong>
-              </AlertTitle>
-            {errors.Email.message}
-          </Alert>}
+        <Alert
+          severity= 'warning'
+          className={classes.warning}
+          variant= 'outlined'
+          /* variant="filled" */
+          >
+          <AlertTitle color= 'warning'>
+            <strong>Warning</strong>
+            </AlertTitle>
+          {errors.Email.message}
+        </Alert>}
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -166,80 +134,30 @@ export function SignIn() {
               pattern:{
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
                 message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
-          /*  validate: {
-              test: (value) => {
-                let error = []
-                if (!specialChar.test(value)){
-                  error.push('Must have a special character; @ $ ! % * ? &')
-                }
-                if (!numericChar.test(value)) {
-                  error.push('Must have a numeric character; 0 to 9')
-                }
-                if (!capitalChar.test(value)) {
-                  error.push('Must have a capitalized character; A to Z')
-                }
-                if (!lowerChar.test(value)) {
-                  error.push('Must have a lowercase character; a to z')
-                }
-                if(specialChar.test(value) && numericChar.test(value) && capitalChar.test(value) && lowerChar.test(value)){
-                  return 'valid'
-                } else {
-                  console.log(error)
-                  return error
-                }
-              },
-            } */
             })}
-/*           id="outlined-adornment-password"
-          type={values.showPassword ? 'text' : 'password'}
-          value={values.password}
-          onChange={handleChange('password')}
-          InputProps={{
-            endAdornment: <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-                edge="end"
-              >
-                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          }} */
         />
       </Grid>
       <Grid item xs={12}>
         {errors?.Password?.message && 
-          <Alert
-            severity= 'warning'
-            variant= 'outlined'
-            className={classes.warning}
-            color='warning'>
-            <AlertTitle color= 'warning'>
-              <strong>Warning</strong>
-              </AlertTitle>
-            {errors.Password.message}
-          </Alert>}
+        <Alert
+          severity= 'warning'
+          variant= 'outlined'
+          className={classes.warning}
+          color='warning'>
+          <AlertTitle color= 'warning'>
+            <strong>Warning</strong>
+            </AlertTitle>
+          {errors.Password.message}
+        </Alert>}
       </Grid>
       </Grid>
-
-        {/* {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>} */}
-
-{/*         {errors?.Password?.message && <Typography>{errors.Password.message} </Typography>}
-        {errors?.Password?.type === 'specialChar' && <Typography> Must have a special character; @ $ ! % * ? & </Typography>}
-        {errors?.Password?.type === 'numericChar' && <Typography> Must have a numeric character; 0 to 9 </Typography>}
-        {errors?.Password?.type === 'capitalChar' && <Typography> Must have a capitalized character; A to Z  </Typography>}
-        {errors?.Password?.type === 'lowerChar' && <Typography> Must have a lowercase character; a to z </Typography>}
-         */}
         <Button
-          // disabled={errors?.Password?.message !== undefined || errors?.Email?.message !== undefined }
           type="submit"
           fullWidth
           variant="contained"
           color="primary"
           size='large'
-          className={classes.submit}
-        >
+          className={classes.submit}>
         Sign In
         </Button>
     </form>

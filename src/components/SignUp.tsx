@@ -14,6 +14,7 @@ import {
   Grid,
   Box,
 } from '@material-ui/core/';
+import { Alert, AlertTitle } from '@material-ui/lab';
 
 import { useForm } from "react-hook-form";
 /* import isEmail from "validator/lib/isEmail";
@@ -60,11 +61,14 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    backgroundColor: theme.palette.primary.dark,
+    margin: theme.spacing(3, 0, 2),},
+  warning: {
+    color:'white'
+  }
 }));
 
 interface State {
@@ -74,14 +78,15 @@ interface State {
 
 export function SignUp() {  
   const classes = useStyles();
+  const { register, handleSubmit, errors } = useForm({
+    // mode: 'onBlur'
+  });
+
   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
   });
 
-  const { register, handleSubmit, errors } = useForm({
-    mode: "onBlur",
-  });
   function onSubmit(data) {
     console.log(data);
   }
@@ -98,142 +103,185 @@ export function SignUp() {
     event.preventDefault();
   };
 
-  /* 
-      const handleInputChange = e => {
-        const { name, value } = e.target
-        setValues({
-            ...values,
-            [name]: value
-        })
-        if (validateOnChange)
-            validate({ [name]: value })
-    }
-
-        const resetForm = () => {
-        setValues(initialFValues);
-        setErrors({})
-    }
-  
-  */
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <div>
-          <SvgIcon />
-        </div>
+        <div><SvgIcon /></div>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
         <form 
-        className={classes.form} 
-        /* noValidate */
-        onSubmit={onSubmit}
-        >
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                name="username"
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-            <FormControl className={clsx(classes.form/* classes.margin, classes.textField */)} variant="outlined">
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              name="password"
-              ref={register({
-                required: true,
-                minLength: 6,
-              })}
-              
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.password}
-              onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              labelWidth={70}
+          autoComplete='off'
+          onSubmit={onSubmit}
+          className={classes.form} >
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="firstName"
+              id="firstName"
+              label="First Name"
+              autoComplete="fname"
+              variant="outlined"
+              // required
+              fullWidth
+              autoFocus
+              inputRef={
+                register({
+                  required: "Required", 
+                  minLength: {
+                    value:6,
+                    message: 'minimum length is 2 characters ' },
+                })}
             />
-          </FormControl>
-  {/*             <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              /> */}
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color='secondary' />}
-                label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
-              />
-            </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="secondary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/signin" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="lastName"
+              id="lastName"
+              label="Last Name"
+              autoComplete="lname"
+              variant="outlined"
+              // required
+              fullWidth
+              inputRef={
+                register({
+                  required: "Required", 
+                  minLength: {
+                    value:6,
+                    message: 'minimum length is 2 characters ' },
+                })}
+            />
           </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
+          <Grid item xs={12}>
+            <TextField
+              name='Email' 
+              id='email'
+              label='Email Address'
+              autoComplete='email'
+              variant='outlined'
+              fullWidth
+              // required
+              inputRef={
+                register({
+                  required: "Required", 
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'invalid email address'
+                    }})} />
+          </Grid>
+          <Grid item xs={12}>
+            {errors?.Email?.message && 
+            <Alert
+              severity= 'warning'
+              className={classes.warning}
+              variant= 'outlined'
+              /* variant="filled" */
+              >
+              <AlertTitle color= 'warning'>
+                <strong>Warning</strong>
+                </AlertTitle>
+              {errors.Email.message}
+            </Alert>}
+          </Grid>
+          <Grid item xs={12}>
+        <TextField
+          name="Password"
+          placeholder="Password"
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          inputRef={
+            register({
+              required: "Required",
+              minLength: {
+                value:6,
+                message: 'minimum length is 6 characters ' },
+              pattern:{
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+                message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
+            })}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        {errors?.Password?.message && 
+        <Alert
+          severity= 'warning'
+          variant= 'outlined'
+          className={classes.warning}
+          color='warning'>
+          <AlertTitle color= 'warning'>
+            <strong>Warning</strong>
+            </AlertTitle>
+          {errors.Password.message}
+        </Alert>}
+      </Grid>
+      <Grid item xs={12}>
+            <FormControlLabel
+              control={<Checkbox value="allowExtraEmails" color='secondary' />}
+              label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
+            />
+          </Grid>
+      </Grid>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+          size='large'
+          className={classes.submit}>
+        Sign Up
+        </Button>
+        <Grid container justify="flex-end">
+          <Grid item>
+            <Link href="/signin" variant="body2">
+              Already have an account? Sign in
+            </Link>
+          </Grid>
+        </Grid>
+    </form>
+    </div>
     </Container>
   );
 }
+
+
+
+
+
+
+
+
+
+
+/*           <Grid item xs={12}>
+          <FormControl className={clsx(classes.form)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            name="password"
+            ref={register({
+              required: true,
+              minLength: 6,
+            })}
+            
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
+          </Grid> */
