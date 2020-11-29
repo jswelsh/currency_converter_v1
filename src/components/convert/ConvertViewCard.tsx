@@ -14,11 +14,7 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   amount,
   mode,
 }) => {
-  // console.log('amount', amount, 'converted', converted)
 return (
-  <>
-  fromCurrency
-toCurrency
   <Flippy
     flipOnHover={false} // default false
     flipOnClick={true} // default false
@@ -47,7 +43,6 @@ toCurrency
         })}/>
     </BackSide>
   </Flippy>
-  </>
 )}
 
 export {ConvertViewCard}

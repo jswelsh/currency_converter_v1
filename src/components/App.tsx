@@ -88,6 +88,8 @@ export default function App() {
           </Route>
           <Route path="/history">
             <ExchangeHistoryGraph
+              fromCurrency={state.result.fromCurrency}
+              toCurrency={state.result.toCurrency}
               history={state.history}
               opendrawer={opendrawer}
             />

@@ -77,6 +77,8 @@ export interface ICurrencySelectionFormProps {
 
 export interface IExchangeHistoryGraphProps {
   history: Array<ICurrencyArrayItem>
+  fromCurrency: string
+  toCurrency: string
   opendrawer: boolean
 }
 

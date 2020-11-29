@@ -127,8 +127,7 @@ return (
       classes={{
         paper: clsx({
           [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer}),}}
-    >
+          [classes.drawerClose]: !opendrawer}),}}>
         <div className={classes.toolbar}>
           <IconButton
             className={classes.icon}

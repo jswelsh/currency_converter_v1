@@ -1,12 +1,14 @@
 import React, { FC, useLayoutEffect,useEffect } from "react";
 import clsx from 'clsx';
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid, CardHeader, CardContent, Divider } from '@material-ui/core';
 import { IExchangeHistoryGraphProps, IDataItem } from './types'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
+
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const drawerWidth = 240;
 const drawerClosed = 100;
@@ -34,12 +36,23 @@ const useStyles = makeStyles((theme) => ({
     margin:'auto',
     height: '95%',
     width: "95%", minHeight: 900},
+ 
+    cardHeader: {
+      backgroundColor:'secondary'},
+    avatar: {
+      width: 60,
+      height: 60,
+      margin: 'auto',
+    },
     
 }));
 
 const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
+  fromCurrency,
+  opendrawer,
+  toCurrency,
   history,
-  opendrawer}) => {
+}) => {
   const classes = useStyles();
 
   /* useLayoutEffect */
@@ -74,7 +87,9 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     previousValue = value;
 } 
 
+
 chart.data = data;
+console.log(data)
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
   let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -158,7 +173,17 @@ chart.data = data;
       <Grid 
         item
         xs={12} >
-        <Card id="chartdiv" className={classes.ExchangeHistoryGraph} />
+        <Card>
+        <CardHeader
+          title={`${fromCurrency} to ${toCurrency}`}
+          subheader={'for the period of Start date to End date'}
+          subheaderTypographyProps={{ align: 'center'}}
+          titleTypographyProps={{ align: 'center',variant: "h3" }}>
+              <Divider variant="middle" />
+            </CardHeader>  
+
+          <CardContent id="chartdiv" className={classes.ExchangeHistoryGraph} /> 
+        </Card> 
       </Grid>
     </Grid>
   );
