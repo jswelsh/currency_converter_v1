@@ -136,7 +136,8 @@ export function SignIn() {
                 message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
             })}
         />
-      </Grid>
+      </Grid >
+      <Grid item xs={12}>
         {errors?.Password?.message && 
         <Alert
           severity= 'warning'
@@ -148,7 +149,7 @@ export function SignIn() {
             </AlertTitle>
           {errors.Password.message}
         </Alert>}
-
+        </Grid>
       </Grid>
         <Button
           type="submit"
