@@ -113,7 +113,7 @@ return (
         onClick={() =>{
           modeHandler('SignUp') }}>
         {<ListItemIcon><PersonAddIcon className={classes.icon}/></ListItemIcon> }
-        <ListItemText primary={'SignIn'} />
+        <ListItemText primary={'signUp'} />
       </ListItem>
   </List>  
 )}

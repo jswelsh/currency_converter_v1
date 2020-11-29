@@ -82,7 +82,7 @@ export function SignIn() {
         Sign in
       </Typography>
     <form 
-      autoComplete='off'
+      autoComplete='on'
       onSubmit={handleSubmit(onSubmit)}
       className={classes.form}>
     <Grid container spacing={2}>
@@ -137,7 +137,6 @@ export function SignIn() {
             })}
         />
       </Grid>
-      <Grid item xs={12}>
         {errors?.Password?.message && 
         <Alert
           severity= 'warning'
@@ -149,7 +148,7 @@ export function SignIn() {
             </AlertTitle>
           {errors.Password.message}
         </Alert>}
-      </Grid>
+
       </Grid>
         <Button
           type="submit"

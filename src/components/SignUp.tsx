@@ -68,6 +68,11 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),},
   warning: {
     color:'white'
+  },
+  input:{
+    '-internal-autofill-selected':{
+      backgroundColor: 'red'
+    }
   }
 }));
 
@@ -111,17 +116,18 @@ export function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form 
-          autoComplete='off'
-          onSubmit={onSubmit}
+        <form
+          autoComplete='on'
+          onSubmit={handleSubmit(onSubmit)}
           className={classes.form} >
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
+              className={classes.input}
               name="firstName"
               id="firstName"
               label="First Name"
-              autoComplete="fname"
+              autoComplete="off"
               variant="outlined"
               // required
               fullWidth
@@ -130,8 +136,11 @@ export function SignUp() {
                 register({
                   required: "Required", 
                   minLength: {
-                    value:6,
+                    value:2,
                     message: 'minimum length is 2 characters ' },
+                  pattern:{
+                    value: /^[A-Z]+$/i,
+                    message: 'Sorry Elon Musk; Only alphabetic characters are valid in a name, no symbols.... for now'},
                 })}
             />
           </Grid>
@@ -140,7 +149,7 @@ export function SignUp() {
               name="lastName"
               id="lastName"
               label="Last Name"
-              autoComplete="lname"
+              autoComplete='off'
               variant="outlined"
               // required
               fullWidth
@@ -148,10 +157,41 @@ export function SignUp() {
                 register({
                   required: "Required", 
                   minLength: {
-                    value:6,
+                    value:2,
                     message: 'minimum length is 2 characters ' },
+                  pattern:{
+                    value: /^[A-Z]+$/i,
+                    message: 'Sorry Elon Musk; Only alphabetic characters are valid in a name, no symbols.... for now'},
                 })}
             />
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              {errors?.firstName?.message && 
+              <Alert
+                severity= 'warning'
+                variant= 'outlined'
+                className={classes.warning}
+                color='warning'>
+                <AlertTitle color= 'warning'>
+                  <strong>Warning</strong>
+                  </AlertTitle>
+                {errors.firstName.message}
+              </Alert>}
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              {errors?.lastName?.message && 
+              <Alert
+                severity= 'warning'
+                variant= 'outlined'
+                className={classes.warning}
+                color='warning'>
+                <AlertTitle color= 'warning'>
+                  <strong>Warning</strong>
+                  </AlertTitle>
+                {errors.lastName.message}
+              </Alert>}
+            </Grid>
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -184,7 +224,7 @@ export function SignUp() {
               {errors.Email.message}
             </Alert>}
           </Grid>
-          <Grid item xs={12}>
+        <Grid item xs={12}>
         <TextField
           name="Password"
           placeholder="Password"
@@ -203,8 +243,8 @@ export function SignUp() {
                 message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
             })}
         />
-      </Grid>
-      <Grid item xs={12}>
+        </Grid>
+        <Grid item xs={12}>
         {errors?.Password?.message && 
         <Alert
           severity= 'warning'
@@ -216,13 +256,13 @@ export function SignUp() {
             </AlertTitle>
           {errors.Password.message}
         </Alert>}
-      </Grid>
-      <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox value="allowExtraEmails" color='secondary' />}
-              label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
-            />
-          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={<Checkbox value="allowExtraEmails" color='secondary' />}
+            label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
+          />
+        </Grid>
       </Grid>
         <Button
           type="submit"
@@ -240,7 +280,7 @@ export function SignUp() {
             </Link>
           </Grid>
         </Grid>
-    </form>
+      </form>
     </div>
     </Container>
   );
