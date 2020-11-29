@@ -7,7 +7,9 @@ import {
   ListItemText,
   ListItemIcon,
 } from '@material-ui/core';
-import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import CompareArrowsIcon from '@material-ui/icons/Transform';
+
+// import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import FromIcon from '@material-ui/icons/ArrowDownward';
 import ToIcon from '@material-ui/icons/SubdirectoryArrowRight';
 import SwapVertIcon from '@material-ui/icons/Cached';
