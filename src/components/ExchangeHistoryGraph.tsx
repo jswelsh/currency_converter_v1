@@ -1,5 +1,6 @@
 import React, { FC, useLayoutEffect,useEffect } from "react";
 import clsx from 'clsx';
+import { Card, Grid } from '@material-ui/core';
 import { IExchangeHistoryGraphProps, IDataItem } from './types'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
@@ -18,18 +19,29 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: drawerClosed,
     marginRight: drawerClosed-20,
     width: `calc(93% - ${drawerClosed}px)`, /* `calc(95% - 100px)`,  */
-    height: "800px" ,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen})},
   drawerOpen: {
     marginLeft: drawerWidth,
-    width: `calc(93% - ${drawerWidth}px)`, height: "800px" ,
+    width: `calc(93% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen})},
   ExchangeHistoryGraph: {
-    width: "90%", height: "800px"}
+    borderRadius: 12,
+    padding: 40,
+    margin:'auto',
+    height: '95%',
+    width: "95%", minHeight: 900},
+/*   card: {
+      color:'#fff',
+      borderRadius: 12,
+      margin:'auto',
+      minWidth:600,
+      minHeight:1000,
+    }, */
+    
 }));
 
 const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
@@ -86,7 +98,7 @@ chart.data = data;
   dateAxis.renderer.grid.template.location = 0;
 
   series.strokeWidth = 3;
-  series.tensionX = 0.8;
+  // series.tensionX = 0.8; // can't keep this with changing color of line depening on delta being +/- as its a new line after every change
   series.fill = series.stroke;
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;
@@ -146,14 +158,24 @@ chart.data = data;
 
   return (
     <>
-      <div 
-        id="chartdiv" 
+      <Grid 
+        spacing={2}
+        container 
+        justify={'center'}
+        alignItems={"center"}
         className={clsx({
           [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer  })}
-      />
+          [classes.drawerClose]: !opendrawer})}>
+        <Grid 
+          alignItems={"center"}
+          item
+          xs={12} >
+          <Card id="chartdiv" className={classes.ExchangeHistoryGraph} /* className={classes.card} */>
+
+          </Card>
+        </Grid>
+      </Grid>
     </>
-    
   );
 }
 
