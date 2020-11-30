@@ -80,22 +80,21 @@ const CompareView: FC<ICompareViewProps> = ({
             alignItems="center" >
             {compareList
             .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
-            .map(({currency, value}) => (
-            <Grid 
-              item
-              xs={12} 
-              md={opendrawer ? 12 : 6}
-              lg={6}
-              key={currency} >
-              <CompareListItem
-                currencySelectHandler={currencySelectHandler}
-                compareListHandler={compareListHandler}
-                fromCurrency={fromCurrency}
-                currency={currency}
-                primary={value}
-                amount={amount}
-                />
-            </Grid>))}
+            .map(({ currency, value }) => (
+              <Grid
+                item
+                xs={12}
+                md={opendrawer ? 12 : 6}
+                lg={6}
+                key={currency}>
+                <CompareListItem
+                  currencySelectHandler={currencySelectHandler}
+                  compareListHandler={compareListHandler}
+                  fromCurrency={fromCurrency}
+                  currency={currency}
+                  primary={value}
+                  amount={amount} />
+              </Grid>))}
             <Grid
               item
               xs={12} >

@@ -32,7 +32,14 @@ const useStyles = makeStyles(() => ({
     color:'#009868'
   }
 }));
-/* interface IReducerFunc {(
+/* interface IStateProps {
+    operand: string
+    value: number
+    num1: number
+    num2: string
+    num3: string
+} */
+interface IReducerFunc {(
   state: {
     operand: string
     value: number
@@ -43,15 +50,18 @@ const useStyles = makeStyles(() => ({
   action: {
     payload: string | undefined
     type: string
-  }
-  ): void
+  } 
+  ): any
 }
-let reducer : IReducerFunc */
+// use this to rebuild to types
+// https://www.sumologic.com/blog/react-hook-typescript/
+let reducer : IReducerFunc
 
 const ALL_CLEAR = 'ALL_CLEAR'
-
 //need to set these types!!!!!!!!!!!!!
-const reducer = (state:any, action:any) => {
+reducer = (state, action) => {
+
+//const reducer = (state:any, action:any) => {
   switch (action.type) {
     case 'SET_OPERAND':
       if (!state.num1) {
@@ -161,8 +171,8 @@ const Calculator = () => {
         direction="row"
         justify="center"
         alignItems="center">
-        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: ALL_CLEAR})}>AC</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'CLEAR'})}>C</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: ALL_CLEAR, payload:undefined})}>AC</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'CLEAR', payload:undefined})}>C</ListItem></Grid>
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '/'})}>/</ListItem></Grid        >
         {/* row */}
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '7'})}>7</ListItem></Grid>
@@ -182,7 +192,7 @@ const Calculator = () => {
         {/* row */}
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '0'})}>0</ListItem></Grid>
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '.'})}>.</ListItem></Grid>
-        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_RESULT'})}>=</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_RESULT', payload:undefined})}>=</ListItem></Grid>
       </Grid>
       </List>
     </Card>

@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     padding: 30,
     margin:'auto',
     width: "95%", minHeight: 730},
- 
     cardHeader: {
       backgroundColor:'secondary'},
     avatar: {
