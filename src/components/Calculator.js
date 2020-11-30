@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
     margin:'auto',
     minWidth:200,
-    maxWidth:400,
+    maxWidth:300,
     
   },
   Button:{
@@ -110,7 +110,7 @@ const reducer = (state, action) => {
         value: 0,
         op: '',
         num1: 0,
-        num2: ''
+        num2: ''//''
       }
       
     default:
@@ -123,48 +123,45 @@ const Calculator = () => {
   const classes = useStyles();
   const [state, dispatch] = useReducer(reducer, initialState)
   const Display = () => {
-    return !state.num2 ? state.value : state.num2
+    // return !!state.num2 ? state.num2 : state.value
+    return state.num2 || state.op ? state.op + state.num2 : 0
     }
   return (
-/*     <div className="calculator">
-      <div className="container">
-        <div className="display">
-          {!state.num2 ? state.value : state.num2} 
-          <span className="cursor" /> */
-        <Card className={classes.Card}>
-          <CardHeader
-          className={classes.Display}
-          titleTypographyProps={{ align: 'right',variant: "h4" }}
-          title={<Display/>}
-          />
-{/*           */}
-          <List className={classes.List}>
-          <Grid container
-            direction="row"
-            justify="center"
-            alignItems="center">
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'ac'})}>AC</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'c'})}>C</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '/'})}>/</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '7'})}>7</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '8'})}>8</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '9'})}>9</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '4'})}>4</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '5'})}>5</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '6'})}>6</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '+'})}>+</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '1'})}>1</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '2'})}>2</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '3'})}>3</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '-'})}>-</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn zero" */ onClick={() => dispatch({ type: '1', payload: '0'})}>0</ListItem></Grid>
-            <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '.'})}>.</ListItem></Grid>
-            <Grid item xs={6}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn eq" */ onClick={() => dispatch({ type: '3'})}>=</ListItem></Grid>
-          </Grid>
-          </List>
-        </Card>
+    <Card className={classes.Card}>
+      <CardHeader
+      className={classes.Display}
+      titleTypographyProps={{ align: 'right',variant: "h3" }}
+      subheader= {state.num1 }
+      subheaderTypographyProps={{ align: 'right',variant: "h3" }}
+      title={<Display/>}
+      />
+      <List className={classes.List}>
+      <Grid container
+        direction="row"
+        justify="center"
+        alignItems="center">
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'ac'})}>AC</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'c'})}>C</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '/'})}>/</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '7'})}>7</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '8'})}>8</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '9'})}>9</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '4'})}>4</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '5'})}>5</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '6'})}>6</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '+'})}>+</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '1'})}>1</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '2'})}>2</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '3'})}>3</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '-'})}>-</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn zero" */ onClick={() => dispatch({ type: '1', payload: '0'})}>0</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '.'})}>.</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn eq" */ onClick={() => dispatch({ type: '3'})}>=</ListItem></Grid>
+      </Grid>
+      </List>
+    </Card>
   );
 };
 
