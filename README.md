@@ -5,6 +5,7 @@ CurrExC is a web application that  provides users with straight forward Currency
 # Technologies
 
  - React
+ - Typescript
  - Axios
  - Node
  - amCharts
@@ -12,10 +13,12 @@ CurrExC is a web application that  provides users with straight forward Currency
  - Material UI
 
 ## App Screenshots
-- [History Graph view, with Date picker popover](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-11-12%2021-51-59.png)
-- [Convert currency view, Showing the toolbar drawer in its closed state](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-11-12%2021-39-16.png)
-- [Convert view, showing the drawer open and components on a smaller window view](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-11-12%2021-55-27.png)
-- [Compare view, showing the conversions for currencies against base currency](https://github.com/jswelsh/currency_converter_v1/blob/master/public/Screenshot%20from%202020-10-17%2020-51-17)
+- [History Graph view](https://github.com/jswelsh/currency_converter_v1/blob/master/public/calendarComponent.png)
+- [Convert currency view, Showing the toolbar drawer in its open state](https://github.com/jswelsh/currency_converter_v1/blob/master/public/convertComponent.png)
+- [History view, showing the calculator component pop-over](https://github.com/jswelsh/currency_converter_v1/blob/master/public/calculatorComponent.png)
+- [History view, showing the calendar component pop-over](https://github.com/jswelsh/currency_converter_v1/blob/master/public/calendarPopOver.png)
+- [Compare view, showing the conversions for currencies against base currency](https://github.com/jswelsh/currency_converter_v1/blob/master/public/compareComponent.png)
+- [SignUp view, showing the sign up form](https://github.com/jswelsh/currency_converter_v1/blob/master/public/signUp.png)
 
 
 ## Functionality and Limitations
