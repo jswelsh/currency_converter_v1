@@ -31,17 +31,29 @@ const initialState = {
 
 
 const useStyles = makeStyles((theme) => ({
-  card: {
-    borderRadius: 1,
+  Display:{
+    border: 'solid',
+    color:'#009868'
+
+  },
+  Card: {
+    borderRadius: 12,
     margin:'auto',
-    minWidth:400,
-    maxWidth:900
+    minWidth:200,
+    maxWidth:400,
+    
   },
   Button:{
-    border:'solid'
+    border:'solid',
+    borderColor: 'black',
+    borderTopWidth: 'thin',
+    borderBottomWidth: 'thin',
+    borderLeftWidth: 'thin',
+    borderRightWidth: 'thin',
   },
   List:{
-    padding:0
+    padding:0,
+    color:'#009868'
   }
 }));
 
@@ -119,8 +131,9 @@ const Calculator = () => {
         <div className="display">
           {!state.num2 ? state.value : state.num2} 
           <span className="cursor" /> */
-        <Card className={classes.card}>
+        <Card className={classes.Card}>
           <CardHeader
+          className={classes.Display}
           titleTypographyProps={{ align: 'right',variant: "h4" }}
           title={<Display/>}
           />
@@ -130,9 +143,6 @@ const Calculator = () => {
             direction="row"
             justify="center"
             alignItems="center">
-            {/* <Grid item xs={12}>  */}
-              {/* <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'ac'})}> */}
-                {/* {!state.num2 ? state.value : state.num2}</ListItem></Grid> */}
             <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'ac'})}>AC</ListItem></Grid>
             <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'c'})}>C</ListItem></Grid>
             <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
