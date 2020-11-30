@@ -107,8 +107,8 @@ export function SignUp({modeHandler}) {
 
   return (
     
-    <Card className={classes.Card}>
-        <Container component="main" maxWidth="xs">
+    // <Card className={classes.Card}>
+  <Container component="main" maxWidth="xs">
     <CssBaseline />
       <div className={classes.paper}>
         <div><SvgIcon /></div>
@@ -287,7 +287,7 @@ export function SignUp({modeHandler}) {
       </form>
     </div>
     </Container>
-    </Card>
+    // </Card>
   );
 }
 
