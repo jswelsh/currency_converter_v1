@@ -7,10 +7,12 @@ import {
   FormControl,
   CssBaseline,
   InputLabel,
+  List,
+  Card,
+  ListItem,
   TextField,
   Checkbox,
   Button,
-  Link,
   Grid,
   Box,
 } from '@material-ui/core/';
@@ -23,6 +25,9 @@ import { useForm } from "react-hook-form";
 import InputAdornment from '@material-ui/core/InputAdornment';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {ReactComponent as SvgIcon} from './logo.svg'
+import {
+  Link
+} from "react-router-dom";
 
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -32,25 +37,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 
-
-
-function Copyright() {
-
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
+  Card: {
+    // borderRadius: 12,
+    borderRadius: 12,
+
+    margin:'auto',
+    minWidth:600,
+    maxWidth:600,
+    marginBottom:30},
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(5),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -81,7 +78,7 @@ interface State {
   password: string;
 }
 
-export function SignUp() {  
+export function SignUp({modeHandler}) {  
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm({
     // mode: 'onBlur'
@@ -109,8 +106,10 @@ export function SignUp() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
+    
+    <Card className={classes.Card}>
+        <Container component="main" maxWidth="xs">
+    <CssBaseline />
       <div className={classes.paper}>
         <div><SvgIcon /></div>
         <Typography component="h1" variant="h5">
@@ -259,7 +258,7 @@ export function SignUp() {
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox value="allowExtraEmails" color='secondary' />}
+            control={<Checkbox defaultChecked value="allowExtraEmails" color='secondary' />}
             label='Get daily exchange rates for over 30 different currencies, professional analysis of foreign and domestic markets as well as interest rates from central banks'
           />
         </Grid>
@@ -275,14 +274,20 @@ export function SignUp() {
         </Button>
         <Grid container justify="flex-end">
           <Grid item>
-            <Link href="/signin" variant="body2">
+            <Typography
+              component={Link}
+              to={'/signin'}
+              onClick={() =>{
+                modeHandler('SignIn') }} 
+              >
               Already have an account? Sign in
-            </Link>
+            </Typography>
           </Grid>
         </Grid>
       </form>
     </div>
     </Container>
+    </Card>
   );
 }
 

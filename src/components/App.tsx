@@ -77,6 +77,7 @@ export default function App() {
           </Route>
           <Route path='/signup'>
             <SignUp 
+              modeHandler={modeHandler}
               /* mode={'SignUp'} */
             />
           </Route>

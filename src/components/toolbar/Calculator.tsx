@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { 
@@ -9,22 +9,14 @@ import {
   Grid,
 } from '@material-ui/core/';
 
-const { useReducer } = React;
-const initialState = {
-  value: 0,
-  operand: '',
-  num1: 0,
-  num2: '',
-  num3: ''
-};
 
 
 const useStyles = makeStyles(() => ({
   Display:{
-    border: 'solid',
+    // border: 'solid',
     color:'#009868'},
   Card: {
-    borderRadius: 12,
+    // borderRadius: 12,
     margin:'auto',
     minWidth:200,
     maxWidth:300,},
@@ -40,21 +32,26 @@ const useStyles = makeStyles(() => ({
     color:'#009868'
   }
 }));
-interface IReducerFunc {(
+/* interface IReducerFunc {(
   state: {
     operand: string
     value: number
     num1: number
-    num2: number
-    num3: number
+    num2: string
+    num3: string
   },
-  action: string
+  action: {
+    payload: string | undefined
+    type: string
+  }
   ): void
 }
-let reducer : IReducerFunc
+let reducer : IReducerFunc */
 
+const ALL_CLEAR = 'ALL_CLEAR'
 
-reducer = (state, action) => {
+//need to set these types!!!!!!!!!!!!!
+const reducer = (state:any, action:any) => {
   switch (action.type) {
     case 'SET_OPERAND':
       if (!state.num1) {
@@ -140,9 +137,14 @@ reducer = (state, action) => {
 
 const Calculator = () => {
   const classes = useStyles();
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, {
+      value: 0,
+      operand: '',
+      num1: 0,
+      num2: '',
+      num3: ''
+    })
   const Display = () => {
-    // return !!state.num2 ? state.num2 : state.value
     return state.num2 || state.operand ? state.operand + state.num2 : 0
     }
   return (
@@ -159,7 +161,7 @@ const Calculator = () => {
         direction="row"
         justify="center"
         alignItems="center">
-        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'ALL_CLEAR'})}>AC</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: ALL_CLEAR})}>AC</ListItem></Grid>
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'CLEAR'})}>C</ListItem></Grid>
         <Grid item xs={3}> <ListItem className={classes.Button} button divider color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '/'})}>/</ListItem></Grid        >
         {/* row */}

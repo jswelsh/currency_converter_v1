@@ -44,9 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     padding: "10px"
   }
-
 }));
-
 
 const CompareView: FC<ICompareViewProps> = ({
   compareListHandler,
