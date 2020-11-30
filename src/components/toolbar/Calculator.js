@@ -42,31 +42,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const reducer = (state, action) => {
-  console.log(state)
   switch (action.type) {
     case 'SET_OPERAND':
       if (!state.num1) {
-        return {...state, num1: state.num2, operand: action.payload, num2: ''}
-      }
+        return {
+          ...state, 
+          num1: state.num2, 
+          operand: action.payload, num2: ''}}
       if(!state.num2) {
-        return {...state, operand: action.payload}
-      }
+        return {
+          ...state, 
+          operand: action.payload}}
       if(state.num1 && state.operand) {
-        console.log('called')
-        return {...state, value: eval(state.value+state.operand+state.num2), operand: action.payload}
-      }
-      return {...state, value: eval(state.num1+state.operand+state.num2), num2: '', operand: action.payload, num1: eval(state.num1+state.operand+state.num2)}
+        return {
+          ...state, 
+          value: eval(state.value+state.operand+state.num2), 
+          operand: action.payload}}
+      return {
+        ...state, 
+        value: eval(state.num1+state.operand+state.num2), 
+        num2: '', 
+        operand: action.payload, 
+        num1: eval(state.num1+state.operand+state.num2)}
 
     case 'SET_NUMBER':
       if (state.num2 === '' && action.payload==='.') {
-        return { ...state, num2: '0'+action.payload }
+        return { 
+          ...state, 
+          num2: '0'+action.payload }
       } else if (state.num2 === '') {
-        return { ...state, num2: action.payload }
+        return { 
+          ...state, 
+          num2: action.payload }
       } else {
         if (action.payload === '.' && state.num2.includes('.')){
           return state
         } else {
-        return { ...state, num2: state.num2 + action.payload }
+        return { 
+          ...state, 
+          num2: state.num2 + action.payload }
         }     
       }
       
