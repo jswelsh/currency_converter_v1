@@ -8,8 +8,8 @@ import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
-const drawerClosed = 100;
+const drawerWidth = 290;
+const drawerClosed = 130;
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -30,10 +30,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})},
   ExchangeHistoryGraph: {
     borderRadius: 12,
-    padding: 40,
+    padding: 30,
     margin:'auto',
-    height: '95%',
-    width: "95%", minHeight: 900},
+    width: "95%", minHeight: 730},
  
     cardHeader: {
       backgroundColor:'secondary'},

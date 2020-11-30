@@ -55,7 +55,7 @@ const CompareView: FC<ICompareViewProps> = ({
   amount
 }) => {
   const classes = useStyles();
-  const itemsPerPage = 12;
+  const itemsPerPage = 8;
   const [page, setPage] = React.useState(1);
   const [noOfPages] = React.useState(
     Math.ceil(compareList.length / itemsPerPage)
