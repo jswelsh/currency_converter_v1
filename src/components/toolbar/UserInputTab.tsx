@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
 import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './../types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
+import { CalculatorPopOver } from './CalculatorPopOver'
 import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
 import { InputAmountField } from './InputAmountField';
 
-import { Divider } from '@material-ui/core';
+// import { Divider } from '@material-ui/core';
 import {  
   shortenDateString 
 } from '../../helpers/dataHelpers'
@@ -85,7 +86,9 @@ return (
       currenciesList={currenciesList}
       mode={mode}/>)
     }
-    <Divider />
+
+    {mode !== 'SignIn' && mode !== 'SignUp' &&
+      <CalculatorPopOver />}
     {mode === 'History' && (
       <ExchangeHistoryPopOver
         dateRange={dateRange}
@@ -113,6 +116,7 @@ return (
       primary='Compare Currencies'
       handleSubmit={()=>
         compareListHandler(fromCurrency, amount)}/>}
+      
   </>
   )
 }

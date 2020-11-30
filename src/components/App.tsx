@@ -73,7 +73,6 @@ export default function App() {
         <Switch>
           <Route path='/signin'>
             <SignIn 
-              /* mode={'SignIn'} */
             />
           </Route>
           <Route path='/signup'>
