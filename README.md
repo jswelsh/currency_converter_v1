@@ -5,6 +5,7 @@ CurrExC is a web application that  provides users with straight forward Currency
 # Technologies
 
  - React
+ - Typescript
  - Axios
  - Node
  - amCharts
