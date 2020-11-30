@@ -2,28 +2,17 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import { 
-  FormControlLabel,
-  OutlinedInput,
-  FormControl,
-  Container,
-  CssBaseline,
-  InputLabel,
-  TextField,
-  Checkbox,
   List,
   ListItem,
-  Link,
   Card,
   CardHeader,
   Grid,
-  Box,
-  Typography,
 } from '@material-ui/core/';
 
 const { useReducer } = React;
 const initialState = {
   value: 0,
-  op: '',
+  operand: '',
   num1: 0,
   num2: '',
   num3: ''
@@ -33,24 +22,19 @@ const initialState = {
 const useStyles = makeStyles((theme) => ({
   Display:{
     border: 'solid',
-    color:'#009868'
-
-  },
+    color:'#009868'},
   Card: {
     borderRadius: 12,
     margin:'auto',
     minWidth:200,
-    maxWidth:300,
-    
-  },
+    maxWidth:300,},
   Button:{
     border:'solid',
     borderColor: 'black',
     borderTopWidth: 'thin',
     borderBottomWidth: 'thin',
     borderLeftWidth: 'thin',
-    borderRightWidth: 'thin',
-  },
+    borderRightWidth: 'thin',},
   List:{
     padding:0,
     color:'#009868'
@@ -60,20 +44,20 @@ const useStyles = makeStyles((theme) => ({
 const reducer = (state, action) => {
   console.log(state)
   switch (action.type) {
-    case "2":
+    case 'SET_OPERAND':
       if (!state.num1) {
-        return {...state, num1: state.num2, op: action.payload, num2: ''}
+        return {...state, num1: state.num2, operand: action.payload, num2: ''}
       }
       if(!state.num2) {
-        return {...state, op: action.payload}
+        return {...state, operand: action.payload}
       }
-      if(state.num1 && state.op) {
+      if(state.num1 && state.operand) {
         console.log('called')
-        return {...state, value: eval(state.value+state.op+state.num2), op: action.payload}
+        return {...state, value: eval(state.value+state.operand+state.num2), operand: action.payload}
       }
-      return {...state, value: eval(state.num1+state.op+state.num2), num2: '', op: action.payload, num1: eval(state.num1+state.op+state.num2)}
+      return {...state, value: eval(state.num1+state.operand+state.num2), num2: '', operand: action.payload, num1: eval(state.num1+state.operand+state.num2)}
 
-    case "1":
+    case 'SET_NUMBER':
       if (state.num2 === '' && action.payload==='.') {
         return { ...state, num2: '0'+action.payload }
       } else if (state.num2 === '') {
@@ -86,16 +70,16 @@ const reducer = (state, action) => {
         }     
       }
       
-    case "3":
-      if (state.op && state.num2) {
-        return {...state, value: eval(state.num1+state.op+state.num2), num2: '', num1: eval(state.num1+state.op+state.num2), num3 : state.num2}
-      } else if (state.op && state.value) {
-        return {...state, value: eval(state.value+state.op+state.num3)}
+    case 'SET_RESULT':
+      if (state.operand && state.num2) {
+        return {...state, value: eval(state.num1+state.operand+state.num2), num2: '', num1: eval(state.num1+state.operand+state.num2), num3 : state.num2}
+      } else if (state.operand && state.value) {
+        return {...state, value: eval(state.value+state.operand+state.num3)}
       } else {
         return state
       }
   
-    case "c":  
+    case 'CLEAR':  
       if (state.num2.length === 2 && state.num2.includes('0.')) {
         return {...state, num2: ''}
       } else if (state.num2.length>1) {
@@ -105,10 +89,10 @@ const reducer = (state, action) => {
       }
       //state.num2.length > 1 ? return {...state, num2: state.num2.slice(0, -1)} : return {...state, num2:0}
 
-    case "ac":
+    case 'ALL_CLEAR':
       return {
         value: 0,
-        op: '',
+        operand: '',
         num1: 0,
         num2: ''//''
       }
@@ -124,7 +108,7 @@ const Calculator = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const Display = () => {
     // return !!state.num2 ? state.num2 : state.value
-    return state.num2 || state.op ? state.op + state.num2 : 0
+    return state.num2 || state.operand ? state.operand + state.num2 : 0
     }
   return (
     <Card className={classes.Card}>
@@ -140,25 +124,28 @@ const Calculator = () => {
         direction="row"
         justify="center"
         alignItems="center">
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'ac'})}>AC</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: 'c'})}>C</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '/'})}>/</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '7'})}>7</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '8'})}>8</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '9'})}>9</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '*'})}>x</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '4'})}>4</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '5'})}>5</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '6'})}>6</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '+'})}>+</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '1'})}>1</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '2'})}>2</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '3'})}>3</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '2', payload: '-'})}>-</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn zero" */ onClick={() => dispatch({ type: '1', payload: '0'})}>0</ListItem></Grid>
-        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn"  */onClick={() => dispatch({ type: '1', payload: '.'})}>.</ListItem></Grid>
-        <Grid item xs={6}> <ListItem className={classes.Button} button divider variant='contained' color='primary' /* className="btn eq" */ onClick={() => dispatch({ type: '3'})}>=</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'ALL_CLEAR'})}>AC</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'CLEAR'})}>C</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '/'})}>/</ListItem></Grid        >
+        {/* row */}
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '7'})}>7</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '8'})}>8</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '9'})}>9</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '*'})}>x</ListItem></Grid>
+        {/* row */}
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '4'})}>4</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '5'})}>5</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '6'})}>6</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '+'})}>+</ListItem></Grid>
+        {/* row */}
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '1'})}>1</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '2'})}>2</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '3'})}>3</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_OPERAND', payload: '-'})}>-</ListItem></Grid>
+        {/* row */}
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '0'})}>0</ListItem></Grid>
+        <Grid item xs={3}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_NUMBER', payload: '.'})}>.</ListItem></Grid>
+        <Grid item xs={6}> <ListItem className={classes.Button} button divider variant='contained' color='primary' onClick={() => dispatch({ type: 'SET_RESULT'})}>=</ListItem></Grid>
       </Grid>
       </List>
     </Card>
