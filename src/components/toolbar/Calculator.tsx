@@ -40,8 +40,21 @@ const useStyles = makeStyles(() => ({
     color:'#009868'
   }
 }));
+interface IReducerFunc {(
+  state: {
+    operand: string
+    value: number
+    num1: number
+    num2: number
+    num3: number
+  },
+  action: string
+  ): void
+}
+let reducer : IReducerFunc
 
-const reducer = (state: any, action: any) => {
+
+reducer = (state, action) => {
   switch (action.type) {
     case 'SET_OPERAND':
       if (!state.num1) {
@@ -61,8 +74,8 @@ const reducer = (state: any, action: any) => {
       return {
         ...state, 
         value: eval(state.num1+state.operand+state.num2), 
-        num2: '', 
-        operand: action.payload, 
+        num2: '',
+        operand: action.payload,
         num1: eval(state.num1+state.operand+state.num2)}
 
     case 'SET_NUMBER':
