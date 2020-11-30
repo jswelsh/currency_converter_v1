@@ -21,12 +21,11 @@ import {
   initializeDateRange 
 } from '../helpers/dataHelpers'
 
-
+/* need to fix typing */
 export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const [amount, setAmount] = useState<number>(1);
   const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
-
 
   const {
     state,
