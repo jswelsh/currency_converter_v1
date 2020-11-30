@@ -1,16 +1,14 @@
-import React, { FC,useState } from "react";
-import { IExchangeHistoryPopOverProps } from '../types'
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Popover,  
   FormControl, 
   ListItem, 
+  SvgIcon,
   ListItemIcon, 
   ListItemText  
 } from "@material-ui/core";
-
-import CalendarIcon from '@material-ui/icons/CalendarToday';
-import { DatePickerComponent } from "./DatePickerComponent";
+import { Calculator } from './Calculator'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -22,9 +20,7 @@ const useStyles = makeStyles((theme) => ({
   pop:{
     padding:theme.spacing(4)}}));
 
-const ExchangeHistoryPopOver: FC<IExchangeHistoryPopOverProps> = ({
-  dateRange,
-  handleChange}) => {
+const CalculatorPopOver = ({}) => {
     
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
@@ -47,11 +43,13 @@ const ExchangeHistoryPopOver: FC<IExchangeHistoryPopOverProps> = ({
       <ListItem
         button
         onClick={handleClick}>
-        <ListItemIcon>
-          <CalendarIcon className={classes.icon} />
-        </ListItemIcon>
+        {<ListItemIcon>
+          <SvgIcon className={classes.icon}>
+            <path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M13.03,7.06L14.09,6l1.41,1.41 L16.91,6l1.06,1.06l-1.41,1.41l1.41,1.41l-1.06,1.06L15.5,9.54l-1.41,1.41l-1.06-1.06l1.41-1.41L13.03,7.06z M6.25,7.72h5v1.5h-5 V7.72z M11.5,16h-2v2H8v-2H6v-1.5h2v-2h1.5v2h2V16z M18,17.25h-5v-1.5h5V17.25z M18,14.75h-5v-1.5h5V14.75z"/>
+          </SvgIcon>
+          </ListItemIcon> }
       <ListItemText 
-        primary={'Date Range'} />
+        primary={'Calculator'} />
       </ListItem>
     </FormControl>
     <Popover 
@@ -66,12 +64,10 @@ const ExchangeHistoryPopOver: FC<IExchangeHistoryPopOverProps> = ({
       transformOrigin={{
         vertical: 'center',
         horizontal: 'left',}}>
-      <DatePickerComponent 
-        dateRange={dateRange}
-        handleChange={handleChange}/>
+      <Calculator />
     </Popover> 
   </>
   );
 }
 
-export { ExchangeHistoryPopOver }
+export { CalculatorPopOver }
