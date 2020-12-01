@@ -13,6 +13,7 @@ CurrExC is a web application that  provides users with straight forward Currency
   <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/amcharts_dark_long_badgev1.svg"/>
   <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/axios_badgev1.svg"/>
   <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/date_iov1.svg"/>
+  <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/inscape_badgev1.svg"/>
 
 
 ## App Screenshots
