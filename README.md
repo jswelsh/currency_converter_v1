@@ -1,5 +1,5 @@
 # CurrExC
-- [**Demo for CurrExC here**](https://upbeat-mcclintock-ec81fd.netlify.app/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/66b47330-ba63-4a63-9cf1-00eb800d57fd/deploy-status)](https://app.netlify.com/sites/upbeat-mcclintock-ec81fd/deploys)
+- [**Demo for CurrExC here**](https://upbeat-mcclintock-ec81fd.netlify.app/)  [![Netlify Status](https://api.netlify.com/api/v1/badges/66b47330-ba63-4a63-9cf1-00eb800d57fd/deploy-status)](https://upbeat-mcclintock-ec81fd.netlify.app/)
 
 CurrExC is a web application that  provides users with straight forward Currency exchange rates provided in real time by an open-sourced API. It is built on **React, Material UI, Axios and Node**; using a functional programming paradigm with pure components and **hooks** to manage application state.
 
