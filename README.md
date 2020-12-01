@@ -3,7 +3,7 @@
 
 CurrExC is a web application that  provides users with straight forward Currency exchange rates provided in real time by an open-sourced API. It is built on **React, Material UI, Axios and Node**; using a functional programming paradigm with pure components and **hooks** to manage application state.
 
-
+<img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
 # Technologies
 
  - React
