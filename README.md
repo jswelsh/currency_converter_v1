@@ -11,9 +11,7 @@ CurrExC is a web application that  provides users with straight forward Currency
   <img src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/material%20ui%20-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white"/>
   <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/amcharts_dark_long_badgev1.svg"/>
- - Axios
- - amCharts
- - dateio
+  <img src="https://github.com/jswelsh/currency_converter_v1/blob/master/public/axios_badgev1.svg"/>
 
 
 ## App Screenshots
