@@ -10,7 +10,7 @@ CurrExC is a web application that  provides users with straight forward Currency
   <img src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/material%20ui%20-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white"/> 
   
-  ![amCharts](Images/amcharts_badgev2.svg)![axios](Images/axios_badgev1.svg)![dateio](Images/date_io_badgev1.svg)
+  ![amCharts](Images/amcharts_badgev2.svg)![axios](Images/axios_badgev1.svg)![dateio](Images/date_io_badgev1.svg)![inkscape](Images/inkscape_badgev1.svg)
 
 ## App Screenshots
 - [History Graph view](https://github.com/jswelsh/currency_converter_v1/blob/master/public/calendarComponent.png)
