@@ -68,7 +68,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="1.0000000"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.2430254"
+     inkscape:zoom="6.1710094"
      inkscape:cx="53.759992"
      inkscape:cy="-11.30143"
      inkscape:window-width="1848"
@@ -132,17 +132,18 @@
   </g>
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:16px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0.83px;fill:#ffffff"
-     x="42.346909"
-     y="19.004002"
-     id="text2262"><tspan
+     style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:13.6903px;line-height:1.25;font-family:Roboto;-inkscape-font-specification:'Roboto, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0.86px;fill:#ffffff;stroke-width:0.855643"
+     x="48.238403"
+     y="18.879642"
+     id="text2262"
+     transform="scale(1.0007017,0.99929882)"><tspan
        sodipodi:role="line"
        id="tspan2260"
-       x="42.346909"
-       y="19.004002"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:16px;font-family:Roboto;-inkscape-font-specification:'Roboto, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">INKS<tspan
-   style="letter-spacing:0.39px"
-   id="tspan2268">CAP</tspan><tspan
-   style="letter-spacing:0.15px"
-   id="tspan2266">E</tspan></tspan></text>
+       x="48.238403"
+       y="18.879642"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:13.6903px;font-family:Roboto;-inkscape-font-specification:'Roboto, Heavy';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.855643">INKS<tspan
+   style="letter-spacing:0.6px"
+   id="tspan901">CAP</tspan><tspan
+   style="letter-spacing:0.58px"
+   id="tspan899">E</tspan></tspan></text>
 </svg>
