@@ -23,8 +23,8 @@ export default function reducer(state, action) {
         return DEFAULT
       }
     case 'NUMBER_INPUT':
-      if(state.expression.match(/[0-9\.]$/) && !state.expression.includes("=")){
-        if(state.expression.match(/[+\-*\/]/) == null){
+      if(state.expression.match(/[0-9]$/) && !state.expression.includes("=")){
+        if(state.expression.match(/[+\-*]/) == null){
           let result  = eval(state.expression + action.payload);
           return {
             display: result,
@@ -37,7 +37,7 @@ export default function reducer(state, action) {
             expression: state.expression + action.payload
           };
         }
-      } else if(state.expression.match(/[+\-*\/]$/)){
+      } else if(state.expression.match(/[+\-*]$/)){
         let result = Number.isInteger(
           eval(state.expression + action.payload)) ? 
           eval(state.expression+action.payload) : 
@@ -49,7 +49,7 @@ export default function reducer(state, action) {
               expression: expression
             };
           } else if(
-            state.display === "0" && action.payload !== "0" ||
+            (state.display === "0" && action.payload !== "0") ||
             state.expression.includes("=")) {
               console.log('helena')
               let result = eval(action.payload)
@@ -61,7 +61,7 @@ export default function reducer(state, action) {
 
     case 'OPERAND_INPUT':
       //replace operand if clicked consecutively
-      if(state.expression.match(/[+\-*\/]$/)) {
+      if(state.expression.match(/[+\-*]$/)) {
         let expression = state.expression.slice(0, -1); 
         expression += action.payload;
         return {
@@ -78,8 +78,8 @@ export default function reducer(state, action) {
         };
       } else {
         if(
-          state.expression != "" && 
-          state.expression.match(/[*\-\/+]$/) == null) {
+          state.expression !== "" && 
+          state.expression.match(/[*\-+]$/) == null) {
           let result = Number.isInteger(
             eval(state.expression)) ?
               eval(state.expression) :
@@ -90,7 +90,7 @@ export default function reducer(state, action) {
             display: result,
             expression: expression
           };
-        } else if(state.expression.match(/[*\-\/+]$/) != null) {
+        } else if(state.expression.match(/[*\-+]$/) != null) {
           let result = Number.isInteger(
             eval(state.expression)) ?
               eval(state.expression) :
@@ -125,9 +125,9 @@ export default function reducer(state, action) {
           expression: expression
         };
       } else if(
-        state.expression != "" && 
-        state.expression.match(/[+\-*\/]/) != null && 
-        state.expression.match(/[+\-*\/]$/) == null) {
+        state.expression !== "" && 
+        state.expression.match(/[+\-*]/) != null && 
+        state.expression.match(/[+\-*]$/) == null) {
         let result = Number.isInteger(eval(state.expression)) ? 
           eval(state.expression) : 
           parseFloat(eval(state.expression).toFixed(5));
@@ -142,5 +142,8 @@ export default function reducer(state, action) {
           ...state
         }
       }
+      default:
+        return DEFAULT
     }
+    
   }

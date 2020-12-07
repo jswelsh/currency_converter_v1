@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ICompareViewProps } from './types'
 import { CompareListItem } from '../components/CompareListItem'
 import {
-Divider,
 Grid,
 List,
 Box
@@ -68,97 +67,94 @@ const CompareView: FC<ICompareViewProps> = ({
   }
 
   return(
-    <>
-      <List
-        className = {clsx({
-          [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer})} >
-        <Box display={{ xs: 'block', md: 'none' }}>
-          <Grid 
-            container 
-            spacing={2}
-            alignItems="center" >
-            {compareList
-            .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
-            .map(({ currency, value }) => (
-              <Grid
-                item
-                xs={12}
-                md={opendrawer ? 12 : 6}
-                lg={6}
-                key={currency}>
-                <CompareListItem
-                  currencySelectHandler={currencySelectHandler}
-                  compareListHandler={compareListHandler}
-                  fromCurrency={fromCurrency}
-                  currency={currency}
-                  primary={value}
-                  amount={amount} />
-              </Grid>))}
-            <Grid
-              item
-              xs={12} >
-              <Box component="span">
-                <Pagination
-                  count={noOfPages*2}
-                  page={page}
-                  onChange={handleChange}
-                  defaultPage={1}
-                  color="secondary"
-                  size="large"
-                  showFirstButton
-                  showLastButton
-                  classes={{ ul: classes.paginator }}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box display={{ xs: 'none', md: 'block' }}>
-        <Grid 
-          container 
-          spacing={2}
-          alignItems="center" >
-          {compareList
-          .slice(((page<=noOfPages ? page :Math.ceil(page/2))  - 1) * itemsPerPage, (page<=noOfPages ? page :Math.ceil(page/2))  * itemsPerPage)
-          .map(({currency, value}) => (
-          <Grid 
+  <List
+    className = {clsx({
+      [classes.drawerOpen]: opendrawer,
+      [classes.drawerClose]: !opendrawer})} >
+    <Box display={{ xs: 'block', md: 'none' }}>
+      <Grid 
+        container 
+        spacing={2}
+        alignItems="center" >
+        {compareList
+        .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
+        .map(({ currency, value }) => (
+          <Grid
             item
-            xs={12} 
-            md={opendrawer ? 12 : 6}       
+            xs={12}
+            md={opendrawer ? 12 : 6}
             lg={6}
-            key={currency} >
+            key={currency}>
             <CompareListItem
               currencySelectHandler={currencySelectHandler}
               compareListHandler={compareListHandler}
               fromCurrency={fromCurrency}
               currency={currency}
               primary={value}
-              amount={amount}
-              />
+              amount={amount} />
           </Grid>))}
-          <Grid 
-            item
-            xs={12} >
-            <Box component="span">
-              <Pagination
-                count={noOfPages}
-                page={page<=noOfPages ? page :Math.ceil(page/2) }
-                onChange={handleChange}
-                defaultPage={1}
-                color="secondary"
-                size="large"
-                showFirstButton
-                showLastButton
-                classes={{ ul: classes.paginator }}
-              />
-            </Box>
-          </Grid>
+        <Grid
+          item
+          xs={12} >
+          <Box component="span">
+            <Pagination
+              count={noOfPages*2}
+              page={page}
+              onChange={handleChange}
+              defaultPage={1}
+              color="secondary"
+              size="large"
+              showFirstButton
+              showLastButton
+              classes={{ ul: classes.paginator }}
+            />
+          </Box>
         </Grid>
+      </Grid>
+    </Box>
+    <Box display={{ xs: 'none', md: 'block' }}>
+    <Grid 
+      container 
+      spacing={2}
+      alignItems="center" >
+      {compareList
+      .slice(((page<=noOfPages ? page :Math.ceil(page/2))  - 1) * itemsPerPage, (page<=noOfPages ? page :Math.ceil(page/2))  * itemsPerPage)
+      .map(({currency, value}) => (
+      <Grid 
+        item
+        xs={12} 
+        md={opendrawer ? 12 : 6}       
+        lg={6}
+        key={currency} >
+        <CompareListItem
+          currencySelectHandler={currencySelectHandler}
+          compareListHandler={compareListHandler}
+          fromCurrency={fromCurrency}
+          currency={currency}
+          primary={value}
+          amount={amount}
+          />
+      </Grid>))}
+      <Grid 
+        item
+        xs={12} >
+        <Box component="span">
+          <Pagination
+            count={noOfPages}
+            page={page<=noOfPages ? page :Math.ceil(page/2) }
+            onChange={handleChange}
+            defaultPage={1}
+            color="secondary"
+            size="large"
+            showFirstButton
+            showLastButton
+            classes={{ ul: classes.paginator }}
+          />
         </Box>
-      </List> 
-
-    </>
+      </Grid>
+    </Grid>
+    </Box>
+  </List> 
   )
 }
 export {CompareView}

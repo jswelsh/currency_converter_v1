@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { 
   Container,
   CssBaseline,
@@ -46,22 +46,16 @@ export function SignIn() {
     // mode: 'onBlur'
   });
 
-  const [values, setValues] = React.useState<State>({
+/*   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
-  });
+  }); */
   
-  const specialChar = /[@$!%*?&]/;
-  const numericChar = /[0-9]/
-  const capitalChar = /[A-Z]/;
-  const lowerChar = /[a-z]/;
-
-
   function onSubmit(data) {
     console.log(data);
   }
 
-  const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+/*   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
@@ -71,7 +65,7 @@ export function SignIn() {
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-  };
+  }; */
 
   return (
     <Container component="main" maxWidth="xs">
@@ -132,6 +126,7 @@ export function SignIn() {
                 value:6,
                 message: 'minimum length is 6 characters ' },
               pattern:{
+                      /*   lowerChar, capitalChar,       specialChar,   rest*/
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
                 message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
             })}

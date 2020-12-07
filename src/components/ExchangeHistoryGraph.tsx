@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect,useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import clsx from 'clsx';
 import { Card, Grid, CardHeader, CardContent, Divider } from '@material-ui/core';
 import { IExchangeHistoryGraphProps, IDataItem } from './types'

@@ -2,14 +2,12 @@ import React, { useReducer } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import reducer from '../../hooks/calculatorReducer'
 import { 
+  CardHeader,
+  ListItem,
+  Paper,
   Card,
   Grid,
   List,
-  ListItem,
-  CardHeader,
-  Divider,
-  CardContent,
-  Paper,
 } from '@material-ui/core/';
 
 const useStyles = makeStyles(() => ({
@@ -17,7 +15,6 @@ const useStyles = makeStyles(() => ({
     color:'#009868',
     border:'solid',
     borderRadius: 1,
-    
   },
   Display:{
     backgroundColor:'#262626',
@@ -45,7 +42,6 @@ const useStyles = makeStyles(() => ({
   List:{
     padding:0,
     color:'white'
-    // color:'#009868'
   }
 }));
 
