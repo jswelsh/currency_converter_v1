@@ -1,37 +1,25 @@
 import React from 'react';
-import clsx from 'clsx';
 
 import { 
   FormControlLabel,
-  OutlinedInput,
-  FormControl,
   CssBaseline,
-  InputLabel,
-  List,
-  Card,
-  ListItem,
   TextField,
   Checkbox,
   Button,
   Grid,
-  Box,
 } from '@material-ui/core/';
 import { Alert, AlertTitle } from '@material-ui/lab';
-
 import { useForm } from "react-hook-form";
-/* import isEmail from "validator/lib/isEmail";
- */
-
-import InputAdornment from '@material-ui/core/InputAdornment';
+// import InputAdornment from '@material-ui/core/InputAdornment';
 //import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {ReactComponent as SvgIcon} from './logo.svg'
 import {
   Link
 } from "react-router-dom";
 
-import Visibility from '@material-ui/icons/Visibility';
+/* import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@material-ui/core/IconButton'; */
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -84,15 +72,15 @@ export function SignUp({modeHandler}) {
     // mode: 'onBlur'
   });
 
-  const [values, setValues] = React.useState<State>({
+/*   const [values, setValues] = React.useState<State>({
     showPassword: false,
     password: '',
   });
-
+ */
   function onSubmit(data) {
     console.log(data);
   }
-
+/* 
   const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -103,7 +91,7 @@ export function SignUp({modeHandler}) {
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-  };
+  }; */
 
   return (
     

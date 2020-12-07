@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   pop:{
     padding:theme.spacing(4)}}));
 
-const CalculatorPopOver = ({}) => {
+const CalculatorPopOver = () => {
     
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
