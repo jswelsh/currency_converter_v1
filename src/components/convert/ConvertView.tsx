@@ -50,7 +50,6 @@ const ConvertView: FC<IConvertViewProps> = ({
 }) => {
 
 const classes = useStyles();
-console.log(toStart, converted)
 return(
 <>
   <Grid 

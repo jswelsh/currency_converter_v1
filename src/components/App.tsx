@@ -111,15 +111,12 @@ export default function App() {
             />
           </Route>
           <Route path="/">
-            <ConvertView
+            <ExchangeHistoryGraph
+              fromCurrency={state.result.fromCurrency}
+              toCurrency={state.result.toCurrency}
+              history={state.history}
+              dateRange={dateRange}
               opendrawer={opendrawer}
-              fromCurrency={state.fromCurrency}
-              toCurrency={state.toCurrency}
-              toStart={state.result.toStart}
-              converted={state.result.converted}
-              fromIntro={state.result.fromIntro}
-              toIntro={state.result.toIntro}
-              recentRateHistory={state.result.recentRateHistory}
             />
           </Route>
           <Route path="*">
