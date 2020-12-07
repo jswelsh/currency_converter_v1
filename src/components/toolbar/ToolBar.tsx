@@ -116,7 +116,7 @@ return (
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap>
+        <Typography variant="h6" >
           CurExC
         </Typography>
       </Toolbar>

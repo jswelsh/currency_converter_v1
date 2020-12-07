@@ -38,7 +38,7 @@ const ConvertViewCardFrontside: FC<IConvertViewCardFrontsideProps> = ({
 
 const classes = useStyles();
 return(
-  <Grid item spacing={3} key={currency} sm={12} md={12} lg={6}>
+  <Grid item key={currency} sm={12} md={12} lg={6}>
     <Card className={classes.card} >
       <CardHeader
         title={title}

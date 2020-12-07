@@ -50,14 +50,14 @@ const reducer = (state:any, action:any) => {
 };
 export default function useAppData() {
   const [state, dispatch] = useReducer(reducer, {
+    currenciesList: [],
     fromCurrency:'CAD',
     toCurrency:'USD',
-    result: {},
-    //amount:1,
-    currenciesList: [],
     compareList: {},
-    history: [],
-    mode: 'Converter',
+    history: [] ,
+    result: {},
+    mode: 'History',
+    //amount:1,
   });
 
   const setFromCurrency = (currency: string) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
