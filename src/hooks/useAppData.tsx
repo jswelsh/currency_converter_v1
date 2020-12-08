@@ -56,7 +56,7 @@ export default function useAppData() {
     compareList: {},
     history: [] ,
     result: {},
-    mode: 'History',
+    mode: 'Converter',
     //amount:1,
   });
 
