@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { ICompareViewProps } from './types'
-import { CompareListItem } from '../components/CompareListItem'
+import CompareListItem from '../components/CompareListItem'
 import {
 Grid,
 List,

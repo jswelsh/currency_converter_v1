@@ -175,8 +175,7 @@ chart.data = data;
           subheaderTypographyProps={{ align: 'center'}}
           titleTypographyProps={{ align: 'center',variant: "h3" }}>
               <Divider variant="middle" />
-            </CardHeader>  
-
+            </CardHeader>
           <CardContent id="chartdiv" className={classes.ExchangeHistoryGraph} /> 
         </Card> 
       </Grid>
