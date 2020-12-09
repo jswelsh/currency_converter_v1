@@ -58,7 +58,7 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
     secondary: am4core.color('#e385bb')
   }
   am4core.useTheme(am4themes_dark);
-  am4core.useTheme(am4themes_animated);
+  am4core.useTheme(am4themes_animated)  ;
   am4core.options.autoDispose = true;
 
   let chart = am4core.create("chartdiv", am4charts.XYChart);
@@ -67,7 +67,8 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   let data: Array<IDataItem> = [];
   let value, date;
   let previousValue = 0;
-
+/* used to build a color difference for increase or
+decrease in previous value */
   for (let i = 0; i < history.length; i++) {
     value = history[i]['value'];
     date = history[i]['date'];
@@ -96,11 +97,11 @@ chart.data = data;
   series.propertyFields.stroke = "color";
 
   dateAxis.skipEmptyPeriods = true;
-  dateAxis.renderer.minGridDistance = 60;
+  dateAxis.renderer.minGridDistance = 45;
   dateAxis.renderer.grid.template.location = 0;
 
   series.strokeWidth = 3;
-  // series.tensionX = 0.8; // can't keep this with changing color of line depening on delta being +/- as its a new line after every change
+  // series.tensionX = 0.8; // can't keep this with changing color of line depending on delta being +/- as its a new line after every change
   series.fill = series.stroke;
   series.fillOpacity = 0.2;
   series.minBulletDistance = 15;

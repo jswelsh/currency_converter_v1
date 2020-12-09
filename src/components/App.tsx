@@ -24,7 +24,7 @@ import {
 export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const [amount, setAmount] = useState<number>(1);
-  const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
+  const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(30));
 
   const {
     state,

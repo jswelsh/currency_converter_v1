@@ -13,7 +13,7 @@ import {
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
 const useStyles = makeStyles(() => ({
-  card: { 
+  card: {
     color:'#fff',
     borderRadius: 12,
     margin:'auto',
@@ -37,13 +37,6 @@ const ConvertViewCardFrontSide: FC<IConvertViewCardFrontSideProps> = ({
 }) => {
 
 const classes = useStyles();
-console.log('hello: ');
-
-/* console.log(  currency,
-  symbol,
-  amount,
-  avatar,
-  title,); */
 return(
   <Grid item key={currency} sm={12} md={12} lg={6}>
     <Card className={classes.card} >
@@ -55,14 +48,14 @@ return(
         avatar={avatar}
         action={
           <IconButton aria-label="settings" >
-            <Typography variant="h4" color="secondary"className={classes.icon}>
+            <Typography variant="h4" color="secondary" className={classes.icon}>
               Flip 
             </Typography>
-            <ThreeDRotationIcon fontSize='large'className={classes.icon}/>
+            <ThreeDRotationIcon fontSize='large' className={classes.icon}/>
           </IconButton>
         }/>
       <CardContent>
-        <Grid container justify="center"  style={{marginTop:40}}>
+        <Grid container justify="center" style={{marginTop:40}}>
           <Grid item >
             <Typography component="h2" variant="h2" color="primary">
               {symbol }
@@ -78,6 +71,6 @@ return(
     </Card>
   </Grid>
 )}
-function areEqual(prevProps:any, nextProps:any) {return (prevProps.currency === nextProps.currency)}
+function areEqual(prevProps:any, nextProps:any) {return (prevProps.amount === nextProps.amount)}
 
 export default React.memo(ConvertViewCardFrontSide, areEqual)

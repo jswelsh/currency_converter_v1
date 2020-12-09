@@ -213,7 +213,7 @@ export default function useAppData() {
     compareListHandler('CAD', 1)
     convertHandler({ fromCurrency: 'CAD', toCurrency: 'USD', amount:'1'})
     //if you change this, make sure to change inside userinput aswell
-    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(365)})
+    convertHistoryHandler({ fromCurrency:'CAD', toCurrency:'USD', dateRange:initializeDateRange(30)})
   }, []); // Empty array to only run once on mount.
 
   return {

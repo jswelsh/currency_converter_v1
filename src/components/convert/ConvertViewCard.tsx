@@ -14,39 +14,37 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   amount,
   mode,
 }) => {
+
 return (
-  (
-  currency && recentRateHistory
-  ? <Flippy
-      flipOnHover={false} // default false
-      flipOnClick={true} // default false
-      flipDirection="horizontal">  {/* horizontal or vertical */}
-      <FrontSide>
-        <ConvertViewCardFrontSide
+  <Flippy
+    flipOnHover={false} // default false
+    flipOnClick={true} // default false
+    flipDirection="horizontal">  {/* horizontal or vertical */}
+    <FrontSide>
+      <ConvertViewCardFrontSide
+      currency={currency}
+      symbol={data[currency]['symbol_native']}
+      amount={mode === 'fromCurrency'? amount : converted}
+      avatar={iconHandler({
+        mode: 'converter', 
+        currency: currency
+      })}
+      title={data[currency]['name']}/>
+    </FrontSide>	
+    <BackSide>
+      <ConvertViewCardBackside
         currency={currency}
-        symbol={data[currency]['symbol_native']}
-        amount={mode === 'fromCurrency'? amount : converted}
+        name={data[currency]['name']}
+        recentRateHistory={recentRateHistory}
+        amount={amount}
+        converted={converted}
         avatar={iconHandler({
           mode: 'converter', 
           currency: currency
-        })}
-        title={data[currency]['name']}/>
-      </FrontSide>	
-      <BackSide>
-        <ConvertViewCardBackside
-          currency={currency}
-          name={data[currency]['name']}
-          recentRateHistory={recentRateHistory}
-          amount={amount}
-          converted={converted}
-          avatar={iconHandler({
-            mode: 'converter', 
-            currency: currency
-          })}/>
-      </BackSide>
-    </Flippy>
-  : null
-  )
+        })}/>
+    </BackSide>
+  </Flippy>
+
 )}
 
 export {ConvertViewCard}
