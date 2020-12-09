@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { IConvertViewCardProps } from './../types'
-import { ConvertViewCardFrontside } from './ConvertViewCardFrontside'
+import ConvertViewCardFrontSide from './ConvertViewCardFrontSide'
 import { ConvertViewCardBackside } from './ConvertViewCardBackside'
 import { iconHandler } from '../../helpers/compareHelper';
 
@@ -15,34 +15,38 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   mode,
 }) => {
 return (
-  <Flippy
-    flipOnHover={false} // default false
-    flipOnClick={true} // default false
-    flipDirection="horizontal">  {/* horizontal or vertical */}
-    <FrontSide>
-      <ConvertViewCardFrontside
-      currency={currency}
-      symbol={data[currency]['symbol_native']}
-      amount={mode === 'fromCurrency'? amount : converted}
-      avatar={iconHandler({
-        mode: 'converter', 
-        currency: currency
-      })}
-      title={data[currency]['name']}/>
-    </FrontSide>	
-    <BackSide>
-      <ConvertViewCardBackside
+  (
+  currency && recentRateHistory
+  ? <Flippy
+      flipOnHover={false} // default false
+      flipOnClick={true} // default false
+      flipDirection="horizontal">  {/* horizontal or vertical */}
+      <FrontSide>
+        <ConvertViewCardFrontSide
         currency={currency}
-        name={data[currency]['name']}
-        recentRateHistory={recentRateHistory}
-        amount={amount}
-        converted={converted}
+        symbol={data[currency]['symbol_native']}
+        amount={mode === 'fromCurrency'? amount : converted}
         avatar={iconHandler({
           mode: 'converter', 
           currency: currency
-        })}/>
-    </BackSide>
-  </Flippy>
+        })}
+        title={data[currency]['name']}/>
+      </FrontSide>	
+      <BackSide>
+        <ConvertViewCardBackside
+          currency={currency}
+          name={data[currency]['name']}
+          recentRateHistory={recentRateHistory}
+          amount={amount}
+          converted={converted}
+          avatar={iconHandler({
+            mode: 'converter', 
+            currency: currency
+          })}/>
+      </BackSide>
+    </Flippy>
+  : null
+  )
 )}
 
 export {ConvertViewCard}

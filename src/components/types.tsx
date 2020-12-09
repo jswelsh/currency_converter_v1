@@ -54,7 +54,7 @@ export interface IConvertViewCardBacksideTableProps {
   converted: number 
   amount: number }
 
-export interface IConvertViewCardFrontsideProps {
+export interface IConvertViewCardFrontSideProps {
   currency: string
   symbol: any
   amount: any

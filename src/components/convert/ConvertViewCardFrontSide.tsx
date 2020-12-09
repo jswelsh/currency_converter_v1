@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IConvertViewCardFrontsideProps } from '../types'
+import { IConvertViewCardFrontSideProps } from '../types'
 import {
   Card,
   Grid,
@@ -13,7 +13,7 @@ import {
 import ThreeDRotationIcon from '@material-ui/icons/ThreeDRotation';
 
 const useStyles = makeStyles(() => ({
-  card: {
+  card: { 
     color:'#fff',
     borderRadius: 12,
     margin:'auto',
@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const ConvertViewCardFrontside: FC<IConvertViewCardFrontsideProps> = ({
+const ConvertViewCardFrontSide: FC<IConvertViewCardFrontSideProps> = ({
   currency,
   symbol,
   amount,
@@ -37,6 +37,13 @@ const ConvertViewCardFrontside: FC<IConvertViewCardFrontsideProps> = ({
 }) => {
 
 const classes = useStyles();
+console.log('hello: ');
+
+/* console.log(  currency,
+  symbol,
+  amount,
+  avatar,
+  title,); */
 return(
   <Grid item key={currency} sm={12} md={12} lg={6}>
     <Card className={classes.card} >
@@ -71,5 +78,6 @@ return(
     </Card>
   </Grid>
 )}
+function areEqual(prevProps:any, nextProps:any) {return (prevProps.currency === nextProps.currency)}
 
-export {ConvertViewCardFrontside}
+export default React.memo(ConvertViewCardFrontSide, areEqual)
