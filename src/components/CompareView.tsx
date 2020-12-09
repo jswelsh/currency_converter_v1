@@ -76,7 +76,7 @@ const CompareView: FC<ICompareViewProps> = ({
         container 
         spacing={2}
         alignItems="center" >
-        {compareList
+        {compareList.length && compareList
         .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
         .map(({ currency, value }) => (
           <Grid
@@ -117,7 +117,7 @@ const CompareView: FC<ICompareViewProps> = ({
       container 
       spacing={2}
       alignItems="center" >
-      {compareList
+      {compareList.length && compareList
       .slice(((page<=noOfPages ? page :Math.ceil(page/2))  - 1) * itemsPerPage, (page<=noOfPages ? page :Math.ceil(page/2))  * itemsPerPage)
       .map(({currency, value}) => (
       <Grid 

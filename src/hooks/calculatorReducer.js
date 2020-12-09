@@ -25,25 +25,25 @@ export default function reducer(state, action) {
     case 'NUMBER_INPUT':
       if(state.expression.match(/[0-9.]$/) && !state.expression.includes("=")) {
       if(state.expression.match(/[+\-*/]/) == null){
-          let result  = eval(state.expression + action.payload);
+          const result  = eval(state.expression + action.payload);
           return {
             display: result,
             expression: `${result}`
           };
         } else {
-          let result =  parseFloat(eval(state.expression + action.payload).toFixed(5))
+          const result =  parseFloat(eval(state.expression + action.payload).toFixed(5))
           return {
             display: result,
             expression: state.expression + action.payload
           };
         }
       } else if(state.expression.match(/[+\-*/]$/)) {
-        let result = Number.isInteger(
+        const result = Number.isInteger(
           eval(state.expression + action.payload)) ? 
           eval(state.expression + action.payload) : 
           parseFloat(
             eval(state.expression+action.payload).toFixed(5));
-            let expression = state.expression + action.payload;
+            const expression = state.expression + action.payload;
             return {
               display: result,
               expression: expression
@@ -51,7 +51,7 @@ export default function reducer(state, action) {
       } else if(
         (state.display === "0" && action.payload !== "0") ||
         state.expression.includes("=")) {
-        let result = eval(action.payload)
+        const result = eval(action.payload)
         return {
           display: result,
           expression: action.payload
@@ -79,7 +79,7 @@ export default function reducer(state, action) {
         if(
           state.expression !== "" && 
           state.expression.match(/[*\-+/]$/) == null) {
-          let result = Number.isInteger(
+          const result = Number.isInteger(
             eval(state.expression)) ?
               eval(state.expression) :
               parseFloat(eval(state.expression).toFixed(5));
@@ -90,7 +90,7 @@ export default function reducer(state, action) {
             expression: expression
           };
         } else /* if(state.expression.match(/[*\-+/]$/) != null) */ {
-          let result = Number.isInteger(
+          const result = Number.isInteger(
             eval(state.expression)) ?
               eval(state.expression) :
               parseFloat(eval(state.expression).toFixed(5));
@@ -119,7 +119,7 @@ export default function reducer(state, action) {
 
     case 'CALCULATE_EXPRESSION':
       if(state.expression.includes("=")) {
-        let expression = `${state.display}`;
+        const expression = `${state.display}`;
         return {
           ...state,
           expression: expression
@@ -128,7 +128,7 @@ export default function reducer(state, action) {
         state.expression !== "" && 
         state.expression.match(/[+\-*/]/) != null && 
         state.expression.match(/[+\-*/]$/) == null) {
-        let result = Number.isInteger(eval(state.expression)) ? 
+        const result = Number.isInteger(eval(state.expression)) ? 
           eval(state.expression) : 
           parseFloat(eval(state.expression).toFixed(5));
         let expression = state.expression;

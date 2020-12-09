@@ -60,13 +60,12 @@ export default function useAppData() {
     //amount:1,
   });
 
+  const setCurrenciesList = (currenciesList: Array<string>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setFromCurrency = (currency: string) => { dispatch({ type: SET_FROM_CURRENCY, currency}); };
   const setToCurrency = (currency: string) => { dispatch({ type: SET_TO_CURRENCY, currency}); };
-  const setResult = (result: any) => { dispatch({ type: SET_RESULT, result }); }; 
-  
-  const setCurrenciesList = (currenciesList: Array<string>) => { dispatch({ type: SET_CURRENCIES_LIST, currenciesList}); };
   const setCompareList = (compareList: Array<ICompareListItem>) => { dispatch({ type: SET_COMPARE_LIST, compareList}); };
   const setHistory = (history: Object) => { dispatch({ type: SET_HISTORY, history }); };
+  const setResult = (result: any) => { dispatch({ type: SET_RESULT, result }); }; 
   const setMode = (mode: string) => { dispatch({ type: SET_MODE, mode }); };
 
   const compareListHandler = (fromCurrency: string, amount: number) => {
