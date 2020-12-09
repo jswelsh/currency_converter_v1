@@ -157,4 +157,4 @@ const CompareView: FC<ICompareViewProps> = ({
   </List> 
   )
 }
-export {CompareView}
+export default React.memo(CompareView)

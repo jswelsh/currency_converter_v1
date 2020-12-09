@@ -72,8 +72,8 @@ return (
         <ListItem
           button
           onClick={() => handleClick({
-            toCurrency:toCurrency, 
-            fromCurrency:fromCurrency, 
+            toCurrency:fromCurrency, 
+            fromCurrency:toCurrency,
             setter:currencySelectHandler})}>
           <ListItemIcon><SwapVertIcon className={classes.icon}/></ListItemIcon>
           <ListItemText primary="Swap Currencies" />
