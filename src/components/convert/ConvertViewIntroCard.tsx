@@ -32,7 +32,6 @@ const ConvertViewIntroCard: FC <IConvertViewIntroCardProps> = ({
   intro,
 }) => {
 const classes = useStyles();
-
 return(
 <Card className={classes.card} >
   <CardHeader

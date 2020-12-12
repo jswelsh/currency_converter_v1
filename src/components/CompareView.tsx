@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { ICompareViewProps } from './types'
-import { CompareListItem } from '../components/CompareListItem'
+import CompareListItem from '../components/CompareListItem'
 import {
 Grid,
 List,
@@ -76,7 +76,7 @@ const CompareView: FC<ICompareViewProps> = ({
         container 
         spacing={2}
         alignItems="center" >
-        {compareList
+        {compareList.length && compareList
         .slice((page - 1) * itemsPerPage/ 2, page * itemsPerPage/2)
         .map(({ currency, value }) => (
           <Grid
@@ -117,7 +117,7 @@ const CompareView: FC<ICompareViewProps> = ({
       container 
       spacing={2}
       alignItems="center" >
-      {compareList
+      {compareList.length && compareList
       .slice(((page<=noOfPages ? page :Math.ceil(page/2))  - 1) * itemsPerPage, (page<=noOfPages ? page :Math.ceil(page/2))  * itemsPerPage)
       .map(({currency, value}) => (
       <Grid 
@@ -157,4 +157,4 @@ const CompareView: FC<ICompareViewProps> = ({
   </List> 
   )
 }
-export {CompareView}
+export default React.memo(CompareView)

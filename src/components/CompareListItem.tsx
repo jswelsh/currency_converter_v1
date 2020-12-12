@@ -103,4 +103,4 @@ const CompareListItem: FC<ICompareListItemProps> = ({
   )
 }
 
-export {CompareListItem}
+export default React.memo(CompareListItem) 

@@ -157,16 +157,3 @@ MuiMenuItem: {
 )
 
 export default theme;
-
-/* MuiPickersDateRangeDay-rangeIntervalPreview
-
-MuiButtonBase-root MuiPickersDay-root 
-MuiPickersDateRangeDay-day 
-Mui-selected
-ackground-color
-MuiPickersDateRangeDay-root 
-MuiPickersDateRangeDay-rangeIntervalDayHighlight
-
-MuiPickersDateRangeDay-root 
-MuiPickersDateRangeDay-rangeIntervalDayHighlightEnd 
-MuiPickersDateRangeDay-rangeIntervalDayHighlight */

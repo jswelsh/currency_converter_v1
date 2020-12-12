@@ -10,7 +10,7 @@ import useAppData from '../hooks/useAppData';
 import theme from '../styles/AppStyles'
 import { ThemeProvider } from '@material-ui/core'
 import { ToolBar } from './toolbar/ToolBar';
-import { CompareView } from './CompareView'
+import CompareView  from './CompareView'
 import { ConvertView } from './convert/ConvertView'
 import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
 import { SignIn } from './SignIn';
@@ -24,7 +24,7 @@ import {
 export default function App() {
   const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const [amount, setAmount] = useState<number>(1);
-  const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(365));
+  const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(30));
 
   const {
     state,

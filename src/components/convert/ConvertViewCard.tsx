@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import { IConvertViewCardProps } from './../types'
-import { ConvertViewCardFrontside } from './ConvertViewCardFrontside'
+import ConvertViewCardFrontSide from './ConvertViewCardFrontSide'
 import { ConvertViewCardBackside } from './ConvertViewCardBackside'
 import { iconHandler } from '../../helpers/compareHelper';
 
@@ -14,13 +14,14 @@ const ConvertViewCard: FC<IConvertViewCardProps> = ({
   amount,
   mode,
 }) => {
+
 return (
   <Flippy
     flipOnHover={false} // default false
     flipOnClick={true} // default false
     flipDirection="horizontal">  {/* horizontal or vertical */}
     <FrontSide>
-      <ConvertViewCardFrontside
+      <ConvertViewCardFrontSide
       currency={currency}
       symbol={data[currency]['symbol_native']}
       amount={mode === 'fromCurrency'? amount : converted}
@@ -43,6 +44,7 @@ return (
         })}/>
     </BackSide>
   </Flippy>
+
 )}
 
 export {ConvertViewCard}

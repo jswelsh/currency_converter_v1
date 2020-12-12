@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import { ConvertViewCardBacksideTable } from './ConvertViewCardBacksideTable'
+import ConvertViewCardBacksideTable from './ConvertViewCardBacksideTable'
 import { makeStyles } from '@material-ui/core/styles';
 import { IConvertViewCardBacksideProps } from '../types'
 import {
@@ -37,7 +37,6 @@ const ConvertViewCardBackside: FC<IConvertViewCardBacksideProps> = ({
   name,
 }) => {
 const classes = useStyles();
-
 return(
 <Card className={classes.card}>
   <CardHeader
@@ -48,20 +47,24 @@ return(
     avatar={avatar}
     action={
       <IconButton aria-label="settings" >
-        <Typography variant="h4" color="secondary"className={classes.icon}>
+        <Typography variant="h4" color="secondary" className={classes.icon}>
           Flip 
         </Typography>
-        <ThreeDRotationIcon fontSize='large'className={classes.icon}/>
+        <ThreeDRotationIcon fontSize='large' className={classes.icon}/>
       </IconButton>
     }/>
   <CardContent>
     <Grid container justify="center" >
       <Grid item >
+      {
+      recentRateHistory ?
       <ConvertViewCardBacksideTable
         recentRateHistory={recentRateHistory}
         converted={converted}
         amount={amount}
       />
+      : null
+      }
       </Grid>
     </Grid>
   </CardContent>

@@ -16,7 +16,6 @@ const ConvertViewCardBacksideTable: FC<IConvertViewCardBacksideTableProps> = ({
   converted,
   amount
 }) => {
-
   const cellConstructor = (value: number) => {
   //styling the delta of previous days to being green +, white =, red -
     const delta = (value > 0) ? 
@@ -58,4 +57,4 @@ return(
   </TableContainer>
 )}
 
-export {ConvertViewCardBacksideTable}
+export default React.memo(ConvertViewCardBacksideTable)
