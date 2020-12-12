@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { IToolBarProps } from '../types'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { 
+  Grid,
   Drawer, 
   AppBar,
   Toolbar,
@@ -12,6 +13,7 @@ import {
   IconButton,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
@@ -82,7 +84,7 @@ const ToolBar: FC<IToolBarProps> = ({
   modeHandler,
   setAmount,
   dateRange,
-  opendrawer,
+  openDrawer,
   amount,
   mode,
 }) => {
@@ -103,7 +105,7 @@ return (
     <AppBar
       position="fixed"
       className={clsx(classes.appBar, {
-        [classes.appBarShift]: opendrawer
+        [classes.appBarShift]: openDrawer
       })}
     >
       <Toolbar >
@@ -112,24 +114,40 @@ return (
           onClick={handleDrawerOpen}
           edge="start"
           className={clsx(classes.icon, classes.menuButton, {
-            [classes.hide]: opendrawer})}
+            [classes.hide]: openDrawer})}
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" >
-          CurExC
-        </Typography>
+        <Grid 
+        direction="row"
+        justify="space-between"
+        alignItems="center"
+        container>
+          <Grid item>
+            <Typography variant="h6" >
+              CurExC
+            </Typography>
+          </Grid>
+          <Grid item>
+          <IconButton>
+            <GitHubIcon 
+              fontSize={'large'} 
+              className={classes.icon} 
+              onClick={() =>  window.location.href='https://github.com/jswelsh'}/>
+          </IconButton>
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
     <Drawer
       variant="permanent"
       className={clsx(classes.drawer, {
-        [classes.drawerOpen]: opendrawer,
-        [classes.drawerClose]: !opendrawer})}
+        [classes.drawerOpen]: openDrawer,
+        [classes.drawerClose]: !openDrawer})}
       classes={{
         paper: clsx({
-          [classes.drawerOpen]: opendrawer,
-          [classes.drawerClose]: !opendrawer}),}}>
+          [classes.drawerOpen]: openDrawer,
+          [classes.drawerClose]: !openDrawer}),}}>
         <div className={classes.toolbar}>
           <IconButton
             className={classes.icon}
@@ -158,7 +176,7 @@ return (
             fromCurrency={fromCurrency}
             setDateRange={setDateRange}
             toCurrency={toCurrency}
-            opendrawer={opendrawer}
+            openDrawer={openDrawer}
             setAmount={setAmount}
             dateRange={dateRange}
             amount={amount}

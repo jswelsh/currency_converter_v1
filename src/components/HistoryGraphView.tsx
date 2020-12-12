@@ -1,14 +1,11 @@
 import React, { FC, Suspense } from "react";
-import clsx from 'clsx';
-import { Card, Grid, CardHeader, CardContent, Divider, CircularProgress } from '@material-ui/core';
-import { IHistoryGraphViewProps, IDataItem } from './types'
-
-
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import { Card, Grid, CardHeader, CardContent, CircularProgress } from '@material-ui/core';
+import { IHistoryGraphViewProps } from './types'
 
 const HistoryGraph = React.lazy(() =>
 import('./HistoryGraph'))
-// import HistoryGraph from './HistoryGraph'
 
 const drawerWidth = 290;
 const drawerClosed = 130;
@@ -20,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   drawerClose: {
     marginLeft: drawerClosed,
     marginRight: drawerClosed-20,
-    width: `calc(93% - ${drawerClosed}px)`, /* `calc(95% - 100px)`,  */
+    width: `calc(93% - ${drawerClosed}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen})},
@@ -32,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen})},
   cardHeader: {
     backgroundColor:'secondary'},
+  CardContent: {
+    minHeight: 730
+  },
   avatar: {
     width: 60,
     height: 60,
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HistoryGraphView: FC<IHistoryGraphViewProps> =  ({
   fromCurrency,
-  opendrawer,
+  openDrawer,
   toCurrency,
   history,
 }) => {
@@ -53,20 +53,32 @@ const HistoryGraphView: FC<IHistoryGraphViewProps> =  ({
       spacing={2}
       container 
       className={clsx({
-        [classes.drawerOpen]: opendrawer,
-        [classes.drawerClose]: !opendrawer})}>
+        [classes.drawerOpen]: openDrawer,
+        [classes.drawerClose]: !openDrawer})}>
       <Grid 
         item
         xs={12} >
         <Card>
-        <CardHeader
-          title={`${fromCurrency} to ${toCurrency}`}
-          subheader={'for the period of Start date to End date'}
-          subheaderTypographyProps={{ align: 'center'}}
-          titleTypographyProps={{ align: 'center',variant: "h3" }}>
-              <Divider variant="middle" />
-            </CardHeader>
-          <Suspense fallback={<CircularProgress color="primary" />}>
+          <CardHeader
+            title={`${fromCurrency} to ${toCurrency}`}
+            subheader={'for the period of Start date to End date'}
+            subheaderTypographyProps={{ align: 'center'}}
+            titleTypographyProps={{ align: 'center',variant: "h3" }}>
+          </CardHeader>
+          <Suspense fallback={
+            <CardContent >
+              <Grid 
+              className={classes.CardContent} 
+              container 
+              direction="row"
+              justify="center"
+              alignItems="center">
+                <Grid item >
+                  <CircularProgress color="secondary" />
+                </Grid>
+              </Grid>
+            </CardContent>
+          }>
             <HistoryGraph history={history}/>
           </Suspense>
         </Card> 

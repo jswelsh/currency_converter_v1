@@ -14,7 +14,7 @@ const drawerWidth = 290;
 const drawerClosed = 130;
 
 const useStyles = makeStyles((theme) => ({
-  ExchangeHistoryGraph: {
+  HistoryGraph: {
     borderRadius: 12,
     padding: 30,
     margin:'auto',
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         let chart = am4core.create("chartdiv", am4charts.XYChart);
           chart.marginLeft = drawerWidth -10
           chart.marginRight = drawerWidth -40
-      /*   let data: Array<IDataItem> = [];
+        let data: Array<IDataItem> = [];
         let value, date;
         let previousValue = 0;
       // used to build a color difference for increase or
@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
           previousValue = value;
       } 
       chart.data = data;
-       */
-        chart.data = history;
+      
+        // chart.data = history;
         chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
         //chart.scrollbarX.series.push(series);
         chart.scrollbarX.parent = chart.bottomAxesContainer;
         /* 
-          need to fix this typing later on, shoulnt have any
+          need to fix this typing later on, shouldn't have any
           */
         //styling for the scroll bar
         function customizeGrip(grip: any) {
@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
         }, [history]);
 
       return (
-        <CardContent id="chartdiv" className={classes.ExchangeHistoryGraph} />
+        <CardContent id="chartdiv" className={classes.HistoryGraph} />
       );
     }
 

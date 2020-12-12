@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { IUserInputTabProps, IcurrencySelectHandlerFunc } from './../types'
+import { IUserInputTabProps, ICurrencySelectHandlerFunc } from './../types'
 import { ExchangeHistoryPopOver } from './ExchangeHistoryPopOver';
 import { CalculatorPopOver } from './CalculatorPopOver'
 import { CurrencySelectionForm } from './CurrencySelectionForm';
@@ -21,7 +21,7 @@ const UserInputTab: FC<IUserInputTabProps> = ({
   fromCurrency,
   setDateRange,
   toCurrency,
-  opendrawer,
+  openDrawer,
   setAmount,
   dateRange,
   amount,
@@ -32,7 +32,7 @@ const UserInputTab: FC<IUserInputTabProps> = ({
 
 /* need to fix the any props later */
 
-let currencySelectHandler: IcurrencySelectHandlerFunc
+let currencySelectHandler: ICurrencySelectHandlerFunc
 currencySelectHandler = function({currency, mode}) { 
   if(mode === 'fromCurrency' && currency !== toCurrency){
     setFromCurrency(currency)
@@ -74,7 +74,7 @@ return (
     <InputAmountField
       fromCurrency={fromCurrency}
       setAmount={setAmount}
-      opendrawer={opendrawer}
+      openDrawer={openDrawer}
       amount={amount}
       //amountHandler={amountHandler}
       />)}

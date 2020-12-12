@@ -52,7 +52,7 @@ function NumberFormatCustom(props: INumberFormatCustomProps) {
 const InputAmountField: FC<IInputAmountFieldProps> = ({
   fromCurrency,
   setAmount,
-  opendrawer,
+  openDrawer,
   amount,
 }) => {
   const classes = useStyles();
@@ -61,7 +61,7 @@ return (
   <div className={classes.TextField}  >
     <TextField
       color={'secondary'}
-      label= {label({drawer: opendrawer, fromCurrency: fromCurrency })}
+      label= {label({drawer: openDrawer, fromCurrency: fromCurrency })}
       value={amount}
       onChange={(event) => handleChange({event: event, setAmount: setAmount})}
       name="amountField"

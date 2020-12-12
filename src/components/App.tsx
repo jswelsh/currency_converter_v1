@@ -22,7 +22,7 @@ import {
 
 /* need to fix typing */
 export default function App() {
-  const [opendrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
+  const [openDrawer, setDrawerOpen] = React.useState/* <boolean> */(false);
   const [amount, setAmount] = useState<number>(1);
   const [dateRange, setDateRange] = useState<any/* string */>(initializeDateRange(30));
 
@@ -39,9 +39,6 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Router>
       <main className="layout">
-         {/* <Link to="/">convert</Link> */}
-          {/* <Link to="/">history</Link> */}
-           {/* <Link to="/">compare</Link> */}
         <ToolBar
           convertHistoryHandler={convertHistoryHandler}
           compareListHandler={compareListHandler}
@@ -54,20 +51,13 @@ export default function App() {
           setDateRange={setDateRange}
           toCurrency={state.toCurrency}
           modeHandler={modeHandler}
-          opendrawer={opendrawer}
+          openDrawer={openDrawer}
           setAmount={setAmount}
           dateRange={dateRange}
           amount={amount}
           mode={state.mode}
           />
           <Link to="/signin">SignIn</Link>
-        {/* <Route path="/converter"></Route> */}
-        {/* {state.mode === 'Converter' && ()} */}
-        {/* <Route path="/history"></Route> */}
-        {/* {state.mode === 'History' && ()} */}
-
-        {/* {state.mode === 'Compare' && ()} */}
-
         <Switch>
           <Route path='/signin'>
             <SignIn 
@@ -76,12 +66,11 @@ export default function App() {
           <Route path='/signup'>
             <SignUp 
               modeHandler={modeHandler}
-              /* mode={'SignUp'} */
             />
           </Route>
           <Route path="/convert">
             <ConvertView
-              opendrawer={opendrawer}
+              openDrawer={openDrawer}
               fromCurrency={state.result.fromCurrency}
               toCurrency={state.result.toCurrency}
               toStart={state.result.toStart}
@@ -97,7 +86,7 @@ export default function App() {
               toCurrency={state.result.toCurrency}
               history={state.history}
               dateRange={dateRange}
-              opendrawer={opendrawer}
+              openDrawer={openDrawer}
             />
           </Route>
           <Route path="/compare">
@@ -107,12 +96,12 @@ export default function App() {
               compareList={state.compareList}
               compareListHandler={compareListHandler}
               amount={amount}
-              opendrawer={opendrawer}
+              openDrawer={openDrawer}
             />
           </Route>
           <Route path="/">
             <ConvertView
-              opendrawer={opendrawer}
+              openDrawer={openDrawer}
               fromCurrency={state.fromCurrency}
               toCurrency={state.toCurrency}
               toStart={state.result.toStart}

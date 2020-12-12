@@ -50,7 +50,7 @@ const CompareView: FC<ICompareViewProps> = ({
   setFromCurrency,
   fromCurrency,
   compareList,
-  opendrawer,
+  openDrawer,
   amount
 }) => {
   const classes = useStyles();
@@ -69,8 +69,8 @@ const CompareView: FC<ICompareViewProps> = ({
   return(
   <List
     className = {clsx({
-      [classes.drawerOpen]: opendrawer,
-      [classes.drawerClose]: !opendrawer})} >
+      [classes.drawerOpen]: openDrawer,
+      [classes.drawerClose]: !openDrawer})} >
     <Box display={{ xs: 'block', md: 'none' }}>
       <Grid 
         container 
@@ -82,7 +82,7 @@ const CompareView: FC<ICompareViewProps> = ({
           <Grid
             item
             xs={12}
-            md={opendrawer ? 12 : 6}
+            md={openDrawer ? 12 : 6}
             lg={6}
             key={currency}>
             <CompareListItem
@@ -123,7 +123,7 @@ const CompareView: FC<ICompareViewProps> = ({
       <Grid 
         item
         xs={12} 
-        md={opendrawer ? 12 : 6}       
+        md={openDrawer ? 12 : 6}       
         lg={6}
         key={currency} >
         <CompareListItem
