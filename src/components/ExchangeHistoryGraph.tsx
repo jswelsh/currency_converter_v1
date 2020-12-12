@@ -64,11 +64,11 @@ const ExchangeHistoryGraph: FC<IExchangeHistoryGraphProps> =  ({
   let chart = am4core.create("chartdiv", am4charts.XYChart);
     chart.marginLeft = drawerWidth -10
     chart.marginRight = drawerWidth -40
-  let data: Array<IDataItem> = [];
+/*   let data: Array<IDataItem> = [];
   let value, date;
   let previousValue = 0;
-/* used to build a color difference for increase or
-decrease in previous value */
+// used to build a color difference for increase or
+// decrease in previous value 
   for (let i = 0; i < history.length; i++) {
     value = history[i]['value'];
     date = history[i]['date'];
@@ -83,9 +83,9 @@ decrease in previous value */
       value: value });
     previousValue = value;
 } 
-
-
 chart.data = data;
+ */
+  chart.data = history;
   chart.dateFormatter.inputDateFormat = "yyyy-MM-dd";
   let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
   let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
