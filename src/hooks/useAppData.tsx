@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { 
-  IconvertHandlerFunc,
+  IConvertHandlerFunc,
 
   ICompareListItem } from '../../src/components/types'
 import axios from 'axios';
@@ -85,7 +85,7 @@ export default function useAppData() {
       })
   }
 
-  let convertHandler: IconvertHandlerFunc
+  let convertHandler: IConvertHandlerFunc
   convertHandler = function ({ fromCurrency, toCurrency, amount}) {
     const [ fromDate, toDate] = initializeDateRange(325)
     const exchangeRates = `

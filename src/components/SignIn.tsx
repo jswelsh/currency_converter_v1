@@ -128,7 +128,7 @@ export function SignIn() {
               pattern:{
                       /*   lowerChar, capitalChar,       specialChar,   rest*/
                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-                message: 'wrong pattern; must contain atleast one of each; lowercase, uppercase, number and special character; @$!%*?&'},
+                message: 'wrong pattern; must contain at least one of each; lowercase, uppercase, number and special character; @$!%*?&'},
             })}
         />
       </Grid >

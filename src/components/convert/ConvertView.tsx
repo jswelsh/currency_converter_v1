@@ -42,7 +42,7 @@ const ConvertView: FC<IConvertViewProps> = ({
   recentRateHistory,
   fromCurrency,
   toCurrency,
-  opendrawer,
+  openDrawer,
   fromIntro,
   converted,
   toStart,
@@ -56,8 +56,8 @@ return(
   container 
   justify={'center'}
   className={clsx({
-    [classes.drawerOpen]: opendrawer,
-    [classes.drawerClose]: !opendrawer})}>
+    [classes.drawerOpen]: openDrawer,
+    [classes.drawerClose]: !openDrawer})}>
     <ConvertViewCard
       recentRateHistory={recentRateHistory}
       converted={converted}
@@ -77,8 +77,8 @@ return(
   container 
   justify={'center'}
   className={clsx({
-    [classes.drawerOpen]: opendrawer,
-    [classes.drawerClose]: !opendrawer})}>
+    [classes.drawerOpen]: openDrawer,
+    [classes.drawerClose]: !openDrawer})}>
     <Flippy
       flipOnHover={false} // default false
       flipOnClick={true} // default false

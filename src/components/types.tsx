@@ -18,7 +18,7 @@ export interface ICompareViewProps {
   fromCurrency: string
   compareListHandler(fromCurrency: string, amount: number): void 
   compareList: Array<ICompareListItem>
-  opendrawer: boolean 
+  openDrawer: boolean 
   amount: number}
 
 export interface ICurrencyArrayItem {
@@ -28,7 +28,7 @@ export interface IConvertViewProps {
   recentRateHistory: Array<ICurrencyArrayItem>
   fromCurrency: string
   toCurrency: string
-  opendrawer: boolean
+  openDrawer: boolean
   fromIntro: string
   converted: number
   toStart: number
@@ -75,12 +75,12 @@ export interface ICurrencySelectionFormProps {
   toCurrency: string
   mode: string }
 
-export interface IExchangeHistoryGraphProps {
+export interface IHistoryGraphViewProps {
   history: Array<ICurrencyArrayItem>
   dateRange: Array<Date>
   fromCurrency: string
   toCurrency: string
-  opendrawer: boolean
+  openDrawer: boolean
 }
 
 export interface IDataItem {
@@ -100,13 +100,13 @@ export interface IUserInputTabProps {
   fromCurrency: string
   toCurrency: string
   setAmount(amount: number): void
-  opendrawer: boolean
+  openDrawer: boolean
   dateRange: Array<Date>
   amount: number
   mode: string
 }
 
-export interface IcurrencySelectHandlerFunc {
+export interface ICurrencySelectHandlerFunc {
   (payload:{
     currency: string 
     mode: string
@@ -121,7 +121,7 @@ export interface IExchangeHistoryPopOverProps {
 export interface IInputAmountFieldProps {
   fromCurrency: string
   setAmount(amount: number): void
-  opendrawer: boolean
+  openDrawer: boolean
   amount: number
   // this one is a hard one to fix
   //setAmount(amount: number): void
@@ -145,7 +145,7 @@ export interface IToolBarProps extends IUserInputTabProps {
   modeHandler(mode: string): void
 }
 
-export interface IconvertHandlerFunc {
+export interface IConvertHandlerFunc {
   (payload: {
     fromCurrency: string
     toCurrency: string
