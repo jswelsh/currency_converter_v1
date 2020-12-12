@@ -75,7 +75,7 @@ export interface ICurrencySelectionFormProps {
   toCurrency: string
   mode: string }
 
-export interface IExchangeHistoryGraphProps {
+export interface IHistoryGraphViewProps {
   history: Array<ICurrencyArrayItem>
   dateRange: Array<Date>
   fromCurrency: string

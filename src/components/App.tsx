@@ -12,7 +12,7 @@ import { ThemeProvider } from '@material-ui/core'
 import { ToolBar } from './toolbar/ToolBar';
 import CompareView  from './CompareView'
 import { ConvertView } from './convert/ConvertView'
-import { ExchangeHistoryGraph } from './ExchangeHistoryGraph';
+import { HistoryGraphView } from './HistoryGraphView';
 import { SignIn } from './SignIn';
 import { SignUp } from './SignUp';
 import { NotFound } from './NotFound'
@@ -92,7 +92,7 @@ export default function App() {
             />
           </Route>
           <Route path="/history">
-            <ExchangeHistoryGraph
+            <HistoryGraphView
               fromCurrency={state.result.fromCurrency}
               toCurrency={state.result.toCurrency}
               history={state.history}
