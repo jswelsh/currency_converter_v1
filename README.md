@@ -5,7 +5,7 @@ CurExC is a web application that  provides users with straight forward Currency 
 
 # Technologies
 
-  <img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/><img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/><img src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/><img src="https://img.shields.io/badge/material%20ui%20-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white"/>![amCharts](Images/amcharts_badgev2.svg)![axios](Images/axios_badgev1.svg)![dateio](Images/date_io_badgev1.svg)![inkscape](Images/inkscape_badgev1.svg)
+  <img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/><img src="https://img.shields.io/badge/typescript%20-%23007ACC.svg?&style=for-the-badge&logo=typescript&logoColor=white"/><img src="https://img.shields.io/badge/material%20ui%20-%230081CB.svg?&style=for-the-badge&logo=material-ui&logoColor=white"/>![amCharts](Images/amcharts_badgev2.svg)![axios](Images/axios_badgev1.svg)![dateio](Images/date_io_badgev1.svg)![inkscape](Images/inkscape_badgev1.svg)
 
 ## App Screenshots
 ![Convert view, flip functionality](public/convert.gif)
