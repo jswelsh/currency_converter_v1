@@ -1,7 +1,7 @@
 
-import React, {  useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import {  IDataItem } from './types'
+import { IDataItem } from './types'
 
 
 import { CardContent } from '@material-ui/core';
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     width: "95%", minHeight: 730},
   }));
 
-    function HistoryGraph({  
+    function HistoryGraph({
       history}) {
         const classes = useStyles();
 
