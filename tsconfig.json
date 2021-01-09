@@ -15,7 +15,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "esnext",//this is wrong i think
     "moduleResolution": "node",
     "isolatedModules": true,
     "resolveJsonModule": true,

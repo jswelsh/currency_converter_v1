@@ -14,7 +14,7 @@ const drawerWidth = 280;
 const drawerClosed = 100;
 
 const useStyles = makeStyles((theme) => ({
-  drawerClose: {  
+  drawerClose: {
     //marginLeft: drawerClosed,
     marginRight: 'min(100px, 15%)',
     marginLeft: 'min(100px, 15%)',
