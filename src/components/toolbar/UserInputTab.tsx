@@ -63,8 +63,8 @@ const handleChange = (event: Array<Date>) => {
   if(event[1] !== null){
     const [startDate, endDate] = event
     setDateRange(
-      [shortenDateString(startDate), 
-      shortenDateString(endDate)
+      [shortenDateString(startDate.toISOString(), null), 
+      shortenDateString(endDate.toISOString(), null)
     ])
   }
 }
