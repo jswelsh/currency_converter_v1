@@ -11,9 +11,9 @@ const shortenDateString:IShortenDateString = ({date, cutPoint}) => {
   date.toISOString().split('T')[0].substring(cutPoint)
 }
 
-type IgetDaysAgo = (numberOfDays: number) => string
+type IGetDaysAgo = (numberOfDays: number) => string
 
-const getDaysAgo:IgetDaysAgo = (numberOfDays) => {
+const getDaysAgo:IGetDaysAgo = (numberOfDays) => {
   const today = new Date();
   const oneYearAgo = new Date(
     today.getFullYear(), 
@@ -32,11 +32,10 @@ const initializeDateRange: IInitializeDateRange = (numberOfDays) => {
     toDate
   ]
 }
-type ICurrencyItem ={
-  [currency:string]:number
-}
 type ICurrencyHistory = {
-  key:ICurrencyItem
+  key:{
+    [currency:string]:number
+  }
 }
 type INewCurrencyHistory = {
   date:number
