@@ -1,4 +1,4 @@
-const data = require('./currency.json'); // forward slashes will depend on the file location
+const data = require('./currency.json')
 
 interface ILabelFunc {(
   payload: {
@@ -8,25 +8,25 @@ interface ILabelFunc {(
 
 let label:ILabelFunc
 label = function ({
-  drawer, 
+  drawer,
   fromCurrency
 }) {
 
   return (
-    (fromCurrency && (drawer === true)) ? `Amount in ${data[fromCurrency]['name']}s` : 
+    (fromCurrency && (drawer === true)) ? `Amount in ${data[fromCurrency]['name']}s` :
     fromCurrency && fromCurrency)
 }
 
-interface IhandleChangeFunc {
+interface IHandleChangeFunc {
   (payload:{
     event: any,
     setAmount: any
   }): void
 }
-let handleChange: IhandleChangeFunc
+let handleChange: IHandleChangeFunc
 
 handleChange = function ({event, setAmount}) {
-  setAmount( 
+  setAmount(
     event.target.value
   );
 };

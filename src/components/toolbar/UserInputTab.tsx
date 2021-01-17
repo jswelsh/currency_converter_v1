@@ -6,9 +6,8 @@ import { CurrencySelectionForm } from './CurrencySelectionForm';
 import { Button } from './Button';
 import { InputAmountField } from './InputAmountField';
 
-// import { Divider } from '@material-ui/core';
-import {  
-  shortenDateString 
+import {
+  shortenDateString
 } from '../../helpers/dataHelpers'
 
 const UserInputTab: FC<IUserInputTabProps> = ({
@@ -31,7 +30,6 @@ const UserInputTab: FC<IUserInputTabProps> = ({
 
 
 /* need to fix the any props later */
-
 let currencySelectHandler: ICurrencySelectHandlerFunc
 currencySelectHandler = function({currency, mode}) { 
   if(mode === 'fromCurrency' && currency !== toCurrency){
@@ -63,8 +61,8 @@ const handleChange = (event: Array<Date>) => {
   if(event[1] !== null){
     const [startDate, endDate] = event
     setDateRange(
-      [shortenDateString(startDate.toISOString(), null), 
-      shortenDateString(endDate.toISOString(), null)
+      [shortenDateString({date: startDate, cutPoint: null}),
+      shortenDateString({date: endDate, cutPoint: null})
     ])
   }
 }
@@ -96,7 +94,7 @@ return (
     )}
     {mode === 'Converter' && fromCurrency !== toCurrency &&
     <Button
-      primary='Connvert Currencies'
+      primary='Convert Currencies'
       handleSubmit={()=>
         convertHandler({
           fromCurrency: fromCurrency, 

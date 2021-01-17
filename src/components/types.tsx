@@ -7,7 +7,7 @@ export interface ICompareListItemProps {
   currencySelectHandler(currency:string): void; 
   fromCurrency: string
   currency: string
-  primary: number 
+  primary: number
   amount: number}
 
 export interface ICompareListItem {
@@ -18,7 +18,7 @@ export interface ICompareViewProps {
   fromCurrency: string
   compareListHandler(fromCurrency: string, amount: number): void 
   compareList: Array<ICompareListItem>
-  openDrawer: boolean 
+  openDrawer: boolean
   amount: number}
 
 export interface ICurrencyArrayItem {

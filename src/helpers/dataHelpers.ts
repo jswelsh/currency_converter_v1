@@ -1,25 +1,31 @@
 
 //used in UserInputTab
-type IShortenDateString = (string: string, cutPoint: number|null) => string
-const shortenDateString:IShortenDateString = (string, cutPoint) => {
-  //trim extra values from date string, cutpoint is usually used to cut the year off
-  return (cutPoint === null) ? new Date(string).toISOString().split('T')[0] :
-  new Date(string).toISOString().split('T')[0].substring(cutPoint)
+type IShortenDateStringProps = {
+  date: Date,
+  cutPoint: number|null
+}
+type IShortenDateString = (props: IShortenDateStringProps) => string
+
+const shortenDateString:IShortenDateString = ({date, cutPoint}) => {
+  return (cutPoint === null) ? date.toISOString().split('T')[0] :
+  date.toISOString().split('T')[0].substring(cutPoint)
 }
 
 type IgetDaysAgo = (numberOfDays: number) => string
+
 const getDaysAgo:IgetDaysAgo = (numberOfDays) => {
   const today = new Date();
   const oneYearAgo = new Date(
     today.getFullYear(), 
     today.getMonth(), 
     today.getDate() - numberOfDays)
-  return shortenDateString(oneYearAgo.toDateString(), null);
+  return shortenDateString({date:oneYearAgo, cutPoint:null});
 }
 
 type IInitializeDateRange = (numberOfDays:number) => string[]
+
 const initializeDateRange: IInitializeDateRange = (numberOfDays) => {
-  const toDate = shortenDateString((new Date()).toString(), null)
+  const toDate = shortenDateString({date:new Date(), cutPoint:null})
   const fromDate = getDaysAgo(numberOfDays)
   return [
     fromDate,
@@ -37,6 +43,7 @@ type INewCurrencyHistory = {
   value:number
 }
 type IHistoryFormatter = (historyObj:ICurrencyHistory, toCurrency: string) => INewCurrencyHistory[]
+
 const historyFormatter:IHistoryFormatter = (historyObj, toCurrency) => {
   const history:INewCurrencyHistory[] = [];
   Object.entries(historyObj).forEach(([key, value]) => {
